@@ -1,253 +1,157 @@
-// ===============================
-// AOS Initialization
-// ===============================
-
+// ==========================
+// AOS
+// ==========================
 AOS.init({
     duration:1000,
-    once:true,
-    easing:"ease-in-out"
+    once:true
 });
 
-
-// ===============================
-// Loader
-// ===============================
-
+// ==========================
+// LOADER
+// ==========================
 window.addEventListener("load",()=>{
 
     const loader=document.getElementById("loader");
 
     loader.style.opacity="0";
-
     loader.style.visibility="hidden";
 
-    loader.style.transition=".6s";
+    setTimeout(()=>{
+        loader.remove();
+    },600);
 
 });
 
-
-// ===============================
-// Sticky Header
-// ===============================
-
+// ==========================
+// STICKY NAVBAR
+// ==========================
 const header=document.querySelector("header");
 
 window.addEventListener("scroll",()=>{
 
-    if(window.scrollY>80){
+    if(window.scrollY>50){
 
-        header.style.background="rgba(0,0,0,.95)";
-        header.style.padding="15px 8%";
-        header.style.boxShadow="0 10px 35px rgba(0,0,0,.4)";
+        header.style.background="rgba(0,0,0,.88)";
+        header.style.padding="18px 7%";
+        header.style.boxShadow="0 10px 40px rgba(0,0,0,.45)";
 
-    }
+    }else{
 
-    else{
-
-        header.style.background="rgba(0,0,0,.35)";
-        header.style.padding="18px 8%";
+        header.style.background="rgba(0,0,0,.15)";
+        header.style.padding="22px 7%";
         header.style.boxShadow="none";
 
     }
 
 });
 
-
-// ===============================
-// GSAP Hero Animation
-// ===============================
+// ==========================
+// GSAP INTRO
+// ==========================
 
 gsap.from(".logo",{
 
-    y:-50,
-    opacity:0,
-    duration:1
+opacity:0,
+y:-40,
+duration:1
 
 });
 
-gsap.from("nav ul li",{
+gsap.from("nav li",{
 
-    y:-30,
-    opacity:0,
-    duration:.8,
-    stagger:.12,
-    delay:.4
+opacity:0,
+y:-20,
+duration:0.7,
+stagger:.1,
+delay:.4
 
 });
 
-gsap.from(".ticket-btn",{
+gsap.from(".btn-ticket",{
 
-    opacity:0,
-    x:80,
-    duration:1,
-    delay:.8
+opacity:0,
+x:50,
+duration:1,
+delay:.8
+
+});
+
+gsap.from(".hero-left h4",{
+
+opacity:0,
+x:-80,
+duration:.8
 
 });
 
 gsap.from(".hero-left h1",{
 
-    opacity:0,
-    y:100,
-    duration:1.2
+opacity:0,
+x:-120,
+duration:1,
+delay:.2
 
 });
 
 gsap.from(".hero-left p",{
 
-    opacity:0,
-    y:60,
-    duration:1,
-    delay:.4
+opacity:0,
+y:50,
+duration:1,
+delay:.6
 
 });
 
-gsap.from(".buttons",{
+gsap.from(".hero-buttons",{
 
-    opacity:0,
-    y:60,
-    duration:1,
-    delay:.8
+opacity:0,
+y:50,
+duration:1,
+delay:1
 
 });
 
 gsap.from(".hero-right img",{
 
-    opacity:0,
-    scale:.7,
-    duration:1.4,
-    delay:.5
+opacity:0,
+scale:.7,
+duration:1.4,
+delay:.5
 
 });
 
-
-// ===============================
-// Floating Hero Image
-// ===============================
+// ==========================
+// FLOAT MIC
+// ==========================
 
 gsap.to(".hero-right img",{
 
-    y:20,
+y:20,
 
-    repeat:-1,
+repeat:-1,
 
-    yoyo:true,
+yoyo:true,
 
-    duration:3,
+ease:"power1.inOut",
 
-    ease:"power1.inOut"
-
-});
-
-
-// ===============================
-// Card Hover Effect
-// ===============================
-
-document.querySelectorAll(".card").forEach(card=>{
-
-card.addEventListener("mouseenter",()=>{
-
-gsap.to(card,{
-
-scale:1.04,
-
-duration:.3
+duration:3
 
 });
 
-});
+// ==========================
+// PARTICLES
+// ==========================
 
-card.addEventListener("mouseleave",()=>{
-
-gsap.to(card,{
-
-scale:1,
-
-duration:.3
-
-});
-
-});
-
-});
-
-
-// ===============================
-// Smooth Scroll
-// ===============================
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-
-anchor.addEventListener("click",function(e){
-
-e.preventDefault();
-
-const target=document.querySelector(this.getAttribute("href"));
-
-if(target){
-
-target.scrollIntoView({
-
-behavior:"smooth"
-
-});
-
-}
-
-});
-
-});
-
-
-// ===============================
-// Scroll Progress Bar
-// ===============================
-
-const progress=document.createElement("div");
-
-progress.style.position="fixed";
-
-progress.style.top="0";
-
-progress.style.left="0";
-
-progress.style.height="4px";
-
-progress.style.background="#d81f26";
-
-progress.style.width="0%";
-
-progress.style.zIndex="99999";
-
-document.body.appendChild(progress);
-
-window.addEventListener("scroll",()=>{
-
-const totalHeight=
-
-document.documentElement.scrollHeight-window.innerHeight;
-
-const progressHeight=(window.pageYOffset/totalHeight)*100;
-
-progress.style.width=progressHeight+"%";
-
-});
-
-
-// ===============================
-// Particles
-// ===============================
-
-particlesJS("particles",{
+particlesJS("particles-js",{
 
 particles:{
 
 number:{
-value:70
+value:80
 },
 
 color:{
-value:"#d81f26"
+value:"#d72638"
 },
 
 shape:{
@@ -265,8 +169,9 @@ value:3
 line_linked:{
 enable:true,
 distance:150,
-color:"#d81f26",
-opacity:.25
+color:"#d72638",
+opacity:.25,
+width:1
 },
 
 move:{
@@ -295,7 +200,7 @@ mode:"push"
 modes:{
 
 grab:{
-distance:180
+distance:170
 },
 
 push:{
@@ -310,107 +215,158 @@ retina_detect:true
 
 });
 
+// ==========================
+// BUTTON HOVER
+// ==========================
 
-// ===============================
-// Active Navigation
-// ===============================
+document.querySelectorAll("a").forEach(btn=>{
 
-const sections=document.querySelectorAll("section");
+btn.addEventListener("mouseenter",()=>{
 
-const navLinks=document.querySelectorAll("nav ul li a");
+gsap.to(btn,{
+
+scale:1.05,
+duration:.25
+
+});
+
+});
+
+btn.addEventListener("mouseleave",()=>{
+
+gsap.to(btn,{
+
+scale:1,
+duration:.25
+
+});
+
+});
+
+});
+
+// ==========================
+// PARALLAX
+// ==========================
+
+window.addEventListener("mousemove",(e)=>{
+
+let x=(window.innerWidth/2-e.pageX)/35;
+let y=(window.innerHeight/2-e.pageY)/35;
+
+gsap.to(".hero-right img",{
+
+x:x,
+y:y,
+duration:1
+
+});
+
+});
+
+// ==========================
+// RED LIGHT MOTION
+// ==========================
+
+gsap.to(".one",{
+
+x:80,
+y:40,
+
+duration:6,
+
+repeat:-1,
+
+yoyo:true,
+
+ease:"sine.inOut"
+
+});
+
+gsap.to(".two",{
+
+x:-80,
+y:-50,
+
+duration:8,
+
+repeat:-1,
+
+yoyo:true,
+
+ease:"sine.inOut"
+
+});
+
+// ==========================
+// TEXT GLOW
+// ==========================
+
+setInterval(()=>{
+
+document.querySelector(".hero-left span").classList.toggle("activeGlow");
+
+},2000);
+
+// ==========================
+// SCROLL PROGRESS
+// ==========================
+
+const progress=document.createElement("div");
+
+progress.style.position="fixed";
+progress.style.top="0";
+progress.style.left="0";
+progress.style.height="4px";
+progress.style.width="0";
+progress.style.background="#d72638";
+progress.style.zIndex="999999";
+
+document.body.appendChild(progress);
 
 window.addEventListener("scroll",()=>{
 
-let current="";
+let total=document.documentElement.scrollHeight-window.innerHeight;
 
-sections.forEach(section=>{
+let percent=(window.scrollY/total)*100;
 
-const sectionTop=section.offsetTop-120;
-
-if(pageYOffset>=sectionTop){
-
-current=section.getAttribute("id");
-
-}
+progress.style.width=percent+"%";
 
 });
 
-navLinks.forEach(link=>{
-
-link.classList.remove("active");
-
-if(link.getAttribute("href")==="#"+current){
-
-link.classList.add("active");
-
-}
-
-});
-
-});
-
-
-// ===============================
-// Button Ripple
-// ===============================
-
-document.querySelectorAll("button,.ticket-btn").forEach(btn=>{
-
-btn.addEventListener("click",function(e){
-
-let circle=document.createElement("span");
-
-circle.classList.add("ripple");
-
-this.appendChild(circle);
-
-let x=e.clientX-this.offsetLeft;
-
-let y=e.clientY-this.offsetTop;
-
-circle.style.left=x+"px";
-circle.style.top=y+"px";
-
-setTimeout(()=>{
-
-circle.remove();
-
-},600);
-
-});
-
-});
-
-
-// ===============================
-// Back To Top Button
-// ===============================
+// ==========================
+// BACK TO TOP
+// ==========================
 
 const topBtn=document.createElement("button");
 
 topBtn.innerHTML="↑";
 
-topBtn.className="topButton";
+topBtn.className="topBtn";
 
 document.body.appendChild(topBtn);
 
-topBtn.style.position="fixed";
-topBtn.style.bottom="30px";
-topBtn.style.right="30px";
-topBtn.style.width="50px";
-topBtn.style.height="50px";
-topBtn.style.borderRadius="50%";
-topBtn.style.border="none";
-topBtn.style.background="#d81f26";
-topBtn.style.color="white";
-topBtn.style.cursor="pointer";
-topBtn.style.display="none";
-topBtn.style.fontSize="20px";
-topBtn.style.zIndex="999";
+Object.assign(topBtn.style,{
+
+position:"fixed",
+bottom:"30px",
+right:"30px",
+width:"50px",
+height:"50px",
+border:"none",
+borderRadius:"50%",
+background:"#d72638",
+color:"#fff",
+cursor:"pointer",
+display:"none",
+fontSize:"22px",
+zIndex:"999"
+
+});
 
 window.addEventListener("scroll",()=>{
 
-if(window.scrollY>400){
+if(window.scrollY>500){
 
 topBtn.style.display="block";
 
@@ -433,11 +389,3 @@ behavior:"smooth"
 });
 
 };
-
-
-// ===============================
-// Console Message 😄
-// ===============================
-
-console.log("%cThe Second Self","font-size:30px;color:#d81f26;font-weight:bold;");
-console.log("Website Designed with ❤️");
