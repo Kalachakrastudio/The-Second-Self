@@ -389,3 +389,21 @@ behavior:"smooth"
 });
 
 };
+
+// Feature Card Animation
+gsap.from(".feature-card",{
+
+opacity:0,
+
+y:80,
+
+duration:1,
+
+stagger:0.2,
+
+scrollTrigger:{
+trigger:".features",
+start:"top 80%"
+}
+
+});
