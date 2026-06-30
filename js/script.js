@@ -1,410 +1,393 @@
-gsap.registerPlugin(ScrollTrigger);
-// ==========================
-// AOS
-// ==========================
-AOS.init({
-    duration:1000,
-    once:true
-});
+/*=========================================================
+THE SECOND SELF
+SCRIPT.JS
+=========================================================*/
 
-// ==========================
-// LOADER
-// ==========================
-window.addEventListener("load",()=>{
+/*=========================================================
+LOADER
+=========================================================*/
 
-    const loader=document.getElementById("loader");
+window.addEventListener("load", () => {
 
-    loader.style.opacity="0";
-    loader.style.visibility="hidden";
+    const loader = document.getElementById("loader");
 
-    setTimeout(()=>{
-        loader.remove();
-    },600);
+    if(loader){
 
-});
+        loader.style.opacity = "0";
 
-// ==========================
-// STICKY NAVBAR
-// ==========================
-const header=document.querySelector("header");
+        setTimeout(() => {
 
-window.addEventListener("scroll",()=>{
+            loader.style.display = "none";
 
-    if(window.scrollY>50){
-
-        header.style.background="rgba(0,0,0,.88)";
-        header.style.padding="18px 7%";
-        header.style.boxShadow="0 10px 40px rgba(0,0,0,.45)";
-
-    }else{
-
-        header.style.background="rgba(0,0,0,.15)";
-        header.style.padding="22px 7%";
-        header.style.boxShadow="none";
+        },600);
 
     }
 
 });
 
-// ==========================
-// GSAP INTRO
-// ==========================
 
-gsap.from(".logo",{
+/*=========================================================
+STICKY HEADER
+=========================================================*/
 
-opacity:0,
-y:-40,
-duration:1
+const header = document.querySelector("header");
 
-});
+window.addEventListener("scroll",()=>{
 
-gsap.from("nav li",{
+    if(window.scrollY > 50){
 
-opacity:0,
-y:-20,
-duration:0.7,
-stagger:.1,
-delay:.4
+        header.classList.add("sticky");
 
-});
+    }else{
 
-gsap.from(".btn-ticket",{
+        header.classList.remove("sticky");
 
-opacity:0,
-x:50,
-duration:1,
-delay:.8
+    }
 
 });
 
-gsap.from(".hero-left h4",{
 
-opacity:0,
-x:-80,
-duration:.8
+/*=========================================================
+SMOOTH SCROLL
+=========================================================*/
 
-});
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
 
-gsap.from(".hero-left h1",{
+    anchor.addEventListener("click",function(e){
 
-opacity:0,
-x:-120,
-duration:1,
-delay:.2
+        e.preventDefault();
 
-});
+        const target=document.querySelector(this.getAttribute("href"));
 
-gsap.from(".hero-left p",{
+        if(target){
 
-opacity:0,
-y:50,
-duration:1,
-delay:.6
+            window.scrollTo({
 
-});
+                top:target.offsetTop-90,
 
-gsap.from(".hero-buttons",{
+                behavior:"smooth"
 
-opacity:0,
-y:50,
-duration:1,
-delay:1
+            });
+
+        }
+
+    });
 
 });
 
-gsap.from(".hero-right img",{
 
-opacity:0,
-scale:.7,
-duration:1.4,
-delay:.5
+/*=========================================================
+ACTIVE NAVIGATION
+=========================================================*/
+
+const sections=document.querySelectorAll("section");
+
+const navLinks=document.querySelectorAll("nav ul li a");
+
+window.addEventListener("scroll",()=>{
+
+    let current="";
+
+    sections.forEach(section=>{
+
+        const sectionTop=section.offsetTop-120;
+
+        const sectionHeight=section.offsetHeight;
+
+        if(pageYOffset>=sectionTop){
+
+            current=section.getAttribute("id");
+
+        }
+
+    });
+
+    navLinks.forEach(link=>{
+
+        link.classList.remove("active");
+
+        if(link.getAttribute("href")==="#"+current){
+
+            link.classList.add("active");
+
+        }
+
+    });
 
 });
 
-// ==========================
-// FLOAT MIC
-// ==========================
 
-gsap.to(".hero-right img",{
+/*=========================================================
+MOBILE MENU
+=========================================================*/
 
-y:20,
+const menu=document.querySelector(".mobile-menu");
 
-repeat:-1,
+const nav=document.querySelector("nav");
 
-yoyo:true,
+if(menu){
 
-ease:"power1.inOut",
+menu.addEventListener("click",()=>{
 
-duration:3
+nav.classList.toggle("showMenu");
+
+menu.classList.toggle("active");
 
 });
-
-// ==========================
-// PARTICLES
-// ==========================
-
-particlesJS("particles-js",{
-
-particles:{
-
-number:{
-value:80
-},
-
-color:{
-value:"#d72638"
-},
-
-shape:{
-type:"circle"
-},
-
-opacity:{
-value:.35
-},
-
-size:{
-value:3
-},
-
-line_linked:{
-enable:true,
-distance:150,
-color:"#d72638",
-opacity:.25,
-width:1
-},
-
-move:{
-enable:true,
-speed:2
-}
-
-},
-
-interactivity:{
-
-events:{
-
-onhover:{
-enable:true,
-mode:"grab"
-},
-
-onclick:{
-enable:true,
-mode:"push"
-}
-
-},
-
-modes:{
-
-grab:{
-distance:170
-},
-
-push:{
-particles_nb:5
-}
 
 }
 
-},
 
-retina_detect:true
+/*=========================================================
+CLOSE MENU AFTER CLICK
+=========================================================*/
 
-});
+navLinks.forEach(link=>{
 
-// ==========================
-// BUTTON HOVER
-// ==========================
+link.addEventListener("click",()=>{
 
-document.querySelectorAll("a").forEach(btn=>{
+if(nav.classList.contains("showMenu")){
 
-btn.addEventListener("mouseenter",()=>{
+nav.classList.remove("showMenu");
 
-gsap.to(btn,{
+menu.classList.remove("active");
 
-scale:1.05,
-duration:.25
+}
 
 });
 
 });
 
-btn.addEventListener("mouseleave",()=>{
 
-gsap.to(btn,{
+/*=========================================================
+GSAP REGISTER
+=========================================================*/
 
-scale:1,
-duration:.25
+if(typeof gsap !== "undefined"){
+
+gsap.registerPlugin(ScrollTrigger);
+
+}
+
+
+/*=========================================================
+AOS
+=========================================================*/
+
+if(typeof AOS !== "undefined"){
+
+AOS.init({
+
+duration:1000,
+
+once:true,
+
+offset:80
+
+});
+
+}
+/*=========================================================
+THE SECOND SELF
+SCRIPT.JS
+=========================================================*/
+
+/*=========================================================
+LOADER
+=========================================================*/
+
+window.addEventListener("load", () => {
+
+    const loader = document.getElementById("loader");
+
+    if(loader){
+
+        loader.style.opacity = "0";
+
+        setTimeout(() => {
+
+            loader.style.display = "none";
+
+        },600);
+
+    }
+
+});
+
+
+/*=========================================================
+STICKY HEADER
+=========================================================*/
+
+const header = document.querySelector("header");
+
+window.addEventListener("scroll",()=>{
+
+    if(window.scrollY > 50){
+
+        header.classList.add("sticky");
+
+    }else{
+
+        header.classList.remove("sticky");
+
+    }
+
+});
+
+
+/*=========================================================
+SMOOTH SCROLL
+=========================================================*/
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+
+    anchor.addEventListener("click",function(e){
+
+        e.preventDefault();
+
+        const target=document.querySelector(this.getAttribute("href"));
+
+        if(target){
+
+            window.scrollTo({
+
+                top:target.offsetTop-90,
+
+                behavior:"smooth"
+
+            });
+
+        }
+
+    });
+
+});
+
+
+/*=========================================================
+ACTIVE NAVIGATION
+=========================================================*/
+
+const sections=document.querySelectorAll("section");
+
+const navLinks=document.querySelectorAll("nav ul li a");
+
+window.addEventListener("scroll",()=>{
+
+    let current="";
+
+    sections.forEach(section=>{
+
+        const sectionTop=section.offsetTop-120;
+
+        const sectionHeight=section.offsetHeight;
+
+        if(pageYOffset>=sectionTop){
+
+            current=section.getAttribute("id");
+
+        }
+
+    });
+
+    navLinks.forEach(link=>{
+
+        link.classList.remove("active");
+
+        if(link.getAttribute("href")==="#"+current){
+
+            link.classList.add("active");
+
+        }
+
+    });
+
+});
+
+
+/*=========================================================
+MOBILE MENU
+=========================================================*/
+
+const menu=document.querySelector(".mobile-menu");
+
+const nav=document.querySelector("nav");
+
+if(menu){
+
+menu.addEventListener("click",()=>{
+
+nav.classList.toggle("showMenu");
+
+menu.classList.toggle("active");
+
+});
+
+}
+
+
+/*=========================================================
+CLOSE MENU AFTER CLICK
+=========================================================*/
+
+navLinks.forEach(link=>{
+
+link.addEventListener("click",()=>{
+
+if(nav.classList.contains("showMenu")){
+
+nav.classList.remove("showMenu");
+
+menu.classList.remove("active");
+
+}
 
 });
 
 });
 
+
+/*=========================================================
+GSAP REGISTER
+=========================================================*/
+
+if(typeof gsap !== "undefined"){
+
+gsap.registerPlugin(ScrollTrigger);
+
+}
+
+
+/*=========================================================
+AOS
+=========================================================*/
+
+if(typeof AOS !== "undefined"){
+
+AOS.init({
+
+duration:1000,
+
+once:true,
+
+offset:80
+
 });
 
-// ==========================
-// PARALLAX
-// ==========================
+}
+/*=========================================================
+CURSOR GLOW
+=========================================================*/
+
+const glow=document.querySelector(".cursor-glow");
 
 window.addEventListener("mousemove",(e)=>{
 
-let x=(window.innerWidth/2-e.pageX)/35;
-let y=(window.innerHeight/2-e.pageY)/35;
+if(!glow) return;
 
-gsap.to(".hero-right img",{
+glow.style.left=e.clientX+"px";
 
-x:x,
-y:y,
-duration:1
-
-});
-
-});
-
-// ==========================
-// RED LIGHT MOTION
-// ==========================
-
-gsap.to(".one",{
-
-x:80,
-y:40,
-
-duration:6,
-
-repeat:-1,
-
-yoyo:true,
-
-ease:"sine.inOut"
-
-});
-
-gsap.to(".two",{
-
-x:-80,
-y:-50,
-
-duration:8,
-
-repeat:-1,
-
-yoyo:true,
-
-ease:"sine.inOut"
-
-});
-
-// ==========================
-// TEXT GLOW
-// ==========================
-
-setInterval(()=>{
-
-document.querySelector(".hero-left span").classList.toggle("activeGlow");
-
-},2000);
-
-// ==========================
-// SCROLL PROGRESS
-// ==========================
-
-const progress=document.createElement("div");
-
-progress.style.position="fixed";
-progress.style.top="0";
-progress.style.left="0";
-progress.style.height="4px";
-progress.style.width="0";
-progress.style.background="#d72638";
-progress.style.zIndex="999999";
-
-document.body.appendChild(progress);
-
-window.addEventListener("scroll",()=>{
-
-let total=document.documentElement.scrollHeight-window.innerHeight;
-
-let percent=(window.scrollY/total)*100;
-
-progress.style.width=percent+"%";
-
-});
-
-// ==========================
-// BACK TO TOP
-// ==========================
-
-const topBtn=document.createElement("button");
-
-topBtn.innerHTML="↑";
-
-topBtn.className="topBtn";
-
-document.body.appendChild(topBtn);
-
-Object.assign(topBtn.style,{
-
-position:"fixed",
-bottom:"30px",
-right:"30px",
-width:"50px",
-height:"50px",
-border:"none",
-borderRadius:"50%",
-background:"#d72638",
-color:"#fff",
-cursor:"pointer",
-display:"none",
-fontSize:"22px",
-zIndex:"999"
-
-});
-
-window.addEventListener("scroll",()=>{
-
-if(window.scrollY>500){
-
-topBtn.style.display="block";
-
-}else{
-
-topBtn.style.display="none";
-
-}
-
-});
-
-topBtn.onclick=()=>{
-
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
-
-});
-
-};
-
-// Feature Card Animation
-gsap.from(".feature-card",{
-
-opacity:0,
-
-y:80,
-
-duration:1,
-
-stagger:0.2,
-
-scrollTrigger:{
-trigger:".features",
-start:"top 80%"
-}
+glow.style.top=e.clientY+"px";
 
 });
