@@ -391,3 +391,276 @@ glow.style.left=e.clientX+"px";
 glow.style.top=e.clientY+"px";
 
 });
+/*=========================================================
+ANIMATED COUNTERS
+=========================================================*/
+
+const counters = document.querySelectorAll(".stat h2");
+
+const counterObserver = new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(!entry.isIntersecting) return;
+
+const counter = entry.target;
+
+const target = parseInt(counter.innerText);
+
+let count = 0;
+
+const speed = target/100;
+
+const update = ()=>{
+
+count += speed;
+
+if(count < target){
+
+counter.innerText = Math.ceil(count)+"+";
+
+requestAnimationFrame(update);
+
+}else{
+
+counter.innerText = target+"+";
+
+}
+
+}
+
+update();
+
+counterObserver.unobserve(counter);
+
+});
+
+},{threshold:.5});
+
+counters.forEach(counter=>{
+
+counterObserver.observe(counter);
+
+});
+
+
+/*=========================================================
+GALLERY FILTER
+=========================================================*/
+
+const filterButtons = document.querySelectorAll(".gallery-filter button");
+
+const galleryItems = document.querySelectorAll(".gallery-item");
+
+filterButtons.forEach(button=>{
+
+button.addEventListener("click",()=>{
+
+filterButtons.forEach(btn=>{
+
+btn.classList.remove("active");
+
+});
+
+button.classList.add("active");
+
+const filter = button.innerText.toLowerCase();
+
+galleryItems.forEach(item=>{
+
+const category = item.dataset.category;
+
+if(filter==="all"){
+
+item.style.display="block";
+
+setTimeout(()=>{
+
+item.style.opacity=1;
+
+item.style.transform="scale(1)";
+
+},100);
+
+}else{
+
+if(category===filter){
+
+item.style.display="block";
+
+setTimeout(()=>{
+
+item.style.opacity=1;
+
+item.style.transform="scale(1)";
+
+},100);
+
+}else{
+
+item.style.opacity=0;
+
+item.style.transform="scale(.8)";
+
+setTimeout(()=>{
+
+item.style.display="none";
+
+},300);
+
+}
+
+}
+
+});
+
+});
+
+});
+
+
+/*=========================================================
+BACK TO TOP BUTTON
+=========================================================*/
+
+const topButton=document.createElement("div");
+
+topButton.className="backToTop";
+
+topButton.innerHTML='<i class="fas fa-arrow-up"></i>';
+
+document.body.appendChild(topButton);
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>500){
+
+topButton.classList.add("show");
+
+}else{
+
+topButton.classList.remove("show");
+
+}
+
+});
+
+topButton.addEventListener("click",()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
+
+});
+
+
+/*=========================================================
+READING PROGRESS BAR
+=========================================================*/
+
+const progress=document.createElement("div");
+
+progress.className="progressBar";
+
+document.body.appendChild(progress);
+
+window.addEventListener("scroll",()=>{
+
+const scroll=window.scrollY;
+
+const height=document.documentElement.scrollHeight-window.innerHeight;
+
+progress.style.width=(scroll/height)*100+"%";
+
+});
+
+
+/*=========================================================
+SPONSOR HOVER
+=========================================================*/
+
+document.querySelectorAll(".partner-card").forEach(card=>{
+
+card.addEventListener("mouseenter",()=>{
+
+card.style.transform="translateY(-12px) scale(1.03)";
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+card.style.transform="";
+
+});
+
+});
+
+
+/*=========================================================
+FEATURE CARD EFFECT
+=========================================================*/
+
+document.querySelectorAll(".feature-card").forEach(card=>{
+
+card.addEventListener("mousemove",(e)=>{
+
+const rect=card.getBoundingClientRect();
+
+const x=e.clientX-rect.left;
+
+const y=e.clientY-rect.top;
+
+card.style.background=
+
+`radial-gradient(circle at ${x}px ${y}px,
+
+rgba(215,31,40,.18),
+
+rgba(255,255,255,.03))`;
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+card.style.background="rgba(255,255,255,.03)";
+
+});
+
+});
+
+
+/*=========================================================
+NAVBAR HIDE ON SCROLL DOWN
+=========================================================*/
+
+let lastScroll=0;
+
+window.addEventListener("scroll",()=>{
+
+const current=window.pageYOffset;
+
+if(current>lastScroll && current>120){
+
+header.style.transform="translateY(-100%)";
+
+}else{
+
+header.style.transform="translateY(0)";
+
+}
+
+lastScroll=current;
+
+});
+
+
+/*=========================================================
+PAGE READY
+=========================================================*/
+
+console.log("The Second Self Loaded Successfully");
+
