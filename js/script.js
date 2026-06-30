@@ -7,21 +7,23 @@ SCRIPT.JS
 LOADER
 =========================================================*/
 
-window.addEventListener("load", () => {
+window.addEventListener("load", function () {
 
     const loader = document.getElementById("loader");
 
-    if(loader){
+    if (!loader) return;
 
-        loader.style.opacity = "0";
+    loader.style.opacity = "0";
 
-        setTimeout(() => {
+    loader.style.visibility = "hidden";
 
-            loader.style.display = "none";
+    loader.style.pointerEvents = "none";
 
-        },600);
+    setTimeout(() => {
 
-    }
+        loader.remove();
+
+    }, 600);
 
 });
 
