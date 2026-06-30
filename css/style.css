@@ -343,7 +343,6 @@ transition:.6s;
 
 }
 
-
 .loader-ring{
 
 width:70px;
@@ -354,12 +353,11 @@ border-radius:50%;
 
 border:5px solid rgba(255,255,255,.08);
 
-border-top:5px solid var(--primary);
+border-top:5px solid #D71F28;
 
 animation:loader 1s linear infinite;
 
 }
-
 
 @keyframes loader{
 
