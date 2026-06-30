@@ -664,3 +664,316 @@ PAGE READY
 
 console.log("The Second Self Loaded Successfully");
 
+/*=========================================================
+GALLERY LIGHTBOX
+=========================================================*/
+
+const galleryImages = document.querySelectorAll(".gallery-item img");
+
+const lightbox = document.createElement("div");
+lightbox.className = "lightbox";
+
+lightbox.innerHTML = `
+<div class="lightbox-content">
+
+    <span class="lightbox-close">&times;</span>
+
+    <img src="" alt="Gallery Image">
+
+</div>
+`;
+
+document.body.appendChild(lightbox);
+
+const lightboxImage = lightbox.querySelector("img");
+const lightboxClose = lightbox.querySelector(".lightbox-close");
+
+galleryImages.forEach(image=>{
+
+image.addEventListener("click",()=>{
+
+lightbox.classList.add("show");
+
+lightboxImage.src=image.src;
+
+});
+
+});
+
+lightboxClose.addEventListener("click",()=>{
+
+lightbox.classList.remove("show");
+
+});
+
+lightbox.addEventListener("click",(e)=>{
+
+if(e.target===lightbox){
+
+lightbox.classList.remove("show");
+
+}
+
+});
+
+
+/*=========================================================
+ESC KEY CLOSE
+=========================================================*/
+
+document.addEventListener("keydown",(e)=>{
+
+if(e.key==="Escape"){
+
+lightbox.classList.remove("show");
+
+}
+
+});
+
+
+/*=========================================================
+HERO PARTICLES
+=========================================================*/
+
+if(typeof particlesJS!=="undefined"){
+
+particlesJS("particles-js",{
+
+particles:{
+
+number:{
+
+value:60
+
+},
+
+color:{
+
+value:"#D71F28"
+
+},
+
+shape:{
+
+type:"circle"
+
+},
+
+opacity:{
+
+value:.35
+
+},
+
+size:{
+
+value:3
+
+},
+
+move:{
+
+speed:2
+
+},
+
+line_linked:{
+
+enable:true,
+
+color:"#D71F28",
+
+opacity:.15
+
+}
+
+}
+
+});
+
+}
+
+
+/*=========================================================
+TEXT REVEAL
+=========================================================*/
+
+if(typeof gsap!=="undefined"){
+
+gsap.utils.toArray(".section-heading h2").forEach(title=>{
+
+gsap.from(title,{
+
+y:80,
+
+opacity:0,
+
+duration:1,
+
+ease:"power4.out",
+
+scrollTrigger:{
+
+trigger:title,
+
+start:"top 85%"
+
+}
+
+});
+
+});
+
+}
+
+
+/*=========================================================
+FLOATING FEATURE ICONS
+=========================================================*/
+
+document.querySelectorAll(".feature-icon").forEach((icon,index)=>{
+
+if(typeof gsap!=="undefined"){
+
+gsap.to(icon,{
+
+y:-10,
+
+duration:2+index*.3,
+
+repeat:-1,
+
+yoyo:true,
+
+ease:"sine.inOut"
+
+});
+
+}
+
+});
+
+
+/*=========================================================
+IMAGE PARALLAX
+=========================================================*/
+
+window.addEventListener("scroll",()=>{
+
+const scroll=window.pageYOffset;
+
+document.querySelectorAll(".gallery-item img").forEach(img=>{
+
+img.style.transform=`translateY(${scroll*.04}px) scale(1.08)`;
+
+});
+
+});
+
+
+/*=========================================================
+BUTTON RIPPLE
+=========================================================*/
+
+document.querySelectorAll(".btn-primary").forEach(button=>{
+
+button.addEventListener("click",function(e){
+
+const ripple=document.createElement("span");
+
+ripple.className="ripple";
+
+const rect=this.getBoundingClientRect();
+
+ripple.style.left=e.clientX-rect.left+"px";
+
+ripple.style.top=e.clientY-rect.top+"px";
+
+this.appendChild(ripple);
+
+setTimeout(()=>{
+
+ripple.remove();
+
+},600);
+
+});
+
+});
+
+
+/*=========================================================
+NAVBAR BLUR
+=========================================================*/
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>120){
+
+header.style.backdropFilter="blur(25px)";
+
+}else{
+
+header.style.backdropFilter="blur(18px)";
+
+}
+
+});
+
+
+/*=========================================================
+PREVENT IMAGE DRAG
+=========================================================*/
+
+document.querySelectorAll("img").forEach(img=>{
+
+img.setAttribute("draggable","false");
+
+});
+
+
+/*=========================================================
+PRELOADER TEXT
+=========================================================*/
+
+const loaderText=document.querySelector(".loader-text");
+
+if(loaderText){
+
+const words=[
+
+"Preparing Stage",
+
+"Loading Performers",
+
+"Setting Lights",
+
+"Almost Ready"
+
+];
+
+let i=0;
+
+setInterval(()=>{
+
+loaderText.innerText=words[i];
+
+i++;
+
+if(i>=words.length){
+
+i=0;
+
+}
+
+},1000);
+
+}
+
+
+/*=========================================================
+END
+=========================================================*/
+
+console.log("Premium Event Website Loaded Successfully");
