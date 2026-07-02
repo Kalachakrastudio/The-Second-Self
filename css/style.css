@@ -2,13 +2,6 @@
   THE SECOND SELF
   STYLE.CSS
 =========================================================*/
-
-/*=============================
-GOOGLE FONTS
-=============================*/
-
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700;800&display=swap');
-
 /*=============================
 ROOT VARIABLES
 =============================*/
@@ -71,6 +64,10 @@ color:var(--text);
 overflow-x:hidden;
 
 position:relative;
+  
+  -webkit-font-smoothing:antialiased;
+-moz-osx-font-smoothing:grayscale;
+text-rendering:optimizeLegibility;
 
 }
 
@@ -2204,6 +2201,65 @@ font-size:28px;
 
 }
 /*=========================================================
+ABOUT Section
+=========================================================*/
+.about-section{
+
+background:#090909;
+
+}
+
+.about-wrapper{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+align-items:center;
+gap:100px;
+
+}
+
+.about-images{
+
+position:relative;
+height:650px;
+
+}
+
+.image-card{
+
+overflow:hidden;
+border-radius:25px;
+
+}
+
+.image-card img{
+
+width:100%;
+height:100%;
+object-fit:cover;
+
+}
+
+.image-card.large{
+
+position:absolute;
+left:0;
+top:0;
+width:75%;
+height:500px;
+
+}
+
+.image-card.small{
+
+position:absolute;
+right:0;
+bottom:0;
+width:45%;
+height:260px;
+
+}
+/*=========================================================
 ABOUT RESPONSIVE
 =========================================================*/
 
@@ -2305,6 +2361,42 @@ font-size:52px;
 }
 
 }
+
+/*=========================================================
+Missing Statistics CSS
+=========================================================*/
+
+.statistics{
+
+background:#070707;
+
+}
+
+.stats-grid{
+
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:35px;
+
+}
+
+.stat{
+
+text-align:center;
+padding:40px;
+background:rgba(255,255,255,.03);
+border-radius:20px;
+border:1px solid rgba(255,255,255,.08);
+
+}
+
+.stat h2{
+
+font-size:68px;
+color:var(--primary);
+
+}
+
 /*=========================================================
 GALLERY SECTION
 =========================================================*/
@@ -2343,6 +2435,42 @@ opacity:.08;
 
 }
 
+
+/*=========================================================
+Gallery Responsive
+=========================================================*/
+
+@media(max-width:992px){
+
+.gallery-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.gallery-item.large{
+
+grid-row:auto;
+height:320px;
+
+}
+
+}
+@media(max-width:768px){
+
+.gallery-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.gallery-item{
+
+height:280px;
+
+}
+
+}
 
 /*=========================================================
 FILTER BUTTONS
@@ -2592,6 +2720,31 @@ margin-top:70px;
 text-align:center;
 
 }
+
+/*=========================================================
+Partner Grid
+=========================================================*/
+
+@media(max-width:992px){
+
+.partner-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:768px){
+
+.partner-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
 /*=========================================================
 SPONSORS SECTION
 =========================================================*/
@@ -2626,7 +2779,7 @@ border-radius:50%;
 
 background:#D71F28;
 
-filter:blur(250px);
+filter:blur(180px);
 
 opacity:.08;
 
@@ -2650,7 +2803,7 @@ border-radius:50%;
 
 background:#D71F28;
 
-filter:blur(250px);
+filter:blur(180px);
 
 opacity:.05;
 
@@ -2831,7 +2984,7 @@ border-radius:50%;
 
 background:#D71F28;
 
-filter:blur(250px);
+filter:blur(180px);
 
 opacity:.10;
 
@@ -2855,7 +3008,7 @@ border-radius:50%;
 
 background:#D71F28;
 
-filter:blur(250px);
+filter:blur(180px);
 
 opacity:.08;
 
