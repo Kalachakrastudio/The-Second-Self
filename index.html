@@ -5,6 +5,10 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta
+name="description"
+content="The Second Self is an Open Mic platform for Poetry, Music, Storytelling and Stand-up Comedy. Register, Book Tickets and Become a Sponsor.">
+ <meta name="theme-color" content="#D71F28">
 
 <title>The Second Self</title>
  <link
@@ -20,6 +24,9 @@ href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
 
 <link rel="stylesheet" href="css/style.css">
+ <link rel="icon"
+type="image/png"
+href="images/favicon.png">
 
 </head>
 
@@ -45,15 +52,17 @@ HEADER
 
 <div class="logo">
 
-<a href="#">
-
-<img src="#" alt="The Second Self">
-
+<a href="index.html">
+    <img
+src="images/logo.png"
+alt="The Second Self"
+width="180"
+height="70">
 </a>
 
 </div>
 
-<nav>
+<nav aria-label="Primary Navigation">
 
 <ul>
 
@@ -82,7 +91,9 @@ Book Tickets
 
 </div>
 
-<div class="mobile-menu">
+<button
+class="mobile-menu"
+aria-label="Open Menu">
 
 <i class="fa-solid fa-bars"></i>
 
@@ -116,7 +127,12 @@ HERO
 
             <!-- LOGO -->
             <div class="hero-logo">
-             <img src="Image/logo.png" alt="The Second Self" class="hero-logo-img">
+            <img
+src="images/logo.png"
+alt="The Second Self Logo"
+class="hero-logo-img"
+width="450"
+height="230">
 
                 <!--<span class="logo-small">THE</span>
 
@@ -548,7 +564,7 @@ GALLERY SECTION
 
             <div class="gallery-item large">
 
-                <img src="images/gallery1.jpg" alt="Gallery">
+                <img src="images/gallery1.jpg" loading="lazy" alt="Poetry Night">
 
                 <div class="gallery-overlay">
 
@@ -560,7 +576,7 @@ GALLERY SECTION
 
             <div class="gallery-item">
 
-                <img src="images/gallery2.jpg" alt="Gallery">
+                <img src="images/gallery1.jpg" loading="lazy" alt="Poetry Night">
 
                 <div class="gallery-overlay">
 
@@ -572,7 +588,7 @@ GALLERY SECTION
 
             <div class="gallery-item">
 
-                <img src="images/gallery3.jpg" alt="Gallery">
+               <img src="images/gallery1.jpg" loading="lazy" alt="Poetry Night">
 
                 <div class="gallery-overlay">
 
@@ -584,7 +600,7 @@ GALLERY SECTION
 
             <div class="gallery-item">
 
-                <img src="images/gallery4.jpg" alt="Gallery">
+               <img src="images/gallery1.jpg" loading="lazy" alt="Poetry Night">
 
                 <div class="gallery-overlay">
 
@@ -596,7 +612,7 @@ GALLERY SECTION
 
             <div class="gallery-item large">
 
-                <img src="images/gallery5.jpg" alt="Gallery">
+               <img src="images/gallery1.jpg" loading="lazy" alt="Poetry Night">
 
                 <div class="gallery-overlay">
 
@@ -608,7 +624,7 @@ GALLERY SECTION
 
             <div class="gallery-item">
 
-                <img src="images/gallery6.jpg" alt="Gallery">
+                <img src="images/gallery1.jpg" loading="lazy" alt="Poetry Night">
 
                 <div class="gallery-overlay">
 
@@ -775,19 +791,19 @@ FOOTER
 
             <div class="social-links">
 
-                <a href="#">
+               <a href="https://instagram.com/..." target="_blank" rel="noopener">
                     <i class="fab fa-instagram"></i>
                 </a>
 
-                <a href="#">
+                <a href="https://instagram.com/..." target="_blank" rel="noopener">
                     <i class="fab fa-facebook-f"></i>
                 </a>
 
-                <a href="#">
+                 <a href="https://instagram.com/..." target="_blank" rel="noopener">
                     <i class="fab fa-linkedin-in"></i>
                 </a>
 
-                <a href="#">
+                <a href="https://instagram.com/..." target="_blank" rel="noopener">
                     <i class="fab fa-youtube"></i>
                 </a>
 
@@ -869,11 +885,18 @@ FOOTER
             </p>
 
             <form class="newsletter">
+<label for="email">
+Email Address
+</label>
 
+<input
+id="email"
+type="email">
                 <input
-                    type="email"
-                    placeholder="Enter your email"
-                >
+type="email"
+placeholder="Enter your email"
+required
+autocomplete="email">
 
                 <button type="submit">
 
