@@ -1117,7 +1117,7 @@ HERO SECTION
 
 .hero{
 
-  min-height:90vh;
+  min-height:auto;
 
 padding:110px 0 70px;
   
@@ -1583,18 +1583,18 @@ RESPONSIVE
 @media (max-width:992px){
 
 .hero{
-   margin-top:70px;   /* equal to header height */
-    padding:20px 0 50px;
+     min-height:auto;
+    height:auto;
+    margin-top:70px;
+    padding:20px 0 40px;
 }
   
 .hero-wrapper{
- min-height:auto;          /* <-- important */
+    min-height:unset;
+    height:auto;
     display:flex;
     flex-direction:column;
-    justify-content:flex-start;
-    align-items:center;
-    gap:30px;
-  
+    gap:25px;
 }
 
 .hero-left,
