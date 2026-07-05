@@ -1583,20 +1583,18 @@ RESPONSIVE
 @media (max-width:992px){
 
 .hero{
-    padding-top:85px;
-    padding-bottom:60px;
-    min-height:auto;
+  min-height:auto;
+    padding:75px 0 50px;
 }
   
 .hero-wrapper{
-
-   display:flex;
+ min-height:auto;          /* <-- important */
+    display:flex;
     flex-direction:column;
+    justify-content:flex-start;
     align-items:center;
-    justify-content:center;
-    text-align:center;
-    gap:45px;
-
+    gap:30px;
+  
 }
 
 .hero-left,
