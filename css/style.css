@@ -963,6 +963,13 @@ cursor:pointer;
 transition:.35s;
 
 }
+   nav.showMenu{
+
+        transform:translateY(0);
+        opacity:1;
+        visibility:visible;
+
+    }
 
 .mobile-menu i{
 
