@@ -470,8 +470,10 @@ box-shadow:
 
 
 .btn-secondary{
-   padding:15px 30px;
-    font-size:15px;
+ padding:14px 28px;
+
+font-size:14px;
+  
 display:inline-flex;
 
 align-items:center;
@@ -572,13 +574,9 @@ box-shadow:0 15px 35px rgba(0,0,0,.45);
 }
 
 header .container{
-
-display:flex;
-
-align-items:center;
-
-position:relative;
-
+    display:grid;
+    grid-template-columns:220px 1fr 220px;
+    align-items:center;
 }
 
 .logo{
@@ -588,23 +586,12 @@ position:relative;
 }
 
 nav{
-
-    flex:1;
-
-    display:flex;
-
-    justify-content:center;
-
+    justify-self:center;
 }
 
 nav ul{
-
     display:flex;
-
     gap:45px;
-
-    align-items:center;
-
 }
 
 .mobile-menu{
@@ -1266,7 +1253,7 @@ HERO CONTAINER
 
     align-items:center;
 
-    justify-content:space-between;
+    justify-content:center;
 
     gap:90px;
 
@@ -1275,14 +1262,13 @@ HERO CONTAINER
 }
 .hero-right h1{
 
-    font-size:48px;
-    line-height:1.2;
-    margin:20px 0;
+    font-size:42px;
+    line-height:1.15;
 
 }
 .hero-left{
 
-    flex:1;
+    flex:1.15;
 
     display:flex;
 
@@ -1294,18 +1280,10 @@ HERO CONTAINER
 
 .hero-right{
 
-    flex:1;
+    flex:.85;
 
 }
 
-.hero-logo-img{
-
-    width:100%;
-    max-width:620px;
-    height:auto;
-    display:block;
-
-}
 
 /*=========================================================
 TAG
@@ -1426,11 +1404,11 @@ DESCRIPTION
 
 .hero-description{
 
-    max-width:500px;
-    font-size:16px;
-    line-height:1.8;
+  font-size:15px;
+line-height:1.7;
+max-width:460px;
     color:#c8c8c8;
-    margin:25px 0 35px;
+margin:auto;
 
 }
 
@@ -1440,15 +1418,16 @@ BUTTONS
 =========================================================*/
 
 .hero-buttons{
-   padding:15px 30px;
-    font-size:15px;
-    display:flex;
 
-    gap:20px;
+display:flex;
 
-    flex-wrap:wrap;
+gap:18px;
 
-    margin-bottom:45px;
+margin-top:35px;
+
+margin-bottom:40px;
+
+padding:0;
 
 }
 
@@ -1461,7 +1440,7 @@ STATS
 
     display:flex;
 
-    gap:45px;
+    gap:30px;
 
     flex-wrap:wrap;
 
@@ -1469,7 +1448,7 @@ STATS
 
 .stat-box{
 
-padding-right:40px;
+padding-right:30px;
 
 border-right:1px solid rgba(255,255,255,.08);
 
@@ -1604,6 +1583,7 @@ RESPONSIVE
 .hero-wrapper{
 
     flex-direction:column;
+     gap:45px;
 
     text-align:center;
 
@@ -1613,6 +1593,7 @@ RESPONSIVE
 .hero-right{
 
     width:100%;
+  text-align:center;
 
 }
 
@@ -3596,8 +3577,9 @@ BUTTON RIPPLE
 =========================================================*/
 
 .btn-primary{
-     padding:15px 30px;
-    font-size:15px;
+padding:14px 28px;
+
+font-size:14px;
 
 position:relative;
 
