@@ -1582,8 +1582,9 @@ RESPONSIVE
 
 @media (max-width:992px){
 
-  .hero{
-    padding:130px 0 70px;
+.hero{
+    padding-top:85px;
+    padding-bottom:60px;
     min-height:auto;
 }
   
