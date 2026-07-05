@@ -591,18 +591,6 @@ header .container{
     flex:1;
 }
 
-.mobile-menu{
-   display:none;
-
-width:46px;
-height:46px;
-
-justify-content:center;
-align-items:center;
-
-cursor:pointer;
-}
-
 }
 
 .logo{
@@ -1033,10 +1021,6 @@ RESPONSIVE NAV
         display:none;
     }
 
-    .mobile-menu{
-        display:flex;
-    }
-
     .logo-second{
         font-size:48px;
     }
@@ -1083,6 +1067,33 @@ RESPONSIVE NAV
     .logo-line{
         width:110px;
     }
+}
+
+/*=========================================================
+Mobile Menu SECTION
+=========================================================*/
+/* Default (Desktop) */
+.mobile-menu{
+    display:none;
+    width:46px;
+    height:46px;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:12px;
+    background:rgba(255,255,255,.04);
+    color:#fff;
+    transition:.3s ease;
+}
+
+/* Mobile */
+@media (max-width:1100px){
+
+.mobile-menu{
+    display:flex;
+}
+
 }
 /*=========================================================
 HERO SECTION
