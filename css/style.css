@@ -178,7 +178,9 @@ CONTAINER
 
 .container{
 
-width:min(1320px,92%);
+max-width:1320px;
+
+width:92%;
 
 margin:auto;
 
@@ -552,9 +554,9 @@ padding:18px 0;
 
 background:rgba(8,8,8,.15);
 
-backdrop-filter:blur(18px);
+-webkit--webkit-backdrop-filter:blur(18px);
 
--webkit-backdrop-filter:blur(18px);
+-webkit--webkit--webkit-backdrop-filter:blur(18px);
 
 border-bottom:1px solid rgba(255,255,255,.05);
 
@@ -1085,7 +1087,7 @@ position:relative;
 
 width:100%;
 
-min-height:100vh;
+min-height:100svh;
 
 display:flex;
 
@@ -1295,18 +1297,20 @@ LOGO
 margin-bottom:30px;
 
 }
+.hero-logo-img{
+    width:100%;
+    max-width:480px;
+    height:auto;
+    display:block;
+}
 
-.logo-small{
+@media(max-width:768px){
 
-display:block;
-
-font-size:18px;
-
-font-weight:700;
-
-letter-spacing:12px;
-
-margin-bottom:10px;
+.hero-logo-img{
+    max-width:320px;
+    height:auto;
+    display:block;
+}
 
 }
 
@@ -1316,41 +1320,12 @@ line-height:.9;
 
 }
 
-.hero-logo .silver{
-
-display:block;
-
-font-size:135px;
-
-background:linear-gradient(
-
-180deg,
-
-#ffffff,
-
-#d9d9d9,
-
-#8f8f8f
-
-);
-
 -webkit-background-clip:text;
 
 -webkit-text-fill-color:transparent;
 
 }
 
-.hero-logo .red{
-
-display:block;
-
-font-size:105px;
-
-color:#D71F28;
-
-margin-top:-18px;
-
-}
 
 .logo-line{
 
@@ -2363,7 +2338,7 @@ font-size:52px;
 }
 
 /*=========================================================
-Missing Statistics CSS
+Statistics CSS
 =========================================================*/
 
 .statistics{
