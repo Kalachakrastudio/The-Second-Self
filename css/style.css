@@ -2053,50 +2053,37 @@ ABOUT SECTION
 .about-section{
 
     position:relative;
-    padding:140px 0;
+
     overflow:hidden;
 
-    background:
-    linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.82)),
-    url("Image/About Section.png") center center/cover no-repeat;
+    background-image:
+        linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
+        url("../Image/About Section.png");
 
-}
+    background-size:cover;
 
-.about-section::before{
+    background-position:center;
 
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background:linear-gradient(
-    90deg,
-    rgba(0,0,0,.82) 0%,
-    rgba(0,0,0,.55) 45%,
-    rgba(0,0,0,.15) 100%
-    );
+    background-repeat:no-repeat;
 
 }
 
 .about-wrapper{
 
-    position:relative;
+display:grid;
 
-    z-index:2;
+grid-template-columns:55% 45%;
 
-    display:flex;
+align-items:center;
 
-    align-items:center;
-
-    min-height:650px;
+min-height:650px;
 
 }
 
 .about-content{
 
     width:100%;
-    max-width:650px;
+    max-width:560px;
 
 }
 
@@ -2118,9 +2105,9 @@ ABOUT SECTION
 
 .about-content h2{
 
-    font-size:72px;
+   font-size:60px;
 
-    line-height:1;
+line-height:1.1;
 
     margin-bottom:30px;
 
@@ -2134,7 +2121,9 @@ ABOUT SECTION
 
     color:#d4d4d4;
 
-    margin-bottom:35px;
+   margin:25px 0;
+
+max-width:520px;
 
 }
 
@@ -2160,15 +2149,17 @@ ABOUT SECTION
 
 .point i{
 
-    width:60px;
+   width:48px;
 
-    height:60px;
+height:48px;
+
+font-size:18px;
+
+border-radius:12px;
 
     background:rgba(215,31,40,.12);
 
     border:1px solid rgba(215,31,40,.3);
-
-    border-radius:16px;
 
     display:flex;
 
@@ -2177,8 +2168,6 @@ ABOUT SECTION
     align-items:center;
 
     color:var(--primary);
-
-    font-size:24px;
 
     flex-shrink:0;
 
@@ -2240,7 +2229,7 @@ ABOUT RESPONSIVE
     max-width:100%;
 
     text-align:center;
-
+padding:40px 0;
 }
 
 .about-content h2{
@@ -2901,7 +2890,7 @@ CALL TO ACTION
 
 .cta-section{
 
-padding:140px 0;
+padding:180px 0;
 
 background:#070707;
 
