@@ -1234,12 +1234,10 @@ position:relative;
 z-index:5;
 
 display:flex;
-
-justify-content:space-between;
-
 align-items:center;
-
-gap:80px;
+justify-content:space-between;
+gap:70px;
+width:100%;
 
 }
 
@@ -1249,11 +1247,8 @@ LEFT CONTENT
 =========================================================*/
 
 .hero-content{
-
-flex:1;
-
-max-width:650px;
-
+    flex:1 1 50%;
+    max-width:600px;
 }
 
 
@@ -1298,10 +1293,10 @@ margin-bottom:30px;
 
 }
 .hero-logo-img{
-    width:100%;
-    max-width:480px;
-    height:auto;
-    display:block;
+   display:block;
+width:100%;
+max-width:450px;
+height:auto;
 }
 
 @media(max-width:768px){
@@ -1458,17 +1453,11 @@ RIGHT IMAGE
 =========================================================*/
 
 .hero-image{
-
-flex:1;
-
-position:relative;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
+    flex:1 1 50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
 }
 
 
