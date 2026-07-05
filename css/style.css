@@ -2809,35 +2809,20 @@ PARTNER GRID
 
 .partner-slider::before,
 .partner-slider::after{
-
-    content:"";
-    position:absolute;
-    top:0;
-    width:180px;
-    height:100%;
-    z-index:5;
-
+    display:none;
 }
 
 .partner-slider::before{
 
-    left:0;
-    background:linear-gradient(
-        to right,
-        #050505,
-        transparent
-    );
+     left:0;
+    background:linear-gradient(to right,#050505,transparent);
 
 }
 
 .partner-slider::after{
 
-    right:0;
-    background:linear-gradient(
-        to left,
-        #050505,
-        transparent
-    );
+    left:0;
+    background:linear-gradient(to right,#050505,transparent);
 
 }
 
