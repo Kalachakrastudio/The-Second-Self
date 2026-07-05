@@ -592,7 +592,15 @@ header .container{
 }
 
 .mobile-menu{
-    display:flex;
+   display:none;
+
+width:46px;
+height:46px;
+
+justify-content:center;
+align-items:center;
+
+cursor:pointer;
 }
 
 }
@@ -1604,15 +1612,7 @@ RESPONSIVE
 }
 
   .scroll-indicator{
-
-    position:relative;
-    left:auto;
-    bottom:auto;
-
-    transform:none;
-
-    margin-top:50px;
-
+    display:none;
 }
 }
 /*=========================================================
