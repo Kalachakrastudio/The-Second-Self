@@ -2052,18 +2052,22 @@ ABOUT SECTION
 
 .about-section{
 
-    position:relative;
-
+   position:relative;
     overflow:hidden;
+    padding:170px 0;
 
     background-image:
-        linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
+        linear-gradient(
+            to right,
+            rgba(0,0,0,.88) 0%,
+            rgba(0,0,0,.75) 35%,
+            rgba(0,0,0,.30) 65%,
+            rgba(0,0,0,.08) 100%
+        ),
         url("../Image/About Section.png");
 
     background-size:cover;
-
-    background-position:center;
-
+    background-position:right center;
     background-repeat:no-repeat;
 
 }
@@ -2202,21 +2206,21 @@ border-radius:12px;
 ABOUT RESPONSIVE
 =========================================================*/
 
-@media(max-width:992px){
+@media (max-width:768px){
 
 .about-section{
 
-    padding:90px 0;
-
     background-position:center;
 
+    background-image:
+        linear-gradient(
+            rgba(0,0,0,.78),
+            rgba(0,0,0,.78)
+        ),
+        url("../Image/About Section.png");
+
 }
 
-.about-section::before{
-
-    background:rgba(0,0,0,.75);
-
-}
 
 .about-wrapper{
 
