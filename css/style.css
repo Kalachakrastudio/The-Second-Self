@@ -581,7 +581,37 @@ position:relative;
 
 }
 
+.logo{
 
+    flex:0 0 auto;
+
+}
+
+nav{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+nav ul{
+
+    display:flex;
+
+    gap:45px;
+
+    align-items:center;
+
+}
+
+.mobile-menu{
+
+    margin-left:auto;
+
+}
 /*=========================================================
 LOGO
 =========================================================*/
