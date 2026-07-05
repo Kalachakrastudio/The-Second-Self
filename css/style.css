@@ -1585,7 +1585,7 @@ RESPONSIVE
 .hero{
      min-height:auto;
     height:auto;
-    margin-top:70px;
+    margin-top:90px;
     padding:20px 0 40px;
 }
   
@@ -1637,7 +1637,9 @@ RESPONSIVE
     font-size:44px;
 
 }
-
+.scroll-indicator{
+    bottom:-20px;
+}
 }
 /*=========================================================
 FEATURE SECTION
