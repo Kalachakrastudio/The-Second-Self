@@ -1583,8 +1583,8 @@ RESPONSIVE
 @media (max-width:992px){
 
 .hero{
-  min-height:auto;
-    padding:75px 0 50px;
+   margin-top:70px;   /* equal to header height */
+    padding:20px 0 50px;
 }
   
 .hero-wrapper{
