@@ -2881,13 +2881,11 @@ PARTNER GRID
 }
 
 .partner-item:hover{
+    transform:none;
 
-    transform:translateY(-8px);
-    border-color:#D71F28;
+    border-color:rgba(255,255,255,.08);
 
-    box-shadow:
-        0 20px 40px rgba(0,0,0,.4),
-        0 0 30px rgba(215,31,40,.2);
+    box-shadow:none;
 
 }
 
@@ -2909,7 +2907,7 @@ PARTNER GRID
 
     filter:none;
     opacity:1;
-    transform:scale(1.08);
+    transform:none;
 
 }
 
@@ -2950,9 +2948,10 @@ transition:.4s;
 
 .partner-card:hover img{
 
-filter:none;
+   filter:none;
 
-transform:scale(1.08);
+    transform:none;
+
 
 }
 
