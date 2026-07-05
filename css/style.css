@@ -1586,7 +1586,7 @@ RESPONSIVE
      min-height:auto;
     height:auto;
     margin-top:90px;
-    padding:20px 0 40px;
+   padding:20px 0 80px;
 }
   
 .hero-wrapper{
@@ -1636,9 +1636,6 @@ RESPONSIVE
 
     font-size:44px;
 
-}
-.scroll-indicator{
-    bottom:-20px;
 }
 }
 /*=========================================================
