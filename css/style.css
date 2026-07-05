@@ -936,55 +936,6 @@ box-shadow:0 20px 45px rgba(215,31,40,.4);
 }
 
 
-/*=========================================================
-MOBILE MENU
-=========================================================*/
-
-.mobile-menu{
-
-display:none;
-
-width:46px;
-
-height:46px;
-
-border-radius:12px;
-
-background:rgba(255,255,255,.06);
-
-border:1px solid rgba(255,255,255,.08);
-
-justify-content:center;
-
-align-items:center;
-
-cursor:pointer;
-
-transition:.35s;
-
-}
-   nav.showMenu{
-
-        transform:translateY(0);
-        opacity:1;
-        visibility:visible;
-
-    }
-
-.mobile-menu i{
-
-font-size:20px;
-
-color:white;
-
-}
-
-.mobile-menu:hover{
-
-background:var(--primary);
-
-}
-
 
 /*=========================================================
 HEADER GLOW
@@ -1024,99 +975,106 @@ opacity:.4;
 /*=========================================================
 RESPONSIVE NAV
 =========================================================*/
+@media (max-width:1100px){
 
-@media(max-width:1100px){
+    header .container{
+        position:relative;
+    }
 
-nav{
+    nav{
+        display:flex;
+        position:absolute;
+        top:100%;
+        left:0;
+        width:100%;
 
-display:none;
+        flex-direction:column;
 
+        background:#090909;
+
+        padding:25px 0;
+
+        border-top:1px solid rgba(255,255,255,.08);
+
+        transform:translateY(-20px);
+
+        opacity:0;
+        visibility:hidden;
+
+        pointer-events:none;
+
+        transition:.35s ease;
+
+        z-index:999;
+    }
+
+    nav ul{
+        flex-direction:column;
+        gap:22px;
+        align-items:center;
+    }
+
+    nav.showMenu{
+        transform:translateY(0);
+        opacity:1;
+        visibility:visible;
+        pointer-events:auto;
+    }
+
+    .nav-buttons{
+        display:none;
+    }
+
+    .mobile-menu{
+        display:flex;
+    }
+
+    .logo-second{
+        font-size:48px;
+    }
+
+    .logo-bottom span{
+        font-size:34px;
+    }
+
+    .logo-line{
+        width:140px;
+    }
 }
 
-.nav-buttons{
+@media (max-width:768px){
 
-display:none;
+    header{
+        padding:14px 0;
+    }
 
-}
+    .logo-top{
+        font-size:11px;
+    }
 
-.mobile-menu{
+    .logo-second{
+        font-size:38px;
+    }
 
-display:flex;
+    .logo-bottom span{
+        font-size:28px;
+    }
 
-}
+    .logo-mic{
+        width:34px;
+        height:34px;
+        font-size:14px;
+    }
 
-.logo-second{
+    .logo-badge{
+        font-size:8px;
+        padding:4px 12px;
+        letter-spacing:2px;
+    }
 
-font-size:48px;
-
-}
-
-.logo-bottom span{
-
-font-size:34px;
-
-}
-
-.logo-line{
-
-width:140px;
-
-}
-
-}
-
-@media(max-width:768px){
-
-header{
-
-padding:14px 0;
-
-}
-
-.logo-top{
-
-font-size:11px;
-
-}
-
-.logo-second{
-
-font-size:38px;
-
-}
-
-.logo-bottom span{
-
-font-size:28px;
-
-}
-
-.logo-mic{
-
-width:34px;
-
-height:34px;
-
-font-size:14px;
-
-}
-
-.logo-badge{
-
-font-size:8px;
-
-padding:4px 12px;
-
-letter-spacing:2px;
-
-}
-
-.logo-line{
-
-width:110px;
-
-}
-
+    .logo-line{
+        width:110px;
+    }
 }
 /*=========================================================
 HERO SECTION
