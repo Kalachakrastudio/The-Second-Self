@@ -555,9 +555,8 @@ padding:18px 0;
 
 background:rgba(8,8,8,.15);
 
--webkit--webkit-backdrop-filter:blur(18px);
-
--webkit--webkit--webkit-backdrop-filter:blur(18px);
+-webkit-backdrop-filter: blur(18px);
+backdrop-filter: blur(18px);
 
 border-bottom:1px solid rgba(255,255,255,.05);
 
@@ -1283,8 +1282,6 @@ position:relative;
 }
 .hero-left{
 
-    flex:1.25;
-
     display:flex;
 
     justify-content:center;
@@ -1296,12 +1293,7 @@ position:relative;
 }
 
 .hero-right{
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:flex-start;
-height:100%;
-padding:0;
+   align-self:center;
 }
 
 
