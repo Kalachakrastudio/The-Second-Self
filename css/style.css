@@ -1637,6 +1637,18 @@ RESPONSIVE
     font-size:44px;
 
 }
+
+  .scroll-indicator{
+
+    position:relative;
+    left:auto;
+    bottom:auto;
+
+    transform:none;
+
+    margin-top:40px;
+
+}
 }
 /*=========================================================
 FEATURE SECTION
