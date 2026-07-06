@@ -389,22 +389,23 @@ progress.style.width=(scroll/height)*100+"%";
 
 
 /*=========================================================
-SPONSOR HOVER
+PARTNER HOVER
 =========================================================*/
 
-document.querySelectorAll(".partner-card").forEach(card=>{
+document.querySelectorAll(".partner-item").forEach(item => {
 
-card.addEventListener("mouseenter",()=>{
+    item.addEventListener("mouseenter", () => {
 
-card.style.transform="translateY(-12px) scale(1.03)";
+        item.style.transform = "translateY(-8px)";
+        item.style.transition = ".35s ease";
 
-});
+    });
 
-card.addEventListener("mouseleave",()=>{
+    item.addEventListener("mouseleave", () => {
 
-card.style.transform="";
+        item.style.transform = "translateY(0)";
 
-});
+    });
 
 });
 
