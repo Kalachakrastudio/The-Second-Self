@@ -1583,7 +1583,7 @@ RESPONSIVE
     display:flex;
     flex-direction:column;
 
-    gap:70px;
+    gap:50px;
 }
 
 .hero-left,
@@ -1599,7 +1599,7 @@ RESPONSIVE
     min-width:320px;
     height:auto;
     display:block;
-    margin:0 auto 30px;
+    margin:0 auto 20px;
 }
 
 .hero-right h1{
