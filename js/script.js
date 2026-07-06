@@ -665,23 +665,6 @@ ease:"sine.inOut"
 
 
 /*=========================================================
-IMAGE PARALLAX
-=========================================================*/
-
-window.addEventListener("scroll",()=>{
-
-const scroll=window.pageYOffset;
-
-document.querySelectorAll(".gallery-item img").forEach(img=>{
-
-img.style.transform=`translateY(${scroll*.04}px) scale(1.08)`;
-
-});
-
-});
-
-
-/*=========================================================
 BUTTON RIPPLE
 =========================================================*/
 
