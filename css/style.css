@@ -1567,18 +1567,18 @@ RESPONSIVE
 @media (max-width:992px){
 
 .hero{
-     min-height:auto;
+        min-height:auto;
     height:auto;
-    margin-top:100px;
-   padding:30px 0 90px;
+    margin-top:0;
+    padding:160px 0 90px;
 }
   
 .hero-wrapper{
-    min-height:unset;
+  min-height:unset;
     height:auto;
     display:flex;
     flex-direction:column;
-    gap:25px;
+    gap:50px;
 }
 
 .hero-left,
@@ -1595,8 +1595,9 @@ RESPONSIVE
 }
 .hero-logo-img{
 
-    max-width:420px;
-    margin:auto;
+     max-width:320px;
+    width:100%;
+    margin:0 auto 30px;
 
 }
   .hero-description{
