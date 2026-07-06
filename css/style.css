@@ -1593,13 +1593,13 @@ RESPONSIVE
     align-items:center;
 }
 
-.hero-logo{
-    margin-bottom:20px;
-}
 .hero-logo-img{
-    width:100%;
-    max-width:420px;
-    margin:0 auto 40px;
+  width:100%;
+    max-width:520px;
+    min-width:320px;
+    height:auto;
+    display:block;
+    margin:0 auto 30px;
 }
 
 .hero-right h1{
