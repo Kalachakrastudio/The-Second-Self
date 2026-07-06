@@ -2355,6 +2355,8 @@ position:relative;
 
 overflow:hidden;
 
+padding:90px 0;
+
 }
 
 .gallery-section::before{
@@ -2432,7 +2434,7 @@ flex-wrap:wrap;
 
 gap:15px;
 
-margin-bottom:60px;
+margin-bottom:35px;
 
 position:relative;
 
@@ -2497,6 +2499,8 @@ position:relative;
 
 z-index:2;
 
+align-items:stretch;
+
 }
 
 
@@ -2512,7 +2516,7 @@ overflow:hidden;
 
 border-radius:22px;
 
-height:320px;
+aspect-ratio:1/1;
 
 cursor:pointer;
 
@@ -2520,16 +2524,21 @@ background:#111;
 
 border:1px solid rgba(255,255,255,.06);
 
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
 }
 
 .gallery-item.large{
 
 grid-row:span 2;
 
-height:665px;
+aspect-ratio:1/2;
 
 }
-
 
 /*=========================================================
 IMAGE
@@ -2543,7 +2552,9 @@ height:100%;
 
 object-fit:cover;
 
-transition:.8s;
+object-position:center;
+
+transition:.8s ease;
 
 }
 
