@@ -2408,8 +2408,8 @@ height:320px;
 
 .gallery-grid{
 
+    display:grid;
     grid-template-columns:1fr;
-
     gap:18px;
 
 }
@@ -2417,9 +2417,32 @@ height:320px;
 .gallery-item,
 .gallery-item.large{
 
+    height:auto;
     aspect-ratio:4/3;
 
-    grid-row:auto;
+}
+
+.gallery-item img{
+
+width:100%;
+height:100%;
+
+object-fit:cover;
+
+display:block;
+
+}
+
+.gallery-overlay{
+
+    transform:translateY(0);
+    padding:20px;
+
+}
+
+.gallery-overlay h3{
+
+    font-size:24px;
 
 }
 
