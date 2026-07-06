@@ -2534,18 +2534,18 @@ IMAGE
 .gallery-item img{
 
     width:100%;
+
     height:100%;
+
+    display:block;
 
     object-fit:cover;
 
     object-position:center;
 
-    display:block;
-
-    transition:.8s;
+    transition:transform .35s ease;
 
 }
-
 
 /*=========================================================
 OVERLAY
@@ -2592,7 +2592,7 @@ HOVER
 
 .gallery-item:hover img{
 
-transform:scale(1.15);
+transform:scale(1.03);
 
 }
 
@@ -3677,5 +3677,32 @@ height:100%;
 z-index:1;
 
 pointer-events:none;
+
+}
+
+/*=========================================================
+Prevent accidental transforms Image
+=========================================================*/
+
+
+.gallery-item{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.gallery-item img{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
 
 }
