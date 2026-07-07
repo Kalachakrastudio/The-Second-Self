@@ -418,30 +418,24 @@ CUSTOM DROPDOWN
     position:relative;
     width:100%;
 }
+.custom-select{
+    position:relative;
+    width:100%;
+}
+
 .custom-select select{
-
-    position:absolute;
-    inset:0;
-    opacity:0;
-    width:0;
-    height:0;
-    border:none;
-    padding:0;
-    margin:0;
-    pointer-events:none;
-
+    display:none;
 }
 
 .select-selected{
 
-    background:#1A1A1A;
-    color:#fff;
+    width:100%;
     padding:18px 20px;
-    border-radius:12px;
+    background:#1A1A1A;
     border:1px solid rgba(255,255,255,.12);
+    border-radius:12px;
+    color:#fff;
     cursor:pointer;
-    transition:.3s;
-    user-select:none;
     position:relative;
 
 }
@@ -458,20 +452,18 @@ CUSTOM DROPDOWN
     position:absolute;
     right:20px;
     top:50%;
-    width:10px;
-    height:10px;
-
-    border-right:2px solid #D71F28;
-    border-bottom:2px solid #D71F28;
-
-    transform:translateY(-70%) rotate(45deg);
+    width:8px;
+    height:8px;
+    border-right:2px solid #fff;
+    border-bottom:2px solid #fff;
+    transform:translateY(-60%) rotate(45deg);
     transition:.3s;
 
 }
 
 .custom-select.active .select-selected::after{
 
-    transform:translateY(-20%) rotate(-135deg);
+    transform:translateY(-30%) rotate(-135deg);
 
 }
 
