@@ -506,3 +506,156 @@ input[type="number"]{
     line-height:1.6;
 
 }
+
+
+
+
+
+/*=========================================================
+SUCCESS POPUP
+=========================================================*/
+
+.popup-overlay{
+
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(10px);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.35s;
+
+    z-index:99999;
+
+}
+
+.popup-overlay.show{
+
+    opacity:1;
+    visibility:visible;
+
+}
+
+.success-popup{
+
+    width:90%;
+    max-width:480px;
+
+    background:rgba(17,17,17,.92);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:24px;
+
+    padding:55px 45px;
+
+    text-align:center;
+
+    box-shadow:
+    0 25px 70px rgba(0,0,0,.45),
+    0 0 40px rgba(215,31,40,.12);
+
+    transform:translateY(30px) scale(.95);
+
+    transition:.35s;
+
+}
+
+.popup-overlay.show .success-popup{
+
+    transform:translateY(0) scale(1);
+
+}
+
+.success-icon{
+
+    width:90px;
+    height:90px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#D71F28,#ff4343);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:42px;
+    color:#fff;
+
+    margin-bottom:28px;
+
+    box-shadow:0 0 35px rgba(215,31,40,.45);
+
+}
+
+.success-popup h2{
+
+    color:#fff;
+
+    font-size:42px;
+
+    margin-bottom:20px;
+
+    font-weight:700;
+
+}
+
+.success-popup p{
+
+    color:#cfcfcf;
+
+    font-size:17px;
+
+    line-height:1.8;
+
+    margin-bottom:35px;
+
+}
+
+.success-popup .btn-primary{
+
+    width:100%;
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.success-popup{
+
+    padding:40px 25px;
+
+}
+
+.success-icon{
+
+    width:75px;
+    height:75px;
+    font-size:34px;
+
+}
+
+.success-popup h2{
+
+    font-size:34px;
+
+}
+
+.success-popup p{
+
+    font-size:15px;
+
+}
+
+}
