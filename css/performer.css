@@ -1,4 +1,38 @@
 /*=========================================================
+PERFORMER HERO
+=========================================================*/
+
+.performer-hero{
+
+    padding:180px 0 90px;
+    text-align:center;
+    background:#0B0B0B;
+
+}
+
+.performer-hero .section-tag{
+
+    margin-bottom:18px;
+
+}
+
+.performer-hero h1{
+
+    font-size:64px;
+    color:#fff;
+    margin-bottom:20px;
+
+}
+
+.performer-hero p{
+
+    max-width:620px;
+    margin:auto;
+    color:#bdbdbd;
+    line-height:1.8;
+
+}
+/*=========================================================
 PERFORMER PAGE
 =========================================================*/
 
@@ -108,7 +142,7 @@ INPUTS
 .form-group textarea{
 
     width:100%;
-    padding:16px 18px;
+    padding:18px 20px;
     border-radius:12px;
     border:1px solid rgba(255,255,255,.12);
     background:#1A1A1A;
@@ -128,7 +162,7 @@ INPUTS
 .form-group textarea{
 
     resize:vertical;
-    min-height:180px;
+    min-height:220px;
 
 }
 
@@ -153,7 +187,7 @@ FILE INPUT
 =========================================================*/
 
 input[type="file"]{
-
+cursor:pointer;
     padding:15px;
 
 }
@@ -203,6 +237,8 @@ SUBMIT
 
     text-align:center;
     margin-top:50px;
+        padding-top:15px;
+
 
 }
 
@@ -280,5 +316,57 @@ MOBILE
     width:100%;
 
 }
+
+}
+
+#performerForm{
+
+    animation:fadeUp .7s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+.form-group select{
+
+    cursor:pointer;
+
+}
+
+
+/*=========================================================
+MOBILE Hero
+=========================================================*/
+.performer-hero{
+
+    padding:150px 0 70px;
+
+}
+
+.performer-hero h1{
+
+    font-size:42px;
+
+}
+
+.performer-hero p{
+
+    font-size:15px;
 
 }
