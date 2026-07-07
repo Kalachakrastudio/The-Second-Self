@@ -116,95 +116,359 @@ HERO
 <!-- =========================================
 Form
 ========================================= -->
-  <section class="performer-form-section">
+<section class="performer-form-section">
 
     <div class="container">
 
         <form id="partnerForm">
-<div class="form-section">
 
-    <h2>Partnership Details</h2>
+            <!-- =========================================
+            ORGANIZATION DETAILS
+            ========================================= -->
 
-    <div class="form-grid">
+            <div class="form-section">
 
-        <div class="form-group">
+                <h2>Organization Details</h2>
 
-            <label for="organization">
-                Organization / Brand Name *
-            </label>
+                <div class="form-grid">
 
-            <input
-                type="text"
-                id="organization"
-                name="organization"
-                required>
+                    <div class="form-group">
 
-        </div>
+                        <label for="organization">Organization / Brand Name *</label>
 
-        <div class="form-group">
+                        <input
+                            type="text"
+                            id="organization"
+                            name="organization"
+                            required>
 
-            <label for="industry">
-                Industry *
-            </label>
+                    </div>
 
-            <input
-                type="text"
-                id="industry"
-                name="industry"
-                required>
+                    <div class="form-group">
 
-        </div>
+                        <label for="industry">Industry *</label>
 
-        <div class="form-group">
+                        <input
+                            type="text"
+                            id="industry"
+                            name="industry"
+                            required>
 
-            <label for="website">
-                Website
-            </label>
+                    </div>
 
-            <input
-                type="url"
-                id="website"
-                name="website">
+                    <div class="form-group">
 
-        </div>
+                        <label for="website">Website</label>
 
-        <div class="form-group">
+                        <input
+                            type="url"
+                            id="website"
+                            name="website">
 
-            <label for="partnershipType">
-                Partnership Type *
-            </label>
+                    </div>
 
-            <select
-                id="partnershipType"
-                name="partnershipType"
-                required>
+                    <div class="form-group">
 
-                <option value="">Select Partnership Type</option>
+                        <label for="partnershipType">Partnership Type *</label>
 
-                <option>Sponsorship Partner</option>
+                        <select
+                            id="partnershipType"
+                            name="partnershipType"
+                            required>
 
-                <option>Brand Partner</option>
+                            <option value="">Select Partnership Type</option>
+                            <option>Sponsorship Partner</option>
+                            <option>Brand Partner</option>
+                            <option>Community Partner</option>
+                            <option>Venue Partner</option>
+                            <option>Media Partner</option>
+                            <option>Technology Partner</option>
+                            <option>Collaboration Partner</option>
+                            <option>Other</option>
 
-                <option>Community Partner</option>
+                        </select>
 
-                <option>Venue Partner</option>
+                    </div>
 
-                <option>Media Partner</option>
+                </div>
 
-                <option>Collaboration Partner</option>
+            </div>
 
-                <option>Other</option>
+            <!-- =========================================
+            CONTACT PERSON
+            ========================================= -->
 
-            </select>
+            <div class="form-section">
 
-        </div>
+                <h2>Contact Person</h2>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="name">Full Name *</label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="designation">Designation *</label>
+
+                        <input
+                            type="text"
+                            id="designation"
+                            name="designation"
+                            required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="mobile">Mobile Number *</label>
+
+                        <input
+                            type="tel"
+                            id="mobile"
+                            name="mobile"
+                            pattern="[0-9]{10}"
+                            maxlength="10"
+                            placeholder="9876543210"
+                            required>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="email">Email Address *</label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            required>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- =========================================
+            ABOUT ORGANIZATION
+            ========================================= -->
+
+            <div class="form-section">
+
+                <h2>About Your Organization</h2>
+
+                <div class="form-group">
+
+                    <label for="about">
+
+                        Tell us about your organization *
+
+                    </label>
+
+                    <textarea
+                        id="about"
+                        name="about"
+                        rows="6"
+                        placeholder="Introduce your organization, what you do, and your mission."
+                        required></textarea>
+
+                </div>
+
+            </div>
+
+            <!-- =========================================
+            PARTNERSHIP DETAILS
+            ========================================= -->
+
+            <div class="form-section">
+
+                <h2>Partnership Details</h2>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="supportType">How would you like to partner? *</label>
+
+                        <select
+                            id="supportType"
+                            name="supportType"
+                            required>
+
+                            <option value="">Select Support Type</option>
+                            <option>Financial Sponsorship</option>
+                            <option>Venue Support</option>
+                            <option>Media Coverage</option>
+                            <option>Marketing Support</option>
+                            <option>Product Sponsorship</option>
+                            <option>Technical Support</option>
+                            <option>Artist Collaboration</option>
+                            <option>Community Partnership</option>
+                            <option>Other</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="budget">Estimated Budget</label>
+
+                        <select
+                            id="budget"
+                            name="budget">
+
+                            <option value="">Select Budget</option>
+                            <option>Below ₹25,000</option>
+                            <option>₹25,000 – ₹50,000</option>
+                            <option>₹50,000 – ₹1 Lakh</option>
+                            <option>₹1 Lakh – ₹3 Lakhs</option>
+                            <option>Above ₹3 Lakhs</option>
+                            <option>Let's Discuss</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- =========================================
+            WHY PARTNER
+            ========================================= -->
+
+            <div class="form-section">
+
+                <h2>Why Partner With Us?</h2>
+
+                <div class="form-group">
+
+                    <label for="message">
+
+                        Tell us why you'd like to partner with The Second Self *
+
+                    </label>
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        rows="8"
+                        placeholder="Share your goals, expectations and how you believe this partnership can create value."
+                        required></textarea>
+
+                </div>
+
+            </div>
+
+            <!-- =========================================
+            SOCIAL LINKS
+            ========================================= -->
+
+            <div class="form-section">
+
+                <h2>Social & Company Links</h2>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="instagram">Instagram</label>
+
+                        <input
+                            type="url"
+                            id="instagram"
+                            name="instagram">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="linkedin">LinkedIn</label>
+
+                        <input
+                            type="url"
+                            id="linkedin"
+                            name="linkedin">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="facebook">Facebook</label>
+
+                        <input
+                            type="url"
+                            id="facebook"
+                            name="facebook">
+
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="proposal">Company Profile / Proposal Link</label>
+
+                        <input
+                            type="url"
+                            id="proposal"
+                            name="proposal"
+                            placeholder="Google Drive, Dropbox or OneDrive Link">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- =========================================
+            DECLARATION
+            ========================================= -->
+
+            <div class="form-section">
+
+                <label class="checkbox">
+
+                    <input
+                        type="checkbox"
+                        required>
+
+                    I confirm that the information provided is accurate and I agree to be contacted by The Second Self regarding this partnership application.
+
+                </label>
+
+            </div>
+
+            <!-- =========================================
+            SUBMIT
+            ========================================= -->
+
+            <div class="submit-area">
+
+                <button
+                    type="submit"
+                    class="btn-primary">
+
+                    Submit Partnership Application
+
+                </button>
+
+            </div>
+
+        </form>
 
     </div>
 
-</div>
-
-
-
+</section>
           
 <!-- =========================================
 FOOTER
