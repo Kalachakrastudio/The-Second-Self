@@ -380,10 +380,6 @@ CUSTOM DROPDOWN
     position:relative;
     width:100%;
 }
-.custom-select{
-    position:relative;
-    width:100%;
-}
 
 .custom-select select{
     display:none;
@@ -515,33 +511,6 @@ input[type="number"]{
 SUCCESS POPUP
 =========================================================*/
 
-.popup-overlay{
-
-    position:fixed;
-    inset:0;
-
-    background:rgba(0,0,0,.75);
-    backdrop-filter:blur(10px);
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    opacity:0;
-    visibility:hidden;
-
-    transition:.35s;
-
-    z-index:99999;
-
-}
-
-.popup-overlay.show{
-
-    opacity:1;
-    visibility:visible;
-
-}
 
 .success-popup{
 
@@ -564,7 +533,9 @@ SUCCESS POPUP
 
     transform:translateY(30px) scale(.95);
 
-    transition:.35s;
+   transition:
+opacity .3s ease,
+transform .35s cubic-bezier(.22,.61,.36,1);
 
 }
 
@@ -625,9 +596,35 @@ SUCCESS POPUP
 .success-popup .btn-primary{
 
     width:100%;
+    transition:.3s;
+
+}
+.success-popup .btn-primary:hover{
+    transform:translateY(-2px);
+}
+.popup-overlay.show .success-popup{
+
+    animation:popupShow .35s ease;
 
 }
 
+@keyframes popupShow{
+
+    from{
+
+        opacity:0;
+        transform:scale(.85);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:scale(1);
+
+    }
+
+}
 /* Mobile */
 
 @media(max-width:768px){
@@ -663,22 +660,6 @@ SUCCESS POPUP
 
 /* Loading Spinner */
 
-.loader-circle{
-
-    width:65px;
-    height:65px;
-
-    border:5px solid rgba(255,255,255,.15);
-    border-top:5px solid #D71F28;
-
-    border-radius:50%;
-
-    margin:0 auto 25px;
-
-    animation:spin .8s linear infinite;
-
-}
-
 @keyframes spin{
 
     to{
@@ -686,5 +667,49 @@ SUCCESS POPUP
         transform:rotate(360deg);
 
     }
+
+}
+.popup-overlay{
+
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(10px);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.3s;
+
+    z-index:99999;
+
+}
+
+.popup-overlay.show{
+
+    opacity:1;
+    visibility:visible;
+
+}
+
+.loader-ring{
+
+    width:60px;
+    height:60px;
+    border:4px solid rgba(255,255,255,.15);
+    border-top:4px solid #D71F28;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+    margin:0 auto 25px;
+
+}
+
+.error-icon{
+
+    background:#D71F28;
 
 }
