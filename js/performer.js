@@ -1,89 +1,111 @@
 const scriptURL =
 "https://script.google.com/macros/s/AKfycbyYfAywSQ0GMFdw4V7v61eit6P4-oHTfXRnHT5CG16-decsPhm80Pt-H7opgMnvn44-/exec";
 
-const form =
-document.getElementById("performerForm");
+const form = document.getElementById("performerForm");
 
-form.addEventListener("submit", async function(e){
+const loadingPopup = document.getElementById("loadingPopup");
+const successPopup = document.getElementById("successPopup");
+const errorPopup = document.getElementById("errorPopup");
+
+const closePopup = document.getElementById("closePopup");
+const closeErrorPopup = document.getElementById("closeErrorPopup");
+
+form.addEventListener("submit", function (e) {
 
     e.preventDefault();
 
+    loadingPopup.classList.add("show");
+
     const formData = {
-        sheet:"Performers",
-        name:form.name.value,
-        age:form.age.value,
-        gender:form.gender.value,
 
-        mobile:form.mobile.value,
-        email:form.email.value,
+        sheet: "Performers",
 
-        profession:form.profession.value,
-        city:form.city.value,
-        state:form.state.value,
+        name: form.name.value,
+        age: form.age.value,
+        gender: form.gender.value,
 
-        category:form.category.value,
-        title:form.title.value,
+        mobile: form.mobile.value,
+        email: form.email.value,
 
-        language:form.language.value,
-        duration:form.duration.value,
+        profession: form.profession.value,
+        city: form.city.value,
+        state: form.state.value,
 
-        story:form.story.value,
+        category: form.category.value,
+        title: form.title.value,
 
-        instagram:form.instagram.value,
-        youtube:form.youtube.value,
-        website:form.website.value,
+        language: form.language.value,
+        duration: form.duration.value,
+
+        story: form.story.value,
+
+        instagram: form.instagram.value,
+        youtube: form.youtube.value,
+        website: form.website.value,
 
         videoLink: form.videoLink.value
 
     };
 
-    fetch(scriptURL,{
+    fetch(scriptURL, {
 
-        method:"POST",
+        method: "POST",
 
-        body:JSON.stringify(formData)
-
-    })
-
-    .then(res=>res.json())
-
-    .then(data=>{
-
-        document
-.getElementById("successPopup")
-.classList.add("show");
-
-form.reset();
+        body: JSON.stringify(formData)
 
     })
 
-    .catch(err=>{
+    .then(res => res.json())
 
-        alert("Submission Failed");
+    .then(data => {
 
-        console.log(err);
+        loadingPopup.classList.remove("show");
+
+        successPopup.classList.add("show");
+
+        form.reset();
+
+    })
+
+    .catch(error => {
+
+        console.error(error);
+
+        loadingPopup.classList.remove("show");
+
+        errorPopup.classList.add("show");
 
     });
 
 });
 
-const popup =
-document.getElementById("successPopup");
+closePopup.addEventListener("click", () => {
 
-const closePopup =
-document.getElementById("closePopup");
-
-closePopup.addEventListener("click",()=>{
-
-    popup.classList.remove("show");
+    successPopup.classList.remove("show");
 
 });
 
-popup.addEventListener("click",(e)=>{
+closeErrorPopup.addEventListener("click", () => {
 
-    if(e.target===popup){
+    errorPopup.classList.remove("show");
 
-        popup.classList.remove("show");
+});
+
+successPopup.addEventListener("click", (e) => {
+
+    if (e.target === successPopup) {
+
+        successPopup.classList.remove("show");
+
+    }
+
+});
+
+errorPopup.addEventListener("click", (e) => {
+
+    if (e.target === errorPopup) {
+
+        errorPopup.classList.remove("show");
 
     }
 
