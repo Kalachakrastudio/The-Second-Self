@@ -1,5 +1,5 @@
 const scriptURL =
-"https://script.google.com/macros/s/AKfycbyjVNhkGFDQaIZTs2yYWBa1aWa9x04eq4UqU6JNGJjg3ZhBIzf4rdXSpRDwfnzfje9X/exec";
+"https://script.google.com/macros/s/AKfycbyYfAywSQ0GMFdw4V7v61eit6P4-oHTfXRnHT5CG16-decsPhm80Pt-H7opgMnvn44-/exec";
 
 const form =
 document.getElementById("partnerForm");
@@ -9,7 +9,7 @@ form.addEventListener("submit", function(e){
     e.preventDefault();
 
     const formData = {
-
+        sheet:"Partners",
         organization:form.organization.value,
         industry:form.industry.value,
         website:form.website.value,
