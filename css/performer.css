@@ -407,7 +407,11 @@ CUSTOM DROPDOWN
 =========================================================*/
 
 .form-group select{
-    display:none;
+    position:absolute;
+    opacity:0;
+    pointer-events:none;
+    width:0;
+    height:0;
 }
 
 .custom-select{
