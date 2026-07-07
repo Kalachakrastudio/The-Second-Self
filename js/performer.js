@@ -49,9 +49,11 @@ form.addEventListener("submit", async function(e){
 
     .then(data=>{
 
-        alert("Application Submitted Successfully!");
+        document
+.getElementById("successPopup")
+.classList.add("show");
 
-        form.reset();
+form.reset();
 
     })
 
@@ -62,5 +64,27 @@ form.addEventListener("submit", async function(e){
         console.log(err);
 
     });
+
+});
+
+const popup =
+document.getElementById("successPopup");
+
+const closePopup =
+document.getElementById("closePopup");
+
+closePopup.addEventListener("click",()=>{
+
+    popup.classList.remove("show");
+
+});
+
+popup.addEventListener("click",(e)=>{
+
+    if(e.target===popup){
+
+        popup.classList.remove("show");
+
+    }
 
 });
