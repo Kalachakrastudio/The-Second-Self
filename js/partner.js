@@ -1,88 +1,109 @@
 const scriptURL =
 "https://script.google.com/macros/s/AKfycbyYfAywSQ0GMFdw4V7v61eit6P4-oHTfXRnHT5CG16-decsPhm80Pt-H7opgMnvn44-/exec";
 
-const form =
-document.getElementById("partnerForm");
+const form = document.getElementById("partnerForm");
 
-form.addEventListener("submit", function(e){
+const loadingPopup = document.getElementById("loadingPopup");
+const successPopup = document.getElementById("successPopup");
+const errorPopup = document.getElementById("errorPopup");
+
+form.addEventListener("submit", function (e) {
 
     e.preventDefault();
 
+    // Show loading popup
+    loadingPopup.classList.add("show");
+
     const formData = {
-        sheet:"Partners",
-        organization:form.organization.value,
-        industry:form.industry.value,
-        website:form.website.value,
-        partnershipType:form.partnershipType.value,
 
-        name:form.name.value,
-        designation:form.designation.value,
+        sheet: "Partners",
 
-        mobile:form.mobile.value,
-        email:form.email.value,
+        organization: form.organization.value,
+        industry: form.industry.value,
+        website: form.website.value,
+        partnershipType: form.partnershipType.value,
 
-        about:form.about.value,
+        name: form.name.value,
+        designation: form.designation.value,
 
-        supportType:form.supportType.value,
-        budget:form.budget.value,
+        mobile: form.mobile.value,
+        email: form.email.value,
 
-        message:form.message.value,
+        about: form.about.value,
 
-        instagram:form.instagram.value,
-        linkedin:form.linkedin.value,
-        facebook:form.facebook.value,
+        supportType: form.supportType.value,
+        budget: form.budget.value,
 
-        proposal:form.proposal.value
+        message: form.message.value,
+
+        instagram: form.instagram.value,
+        linkedin: form.linkedin.value,
+        facebook: form.facebook.value,
+
+        proposal: form.proposal.value
 
     };
 
-    fetch(scriptURL,{
+    fetch(scriptURL, {
 
-        method:"POST",
-
-        body:JSON.stringify(formData)
-
-    })
-
-    .then(res=>res.json())
-
-    .then(data=>{
-
-       document
-.getElementById("successPopup")
-.classList.add("show");
-
-form.reset();
+        method: "POST",
+        body: JSON.stringify(formData)
 
     })
 
-    .catch(error=>{
+    .then(response => response.json())
 
-        alert("Submission Failed");
+    .then(data => {
+
+        loadingPopup.classList.remove("show");
+
+        successPopup.classList.add("show");
+
+        form.reset();
+
+    })
+
+    .catch(error => {
 
         console.log(error);
+
+        loadingPopup.classList.remove("show");
+
+        errorPopup.classList.add("show");
 
     });
 
 });
 
-const popup =
-document.getElementById("successPopup");
 
-const closePopup =
-document.getElementById("closePopup");
+// Close Success Popup
+document.getElementById("closePopup").addEventListener("click", function () {
 
-closePopup.addEventListener("click",()=>{
-
-    popup.classList.remove("show");
+    successPopup.classList.remove("show");
 
 });
 
-popup.addEventListener("click",(e)=>{
 
-    if(e.target===popup){
+// Close Error Popup
+document.getElementById("closeErrorPopup").addEventListener("click", function () {
 
-        popup.classList.remove("show");
+    errorPopup.classList.remove("show");
+
+});
+
+
+// Close when clicking outside
+window.addEventListener("click", function (e) {
+
+    if (e.target === successPopup) {
+
+        successPopup.classList.remove("show");
+
+    }
+
+    if (e.target === errorPopup) {
+
+        errorPopup.classList.remove("show");
 
     }
 
