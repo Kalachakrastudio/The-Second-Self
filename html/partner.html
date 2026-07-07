@@ -645,23 +645,51 @@ SCRIPTS
  <script defer src="../js/custom-select.js"></script>
  <script defer src="../js/partner.js"></script>
 </body>
- <!--=========================================
-LOADING POPUP
-==========================================-->
-
+<!-- Loading Popup -->
 <div id="loadingPopup" class="popup-overlay">
 
     <div class="success-popup">
 
-        <div class="loader-circle"></div>
+        <div class="loader-ring"></div>
 
         <h2>Submitting...</h2>
 
         <p>
+            Please wait while we submit your application.
+        </p>
 
-            Please wait while we save your application.
+    </div>
+
+</div>
+
+<!--=========================================
+Error POPUP
+==========================================-->
+ <div id="errorPopup" class="popup-overlay">
+
+    <div class="success-popup">
+
+        <div class="success-icon error-icon">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+
+        <h2>Submission Failed</h2>
+
+        <p>
+
+            Something went wrong while submitting your application.
+
+            <br><br>
+
+            Please try again in a few moments.
 
         </p>
+
+        <button id="closeErrorPopup" class="btn-primary">
+
+            Try Again
+
+        </button>
 
     </div>
 
