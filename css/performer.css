@@ -723,37 +723,40 @@ BACK BUTTON
 
     display:inline-flex;
     align-items:center;
-    gap:10px;
+    gap:14px;
 
-    margin-bottom:35px;
+    margin-bottom:40px;
 
     color:#D71F28;
     text-decoration:none;
 
-    font-size:17px;
-    font-weight:600;
-
-    transition:all .3s ease;
+    transition:transform .35s ease, color .35s ease;
 
 }
 
-.back-button i{
+.back-button .arrow{
 
-    font-size:18px;
-
-    transition:transform .3s ease;
+    font-size:34px;
+    font-weight:300;
+    line-height:1;
 
 }
+
+.back-button .text{
+
+    font-size:14px;
+    font-weight:300;
+    letter-spacing:3px;
+    text-transform:uppercase;
+
+}
+
+/* Entire button behaves as one */
 
 .back-button:hover{
 
-    color:#ff4d4d;
-
-}
-
-.back-button:hover i{
-
-    transform:translateX(-6px);
+    color:#ff4a4a;
+    transform:translateX(-8px);
 
 }
 
@@ -767,14 +770,20 @@ BACK BUTTON
 
     .back-button{
 
-        font-size:15px;
-        margin-bottom:28px;
+        margin-bottom:30px;
 
     }
 
-    .back-button i{
+    .back-button .arrow{
 
-        font-size:16px;
+        font-size:28px;
+
+    }
+
+    .back-button .text{
+
+        font-size:13px;
+        letter-spacing:2px;
 
     }
 
