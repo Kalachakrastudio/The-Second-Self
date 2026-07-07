@@ -28,6 +28,8 @@ document.querySelectorAll("select").forEach(select => {
             select.selectedIndex=index;
 
             selected.textContent=option.textContent;
+            
+            select.dispatchEvent(new Event("change"));
 
             wrapper.classList.remove("active");
 
