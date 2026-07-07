@@ -431,6 +431,8 @@ CUSTOM DROPDOWN
 
 .select-items{
 
+    display:none;
+
     position:absolute;
     top:calc(100% + 8px);
     left:0;
@@ -442,9 +444,7 @@ CUSTOM DROPDOWN
 
     overflow:hidden;
 
-    max-height:0;
-
-    transition:max-height .35s ease;
+    max-height:320px;
 
     z-index:999;
 
@@ -452,7 +452,7 @@ CUSTOM DROPDOWN
 
 .custom-select.active .select-items{
 
-    max-height:320px;
+    display:block;
     overflow-y:auto;
 
 }
