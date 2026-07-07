@@ -1,5 +1,5 @@
 const scriptURL =
-"https://script.google.com/macros/s/AKfycbwOSO3PwKeBlfknxMjmweFDIO1t2KDNY64uxfRS948PYq_LhcPRvashb-dt17YXxtsM/exec";
+"https://script.google.com/macros/s/AKfycbyYfAywSQ0GMFdw4V7v61eit6P4-oHTfXRnHT5CG16-decsPhm80Pt-H7opgMnvn44-/exec";
 
 const form =
 document.getElementById("performerForm");
@@ -9,7 +9,7 @@ form.addEventListener("submit", async function(e){
     e.preventDefault();
 
     const formData = {
-
+        sheet:"Performers",
         name:form.name.value,
         age:form.age.value,
         gender:form.gender.value,
