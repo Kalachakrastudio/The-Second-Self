@@ -400,3 +400,116 @@ MOBILE
 
 }
 
+
+
+/*=========================================================
+CUSTOM DROPDOWN
+=========================================================*/
+
+.form-group select{
+    display:none;
+}
+
+.custom-select{
+    position:relative;
+    width:100%;
+}
+
+.select-selected{
+
+    background:#1A1A1A;
+    color:#fff;
+    padding:18px 20px;
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,.12);
+    cursor:pointer;
+    transition:.3s;
+    user-select:none;
+    position:relative;
+
+}
+
+.select-selected:hover{
+
+    border-color:#D71F28;
+
+}
+
+.select-selected::after{
+
+    content:"";
+    position:absolute;
+    right:20px;
+    top:50%;
+    width:10px;
+    height:10px;
+
+    border-right:2px solid #D71F28;
+    border-bottom:2px solid #D71F28;
+
+    transform:translateY(-70%) rotate(45deg);
+    transition:.3s;
+
+}
+
+.custom-select.active .select-selected::after{
+
+    transform:translateY(-20%) rotate(-135deg);
+
+}
+
+.select-items{
+
+    position:absolute;
+    top:calc(100% + 8px);
+    left:0;
+    right:0;
+
+    background:#111;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:14px;
+
+    overflow:hidden;
+
+    max-height:0;
+
+    transition:max-height .35s ease;
+
+    z-index:999;
+
+}
+
+.custom-select.active .select-items{
+
+    max-height:320px;
+    overflow-y:auto;
+
+}
+
+.select-items div{
+
+    padding:16px 20px;
+    color:#fff;
+    cursor:pointer;
+    transition:.25s;
+
+}
+
+.select-items div:hover{
+
+    background:#D71F28;
+
+}
+
+.select-items::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+.select-items::-webkit-scrollbar-thumb{
+
+    background:#D71F28;
+    border-radius:10px;
+
+}
