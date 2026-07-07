@@ -33,7 +33,7 @@ form.addEventListener("submit", async function(e){
         youtube:form.youtube.value,
         website:form.website.value,
 
-        video:"Video Uploaded"
+        videoLink: form.videoLink.value
 
     };
 
