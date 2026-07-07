@@ -433,18 +433,20 @@ PERFORMER FORM
 
       <div class="form-group">
 
-            <label>
+            <label for="videoLink">
+            Audition Video Link *
+        </label>
 
-                Audition Video *
+        <input
+            type="url"
+            id="videoLink"
+            name="videoLink"
+            placeholder="Paste your Google Drive, YouTube or Dropbox video link"
+            required>
 
-            </label>
-
-            <input
-             type="file"
-             id="video"
-             name="video"
-             accept="video/*"
-             required>
+        <small class="form-note">
+            Upload your audition video to Google Drive, YouTube (Unlisted), Dropbox, or any cloud storage and paste the shareable link here.
+        </small>
 
         </div>
 
