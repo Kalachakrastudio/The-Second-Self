@@ -48,9 +48,11 @@ form.addEventListener("submit", function(e){
 
     .then(data=>{
 
-        alert("Partnership Application Submitted Successfully!");
+       document
+.getElementById("successPopup")
+.classList.add("show");
 
-        form.reset();
+form.reset();
 
     })
 
@@ -61,5 +63,27 @@ form.addEventListener("submit", function(e){
         console.log(error);
 
     });
+
+});
+
+const popup =
+document.getElementById("successPopup");
+
+const closePopup =
+document.getElementById("closePopup");
+
+closePopup.addEventListener("click",()=>{
+
+    popup.classList.remove("show");
+
+});
+
+popup.addEventListener("click",(e)=>{
+
+    if(e.target===popup){
+
+        popup.classList.remove("show");
+
+    }
 
 });
