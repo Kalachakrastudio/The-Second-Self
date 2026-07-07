@@ -645,36 +645,30 @@ SCRIPTS
  <script defer src="../js/custom-select.js"></script>
  <script defer src="../js/partner.js"></script>
 </body>
+<!-- Loading Popup -->
 <div id="loadingPopup" class="popup-overlay">
+
     <div class="success-popup">
+
         <div class="loader-ring"></div>
+
         <h2>Submitting...</h2>
-        <p>Please wait while we submit your application.</p>
-    </div>
-</div>
-
-<div id="successPopup" class="popup-overlay">
-    <div class="success-popup">
-        <div class="success-icon">
-            <i class="fa-solid fa-check"></i>
-        </div>
-
-        <h2>Thank You!</h2>
 
         <p>
-            Your performer application has been received successfully.
-            <br><br>
-            Our team will review it and contact you soon.
+            Please wait while we submit your application.
         </p>
 
-        <button id="closePopup" class="btn-primary">
-            Continue
-        </button>
     </div>
+
 </div>
 
-<div id="errorPopup" class="popup-overlay">
+<!--=========================================
+Error POPUP
+==========================================-->
+ <div id="errorPopup" class="popup-overlay">
+
     <div class="success-popup">
+
         <div class="success-icon error-icon">
             <i class="fa-solid fa-xmark"></i>
         </div>
@@ -682,14 +676,55 @@ SCRIPTS
         <h2>Submission Failed</h2>
 
         <p>
+
             Something went wrong while submitting your application.
+
             <br><br>
-            Please check your internet connection and try again.
+
+            Please try again in a few moments.
+
         </p>
 
         <button id="closeErrorPopup" class="btn-primary">
+
             Try Again
+
         </button>
+
     </div>
+
+</div>
+<!--=========================================
+SUCCESS POPUP
+==========================================-->
+
+<div id="successPopup" class="popup-overlay">
+
+    <div class="success-popup">
+
+        <div class="success-icon">
+            <i class="fa-solid fa-check"></i>
+        </div>
+
+        <h2>Thank You!</h2>
+
+        <p>
+
+            Your application has been received successfully.
+
+            <br><br>
+
+            Our team will review your submission and contact you soon.
+
+        </p>
+
+        <button id="closePopup" class="btn-primary">
+
+            Continue
+
+        </button>
+
+    </div>
+
 </div>
 </html>
