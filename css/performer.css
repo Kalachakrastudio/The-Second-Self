@@ -62,6 +62,8 @@ FORM
     padding:50px;
     box-shadow:0 20px 60px rgba(0,0,0,.35);
 
+    animation:fadeUp .7s ease;
+
 }
 
 
@@ -281,49 +283,64 @@ MOBILE
 
 @media(max-width:768px){
 
-#performerForm{
+    #performerForm{
 
-    padding:30px 22px;
+        padding:30px 22px;
+
+    }
+
+    .form-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .full-width{
+
+        grid-column:auto;
+
+    }
+
+    .form-section h2{
+
+        font-size:22px;
+
+    }
+
+    .performer-form-section{
+
+        padding:90px 0 70px;
+
+    }
+
+    .submit-area .btn-primary{
+
+        width:100%;
+
+    }
+
+    /* Mobile Hero */
+
+    .performer-hero{
+
+        padding:150px 0 70px;
+
+    }
+
+    .performer-hero h1{
+
+        font-size:42px;
+
+    }
+
+    .performer-hero p{
+
+        font-size:15px;
+
+    }
 
 }
 
-.form-grid{
-
-    grid-template-columns:1fr;
-
-}
-
-.full-width{
-
-    grid-column:auto;
-
-}
-
-.form-section h2{
-
-    font-size:22px;
-
-}
-
-.performer-form-section{
-
-    padding:90px 0 70px;
-
-}
-
-.submit-area .btn-primary{
-
-    width:100%;
-
-}
-
-}
-
-#performerForm{
-
-    animation:fadeUp .7s ease;
-
-}
 
 @keyframes fadeUp{
 
@@ -349,24 +366,3 @@ MOBILE
 
 }
 
-
-/*=========================================================
-MOBILE Hero
-=========================================================*/
-.performer-hero{
-
-    padding:150px 0 70px;
-
-}
-
-.performer-hero h1{
-
-    font-size:42px;
-
-}
-
-.performer-hero p{
-
-    font-size:15px;
-
-}
