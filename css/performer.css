@@ -713,3 +713,69 @@ transform .35s cubic-bezier(.22,.61,.36,1);
     background:#D71F28;
 
 }
+
+
+/*=========================================================
+BACK BUTTON
+=========================================================*/
+
+.back-button{
+
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    margin-bottom:35px;
+
+    color:#D71F28;
+    text-decoration:none;
+
+    font-size:17px;
+    font-weight:600;
+
+    transition:all .3s ease;
+
+}
+
+.back-button i{
+
+    font-size:18px;
+
+    transition:transform .3s ease;
+
+}
+
+.back-button:hover{
+
+    color:#ff4d4d;
+
+}
+
+.back-button:hover i{
+
+    transform:translateX(-6px);
+
+}
+
+.back-button:focus{
+
+    outline:none;
+
+}
+
+@media(max-width:768px){
+
+    .back-button{
+
+        font-size:15px;
+        margin-bottom:28px;
+
+    }
+
+    .back-button i{
+
+        font-size:16px;
+
+    }
+
+}
