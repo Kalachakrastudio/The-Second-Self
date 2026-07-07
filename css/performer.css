@@ -418,6 +418,19 @@ CUSTOM DROPDOWN
     position:relative;
     width:100%;
 }
+.custom-select select{
+
+    position:absolute;
+    inset:0;
+    opacity:0;
+    width:0;
+    height:0;
+    border:none;
+    padding:0;
+    margin:0;
+    pointer-events:none;
+
+}
 
 .select-selected{
 
@@ -517,3 +530,5 @@ CUSTOM DROPDOWN
     border-radius:10px;
 
 }
+
+
