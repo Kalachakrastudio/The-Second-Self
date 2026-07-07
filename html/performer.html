@@ -64,11 +64,11 @@ height="70">
 
 <ul>
 
-<li><a href="#home" class="active">Home</a></li>
- <li><a href="#features">Events</a></li>
-<li><a href="#about">About</a></li>
-<li><a href="#gallery">Gallery</a></li>
- <li><a href="#">Team</a></li>
+<li><a href="index.html">Home</a></li>
+<li><a href="index.html#features">Events</a></li>
+<li><a href="index.html#about">About</a></li>
+<li><a href="index.html#gallery">Gallery</a></li>
+<li><a href="#">Team</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
 
@@ -181,10 +181,13 @@ PERFORMER FORM
             <label for="mobile">Mobile Number *</label>
 
             <input
-                type="tel"
-                id="mobile"
-                name="mobile"
-                required>
+               type="tel"
+               id="mobile"
+               name="mobile"
+               pattern="[0-9]{10}"
+               maxlength="10"
+               placeholder="9876543210"
+               required>
 
         </div>
 
@@ -321,12 +324,14 @@ PERFORMER FORM
 
             <label for="duration">Duration *</label>
 
-            <input
-                type="text"
-                id="duration"
-                name="duration"
-                placeholder="5 Minutes"
-                required>
+           <input
+             type="number"
+             id="duration"
+             name="duration"
+             min="1"
+             max="10"
+             placeholder="5"
+             required>
 
         </div>
 
@@ -426,23 +431,7 @@ PERFORMER FORM
 
     <div class="form-grid">
 
-        <div class="form-group">
-
-            <label>
-
-                Profile Photo *
-
-            </label>
-
-            <input
-                type="file"
-                id="photo"
-                accept="image/*"
-                required>
-
-        </div>
-
-        <div class="form-group">
+      <div class="form-group">
 
             <label>
 
@@ -451,10 +440,11 @@ PERFORMER FORM
             </label>
 
             <input
-                type="file"
-                id="video"
-                accept="video/*"
-                required>
+             type="file"
+             id="video"
+             name="video"
+             accept="video/*"
+             required>
 
         </div>
 
@@ -547,15 +537,15 @@ FOOTER
 
             <ul>
 
-                <li><a href="#home">Home</a></li>
+                <li><a href="index.html#home">Home</a></li>
 
-                <li><a href="#about">About</a></li>
+                <li><a href="index.html#about">About</a></li>
 
-                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="index.html#gallery">Gallery</a></li>
 
                 <li><a href="#">Sponsors</a></li>
 
-                <li><a href="#">Contestants</a></li>
+                <li><a href="html/performer.html">Contestants</a></li>
 
                 <li><a href="#">Tickets</a></li>
 
