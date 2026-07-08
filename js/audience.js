@@ -74,7 +74,7 @@ function saveBooking(paymentID){
 
     const data={
 
-        sheet:"Audience",
+        sheet:"Bookings",
 
         paymentId:paymentID,
 
@@ -176,4 +176,24 @@ function getTotalAmount(){
     return ticketPrice*quantity;
 
 }
+function updateSummary(){
 
+    const ticketPrice =
+    Number(document.getElementById("ticketType").value);
+
+    const quantity =
+    Number(document.getElementById("quantity").value);
+
+    const total =
+    ticketPrice * quantity;
+
+    document.getElementById("price").innerText =
+    "₹" + ticketPrice;
+
+    document.getElementById("tickets").innerText =
+    quantity;
+
+    document.getElementById("totalAmount").innerText =
+    "₹" + total;
+
+}
