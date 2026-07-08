@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+ <meta name="theme-color" content="#D71F28">
+
+<title>Become a Performer | The Second Self</title>
+  <meta name="description" content="Apply to perform at The Second Self. Share your story, reveal your passion, and take the stage in a live performance celebrating authentic creativity.">
+ <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="../css/style.css">
+  
+  <link rel="stylesheet" href="../css/performer.css">
+  
+ <link rel="icon" type="image/png" href="../Image/favicon.png">
+
+</head>
+
+<body>
+<div class="cursor-glow"></div>
+<!--==============================
+LOADER
+===============================-->
+
+<div id="loader">
+
+<div class="loader-ring"></div>
+
+</div>
+
+<!--==============================
+HEADER
+===============================-->
+
+<header>
+
+<div class="container">
+
+<div class="logo">
+
+<a href="../index.html">
+    <img
+src="../Image/The Second Self Logo.png"
+alt="The Second Self"
+width="180"
+height="70">
+</a>
+
+</div>
+
+<nav aria-label="Primary Navigation">
+
+<ul>
+
+<li><a href="../index.html">Home</a></li>
+<li><a href="../index.html#features">Events</a></li>
+<li><a href="../index.html#about">About</a></li>
+<li><a href="../index.html#gallery">Gallery</a></li>
+<li><a href="#">Team</a></li>
+<li><a href="../index.html#contact">Contact</a></li>
+</ul>
+
+</nav>
+
+<button
+class="mobile-menu"
+aria-label="Open Menu">
+
+<i class="fa-solid fa-bars"></i>
+
+</button>
+
+</div>
+
+</header>
+
+<!--=========================================
+HERO
+==========================================-->
+
+<section class="performer-hero">
+
+    <div class="container">
+
+        <span class="section-tag">
+            AUDIENCE BOOKING
+        </span>
+
+        <h1>
+            Book Your Tickets
+        </h1>
+
+        <p>
+
+            Reserve your seat for an unforgettable evening of stories,
+            poetry, music and live performances at The Second Self.
+
+        </p>
+
+    </div>
+
+</section>
+
+<!--=========================================
+BOOKING FORM
+==========================================-->
+
+<section class="performer-form-section">
+
+<div class="container">
+
+<form id="ticketForm" class="glass-form">
+
+<!--=========================================
+PERSONAL DETAILS
+==========================================-->
+
+<div class="form-section">
+
+<h2>Personal Details</h2>
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label for="name">
+Full Name *
+</label>
+
+<input
+type="text"
+id="name"
+name="name"
+required>
+
+</div>
+
+<div class="form-group">
+
+<label for="mobile">
+Mobile Number *
+</label>
+
+<input
+type="tel"
+id="mobile"
+name="mobile"
+pattern="[0-9]{10}"
+maxlength="10"
+placeholder="9876543210"
+required>
+
+</div>
+
+<div class="form-group full-width">
+
+<label for="email">
+Email Address *
+</label>
+
+<input
+type="email"
+id="email"
+name="email"
+required>
+
+</div>
+
+</div>
+
+</div>
+
+<!--=========================================
+EVENT DETAILS
+==========================================-->
+
+<div class="form-section">
+
+<h2>Event Details</h2>
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label for="eventDate">
+Select Event *
+</label>
+
+<select
+id="eventDate"
+name="eventDate"
+required>
+
+<option value="">
+Choose Event
+</option>
+
+<option value="27 June 2026">
+27 June 2026 • Nashik
+</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label for="ticketType">
+Ticket Type *
+</label>
+
+<select
+id="ticketType"
+name="ticketType"
+required>
+
+<option value="">
+Select Ticket
+</option>
+
+<option value="200">
+Single Pass • ₹200
+</option>
+
+<option value="360">
+Couple Pass • ₹360
+</option>
+
+</select>
+
+</div>
+
+<div class="form-group">
+
+<label for="quantity">
+Quantity *
+</label>
+
+<input
+type="number"
+id="quantity"
+name="quantity"
+min="1"
+value="1"
+required>
+
+</div>
+
+</div>
+
+</div>
+
+<!--=========================================
+BOOKING SUMMARY
+==========================================-->
+
+<div class="form-section">
+
+<h2>Booking Summary</h2>
+
+<div class="form-grid">
+
+<div class="form-group">
+
+<label>
+Price Per Booking
+</label>
+
+<input
+type="text"
+id="price"
+readonly>
+
+</div>
+
+<div class="form-group">
+
+<label>
+Quantity
+</label>
+
+<input
+type="text"
+id="tickets"
+readonly>
+
+</div>
+
+<div class="form-group full-width">
+
+<label>
+Total Amount
+</label>
+
+<input
+type="text"
+id="totalAmount"
+readonly>
+
+</div>
+
+</div>
+
+</div>
+
+<!--=========================================
+SPECIAL REQUEST
+==========================================-->
+
+<div class="form-section">
+
+<h2>Special Request</h2>
+
+<div class="form-group">
+
+<label for="message">
+
+Anything you'd like us to know?
+
+</label>
+
+<textarea
+
+id="message"
+
+name="message"
+
+rows="5"
+
+placeholder="Accessibility requirements, seating preference or anything else."></textarea>
+
+</div>
+
+</div>
+
+<!--=========================================
+DECLARATION
+==========================================-->
+
+<div class="form-section">
+
+<label class="checkbox">
+
+<input
+type="checkbox"
+required>
+
+I agree to the Terms & Conditions and understand that tickets are subject to availability.
+
+</label>
+
+</div>
+
+<!--=========================================
+TOTAL
+==========================================-->
+
+<div class="submit-area">
+
+<button
+type="submit"
+class="btn-primary">
+
+Proceed to Checkout
+
+</button>
+
+</div>
+
+</form>
+
+</div>
+
+</section>
+
+<!-- =========================================
+FOOTER
+========================================= -->
+
+<footer class="footer" id="contact">
+
+    <div class="container footer-wrapper">
+
+        <!-- Brand -->
+
+        <div class="footer-column">
+
+         <div class="footer-logo">
+    <img src="../Image/The Second Self Logo.png" alt="Logo">
+</div>
+
+            <p>
+
+                  A community built for dreamers, creators and storytellers—
+    inspiring every individual to discover, express and reveal
+    their Second Self.
+
+            </p>
+
+            <div class="social-links">
+
+               <a href="https://instagram.com/..." target="_blank" rel="noopener">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <a href="https://instagram.com/..." target="_blank" rel="noopener">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                 <a href="https://instagram.com/..." target="_blank" rel="noopener">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+
+                <a href="https://instagram.com/..." target="_blank" rel="noopener">
+                    <i class="fab fa-youtube"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- Quick Links -->
+
+        <div class="footer-column">
+
+            <h3>Quick Links</h3>
+
+            <ul>
+
+                <li><a href="../index.html#home">Home</a></li>
+
+                <li><a href="../index.html#about">About</a></li>
+
+                <li><a href="../index.html#gallery">Gallery</a></li>
+
+                <li><a href="../html/partner.html">Sponsors</a></li>
+
+                <li><a href="../html/performer.html">Contestants</a></li>
+
+                <li><a href="../html/Audience.html">Tickets</a></li>
+
+            </ul>
+
+        </div>
+
+        <!-- Contact -->
+
+        <div class="footer-column">
+
+            <h3>Contact</h3>
+
+            <ul>
+
+                <li>
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    Nashik, Maharashtra
+
+                </li>
+
+                <li>
+
+                   <a href="mailto:info.thesecondself@gmail.com">
+
+                    Info.TheSecondSelf@gmail.com
+
+                   </a>
+
+                </li>
+
+                <li>
+
+                    <a href="tel:+919175712711">
+
+                       +91 91757 12711
+
+                   </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+
+        <!-- Newsletter -->
+
+        <div class="footer-column">
+
+            <h3>Stay Updated</h3>
+
+            <p>
+
+                Subscribe to receive updates about upcoming
+                events and registrations.
+
+            </p>
+
+            <form class="newsletter">
+
+<label for="newsletter-email">
+Email Address
+</label>
+
+<input
+id="newsletter-email"
+type="email"
+placeholder="Enter your email"
+autocomplete="email"
+required>
+
+<button type="submit">
+Subscribe
+</button>
+
+</form>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        <p>
+
+            © 2026 The Second Self.
+            All Rights Reserved.
+
+        </p>
+
+    </div>
+
+</footer>
+
+<!-- =========================================
+SCRIPTS
+========================================= -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script defer src="../js/script.js"></script>
+ <script defer src="../js/custom-select.js"></script>
+ <script defer src="../js/performer.js"></script>
+</body>
+<div id="loadingPopup" class="popup-overlay">
+    <div class="success-popup">
+        <div class="loader-ring"></div>
+        <h2>Submitting...</h2>
+        <p>Please wait while we submit your application.</p>
+    </div>
+</div>
+
+<div id="successPopup" class="popup-overlay">
+    <div class="success-popup">
+        <div class="success-icon">
+            <i class="fa-solid fa-check"></i>
+        </div>
+
+        <h2>Thank You!</h2>
+
+        <p>
+            Your performer application has been received successfully.
+            <br><br>
+            Our team will review it and contact you soon.
+        </p>
+
+        <button id="closePopup" class="btn-primary">
+            Continue
+        </button>
+    </div>
+</div>
+
+<div id="errorPopup" class="popup-overlay">
+    <div class="success-popup">
+        <div class="success-icon error-icon">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+
+        <h2>Submission Failed</h2>
+
+        <p>
+            Something went wrong while submitting your application.
+            <br><br>
+            Please check your internet connection and try again.
+        </p>
+
+        <button id="closeErrorPopup" class="btn-primary">
+            Try Again
+        </button>
+    </div>
+</div>
+</html>
