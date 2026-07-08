@@ -237,3 +237,9 @@ document
 .addEventListener("input", updateSummary);
 
 updateSummary();
+
+document.getElementById("ticketType").addEventListener("change", updateSummary);
+
+document.getElementById("quantity").addEventListener("input", updateSummary);
+
+updateSummary();
