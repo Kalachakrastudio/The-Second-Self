@@ -30,3 +30,34 @@ ticketType.addEventListener("change", calculateTotal);
 quantity.addEventListener("input", calculateTotal);
 
 calculateTotal();
+
+
+const form = document.getElementById("ticketForm");
+
+form.addEventListener("submit", function (e) {
+
+    e.preventDefault();
+
+    var options = {
+
+        key: "rzp_test_TB3dk6zMNTlX6l",
+
+        amount: 20000,
+
+        currency: "INR",
+
+        name: "The Second Self",
+
+        description: "Audience Ticket",
+
+        theme: {
+            color: "#D71F28"
+        }
+
+    };
+
+    var rzp = new Razorpay(options);
+
+    rzp.open();
+
+});
