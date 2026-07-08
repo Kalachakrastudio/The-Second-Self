@@ -129,7 +129,8 @@ function saveBooking(paymentID){
     successPopup.classList.add("show");
      form.reset();
 
-    updateSummary();
+    document.getElementById("quantity").value = 1;
+updateSummary();
 
 })
 
@@ -207,36 +208,6 @@ function updateSummary(){
     "₹" + total;
 
 }
-function updateSummary(){
-
-    const ticketPrice =
-    Number(document.getElementById("ticketType").value);
-
-    const quantity =
-    Number(document.getElementById("quantity").value);
-
-    const total =
-    ticketPrice * quantity;
-
-    document.getElementById("price").innerText =
-    "₹" + ticketPrice;
-
-    document.getElementById("tickets").innerText =
-    quantity;
-
-    document.getElementById("totalAmount").innerText =
-    "₹" + total;
-
-}
-document
-.getElementById("ticketType")
-.addEventListener("change", updateSummary);
-
-document
-.getElementById("quantity")
-.addEventListener("input", updateSummary);
-
-updateSummary();
 
 document.getElementById("ticketType").addEventListener("change", updateSummary);
 
