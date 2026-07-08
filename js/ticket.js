@@ -9,7 +9,7 @@ checkoutBtn.addEventListener("click", function(e){
 
     var options = {
 
-        key:"rzp_test_xxxxxxxxx",
+        key:"rzp_test_TB3dk6zMNTlX6l",
 
         amount:amount*100,
 
