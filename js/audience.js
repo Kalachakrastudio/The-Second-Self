@@ -1,36 +1,10 @@
-const ticketType = document.getElementById("ticketType");
-const quantity = document.getElementById("quantity");
+//==========================================
+// THE SECOND SELF
+// Audience Ticket Booking
+//==========================================
 
-const price = document.getElementById("price");
-const tickets = document.getElementById("tickets");
-const totalAmount = document.getElementById("totalAmount");
-
-function calculateTotal(){
-
-    const rate = Number(ticketType.value);
-    const qty = Number(quantity.value);
-
-    if(!rate){
-
-        price.textContent = "₹0";
-        tickets.textContent = "0";
-        totalAmount.textContent = "₹0";
-
-        return;
-
-    }
-
-    price.textContent = "₹" + rate;
-    tickets.textContent = qty;
-    totalAmount.textContent = "₹" + (rate * qty);
-
-}
-
-ticketType.addEventListener("change", calculateTotal);
-quantity.addEventListener("input", calculateTotal);
-
-calculateTotal();
-
+// Replace this with your Razorpay Test Key
+const RAZORPAY_KEY = "rzp_test_TB3dk6zMNTlX6l";
 
 const form = document.getElementById("ticketForm");
 
@@ -38,11 +12,13 @@ form.addEventListener("submit", function (e) {
 
     e.preventDefault();
 
-    var options = {
+    const amount = getTotalAmount();
 
-        key: "rzp_test_TB3dk6zMNTlX6l",
+    const options = {
 
-        amount: 20000,
+        key: RAZORPAY_KEY,
+
+        amount: amount * 100,
 
         currency: "INR",
 
@@ -50,14 +26,49 @@ form.addEventListener("submit", function (e) {
 
         description: "Audience Ticket",
 
+        image: "../Image/favicon.png",
+
         theme: {
             color: "#D71F28"
+        },
+
+        prefill: {
+
+            name: form.name.value,
+
+            email: form.email.value,
+
+            contact: form.mobile.value
+
+        },
+
+        handler: function (response) {
+
+            alert("Payment Successful!");
+
+            console.log(response);
+
         }
 
     };
 
-    var rzp = new Razorpay(options);
+    const rzp = new Razorpay(options);
 
     rzp.open();
 
 });
+
+
+//==============================
+// Calculate Total Amount
+//==============================
+
+function getTotalAmount() {
+
+    const ticketPrice = Number(document.getElementById("ticketType").value);
+
+    const quantity = Number(document.getElementById("quantity").value);
+
+    return ticketPrice * quantity;
+
+}
