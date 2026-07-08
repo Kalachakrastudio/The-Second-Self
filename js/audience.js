@@ -22,7 +22,7 @@ form.addEventListener("submit", function(e){
 
     const options = {
 
-        key:"YOUR_RAZORPAY_KEY",
+        key:"rzp_test_TB3dk6zMNTlX6l",
 
         amount:total*100,
 
