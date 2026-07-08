@@ -63,7 +63,12 @@ form.addEventListener("submit",function(e){
 
     const rzp =
     new Razorpay(options);
+rzp.on("payment.failed", function(){
 
+    errorPopup.classList.add("show");
+
+});
+    
     rzp.open();
 
 });
@@ -101,27 +106,32 @@ function saveBooking(paymentID){
 
     };
 
-    fetch(scriptURL,{
+  fetch(scriptURL,{
 
-        method:"POST",
+    method:"POST",
 
-        body:JSON.stringify(data)
+    headers:{
+        "Content-Type":"application/json"
+    },
 
-    })
+    body:JSON.stringify(data)
+
+})
 
     .then(res=>res.json())
 
-    .then(data=>{
+.then(data=>{
 
-        loadingPopup.classList.remove("show");
+    console.log(data);
 
-        successPopup.classList.add("show");
+    loadingPopup.classList.remove("show");
 
-        form.reset();
+    successPopup.classList.add("show");
+     form.reset();
 
-        updateSummary();
+    updateSummary();
 
-    })
+})
 
     .catch(error=>{
 
@@ -197,3 +207,33 @@ function updateSummary(){
     "₹" + total;
 
 }
+function updateSummary(){
+
+    const ticketPrice =
+    Number(document.getElementById("ticketType").value);
+
+    const quantity =
+    Number(document.getElementById("quantity").value);
+
+    const total =
+    ticketPrice * quantity;
+
+    document.getElementById("price").innerText =
+    "₹" + ticketPrice;
+
+    document.getElementById("tickets").innerText =
+    quantity;
+
+    document.getElementById("totalAmount").innerText =
+    "₹" + total;
+
+}
+document
+.getElementById("ticketType")
+.addEventListener("change", updateSummary);
+
+document
+.getElementById("quantity")
+.addEventListener("input", updateSummary);
+
+updateSummary();
