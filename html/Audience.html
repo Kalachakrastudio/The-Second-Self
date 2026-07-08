@@ -268,53 +268,61 @@ BOOKING SUMMARY
 
 <div class="form-section">
 
-<h2>Booking Summary</h2>
+    <h2>Booking Summary</h2>
 
-<div class="form-grid">
+    <div class="booking-summary">
 
-<div class="form-group">
+        <div class="summary-item">
 
-<label>
-Price Per Booking
-</label>
+            <span class="summary-label">
+                Price Per Ticket
+            </span>
 
-<input
-type="text"
-id="price"
-readonly>
+            <span
+                class="summary-value"
+                id="price">
+
+                ₹0
+
+            </span>
+
+        </div>
+
+        <div class="summary-item">
+
+            <span class="summary-label">
+                Tickets
+            </span>
+
+            <span
+                class="summary-value"
+                id="tickets">
+
+                0
+
+            </span>
+
+        </div>
+
+        <div class="summary-item total">
+
+            <span class="summary-label">
+                Total Amount
+            </span>
+
+            <span
+                class="summary-value"
+                id="totalAmount">
+
+                ₹0
+
+            </span>
+
+        </div>
+
+    </div>
 
 </div>
-
-<div class="form-group">
-
-<label>
-Quantity
-</label>
-
-<input
-type="text"
-id="tickets"
-readonly>
-
-</div>
-
-<div class="form-group full-width">
-
-<label>
-Total Amount
-</label>
-
-<input
-type="text"
-id="totalAmount"
-readonly>
-
-</div>
-
-</div>
-
-</div>
-
 <!--=========================================
 SPECIAL REQUEST
 ==========================================-->
