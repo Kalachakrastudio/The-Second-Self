@@ -1,0 +1,89 @@
+/*=========================================
+BOOKING SUMMARY
+=========================================*/
+
+.booking-summary{
+
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:18px;
+    overflow:hidden;
+
+    background:#141414;
+
+}
+
+.summary-item{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:22px 24px;
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+
+}
+
+.summary-item:last-child{
+
+    border-bottom:none;
+
+}
+
+.summary-label{
+
+    color:#bdbdbd;
+    font-size:16px;
+
+}
+
+.summary-value{
+
+    color:#ffffff;
+    font-size:20px;
+    font-weight:600;
+
+}
+
+.summary-item.total{
+
+    background:rgba(215,31,40,.08);
+
+}
+
+.summary-item.total .summary-label{
+
+    color:#ffffff;
+    font-weight:600;
+
+}
+
+.summary-item.total .summary-value{
+
+    color:#D71F28;
+    font-size:28px;
+    font-weight:700;
+
+}
+
+@media(max-width:768px){
+
+.summary-item{
+
+    padding:18px;
+
+}
+
+.summary-value{
+
+    font-size:18px;
+
+}
+
+.summary-item.total .summary-value{
+
+    font-size:24px;
+
+}
+
+}
