@@ -1,9 +1,6 @@
 const scriptURL =
 "https://script.google.com/macros/s/AKfycbyYfAywSQ0GMFdw4V7v61eit6P4-oHTfXRnHT5CG16-decsPhm80Pt-H7opgMnvn44-/exec";
 
-const RAZORPAY_KEY =
-"rzp_test_TB3dk6zMNTlX6l";
-
 const form =
 document.getElementById("ticketForm");
 
@@ -16,26 +13,24 @@ document.getElementById("successPopup");
 const errorPopup =
 document.getElementById("errorPopup");
 
-form.addEventListener("submit",function(e){
+form.addEventListener("submit", function(e){
 
     e.preventDefault();
 
-    const amount =
+    const total =
     getTotalAmount();
 
-    const options={
+    const options = {
 
-        key:RAZORPAY_KEY,
+        key:"YOUR_RAZORPAY_KEY",
 
-        amount:amount*100,
+        amount:total*100,
 
         currency:"INR",
 
         name:"The Second Self",
 
         description:"Audience Ticket",
-
-        image:"../Image/favicon.png",
 
         theme:{
             color:"#D71F28"
@@ -63,23 +58,17 @@ form.addEventListener("submit",function(e){
 
     const rzp =
     new Razorpay(options);
-rzp.on("payment.failed", function(){
 
-    errorPopup.classList.add("show");
-
-});
-    
     rzp.open();
 
 });
-
 function saveBooking(paymentID){
 
     loadingPopup.classList.add("show");
 
-    const data={
+    const data = {
 
-        sheet:"Bookings",
+        sheet:"Audience",
 
         paymentId:paymentID,
 
@@ -106,33 +95,25 @@ function saveBooking(paymentID){
 
     };
 
-  fetch(scriptURL,{
+    fetch(scriptURL,{
 
-    method:"POST",
+        method:"POST",
 
-    headers:{
-        "Content-Type":"application/json"
-    },
+        body:JSON.stringify(data)
 
-    body:JSON.stringify(data)
-
-})
+    })
 
     .then(res=>res.json())
 
-.then(data=>{
+    .then(data=>{
 
-    console.log(data);
+        loadingPopup.classList.remove("show");
 
-    loadingPopup.classList.remove("show");
+        successPopup.classList.add("show");
 
-    successPopup.classList.add("show");
-     form.reset();
+        form.reset();
 
-    document.getElementById("quantity").value = 1;
-updateSummary();
-
-})
+    })
 
     .catch(error=>{
 
@@ -152,6 +133,7 @@ document
     successPopup.classList.remove("show");
 
 });
+
 
 document
 .getElementById("closeErrorPopup")
@@ -176,41 +158,119 @@ window.addEventListener("click",function(e){
     }
 
 });
-function getTotalAmount(){
 
-    const ticketPrice =
-    Number(document.getElementById("ticketType").value);
+//==========================================
+// THE SECOND SELF
+// Audience Ticket Booking
+//==========================================
 
-    const quantity =
-    Number(document.getElementById("quantity").value);
+// Replace this with your Razorpay Test Key
+const RAZORPAY_KEY = "rzp_test_TB3dk6zMNTlX6l";
 
-    return ticketPrice*quantity;
+const form = document.getElementById("ticketForm");
+
+form.addEventListener("submit", function (e) {
+
+    e.preventDefault();
+
+    const amount = getTotalAmount();
+
+    const options = {
+
+        key: RAZORPAY_KEY,
+
+        amount: amount * 100,
+
+        currency: "INR",
+
+        name: "The Second Self",
+
+        description: "Audience Ticket",
+
+        image: "../Image/favicon.png",
+
+        theme: {
+            color: "#D71F28"
+        },
+
+        prefill: {
+
+            name: form.name.value,
+
+            email: form.email.value,
+
+            contact: form.mobile.value
+
+        },
+
+        handler: function (response) {
+
+            alert("Payment Successful!");
+
+            console.log(response);
+
+        }
+
+    };
+
+    const rzp = new Razorpay(options);
+
+    rzp.open();
+
+});
+
+
+//==============================
+// Calculate Total Amount
+//==============================
+
+function getTotalAmount() {
+
+    const ticketPrice = Number(document.getElementById("ticketType").value);
+
+    const quantity = Number(document.getElementById("quantity").value);
+
+    return ticketPrice * quantity;
 
 }
-function updateSummary(){
 
-    const ticketPrice =
-    Number(document.getElementById("ticketType").value);
+App script
+function doPost(e) {
 
-    const quantity =
-    Number(document.getElementById("quantity").value);
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
 
-    const total =
-    ticketPrice * quantity;
+  const data = JSON.parse(e.postData.contents);
 
-    document.getElementById("price").innerText =
-    "₹" + ticketPrice;
+  const sheet = ss.getSheetByName(data.sheet);
 
-    document.getElementById("tickets").innerText =
-    quantity;
+  if (!sheet) {
 
-    document.getElementById("totalAmount").innerText =
-    "₹" + total;
+    return ContentService
+      .createTextOutput(JSON.stringify({
+        result: "Sheet not found"
+      }))
+      .setMimeType(ContentService.MimeType.JSON);
+
+  }
+
+  delete data.sheet;
+
+  const values = [];
+
+  for (const key in data) {
+
+    values.push(data[key]);
+
+  }
+
+  values.push(new Date());
+
+  sheet.appendRow(values);
+
+  return ContentService
+    .createTextOutput(JSON.stringify({
+      result: "success"
+    }))
+    .setMimeType(ContentService.MimeType.JSON);
 
 }
-
-document.getElementById("ticketType").addEventListener("change", updateSummary);
-
-document.getElementById("quantity").addEventListener("input", updateSummary);
-
-updateSummary();
