@@ -3,7 +3,7 @@
 // Audience Ticket Booking
 //==========================================
 const scriptURL =
-"https://script.google.com/macros/s/AKfycbyYfAywSQ0GMFdw4V7v61eit6P4-oHTfXRnHT5CG16-decsPhm80Pt-H7opgMnvn44-/exec";
+"https://script.google.com/macros/s/AKfycbxO6YW1ZUZvX0Y2JnASsvIzZGIEyY2Vj3h1q-YLxn8h-iWzPze29Tw8NtWRJ_HJTKy6/exec";
 
 // Replace this with your Razorpay Test Key
 const RAZORPAY_KEY = "rzp_test_TB3dk6zMNTlX6l";
