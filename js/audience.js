@@ -2,6 +2,8 @@
 // THE SECOND SELF
 // Audience Ticket Booking
 //==========================================
+const scriptURL =
+"https://script.google.com/macros/s/AKfycbyYfAywSQ0GMFdw4V7v61eit6P4-oHTfXRnHT5CG16-decsPhm80Pt-H7opgMnvn44-/exec";
 
 // Replace this with your Razorpay Test Key
 const RAZORPAY_KEY = "rzp_test_TB3dk6zMNTlX6l";
@@ -42,11 +44,9 @@ form.addEventListener("submit", function (e) {
 
         },
 
-     handler:function(response){
+handler:function(response){
 
-    alert("Payment Success");
-
-    console.log(response);
+    saveBooking(response.razorpay_payment_id);
 
 }
 
@@ -128,3 +128,58 @@ window.onload = function () {
         .addEventListener("input", updateSummary);
 
 };
+function saveBooking(paymentId){
+
+    const bookingData = {
+
+        sheet: "Bookings",
+
+        paymentId: paymentId,
+
+        name: form.name.value,
+
+        mobile: form.mobile.value,
+
+        email: form.email.value,
+
+        event: form.eventDate.value,
+
+        ticketType: document.getElementById("ticketType").selectedOptions[0].text,
+
+        quantity: document.getElementById("quantity").value,
+
+        amount: getTotalAmount(),
+
+        message: form.message.value
+
+    };
+
+    fetch(scriptURL, {
+
+        method: "POST",
+
+        body: JSON.stringify(bookingData)
+
+    })
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        console.log(data);
+
+        alert("Booking Saved Successfully");
+
+        console.log("Ticket ID:", data.ticketId);
+
+    })
+
+    .catch(error => {
+
+        console.error(error);
+
+        alert("Error Saving Booking");
+
+    });
+
+}
