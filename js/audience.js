@@ -3,9 +3,6 @@
 // Audience Ticket Booking
 //==========================================
 
-const scriptURL =
-"https://script.google.com/macros/s/AKfycbxO6YW1ZUZvX0Y2JnASsvIzZGIEyY2Vj3h1q-YLxn8h-iWzPze29Tw8NtWRJ_HJTKy6/exec";
-
 // Replace this with your Razorpay Test Key
 const RAZORPAY_KEY = "rzp_test_TB3dk6zMNTlX6l";
 
@@ -45,14 +42,14 @@ form.addEventListener("submit", function (e) {
 
         },
 
-handler:function(response){
+     handler:function(response){
 
-    console.log("Payment Success");
+    alert("Payment Success");
+
     console.log(response);
 
-    saveBooking(response.razorpay_payment_id);
-
 }
+
     };
 
     const rzp = new Razorpay(options);
@@ -93,19 +90,14 @@ function updateSummary() {
     const totalLabel =
     document.getElementById("totalAmount");
 
-  const ticketPrice =
-Number(ticketType.value || 0);
+    const ticketPrice =
+    Number(ticketType.value || 0);
 
-const quantity =
-Number(quantityInput.value || 1);
+    const quantity =
+    Number(quantityInput.value || 1);
 
-console.log(ticketType.value);
-console.log(quantityInput.value);
-
-const total =
-ticketPrice * quantity;
-
-console.log(total);
+    const total =
+    ticketPrice * quantity;
 
     priceLabel.textContent =
     "₹" + ticketPrice;
@@ -126,64 +118,3 @@ document.addEventListener("DOMContentLoaded", function () {
     updateSummary();
 
 });
-
-function saveBooking(paymentId){
-
-    const bookingData = {
-
-        sheet: "Bookings",
-
-        paymentId: paymentId,
-
-        name: form.name.value,
-
-        mobile: form.mobile.value,
-
-        email: form.email.value,
-
-        event: form.eventDate.value,
-
-        ticketType: document.getElementById("ticketType").selectedOptions[0].text,
-
-        quantity: document.getElementById("quantity").value,
-
-        amount: getTotalAmount(),
-
-        message: form.message.value
-
-    };
-console.log(bookingData);
-    fetch(scriptURL,{
-
-        method:"POST",
-
-        headers:{
-            "Content-Type":"application/json"
-        },
-
-        body:JSON.stringify(bookingData)
-
-    })
-
-.then(res=>{
-
-    console.log(res);
-
-    return res.text();
-
-})
-.then(data=>{
-
-    console.log(data);
-
-})
-
-    .catch(error=>{
-
-        console.log(error);
-
-        alert("Error Saving Booking");
-
-    });
-
-}
