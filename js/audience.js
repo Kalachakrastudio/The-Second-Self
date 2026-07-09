@@ -160,3 +160,26 @@ function doPost(e) {
     .setMimeType(ContentService.MimeType.JSON);
 
 }
+const data = {
+
+    sheet: "Bookings",
+
+    paymentId: paymentID,
+
+    name: form.name.value,
+
+    mobile: form.mobile.value,
+
+    email: form.email.value,
+
+    event: form.eventDate.value,
+
+    ticketType: document.getElementById("ticketType").selectedOptions[0].text,
+
+    quantity: document.getElementById("quantity").value,
+
+    amount: getTotalAmount(),
+
+    message: form.message.value
+
+};
