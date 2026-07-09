@@ -4,7 +4,7 @@
 //==========================================
 
 const scriptURL =
-"https://script.google.com/macros/s/AKfycbyYfAywSQ0GMFdw4V7v61eit6P4-oHTfXRnHT5CG16-decsPhm80Pt-H7opgMnvn44-/exec";
+"https://script.google.com/macros/s/AKfycbxO6YW1ZUZvX0Y2JnASsvIzZGIEyY2Vj3h1q-YLxn8h-iWzPze29Tw8NtWRJ_HJTKy6/exec";
 
 // Replace this with your Razorpay Test Key
 const RAZORPAY_KEY = "rzp_test_TB3dk6zMNTlX6l";
@@ -47,10 +47,12 @@ form.addEventListener("submit", function (e) {
 
 handler:function(response){
 
+    console.log("Payment Success");
+    console.log(response);
+
     saveBooking(response.razorpay_payment_id);
 
 }
-
     };
 
     const rzp = new Razorpay(options);
@@ -150,7 +152,7 @@ function saveBooking(paymentId){
         message: form.message.value
 
     };
-
+console.log(bookingData);
     fetch(scriptURL,{
 
         method:"POST",
@@ -163,15 +165,18 @@ function saveBooking(paymentId){
 
     })
 
-    .then(res=>res.json())
+.then(res=>{
 
-    .then(data=>{
+    console.log(res);
 
-        console.log(data);
+    return res.text();
 
-        alert("Booking Saved Successfully");
+})
+.then(data=>{
 
-    })
+    console.log(data);
+
+})
 
     .catch(error=>{
 
