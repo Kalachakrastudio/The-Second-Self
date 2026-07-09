@@ -90,15 +90,20 @@ function updateSummary() {
     const totalLabel =
     document.getElementById("totalAmount");
 
-    const ticketPrice =
-    Number(ticketType.value || 0);
+  const ticketPrice =
+Number(ticketType.value || 0);
 
-    const quantity =
-    Number(quantityInput.value || 1);
+const quantity =
+Number(quantityInput.value || 1);
 
-    const total =
-    ticketPrice * quantity;
+console.log(ticketType.value);
+console.log(quantityInput.value);
 
+const total =
+ticketPrice * quantity;
+
+console.log(total);
+    
     priceLabel.textContent =
     "₹" + ticketPrice;
 
