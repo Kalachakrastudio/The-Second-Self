@@ -73,24 +73,44 @@ function getTotalAmount() {
 
 }
 
-function updateSummary(){
+function updateSummary() {
 
-    const ticketPrice =
-    Number(document.getElementById("ticketType").value) || 0;
+    const ticketType =
+    document.getElementById("ticketType");
 
-    const quantity =
-    Number(document.getElementById("quantity").value) || 1;
+    const quantityInput =
+    document.getElementById("quantity");
 
-    const total =
-    ticketPrice * quantity;
+    const priceLabel =
+    document.getElementById("price");
 
-    document.getElementById("price").textContent =
+    const ticketLabel =
+    document.getElementById("tickets");
+
+    const totalLabel =
+    document.getElementById("totalAmount");
+
+  const ticketPrice =
+Number(ticketType.value || 0);
+
+const quantity =
+Number(quantityInput.value || 1);
+
+console.log(ticketType.value);
+console.log(quantityInput.value);
+
+const total =
+ticketPrice * quantity;
+
+console.log(total);
+
+    priceLabel.textContent =
     "₹" + ticketPrice;
 
-    document.getElementById("tickets").textContent =
+    ticketLabel.textContent =
     quantity;
 
-    document.getElementById("totalAmount").textContent =
+    totalLabel.textContent =
     "₹" + total;
 
 }
@@ -98,7 +118,9 @@ function updateSummary(){
 document.getElementById("ticketType").addEventListener("change",updateSummary);
 
 document.getElementById("quantity").addEventListener("input",updateSummary);
+document.addEventListener("DOMContentLoaded", function () {
 
-window.addEventListener("load",updateSummary);
+    updateSummary();
 
+});
 
