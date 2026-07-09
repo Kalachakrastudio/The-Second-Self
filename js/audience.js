@@ -42,12 +42,11 @@ form.addEventListener("submit", function (e) {
 
         },
 
-        handler: function (response) {
+        handler: function(response){
 
-            alert("Payment Successful!");
+    saveBooking(response.razorpay_payment_id);
 
-            console.log(response);
-
+}
         }
 
     };
@@ -101,85 +100,4 @@ document.getElementById("quantity").addEventListener("input",updateSummary);
 
 window.addEventListener("load",updateSummary);
 
-function doPost(e) {
 
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
-
-  const data = JSON.parse(e.postData.contents);
-
-  const sheet = ss.getSheetByName(data.sheet);
-
-  if (!sheet) {
-
-    return ContentService
-      .createTextOutput(JSON.stringify({
-        result: "Sheet not found"
-      }))
-      .setMimeType(ContentService.MimeType.JSON);
-
-  }
-
-  // Generate Ticket ID only for Bookings sheet
-  let ticketId = "";
-
-  if (data.sheet === "Bookings") {
-
-    ticketId = "TSS" + String(sheet.getLastRow()).padStart(6, "0");
-
-  }
-
-  delete data.sheet;
-
-  const values = [];
-
-  // Add Ticket ID as first column only for bookings
-  if (ticketId !== "") {
-
-    values.push(ticketId);
-
-  }
-
-  for (const key in data) {
-
-    values.push(data[key]);
-
-  }
-
-  values.push(new Date());
-
-  sheet.appendRow(values);
-
-  return ContentService
-    .createTextOutput(JSON.stringify({
-
-      result: "success",
-
-      ticketId: ticketId
-
-    }))
-    .setMimeType(ContentService.MimeType.JSON);
-
-}
-const data = {
-
-    sheet: "Bookings",
-
-    paymentId: paymentID,
-
-    name: form.name.value,
-
-    mobile: form.mobile.value,
-
-    email: form.email.value,
-
-    event: form.eventDate.value,
-
-    ticketType: document.getElementById("ticketType").selectedOptions[0].text,
-
-    quantity: document.getElementById("quantity").value,
-
-    amount: getTotalAmount(),
-
-    message: form.message.value
-
-};
