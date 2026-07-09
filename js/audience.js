@@ -115,11 +115,16 @@ console.log(total);
 
 }
 
-document.getElementById("ticketType").addEventListener("change",updateSummary);
-
-document.getElementById("quantity").addEventListener("input",updateSummary);
-document.addEventListener("DOMContentLoaded", function () {
+window.onload = function () {
 
     updateSummary();
 
-});
+    document
+        .getElementById("ticketType")
+        .addEventListener("change", updateSummary);
+
+    document
+        .getElementById("quantity")
+        .addEventListener("input", updateSummary);
+
+};
