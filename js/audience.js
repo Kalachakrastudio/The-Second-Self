@@ -42,12 +42,13 @@ form.addEventListener("submit", function (e) {
 
         },
 
-        handler: function(response){
+     handler:function(response){
 
-    saveBooking(response.razorpay_payment_id);
+    alert("Payment Success");
+
+    console.log(response);
 
 }
-        }
 
     };
 
