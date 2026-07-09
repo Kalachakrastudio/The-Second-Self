@@ -178,11 +178,11 @@ console.log(bookingData);
 
 })
 
-.catch(error=>{
+.catch(error => {
 
-    console.error("Fetch Error:", error);
+    console.error(error);
 
-    alert(error);
+    alert(error.message);
 
 });
 
