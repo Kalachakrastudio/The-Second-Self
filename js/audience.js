@@ -153,28 +153,29 @@ function saveBooking(paymentId){
 
     };
 console.log(bookingData);
-    fetch(scriptURL,{
+    fetch(scriptURL, {
 
-        method:"POST",
+    method: "POST",
 
-        headers:{
-            "Content-Type":"application/json"
-        },
+    headers: {
+        "Content-Type": "application/json"
+    },
 
-        body:JSON.stringify(bookingData)
+    body: JSON.stringify(bookingData)
 
-    })
+})
 
-.then(res=>{
+.then(res => {
 
-    console.log("Status :", res.status);
+    console.log("Status:", res.status);
 
     return res.text();
 
 })
-.then(data=>{
 
-    console.log("Server Response :", data);
+.then(result => {
+
+    console.log("Server Response:", result);
 
 })
 
@@ -182,8 +183,4 @@ console.log(bookingData);
 
     console.error(error);
 
-    alert(error.message);
-
 });
-
-}
