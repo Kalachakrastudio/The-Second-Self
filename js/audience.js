@@ -162,17 +162,21 @@ function saveBooking(paymentId){
 
     })
 
-    .then(response => response.json())
+ .then(data => {
 
-    .then(data => {
+    console.log(data);
 
-        console.log(data);
+    alert("Booking Saved Successfully");
 
-        alert("Booking Saved Successfully");
+    console.log("Ticket ID:", data.ticketId);
 
-        console.log("Ticket ID:", data.ticketId);
+    form.reset();
 
-    })
+    document.getElementById("quantity").value = 1;
+
+    updateSummary();
+
+})
 
     .catch(error => {
 
