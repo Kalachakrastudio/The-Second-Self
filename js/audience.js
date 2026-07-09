@@ -4,7 +4,7 @@
 //==========================================
 
 const scriptURL =
-"https://script.google.com/macros/s/AKfycbyYfAywSQ0GMFdw4V7v61eit6P4-oHTfXRnHT5CG16-decsPhm80Pt-H7opgMnvn44-/exec";
+"https://script.google.com/macros/s/AKfycbxO6YW1ZUZvX0Y2JnASsvIzZGIEyY2Vj3h1q-YLxn8h-iWzPze29Tw8NtWRJ_HJTKy6/exec";
 
 // Replace this with your Razorpay Test Key
 const RAZORPAY_KEY = "rzp_test_TB3dk6zMNTlX6l";
@@ -153,34 +153,37 @@ function saveBooking(paymentId){
 
     };
 console.log(bookingData);
-    fetch(scriptURL, {
+    fetch(scriptURL,{
 
-    method: "POST",
+        method:"POST",
 
-    headers: {
-        "Content-Type": "application/json"
-    },
+        headers:{
+            "Content-Type":"application/json"
+        },
 
-    body: JSON.stringify(bookingData)
+        body:JSON.stringify(bookingData)
 
-})
+    })
 
-.then(res => {
+.then(res=>{
 
-    console.log("Status:", res.status);
+    console.log(res);
 
     return res.text();
 
 })
+.then(data=>{
 
-.then(result => {
-
-    console.log("Server Response:", result);
+    console.log(data);
 
 })
 
-.catch(error => {
+    .catch(error=>{
 
-    console.error(error);
+        console.log(error);
 
-});
+        alert("Error Saving Booking");
+
+    });
+
+}
