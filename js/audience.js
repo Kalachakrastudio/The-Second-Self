@@ -72,3 +72,31 @@ function getTotalAmount() {
     return ticketPrice * quantity;
 
 }
+
+function updateSummary(){
+
+    const ticketPrice =
+    Number(document.getElementById("ticketType").value) || 0;
+
+    const quantity =
+    Number(document.getElementById("quantity").value) || 1;
+
+    const total =
+    ticketPrice * quantity;
+
+    document.getElementById("price").textContent =
+    "₹" + ticketPrice;
+
+    document.getElementById("tickets").textContent =
+    quantity;
+
+    document.getElementById("totalAmount").textContent =
+    "₹" + total;
+
+}
+
+document.getElementById("ticketType").addEventListener("change",updateSummary);
+
+document.getElementById("quantity").addEventListener("input",updateSummary);
+
+window.addEventListener("load",updateSummary);
