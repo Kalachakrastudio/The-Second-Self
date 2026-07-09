@@ -9,6 +9,8 @@ const scriptURL =
 const RAZORPAY_KEY = "rzp_test_TB3dk6zMNTlX6l";
 
 const form = document.getElementById("ticketForm");
+const loadingPopup =
+document.getElementById("loadingPopup");
 
 form.addEventListener("submit", function (e) {
 
@@ -46,6 +48,7 @@ form.addEventListener("submit", function (e) {
 
 handler:function(response){
 
+     loadingPopup.classList.add("show");
     saveBooking(response.razorpay_payment_id);
 
 }
@@ -164,6 +167,7 @@ function saveBooking(paymentId){
 
  .then(data => {
 
+     loadingPopup.classList.remove("show");
     console.log(data);
 
     alert("Booking Saved Successfully");
@@ -179,6 +183,8 @@ function saveBooking(paymentId){
 })
 
     .catch(error => {
+        
+        loadingPopup.classList.remove("show");
 
         console.error(error);
 
