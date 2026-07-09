@@ -45,9 +45,10 @@ form.addEventListener("submit", function (e) {
 
         },
 
-handler:function(response){
+handler: function(response){
 
     console.log("Payment Success");
+
     console.log(response);
 
     saveBooking(response.razorpay_payment_id);
@@ -129,6 +130,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function saveBooking(paymentId){
 
+    console.log("saveBooking called");
+
     const bookingData = {
 
         sheet: "Bookings",
@@ -152,18 +155,14 @@ function saveBooking(paymentId){
         message: form.message.value
 
     };
-console.log(bookingData);
-    fetch(scriptURL, {
 
-    method: "POST",
+    console.log(bookingData);
 
-    headers: {
-        "Content-Type": "application/json"
-    },
+    fetch(scriptURL,{
+        method:"POST",
+        body:JSON.stringify(bookingData)
+    })
 
-    body: JSON.stringify(bookingData)
-
-})
 
 .then(res => {
 
