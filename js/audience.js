@@ -167,23 +167,23 @@ console.log(bookingData);
 
 .then(res=>{
 
-    console.log(res);
+    console.log("Status :", res.status);
 
     return res.text();
 
 })
 .then(data=>{
 
-    console.log(data);
+    console.log("Server Response :", data);
 
 })
 
-    .catch(error=>{
+.catch(error=>{
 
-        console.log(error);
+    console.error("Fetch Error:", error);
 
-        alert("Error Saving Booking");
+    alert(error);
 
-    });
+});
 
 }
