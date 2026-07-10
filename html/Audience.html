@@ -581,44 +581,103 @@ SUCCESS POPUP
 
 <div id="successPopup" class="popup-overlay">
 
-    <div class="success-popup">
+    <div class="ticket-popup">
 
-        <div class="success-icon">
+        <div class="ticket-header">
 
-            <i class="fa-solid fa-check"></i>
+            <img src="../Image/The Second Self Logo.png" alt="Logo">
+
+            <span>Audience Pass</span>
 
         </div>
 
-        <h2>
-            Booking Confirmed!
-        </h2>
+        <div class="ticket-status">
 
-        <p>
+            <i class="fa-solid fa-circle-check"></i>
 
-            Your payment was successful and your booking has been confirmed.
+            Booking Confirmed
 
-            <br><br>
+        </div>
 
-            <strong>
-                Ticket ID:
-            </strong>
+        <div class="ticket-info">
 
-            <span id="ticketID">
+            <div class="ticket-row">
 
-                TSS000000
+                <span>Ticket ID</span>
 
-            </span>
+                <strong id="ticketID"></strong>
 
-            <br><br>
+            </div>
 
-            We look forward to welcoming you to
-            <strong>The Second Self.</strong>
+            <div class="ticket-row">
+
+                <span>Name</span>
+
+                <strong id="ticketName"></strong>
+
+            </div>
+
+            <div class="ticket-row">
+
+                <span>Event</span>
+
+                <strong id="ticketEvent"></strong>
+
+            </div>
+
+            <div class="ticket-row">
+
+                <span>Ticket</span>
+
+                <strong id="ticketTypePopup"></strong>
+
+            </div>
+
+            <div class="ticket-row">
+
+                <span>Quantity</span>
+
+                <strong id="ticketQuantity"></strong>
+
+            </div>
+
+            <div class="ticket-row">
+
+                <span>Total</span>
+
+                <strong id="ticketAmount"></strong>
+
+            </div>
+
+        </div>
+
+        <div id="qrCode" class="qr-box"></div>
+
+        <p class="ticket-note">
+
+            Please present this QR Code at the venue entrance.
 
         </p>
 
-      <button id="closePopup" class="btn-primary">
-    Continue
-</button>
+        <div class="ticket-buttons">
+
+            <button
+            id="downloadTicket"
+            class="btn-primary">
+
+                Download Ticket
+
+            </button>
+
+            <button
+            id="closePopup"
+            class="btn-secondary">
+
+                Book Another Ticket
+
+            </button>
+
+        </div>
 
     </div>
 
