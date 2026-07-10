@@ -94,22 +94,18 @@ DIGITAL TICKET
 
 .ticket-popup{
 
-    width:90%;
-    max-width:360px;
+    width:95%;
+    max-width:760px;
 
     background:#111;
 
-    border-radius:22px;
+    border-radius:24px;
 
     border:1px solid rgba(255,255,255,.08);
 
-    padding:28px;
+    padding:30px;
 
-    box-shadow:0 25px 70px rgba(0,0,0,.45);
-
-    position:relative;
-
-    overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,.5);
 
 }
 
@@ -135,13 +131,13 @@ DIGITAL TICKET
 
     text-align:center;
 
-    margin-bottom:25px;
+    margin-bottom:30px;
 
 }
 
 .ticket-header img{
 
-    width:80px;
+    width:140px;
 
     display:block;
 
@@ -151,29 +147,40 @@ DIGITAL TICKET
 
 .ticket-header h2{
 
-    margin-top:12px;
+    margin-top:15px;
 
     color:#D71F28;
 
-    font-size:17px;
+    font-size:30px;
 
-    letter-spacing:3px;
-
-    text-transform:uppercase;
+    font-weight:700;
 
 }
 
+.ticket-body{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:35px;
+
+    margin-bottom:25px;
+
+}
 /*=========================================*/
 
 .ticket-details{
+
+    flex:1;
 
     display:grid;
 
     grid-template-columns:1fr 1fr;
 
-    gap:14px;
-
-    margin-bottom:28px;
+    gap:18px;
 
 }
 
@@ -181,11 +188,9 @@ DIGITAL TICKET
 
     background:#181818;
 
-    border:1px solid rgba(255,255,255,.06);
+    padding:14px;
 
     border-radius:12px;
-
-    padding:14px;
 
 }
 
@@ -193,9 +198,9 @@ DIGITAL TICKET
 
     display:block;
 
-    color:#888;
+    color:#9b9b9b;
 
-    font-size:12px;
+    font-size:13px;
 
     margin-bottom:6px;
 
@@ -205,19 +210,16 @@ DIGITAL TICKET
 
     color:#fff;
 
-    font-size:15px;
+    font-size:16px;
 
 }
-
 /*=========================================*/
 
 .qr-box{
 
-    width:170px;
+    width:190px;
 
-    height:170px;
-
-    margin:0 auto;
+    height:190px;
 
     background:#fff;
 
@@ -228,6 +230,8 @@ DIGITAL TICKET
     align-items:center;
 
     justify-content:center;
+
+    flex-shrink:0;
 
     padding:10px;
 
@@ -255,9 +259,7 @@ DIGITAL TICKET
 
     display:flex;
 
-    flex-direction:column;
-
-    gap:12px;
+    gap:15px;
 
     margin-top:25px;
 
@@ -265,7 +267,7 @@ DIGITAL TICKET
 
 .ticket-buttons button{
 
-    width:100%;
+    flex:1;
 
 }
 
@@ -281,33 +283,41 @@ DIGITAL TICKET
 
 /*=========================================*/
 
-@media(max-width:480px){
+@media(max-width:768px){
 
 .ticket-popup{
 
-    padding:22px;
+    max-width:360px;
 
-    max-width:330px;
-
-}
-
-.ticket-details{
-
-    gap:10px;
+    padding:25px;
 
 }
 
-.detail{
+.ticket-body{
 
-    padding:12px;
+    flex-direction:column;
 
 }
 
 .qr-box{
 
-    width:150px;
+    width:170px;
 
-    height:150px;
+    height:170px;
+
+}
+
+.ticket-details{
+
+    width:100%;
+
+    grid-template-columns:1fr 1fr;
+
+}
+
+.ticket-buttons{
+
+    flex-direction:column;
 
 }
 
