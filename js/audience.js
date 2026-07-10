@@ -51,8 +51,12 @@ form.addEventListener("submit", function (e) {
 
 handler:function(response){
 
-     loadingPopup.classList.add("show");
-    saveBooking(response.razorpay_payment_id);
+     window.currentPaymentId =
+    response.razorpay_payment_id;
+
+    loadingPopup.classList.add("show");
+
+    saveBooking(window.currentPaymentId);
 
 }
 
@@ -185,7 +189,42 @@ function saveBooking(paymentId){
 
     document.getElementById("ticketQuantity").textContent =
     document.getElementById("quantity").value;
+// Clear previous QR
+document.getElementById("qrCode").innerHTML = "";
 
+// QR Data
+const qrData = JSON.stringify({
+
+    ticketId: data.ticketId,
+
+    paymentId: window.currentPaymentId,
+
+    name: form.name.value,
+
+    event: form.eventDate.value,
+
+    ticketType: document.getElementById("ticketType").selectedOptions[0].text,
+
+    quantity: document.getElementById("quantity").value
+
+});
+
+// Generate QR
+new QRCode(document.getElementById("qrCode"),{
+
+    text: qrData,
+
+    width:170,
+
+    height:170,
+
+    colorDark:"#000",
+
+    colorLight:"#fff",
+
+    correctLevel:QRCode.CorrectLevel.H
+
+});
     successPopup.classList.add("show");
 
     form.reset();
