@@ -2,6 +2,12 @@
 // THE SECOND SELF
 // Audience Ticket Booking
 //==========================================
+const loadingPopup =
+document.getElementById("loadingPopup");
+
+const successPopup =
+document.getElementById("successPopup");
+
 const scriptURL =
 "https://script.google.com/macros/s/AKfycbxO6YW1ZUZvX0Y2JnASsvIzZGIEyY2Vj3h1q-YLxn8h-iWzPze29Tw8NtWRJ_HJTKy6/exec";
 
@@ -164,16 +170,14 @@ function saveBooking(paymentId){
         body: JSON.stringify(bookingData)
 
     })
+.then(data=>{
 
- .then(data => {
+    loadingPopup.classList.remove("show");
 
-     loadingPopup.classList.remove("show");
+    document.getElementById("ticketID").textContent =
+    data.ticketId;
 
     successPopup.classList.add("show");
-
-    console.log(data);
-
-    console.log("Ticket ID:", data.ticketId);
 
     form.reset();
 
@@ -194,3 +198,19 @@ function saveBooking(paymentId){
     });
 
 }
+document
+.getElementById("closePopup")
+.addEventListener("click",function(){
+
+    successPopup.classList.remove("show");
+
+});
+window.addEventListener("click",function(e){
+
+    if(e.target===successPopup){
+
+        successPopup.classList.remove("show");
+
+    }
+
+});
