@@ -178,10 +178,6 @@ function saveBooking(paymentId){
     console.log("Reached Here");
 
     console.log(data);
-    
-    console.log(typeof QRCode);
-    
-    console.log(QRCode);
 
     loadingPopup.classList.remove("show");
 
@@ -208,8 +204,8 @@ qrBox.innerHTML = "";
 
 const qrImage = document.createElement("img");
 
-qrImage.src =
-"https://chart.googleapis.com/chart?cht=qr&chs=220x220&chl=" +
+qrImage.src =qrImage.src =
+"https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=" +
 encodeURIComponent(qrData);
 
 qrImage.alt = "Ticket QR Code";
@@ -221,6 +217,7 @@ qrImage.style.display = "block";
 qrBox.appendChild(qrImage);
     
     successPopup.classList.add("show");
+    console.log("Popup Opening...");
 
     form.reset();
 
