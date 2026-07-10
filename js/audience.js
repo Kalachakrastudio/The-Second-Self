@@ -168,9 +168,10 @@ function saveBooking(paymentId){
  .then(data => {
 
      loadingPopup.classList.remove("show");
-    console.log(data);
 
-    alert("Booking Saved Successfully");
+    successPopup.classList.add("show");
+
+    console.log(data);
 
     console.log("Ticket ID:", data.ticketId);
 
