@@ -195,17 +195,7 @@ document.getElementById("qrCode").innerHTML = "";
 // QR Data
 const qrData = JSON.stringify({
 
-    ticketId: data.ticketId,
-
-    paymentId: window.currentPaymentId,
-
-    name: form.name.value,
-
-    event: form.eventDate.value,
-
-    ticketType: document.getElementById("ticketType").selectedOptions[0].text,
-
-    quantity: document.getElementById("quantity").value
+    id: data.ticketId
 
 });
 
