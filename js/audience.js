@@ -160,19 +160,31 @@ function saveBooking(paymentId){
 
     };
 
-    fetch(scriptURL, {
+ fetch(scriptURL, {
 
-        method: "POST",
+    method: "POST",
 
-        body: JSON.stringify(bookingData)
+    body: JSON.stringify(bookingData)
 
-    })
-.then(data=>{
+})
+
+.then(response => response.json())
+
+.then(data => {
 
     loadingPopup.classList.remove("show");
 
     document.getElementById("ticketID").textContent =
     data.ticketId;
+
+    document.getElementById("ticketEvent").textContent =
+    form.eventDate.options[form.eventDate.selectedIndex].text;
+
+    document.getElementById("ticketTypePopup").textContent =
+    document.getElementById("ticketType").selectedOptions[0].text;
+
+    document.getElementById("ticketQuantity").textContent =
+    document.getElementById("quantity").value;
 
     successPopup.classList.add("show");
 
@@ -184,15 +196,13 @@ function saveBooking(paymentId){
 
 })
 
-    .catch(error => {
-        
-        loadingPopup.classList.remove("show");
+.catch(error=>{
 
-        console.error(error);
+    loadingPopup.classList.remove("show");
 
-        alert("Error Saving Booking");
+    console.log(error);
 
-    });
+});
 
 }
 document
@@ -223,18 +233,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
 });
 
-//==============================
-// Ticket 
-//==============================
-document.getElementById("ticketName").textContent = form.name.value;
 
-document.getElementById("ticketEvent").textContent = form.eventDate.value;
-
-document.getElementById("ticketTypePopup").textContent =
-document.getElementById("ticketType").selectedOptions[0].text;
-
-document.getElementById("ticketQuantity").textContent =
-document.getElementById("quantity").value;
 
 document.getElementById("ticketAmount").textContent =
 "₹" + getTotalAmount();
