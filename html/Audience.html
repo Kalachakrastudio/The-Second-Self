@@ -585,23 +585,15 @@ SUCCESS POPUP
 
         <div class="ticket-header">
 
-            <img src="../Image/The Second Self Logo.png" alt="Logo">
+            <img src="../Image/The Second Self Logo.png" alt="The Second Self">
 
-            <span>Audience Pass</span>
-
-        </div>
-
-        <div class="ticket-status">
-
-            <i class="fa-solid fa-circle-check"></i>
-
-            Booking Confirmed
+            <h2>Audience Pass</h2>
 
         </div>
 
-        <div class="ticket-info">
+        <div class="ticket-details">
 
-            <div class="ticket-row">
+            <div class="detail">
 
                 <span>Ticket ID</span>
 
@@ -609,15 +601,7 @@ SUCCESS POPUP
 
             </div>
 
-            <div class="ticket-row">
-
-                <span>Name</span>
-
-                <strong id="ticketName"></strong>
-
-            </div>
-
-            <div class="ticket-row">
+            <div class="detail">
 
                 <span>Event</span>
 
@@ -625,7 +609,7 @@ SUCCESS POPUP
 
             </div>
 
-            <div class="ticket-row">
+            <div class="detail">
 
                 <span>Ticket</span>
 
@@ -633,7 +617,7 @@ SUCCESS POPUP
 
             </div>
 
-            <div class="ticket-row">
+            <div class="detail">
 
                 <span>Quantity</span>
 
@@ -641,37 +625,33 @@ SUCCESS POPUP
 
             </div>
 
-            <div class="ticket-row">
+        </div>
 
-                <span>Total</span>
+        <div class="qr-box">
 
-                <strong id="ticketAmount"></strong>
-
-            </div>
+            <div id="qrCode"></div>
 
         </div>
 
-        <div id="qrCode" class="qr-box"></div>
-
         <p class="ticket-note">
 
-            Please present this QR Code at the venue entrance.
+            Scan this QR code at the venue entrance.
 
         </p>
 
         <div class="ticket-buttons">
 
-            <button
-            id="downloadTicket"
-            class="btn-primary">
+            <button id="downloadTicket" class="btn-primary">
+
+                <i class="fa-solid fa-download"></i>
 
                 Download Ticket
 
             </button>
 
-            <button
-            id="closePopup"
-            class="btn-secondary">
+            <button id="closePopup" class="btn-secondary">
+
+                <i class="fa-solid fa-plus"></i>
 
                 Book Another Ticket
 
