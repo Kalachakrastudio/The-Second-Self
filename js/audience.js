@@ -214,3 +214,14 @@ window.addEventListener("click",function(e){
     }
 
 });
+const closePopupBtn = document.getElementById("closePopup");
+
+if(closePopupBtn){
+
+    closePopupBtn.addEventListener("click", function(){
+
+        successPopup.classList.remove("show");
+
+    });
+
+}
