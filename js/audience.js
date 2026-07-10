@@ -175,6 +175,13 @@ function saveBooking(paymentId){
 .then(response => response.json())
 
 .then(data => {
+    console.log("Reached Here");
+
+    console.log(data);
+    
+    console.log(typeof QRCode);
+    
+    console.log(QRCode);
 
     loadingPopup.classList.remove("show");
 
@@ -193,11 +200,11 @@ function saveBooking(paymentId){
 document.getElementById("qrCode").innerHTML = "";
 
 // QR Data
-const qrData = JSON.stringify({
-
-    id: data.ticketId
-
-});
+const qrData = data.ticketId;
+console.log("Ticket ID:", data.ticketId);
+console.log("QR Data:", qrData);
+console.log("QRCode:", QRCode);
+console.log("QRCode Type:", typeof QRCode);
 
 // Generate QR
 const qrBox = document.getElementById("qrCode");
@@ -206,23 +213,35 @@ qrBox.innerHTML = "";
 
 if (typeof QRCode !== "undefined") {
 
-    new QRCode(qrBox, {
+    try{
 
-        text: qrData,
+        new QRCode(qrBox,{
 
-        width: 170,
+            text: qrData,
 
-        height: 170,
+            width:170,
 
-        colorDark: "#000",
+            height:170,
 
-        colorLight: "#fff",
+            colorDark:"#000000",
 
-        correctLevel: QRCode.CorrectLevel.H
+            colorLight:"#ffffff",
 
-    });
+            correctLevel:QRCode.CorrectLevel.H
 
-} else {
+        });
+
+        console.log("QR Generated Successfully");
+
+    }
+    catch(err){
+
+        console.error("QR Error:", err);
+
+    }
+
+}
+else{
 
     console.error("QRCode Library Not Loaded");
 
@@ -274,7 +293,3 @@ window.addEventListener("DOMContentLoaded", function () {
 
 });
 
-
-
-document.getElementById("ticketAmount").textContent =
-"₹" + getTotalAmount();
