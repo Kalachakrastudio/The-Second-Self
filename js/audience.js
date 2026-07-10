@@ -222,3 +222,19 @@ window.addEventListener("DOMContentLoaded", function () {
         });
 
 });
+
+//==============================
+// Ticket 
+//==============================
+document.getElementById("ticketName").textContent = form.name.value;
+
+document.getElementById("ticketEvent").textContent = form.eventDate.value;
+
+document.getElementById("ticketTypePopup").textContent =
+document.getElementById("ticketType").selectedOptions[0].text;
+
+document.getElementById("ticketQuantity").textContent =
+document.getElementById("quantity").value;
+
+document.getElementById("ticketAmount").textContent =
+"₹" + getTotalAmount();
