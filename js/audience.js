@@ -210,21 +210,33 @@ const qrData = JSON.stringify({
 });
 
 // Generate QR
-new QRCode(document.getElementById("qrCode"),{
+const qrBox = document.getElementById("qrCode");
 
-    text: qrData,
+qrBox.innerHTML = "";
 
-    width:170,
+if (typeof QRCode !== "undefined") {
 
-    height:170,
+    new QRCode(qrBox, {
 
-    colorDark:"#000",
+        text: qrData,
 
-    colorLight:"#fff",
+        width: 170,
 
-    correctLevel:QRCode.CorrectLevel.H
+        height: 170,
 
-});
+        colorDark: "#000",
+
+        colorLight: "#fff",
+
+        correctLevel: QRCode.CorrectLevel.H
+
+    });
+
+} else {
+
+    console.error("QRCode Library Not Loaded");
+
+}
     successPopup.classList.add("show");
 
     form.reset();
