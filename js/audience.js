@@ -2,9 +2,6 @@
 // THE SECOND SELF
 // Audience Ticket Booking
 //==========================================
-const loadingPopup =
-document.getElementById("loadingPopup");
-
 const successPopup =
 document.getElementById("successPopup");
 
@@ -214,14 +211,14 @@ window.addEventListener("click",function(e){
     }
 
 });
-const closePopupBtn = document.getElementById("closePopup");
+window.addEventListener("DOMContentLoaded", function () {
 
-if(closePopupBtn){
+    document
+        .getElementById("closePopup")
+        .addEventListener("click", function () {
 
-    closePopupBtn.addEventListener("click", function(){
+            successPopup.classList.remove("show");
 
-        successPopup.classList.remove("show");
+        });
 
-    });
-
-}
+});
