@@ -196,56 +196,30 @@ function saveBooking(paymentId){
 
     document.getElementById("ticketQuantity").textContent =
     document.getElementById("quantity").value;
-// Clear previous QR
-document.getElementById("qrCode").innerHTML = "";
+//==============================
+// Generate QR Code
+//==============================
 
-// QR Data
 const qrData = data.ticketId;
-console.log("Ticket ID:", data.ticketId);
-console.log("QR Data:", qrData);
-console.log("QRCode:", QRCode);
-console.log("QRCode Type:", typeof QRCode);
 
-// Generate QR
 const qrBox = document.getElementById("qrCode");
 
 qrBox.innerHTML = "";
 
-if (typeof QRCode !== "undefined") {
+const qrImage = document.createElement("img");
 
-    try{
+qrImage.src =
+"https://chart.googleapis.com/chart?cht=qr&chs=220x220&chl=" +
+encodeURIComponent(qrData);
 
-        new QRCode(qrBox,{
+qrImage.alt = "Ticket QR Code";
 
-            text: qrData,
+qrImage.style.width = "100%";
+qrImage.style.height = "100%";
+qrImage.style.display = "block";
 
-            width:170,
-
-            height:170,
-
-            colorDark:"#000000",
-
-            colorLight:"#ffffff",
-
-            correctLevel:QRCode.CorrectLevel.H
-
-        });
-
-        console.log("QR Generated Successfully");
-
-    }
-    catch(err){
-
-        console.error("QR Error:", err);
-
-    }
-
-}
-else{
-
-    console.error("QRCode Library Not Loaded");
-
-}
+qrBox.appendChild(qrImage);
+    
     successPopup.classList.add("show");
 
     form.reset();
