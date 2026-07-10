@@ -87,3 +87,156 @@ BOOKING SUMMARY
 }
 
 }
+
+/*=========================================
+ticket popup
+=========================================*/
+
+.ticket-popup{
+
+    width:95%;
+    max-width:540px;
+
+    background:#111;
+
+    border-radius:24px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    padding:35px;
+
+    box-shadow:0 30px 80px rgba(0,0,0,.5);
+
+}
+
+.ticket-header{
+
+    text-align:center;
+
+}
+
+.ticket-header img{
+
+    width:180px;
+
+}
+
+.ticket-header span{
+
+    display:block;
+
+    margin-top:12px;
+
+    color:#D71F28;
+
+    font-weight:600;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+}
+
+.ticket-status{
+
+    text-align:center;
+
+    color:#2ecc71;
+
+    font-size:22px;
+
+    margin:30px 0;
+
+}
+
+.ticket-status i{
+
+    display:block;
+
+    font-size:48px;
+
+    margin-bottom:15px;
+
+}
+
+.ticket-info{
+
+    margin-top:25px;
+
+}
+
+.ticket-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    padding:14px 0;
+
+    border-bottom:1px dashed rgba(255,255,255,.08);
+
+}
+
+.ticket-row span{
+
+    color:#BEBEBE;
+
+}
+
+.ticket-row strong{
+
+    color:#fff;
+
+}
+
+.qr-box{
+
+    margin:35px auto;
+
+    width:220px;
+
+    height:220px;
+
+    background:#fff;
+
+    padding:12px;
+
+    border-radius:12px;
+
+}
+
+.ticket-note{
+
+    text-align:center;
+
+    color:#999;
+
+    line-height:1.7;
+
+}
+
+.ticket-buttons{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:30px;
+
+}
+
+.ticket-buttons button{
+
+    flex:1;
+
+}
+
+.btn-secondary{
+
+    background:transparent;
+
+    color:#fff;
+
+    border:1px solid rgba(255,255,255,.15);
+
+}
