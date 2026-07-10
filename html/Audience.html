@@ -583,6 +583,8 @@ SUCCESS POPUP
 
     <div class="ticket-popup">
 
+        <!-- Header -->
+
         <div class="ticket-header">
 
             <img src="../Image/The Second Self Logo.png" alt="The Second Self">
@@ -591,51 +593,61 @@ SUCCESS POPUP
 
         </div>
 
-        <div class="ticket-details">
+        <!-- Body -->
 
-            <div class="detail">
+        <div class="ticket-body">
 
-                <span>Ticket ID</span>
+            <!-- QR -->
 
-                <strong id="ticketID"></strong>
+            <div class="qr-box">
 
-            </div>
-
-            <div class="detail">
-
-                <span>Event</span>
-
-                <strong id="ticketEvent"></strong>
+                <div id="qrCode"></div>
 
             </div>
 
-            <div class="detail">
+            <!-- Details -->
 
-                <span>Ticket</span>
+            <div class="ticket-details">
 
-                <strong id="ticketTypePopup"></strong>
+                <div class="detail">
+
+                    <span>Ticket ID</span>
+
+                    <strong id="ticketID"></strong>
+
+                </div>
+
+                <div class="detail">
+
+                    <span>Event</span>
+
+                    <strong id="ticketEvent"></strong>
+
+                </div>
+
+                <div class="detail">
+
+                    <span>Ticket</span>
+
+                    <strong id="ticketTypePopup"></strong>
+
+                </div>
+
+                <div class="detail">
+
+                    <span>Quantity</span>
+
+                    <strong id="ticketQuantity"></strong>
+
+                </div>
 
             </div>
-
-            <div class="detail">
-
-                <span>Quantity</span>
-
-                <strong id="ticketQuantity"></strong>
-
-            </div>
-
-        </div>
-
-        <div class="qr-box">
-
-            <div id="qrCode"></div>
 
         </div>
 
         <p class="ticket-note">
 
-            Scan this QR code at the venue entrance.
+            Scan this QR Code at the venue entrance.
 
         </p>
 
@@ -645,7 +657,7 @@ SUCCESS POPUP
 
                 <i class="fa-solid fa-download"></i>
 
-                  Download Ticket
+                Download Ticket
 
             </button>
 
@@ -653,7 +665,7 @@ SUCCESS POPUP
 
                 <i class="fa-solid fa-plus"></i>
 
-                  Book Another Ticket
+                Book Another Ticket
 
             </button>
 
