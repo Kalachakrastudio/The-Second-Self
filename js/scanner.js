@@ -1,6 +1,26 @@
+const loader = document.getElementById("loader");
 console.log("Scanner JS Loaded");
 
-const loader = document.getElementById("loader");
+
+function showLoader(){
+
+    if(loader){
+
+        loader.classList.add("show");
+
+    }
+
+}
+
+function hideLoader(){
+
+    if(loader){
+
+        loader.classList.remove("show");
+
+    }
+
+}
 const SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbwkjtqOXWniCKHQ64DCz-tLQx7ngFVbEp2ZpgGbvQYBbNv3Xd5dZnS5RIIDoAZiI1Ch/exec";
 
@@ -126,6 +146,10 @@ fetch(url)
 .then(data=>{
 
     hideLoader();
+
+    console.log("SEARCH RESPONSE");
+
+    console.log(data);
 
     showTicket(data,isScan);
 
@@ -289,8 +313,14 @@ document.getElementById("checkInBtn").addEventListener("click",()=>{
 
     })
     .then(res=>res.json())
-    .then(data=>{
+  .then(data=>{
+
 hideLoader();
+
+console.log("CHECKIN RESPONSE");
+
+console.log(data);
+      
        if(data.success){
 
 showPopup(
