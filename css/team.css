@@ -19,6 +19,38 @@ gap:35px;
 margin-top:60px;
 
 }
+.team-main{
+
+transition:.45s ease;
+
+}
+
+.team-card:hover .team-main{
+
+transform:translateY(-100px);
+
+}
+
+.team-extra{
+
+opacity:0;
+
+transform:translateY(30px);
+
+transition:.45s ease;
+
+pointer-events:none;
+
+}
+.team-card:hover .team-extra{
+
+opacity:1;
+
+transform:translateY(-80px);
+
+pointer-events:auto;
+
+}
 
 .team-card{
 
@@ -78,7 +110,13 @@ transform:scale(1.08);
 
 .team-content{
 
-padding:28px;
+position:absolute;
+
+left:30px;
+right:30px;
+bottom:30px;
+
+z-index:10;
 
 }
 
