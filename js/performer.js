@@ -64,8 +64,8 @@ form.addEventListener("submit", function (e) {
         successPopup.classList.add("show");
 
         form.reset();
-resetCustomSelect("performanceType");
-resetCustomSelect("eventDate");
+resetCustomSelect("category");
+resetCustomSelect("gender");
 
     })
 
