@@ -1,7 +1,8 @@
 console.log("Scanner JS Loaded");
 
 const loader = document.getElementById("loader");
-const SCRIPT_URL = "YOUR_SCRIPT_URL";
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbwkjtqOXWniCKHQ64DCz-tLQx7ngFVbEp2ZpgGbvQYBbNv3Xd5dZnS5RIIDoAZiI1Ch/exec";
 
 const reader = document.getElementById("reader");
 
@@ -10,10 +11,6 @@ console.log(reader);
 
 const html5QrCode = new Html5Qrcode("reader");
 
-const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbwkjtqOXWniCKHQ64DCz-tLQx7ngFVbEp2ZpgGbvQYBbNv3Xd5dZnS5RIIDoAZiI1Ch/exec";
-
-const html5QrCode = new Html5Qrcode("reader");
 
 //=====================================
 // Open Camera
