@@ -21,7 +21,7 @@ function hideLoader(){
 
 }
 const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbzwdXH-g5S-FtPMh24QHj4y4_trvj9KM8DMzA5mgZpJL6WXHBCYm6DXsTB7de1KdcN0/exec";
+"https://script.google.com/macros/s/AKfycbxPS7R5_6fwRfiaeVowawa960WSziXE0EoVTzDnJe34Umr1bFOml_WiJMQSG4tIoWrG/exec";
 
 const reader = document.getElementById("reader");
 
@@ -144,8 +144,6 @@ fetch(url)
 
 .then(data=>{
 
-    hideLoader();
-
     console.log("SEARCH RESPONSE");
 
     console.log(data);
@@ -202,6 +200,7 @@ function showTicket(data,isScan){
     document.getElementById("ticketCard");
 
     ticketCard.style.display="block";
+    hideLoader();
 
     //==========================
     // Multiple Tickets
@@ -330,23 +329,25 @@ function manualCheckIn(ticketId){
 
         else if(data.alreadyChecked){
 
-            showPopup(
-                "warning",
-                "Already Checked In",
-                data.ticketId +
-                "<br><br>" +
-                data.checkInTime
-            );
+          showPopup(
+                    "warning",
+                    "Already Checked In",
+                    data.name +
+                    "<br><br>" +
+                    data.ticketId +
+                    "<br><br>" +
+                    data.checkInTime
+                );
 
         }
 
         else{
 
             showPopup(
-                "error",
-                "Invalid Ticket",
-                "Ticket Not Found"
-            );
+                    "error",
+                    "Invalid Ticket",
+                    "This ticket is not valid."
+                );
 
         }
 
@@ -379,15 +380,13 @@ hideLoader();
 if(data.success){
 
 showPopup(
-
-"success",
-
-"Ticket Valid",
-
-ticketId +
-
-"<br><br>Checked In Successfully"
-
+    "success",
+    "Ticket Valid",
+    data.name +
+    "<br><br>" +
+    data.ticketId +
+    "<br><br>" +
+    data.checkInTime
 );
 
 }
@@ -432,62 +431,7 @@ scanning=false;
 // Check In
 //=====================================
 
-document.getElementById("checkInBtn").addEventListener("click",()=>{
 
-    showLoader();
-    fetch(SCRIPT_URL,{
-
-        method:"POST",
-
-        body:JSON.stringify({
-
-            action:"checkin",
-
-            ticketId:
-            document.getElementById("ticketId").textContent
-
-        })
-
-    })
-    .then(res=>res.json())
-  .then(data=>{
-
-hideLoader();
-
-console.log("CHECKIN RESPONSE");
-
-console.log(data);
-      
-       if(data.success){
-
-showPopup(
-"success",
-"Checked In",
-"Ticket checked in successfully."
-);
-
-}
-else if(data.alreadyChecked){
-
-showPopup(
-"warning",
-"Already Checked In",
-"This ticket has already been used."
-);
-
-}
-else{
-
-showPopup(
-"error",
-"Invalid Ticket",
-"Ticket not found."
-);
-
-}
-    });
-
-});
 
 //=====================================
 // Popup
