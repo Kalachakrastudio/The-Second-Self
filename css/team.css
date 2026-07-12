@@ -399,3 +399,54 @@ transparent 60%
 );
 
 }
+/*=========================================
+TEAM SOCIAL
+=========================================*/
+
+.team-social{
+
+display:flex;
+
+gap:15px;
+
+margin-top:25px;
+
+}
+
+.team-social a{
+
+width:42px;
+height:42px;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+
+border-radius:50%;
+
+background:rgba(255,255,255,.08);
+
+color:#fff;
+
+font-size:18px;
+
+text-decoration:none;
+
+transition:.35s;
+
+border:1px solid rgba(255,255,255,.08);
+
+}
+
+.team-social a:hover{
+
+background:#D71F28;
+
+border-color:#D71F28;
+
+transform:translateY(-4px);
+
+box-shadow:0 0 18px rgba(215,31,40,.4);
+
+}
