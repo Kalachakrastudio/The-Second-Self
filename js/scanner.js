@@ -9,20 +9,33 @@ if(cameras.length){
 
 html5QrCode.start(
 
-cameras[0].id,
+let cameraId = cameras[0].id;
+
+for(const cam of cameras){
+
+    if(
+        cam.label.toLowerCase().includes("back") ||
+        cam.label.toLowerCase().includes("rear")
+    ){
+
+        cameraId = cam.id;
+
+    }
+
+}
+
+html5QrCode.start(
+
+cameraId,
 
 {
-fps:10,
-qrbox:250
+    fps:10,
+    qrbox:250
 },
 
 onScanSuccess
 
 );
-
-}
-
-});
 
 function onScanSuccess(decodedText){
 
@@ -46,65 +59,87 @@ searchTicket(value);
 
 function searchTicket(value){
 
-fetch(
+    value = value.trim();
 
-SCRIPT_URL+
+    let url = "";
 
-"?action=search&q="+
+    // If it starts with TSS, search by Ticket ID
+    if(value.toUpperCase().startsWith("TSS")){
 
-encodeURIComponent(value)
+        url =
+        SCRIPT_URL +
+        "?ticket=" +
+        encodeURIComponent(value);
 
-)
+    }
 
-.then(res=>res.json())
+    // Otherwise search by Mobile Number
+    else{
 
-.then(showTicket);
+        url =
+        SCRIPT_URL +
+        "?mobile=" +
+        encodeURIComponent(value);
+
+    }
+
+    fetch(url)
+    .then(res => res.json())
+    .then(showTicket);
 
 }
 
 function showTicket(data){
 
-if(data.result!="success"){
+    if(!data.found){
 
-alert("Ticket Not Found");
+        alert("Ticket Not Found");
 
-return;
+        return;
+
+    }
+
+    document.getElementById("ticketCard").style.display = "block";
+
+    document.getElementById("ticketId").textContent = data.ticketId;
+
+    document.getElementById("ticketName").textContent = data.name;
+
+    document.getElementById("ticketMobile").textContent = data.mobile;
+
+    document.getElementById("ticketEvent").textContent = data.event;
+
+    document.getElementById("ticketStatus").textContent = data.status;
 
 }
 
-document.getElementById("ticketCard").style.display="block";
+document.getElementById("checkInBtn").addEventListener("click",()=>{
 
-document.getElementById("ticketId").textContent=data.ticketId;
+fetch(SCRIPT_URL,{
 
-document.getElementById("ticketName").textContent=data.name;
+    method:"POST",
 
-document.getElementById("ticketMobile").textContent=data.mobile;
+    body:JSON.stringify({
 
-document.getElementById("ticketEvent").textContent=data.event;
+        action:"checkin",
 
-document.getElementById("ticketStatus").textContent=data.status;
+        ticketId:document.getElementById("ticketId").textContent
 
-}
+    })
 
-document
-.getElementById("checkInBtn")
-.addEventListener("click",()=>{
-
-fetch(
-
-SCRIPT_URL+
-
-"?action=checkin&id="+
-
-document.getElementById("ticketId").textContent
-
-)
-
+})
 .then(res=>res.json())
-
 .then(data=>{
 
-alert(data.message);
+    if(data.success){
+
+        alert("Checked In Successfully");
+
+    }else{
+
+        alert("Ticket Not Found");
+
+    }
 
 });
 
