@@ -222,9 +222,12 @@ qrBox.appendChild(qrImage);
     
     form.reset();
 
-    document.getElementById("quantity").value = 1;
+resetCustomSelect("eventDate");
+resetCustomSelect("ticketType");
 
-    updateSummary();
+document.getElementById("quantity").value = 1;
+
+updateSummary();
 
 })
 
