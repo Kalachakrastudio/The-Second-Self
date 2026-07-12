@@ -1,1 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>The Second Self | Check-In</title>
+
+<link rel="stylesheet" href="scanner.css">
+
+<script src="https://unpkg.com/html5-qrcode"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>The Second Self</h1>
+
+    <h2>Audience Check-In</h2>
+
+    <div class="card">
+
+        <h3>QR Scanner</h3>
+
+        <div id="reader"></div>
+
+    </div>
+
+    <div class="card">
+
+        <h3>Search Ticket</h3>
+
+        <input
+        type="text"
+        id="searchInput"
+        placeholder="Ticket ID or Mobile Number">
+
+        <button id="searchBtn">
+            Search Ticket
+        </button>
+
+    </div>
+
+    <div class="card" id="ticketCard" style="display:none;">
+
+        <h3>Ticket Details</h3>
+
+        <table>
+
+            <tr>
+                <td>Ticket ID</td>
+                <td id="ticketId"></td>
+            </tr>
+
+            <tr>
+                <td>Name</td>
+                <td id="ticketName"></td>
+            </tr>
+
+            <tr>
+                <td>Mobile</td>
+                <td id="ticketMobile"></td>
+            </tr>
+
+            <tr>
+                <td>Event</td>
+                <td id="ticketEvent"></td>
+            </tr>
+
+            <tr>
+                <td>Status</td>
+                <td id="ticketStatus"></td>
+            </tr>
+
+        </table>
+
+        <button id="checkInBtn">
+
+            Mark As Check-In
+
+        </button>
+
+    </div>
+
+</div>
+
+<script src="scanner.js"></script>
+
+</body>
+
+</html>
