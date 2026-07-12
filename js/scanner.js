@@ -1,3 +1,17 @@
+const loader =
+document.getElementById("loader");
+
+function showLoader(){
+
+    loader.classList.add("show");
+
+}
+
+function hideLoader(){
+
+    loader.classList.remove("show");
+
+}
 const SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbwkjtqOXWniCKHQ64DCz-tLQx7ngFVbEp2ZpgGbvQYBbNv3Xd5dZnS5RIIDoAZiI1Ch/exec";
 
@@ -56,11 +70,17 @@ Html5Qrcode.getCameras().then(cameras=>{
 // QR Scan Success
 //=====================================
 
+let scanning = false;
+
 function onScanSuccess(decodedText){
 
-    html5QrCode.stop();
+    if(scanning) return;
 
-    searchTicket(decodedText);
+    scanning = true;
+
+    showLoader();
+
+    searchTicket(decodedText, true);
 
 }
 
@@ -73,7 +93,9 @@ document.getElementById("searchBtn").addEventListener("click",()=>{
     const value =
     document.getElementById("searchInput").value;
 
-    searchTicket(value);
+    showLoader();
+
+searchTicket(value);
 
 });
 
@@ -81,7 +103,7 @@ document.getElementById("searchBtn").addEventListener("click",()=>{
 // Search Ticket
 //=====================================
 
-function searchTicket(value){
+function searchTicket(value,isScan=false){
 
     value = value.trim();
 
@@ -103,27 +125,57 @@ function searchTicket(value){
 
     }
 
-   fetch(url)
-.then(res => res.json())
-.then(data => {
+fetch(url)
 
-    console.log("Response:", data);
+.then(res=>res.json())
 
-    showTicket(data);
+.then(data=>{
+
+    hideLoader();
+
+    showTicket(data,isScan);
 
 })
-.catch(err => console.error(err));
-}
+
+.catch(err=>{
+
+    hideLoader();
+
+    console.log(err);
+
+});
 
 //=====================================
 // Show Ticket
 //=====================================
 
-function showTicket(data){
+function showTicket(data,isScan){
 
     if(!data.found){
 
+        if(isScan){
+
+            showPopup(
+                "error",
+                "Invalid Ticket",
+                "This ticket does not exist."
+            );
+
+            scanning = false;
+
+            return;
+
+        }
+
         alert("Ticket Not Found");
+
+        return;
+
+    }
+
+    if(isScan){
+
+        autoCheckIn(data.ticketId);
 
         return;
 
@@ -143,12 +195,93 @@ function showTicket(data){
 
 }
 
+function autoCheckIn(ticketId){
+
+showLoader();
+
+fetch(SCRIPT_URL,{
+
+method:"POST",
+
+body:JSON.stringify({
+
+action:"checkin",
+
+ticketId:ticketId
+
+})
+
+})
+.then(res=>res.json())
+.then(data=>{
+    
+hideLoader();
+
+if(data.success){
+
+showPopup(
+
+"success",
+
+"Ticket Valid",
+
+data.name+
+
+"<br><br>"+
+
+data.ticketId+
+
+"<br><br>"+
+
+"Checked In Successfully"
+
+);
+
+}
+else if(data.alreadyChecked){
+
+showPopup(
+
+"warning",
+
+"Already Checked In",
+
+ticketId
+
+);
+
+}
+else{
+
+showPopup(
+
+"error",
+
+"Invalid Ticket",
+
+ticketId
+
+);
+
+}
+
+scanning=false;
+
+})
+.catch(()=>{
+hideLoader();
+scanning=false;
+
+});
+
+}
 //=====================================
 // Check In
 //=====================================
 
 document.getElementById("checkInBtn").addEventListener("click",()=>{
 
+    showLoader();
     fetch(SCRIPT_URL,{
 
         method:"POST",
@@ -165,17 +298,84 @@ document.getElementById("checkInBtn").addEventListener("click",()=>{
     })
     .then(res=>res.json())
     .then(data=>{
+hideLoader();
+       if(data.success){
 
-        if(data.success){
+showPopup(
+"success",
+"Checked In",
+"Ticket checked in successfully."
+);
 
-            alert("Checked In Successfully");
+}
+else if(data.alreadyChecked){
 
-        }else{
+showPopup(
+"warning",
+"Already Checked In",
+"This ticket has already been used."
+);
 
-            alert("Ticket Not Found");
+}
+else{
 
-        }
+showPopup(
+"error",
+"Invalid Ticket",
+"Ticket not found."
+);
 
+}
     });
 
 });
+
+//=====================================
+// Popup
+//=====================================
+function showPopup(type,title,message){
+
+const popup =
+document.getElementById("resultPopup");
+
+const icon =
+document.getElementById("popupIcon");
+
+const heading =
+document.getElementById("popupTitle");
+
+const body =
+document.getElementById("popupMessage");
+
+heading.textContent = title;
+
+body.innerHTML = message;
+
+if(type=="success"){
+
+icon.innerHTML="✅";
+
+}
+
+else if(type=="warning"){
+
+icon.innerHTML="⚠";
+
+}
+
+else{
+
+icon.innerHTML="❌";
+
+}
+
+popup.classList.add("show");
+
+setTimeout(()=>{
+
+popup.classList.remove("show");
+
+scanning = false;
+
+},2000);
+}
