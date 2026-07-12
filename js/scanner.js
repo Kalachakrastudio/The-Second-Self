@@ -21,7 +21,7 @@ function hideLoader(){
 
 }
 const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbx-8rFhi6qMHq_amT9n-2vceBX6G-ot32tXbD-f2WSyKFGLWLE9e3ehF1VHprrmcu8u/exec";
+"https://script.google.com/macros/s/AKfycbzcB0mzh6vqlDx-kdDD0bMj4qcgZWculxfeTEhB63VNVuUcNF1aVigXtEgZwMBS5XAI/exec";
 
 const reader = document.getElementById("reader");
 
