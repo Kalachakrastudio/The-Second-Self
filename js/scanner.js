@@ -1,6 +1,5 @@
-const loader = document.getElementById("loader");
 console.log("Scanner JS Loaded");
-
+const loader = document.getElementById("loader");
 
 function showLoader(){
 
