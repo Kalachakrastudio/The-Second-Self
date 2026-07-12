@@ -168,31 +168,27 @@ fetch(url)
 
 function showTicket(data,isScan){
 
+    //==========================
+    // Ticket Not Found
+    //==========================
+
     if(!data.found){
 
-        if(isScan){
+        showPopup(
+            "error",
+            "Ticket Not Found",
+            "No ticket exists with this ID or Mobile Number."
+        );
 
-            showPopup(
-                "error",
-                "Invalid Ticket",
-                "This ticket does not exist."
-            );
-
-            scanning = false;
-
-            return;
-
-        }
-
-      showPopup(
-    "error",
-    "Ticket Not Found",
-    "No ticket exists with this ID or mobile number."
-);
+        scanning=false;
 
         return;
 
     }
+
+    //==========================
+    // QR Scan
+    //==========================
 
     if(isScan){
 
@@ -202,17 +198,159 @@ function showTicket(data,isScan){
 
     }
 
-    document.getElementById("ticketCard").style.display="block";
+    const ticketCard =
+    document.getElementById("ticketCard");
 
-    document.getElementById("ticketId").textContent=data.ticketId;
+    ticketCard.style.display="block";
 
-    document.getElementById("ticketName").textContent=data.name;
+    //==========================
+    // Multiple Tickets
+    //==========================
 
-    document.getElementById("ticketMobile").textContent=data.mobile;
+    if(data.multiple){
 
-    document.getElementById("ticketEvent").textContent=data.event;
+        let html="";
 
-    document.getElementById("ticketStatus").textContent=data.status;
+        data.tickets.forEach(ticket=>{
+
+            html += `
+
+            <div class="ticket-item">
+
+                <p><b>Ticket ID :</b> ${ticket.ticketId}</p>
+
+                <p><b>Name :</b> ${ticket.name}</p>
+
+                <p><b>Event :</b> ${ticket.event}</p>
+
+                <p><b>Status :</b> ${ticket.status}</p>
+
+                <button
+                onclick="manualCheckIn('${ticket.ticketId}')">
+
+                    Check In
+
+                </button>
+
+                <hr>
+
+            </div>
+
+            `;
+
+        });
+
+        ticketCard.innerHTML = html;
+
+        return;
+
+    }
+
+    //==========================
+    // Single Ticket
+    //==========================
+
+    ticketCard.innerHTML = `
+
+        <h3>Ticket Details</h3>
+
+        <table>
+
+            <tr>
+                <td>Ticket ID</td>
+                <td>${data.ticketId}</td>
+            </tr>
+
+            <tr>
+                <td>Name</td>
+                <td>${data.name}</td>
+            </tr>
+
+            <tr>
+                <td>Mobile</td>
+                <td>${data.mobile}</td>
+            </tr>
+
+            <tr>
+                <td>Event</td>
+                <td>${data.event}</td>
+            </tr>
+
+            <tr>
+                <td>Status</td>
+                <td>${data.status}</td>
+            </tr>
+
+        </table>
+
+        <button
+        onclick="manualCheckIn('${data.ticketId}')">
+
+            Mark As Check In
+
+        </button>
+
+    `;
+
+}
+
+function manualCheckIn(ticketId){
+
+    showLoader();
+
+    fetch(SCRIPT_URL,{
+
+        method:"POST",
+
+        body:JSON.stringify({
+
+            action:"checkin",
+
+            ticketId:ticketId
+
+        })
+
+    })
+
+    .then(res=>res.json())
+
+    .then(data=>{
+
+        hideLoader();
+
+        if(data.success){
+
+            showPopup(
+                "success",
+                "Checked In",
+                data.ticketId + "<br><br>" + data.checkInTime
+            );
+
+        }
+
+        else if(data.alreadyChecked){
+
+            showPopup(
+                "warning",
+                "Already Checked In",
+                data.ticketId +
+                "<br><br>" +
+                data.checkInTime
+            );
+
+        }
+
+        else{
+
+            showPopup(
+                "error",
+                "Invalid Ticket",
+                "Ticket Not Found"
+            );
+
+        }
+
+    });
 
 }
 
