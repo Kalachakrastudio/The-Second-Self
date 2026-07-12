@@ -144,7 +144,7 @@ fetch(url)
     console.log(err);
 
 });
-
+}
 //=====================================
 // Show Ticket
 //=====================================
@@ -167,7 +167,11 @@ function showTicket(data,isScan){
 
         }
 
-        alert("Ticket Not Found");
+      showPopup(
+    "error",
+    "Ticket Not Found",
+    "No ticket exists with this ID or mobile number."
+);
 
         return;
 
@@ -225,15 +229,9 @@ showPopup(
 
 "Ticket Valid",
 
-data.name+
+ticketId +
 
-"<br><br>"+
-
-data.ticketId+
-
-"<br><br>"+
-
-"Checked In Successfully"
+"<br><br>Checked In Successfully"
 
 );
 
