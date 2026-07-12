@@ -22,7 +22,7 @@ function hideLoader(){
 
 }
 const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbwkjtqOXWniCKHQ64DCz-tLQx7ngFVbEp2ZpgGbvQYBbNv3Xd5dZnS5RIIDoAZiI1Ch/exec";
+"https://script.google.com/macros/s/AKfycbzwdXH-g5S-FtPMh24QHj4y4_trvj9KM8DMzA5mgZpJL6WXHBCYm6DXsTB7de1KdcN0/exec";
 
 const reader = document.getElementById("reader");
 
