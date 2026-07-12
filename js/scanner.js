@@ -103,10 +103,16 @@ function searchTicket(value){
 
     }
 
-    fetch(url)
-    .then(res=>res.json())
-    .then(showTicket);
+   fetch(url)
+.then(res => res.json())
+.then(data => {
 
+    console.log("Response:", data);
+
+    showTicket(data);
+
+})
+.catch(err => console.error(err));
 }
 
 //=====================================
