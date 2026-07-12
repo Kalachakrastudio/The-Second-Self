@@ -269,15 +269,34 @@ DIGITAL TICKET
 }
 
 /*=========================================*/
+.ticket-buttons{
+
+    display:flex;
+    flex-direction:row;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:15px;
+
+    width:100%;
+
+    margin-top:25px;
+
+}
 
 .ticket-buttons button{
 
     flex:1;
 
-    transition:.3s ease;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    gap:10px;
+
+    white-space:nowrap;
 
 }
-
 .ticket-buttons button:hover{
 
     transform:translateY(-2px);
@@ -337,8 +356,6 @@ DIGITAL TICKET
 .ticket-buttons{
 
     flex-direction:column;
-
-}
 
 }
 
