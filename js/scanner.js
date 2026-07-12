@@ -1,17 +1,15 @@
-const loader =
-document.getElementById("loader");
+console.log("Scanner JS Loaded");
 
-function showLoader(){
+const loader = document.getElementById("loader");
+const SCRIPT_URL = "YOUR_SCRIPT_URL";
 
-    loader.classList.add("show");
+const reader = document.getElementById("reader");
 
-}
+console.log(loader);
+console.log(reader);
 
-function hideLoader(){
+const html5QrCode = new Html5Qrcode("reader");
 
-    loader.classList.remove("show");
-
-}
 const SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbwkjtqOXWniCKHQ64DCz-tLQx7ngFVbEp2ZpgGbvQYBbNv3Xd5dZnS5RIIDoAZiI1Ch/exec";
 
@@ -21,20 +19,21 @@ const html5QrCode = new Html5Qrcode("reader");
 // Open Camera
 //=====================================
 
-Html5Qrcode.getCameras().then(cameras=>{
+Html5Qrcode.getCameras()
+.then(cameras => {
 
-    if(!cameras.length){
+    console.log(cameras);
 
+    if(cameras.length === 0){
         alert("No Camera Found");
-
         return;
-
     }
 
     let cameraId = cameras[0].id;
 
-    // Prefer Back Camera
     for(const cam of cameras){
+
+        console.log(cam.label);
 
         const label = cam.label.toLowerCase();
 
@@ -43,27 +42,25 @@ Html5Qrcode.getCameras().then(cameras=>{
             label.includes("rear") ||
             label.includes("environment")
         ){
-
             cameraId = cam.id;
             break;
-
         }
-
     }
 
-    html5QrCode.start(
+    console.log("Using Camera:",cameraId);
 
+    return html5QrCode.start(
         cameraId,
-
         {
             fps:10,
             qrbox:250
         },
-
         onScanSuccess
-
     );
 
+})
+.catch(err=>{
+    console.error("Camera Error",err);
 });
 
 //=====================================
