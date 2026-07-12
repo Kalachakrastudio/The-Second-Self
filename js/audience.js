@@ -216,9 +216,10 @@ qrImage.style.display = "block";
 
 qrBox.appendChild(qrImage);
     
-    successPopup.classList.add("show");
     console.log("Popup Opening...");
 
+    successPopup.classList.add("show");
+    
     form.reset();
 
     document.getElementById("quantity").value = 1;
