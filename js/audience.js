@@ -265,3 +265,36 @@ window.addEventListener("DOMContentLoaded", function () {
 
 });
 
+//==========================================
+// Download Ticket
+//==========================================
+
+document.getElementById("downloadTicket").addEventListener("click", function () {
+
+    const ticket =
+    document.getElementById("ticketToDownload");
+
+    html2canvas(ticket, {
+
+        scale: 3,
+
+        backgroundColor: "#111111",
+
+        useCORS: true
+
+    }).then(canvas => {
+
+        const link =
+        document.createElement("a");
+
+        link.download =
+        document.getElementById("ticketID").textContent + ".png";
+
+        link.href =
+        canvas.toDataURL("image/png");
+
+        link.click();
+
+    });
+
+});
