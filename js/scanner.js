@@ -1,69 +1,92 @@
 const SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbxS4r7iNHtbIjfalJ7Iec8NyCQGmeuLmWrPzl6mP8b3ygWIJSBwCl6K13HkqjXEaxvn/exec";
-const html5QrCode =
-new Html5Qrcode("reader");
+
+const html5QrCode = new Html5Qrcode("reader");
+
+//=====================================
+// Open Camera
+//=====================================
 
 Html5Qrcode.getCameras().then(cameras=>{
 
-if(cameras.length){
+    if(!cameras.length){
 
-html5QrCode.start(
+        alert("No Camera Found");
 
-let cameraId = cameras[0].id;
-
-for(const cam of cameras){
-
-    if(
-        cam.label.toLowerCase().includes("back") ||
-        cam.label.toLowerCase().includes("rear")
-    ){
-
-        cameraId = cam.id;
+        return;
 
     }
 
-}
+    let cameraId = cameras[0].id;
 
-html5QrCode.start(
+    // Prefer Back Camera
+    for(const cam of cameras){
 
-cameraId,
+        const label = cam.label.toLowerCase();
 
-{
-    fps:10,
-    qrbox:250
-},
+        if(
+            label.includes("back") ||
+            label.includes("rear") ||
+            label.includes("environment")
+        ){
 
-onScanSuccess
+            cameraId = cam.id;
+            break;
 
-);
+        }
+
+    }
+
+    html5QrCode.start(
+
+        cameraId,
+
+        {
+            fps:10,
+            qrbox:250
+        },
+
+        onScanSuccess
+
+    );
+
+});
+
+//=====================================
+// QR Scan Success
+//=====================================
 
 function onScanSuccess(decodedText){
 
-html5QrCode.stop();
+    html5QrCode.stop();
 
-searchTicket(decodedText);
+    searchTicket(decodedText);
 
 }
 
+//=====================================
+// Manual Search
+//=====================================
 
-document
-.getElementById("searchBtn")
-.addEventListener("click",()=>{
+document.getElementById("searchBtn").addEventListener("click",()=>{
 
-const value =
-document.getElementById("searchInput").value;
+    const value =
+    document.getElementById("searchInput").value;
 
-searchTicket(value);
+    searchTicket(value);
 
 });
+
+//=====================================
+// Search Ticket
+//=====================================
 
 function searchTicket(value){
 
     value = value.trim();
 
-    let url = "";
+    let url;
 
-    // If it starts with TSS, search by Ticket ID
     if(value.toUpperCase().startsWith("TSS")){
 
         url =
@@ -71,10 +94,7 @@ function searchTicket(value){
         "?ticket=" +
         encodeURIComponent(value);
 
-    }
-
-    // Otherwise search by Mobile Number
-    else{
+    }else{
 
         url =
         SCRIPT_URL +
@@ -84,10 +104,14 @@ function searchTicket(value){
     }
 
     fetch(url)
-    .then(res => res.json())
+    .then(res=>res.json())
     .then(showTicket);
 
 }
+
+//=====================================
+// Show Ticket
+//=====================================
 
 function showTicket(data){
 
@@ -99,48 +123,53 @@ function showTicket(data){
 
     }
 
-    document.getElementById("ticketCard").style.display = "block";
+    document.getElementById("ticketCard").style.display="block";
 
-    document.getElementById("ticketId").textContent = data.ticketId;
+    document.getElementById("ticketId").textContent=data.ticketId;
 
-    document.getElementById("ticketName").textContent = data.name;
+    document.getElementById("ticketName").textContent=data.name;
 
-    document.getElementById("ticketMobile").textContent = data.mobile;
+    document.getElementById("ticketMobile").textContent=data.mobile;
 
-    document.getElementById("ticketEvent").textContent = data.event;
+    document.getElementById("ticketEvent").textContent=data.event;
 
-    document.getElementById("ticketStatus").textContent = data.status;
+    document.getElementById("ticketStatus").textContent=data.status;
 
 }
 
+//=====================================
+// Check In
+//=====================================
+
 document.getElementById("checkInBtn").addEventListener("click",()=>{
 
-fetch(SCRIPT_URL,{
+    fetch(SCRIPT_URL,{
 
-    method:"POST",
+        method:"POST",
 
-    body:JSON.stringify({
+        body:JSON.stringify({
 
-        action:"checkin",
+            action:"checkin",
 
-        ticketId:document.getElementById("ticketId").textContent
+            ticketId:
+            document.getElementById("ticketId").textContent
+
+        })
 
     })
+    .then(res=>res.json())
+    .then(data=>{
 
-})
-.then(res=>res.json())
-.then(data=>{
+        if(data.success){
 
-    if(data.success){
+            alert("Checked In Successfully");
 
-        alert("Checked In Successfully");
+        }else{
 
-    }else{
+            alert("Ticket Not Found");
 
-        alert("Ticket Not Found");
+        }
 
-    }
-
-});
+    });
 
 });
