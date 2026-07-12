@@ -147,6 +147,7 @@ fetch(url)
     console.log("SEARCH RESPONSE");
 
     console.log(data);
+    console.log("Event =", data.event);
 
     showTicket(data,isScan);
 
