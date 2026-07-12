@@ -68,3 +68,27 @@ document.addEventListener("click",()=>{
         });
 
 });
+//=========================================
+// Reset Custom Select
+//=========================================
+
+function resetCustomSelect(selectId){
+
+    const select = document.getElementById(selectId);
+
+    if(!select) return;
+
+    // Reset actual select
+    select.selectedIndex = 0;
+
+    // Update custom text
+    const wrapper = select.parentElement;
+    const selected = wrapper.querySelector(".select-selected");
+
+    selected.textContent =
+    select.options[0].textContent;
+
+    // Trigger change event
+    select.dispatchEvent(new Event("change"));
+
+}
