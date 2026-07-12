@@ -271,27 +271,27 @@ window.addEventListener("DOMContentLoaded", function () {
 
 document.getElementById("downloadTicket").addEventListener("click", function () {
 
-    const ticket =
-    document.getElementById("ticketToDownload");
+    console.log("Download Clicked");
 
-    html2canvas(ticket, {
+    const ticket = document.getElementById("ticketToDownload");
 
-        scale: 3,
+    console.log(ticket);
 
-        backgroundColor: "#111111",
+    console.log(typeof html2canvas);
 
-        useCORS: true
+    html2canvas(ticket,{
+        scale:2,
+        useCORS:true
+    }).then(function(canvas){
 
-    }).then(canvas => {
+        console.log("Canvas Generated");
 
-        const link =
-        document.createElement("a");
+        const link = document.createElement("a");
 
         link.download =
         document.getElementById("ticketID").textContent + ".png";
 
-        link.href =
-        canvas.toDataURL("image/png");
+        link.href = canvas.toDataURL();
 
         link.click();
 
