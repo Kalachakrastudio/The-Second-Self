@@ -60,6 +60,10 @@ form.addEventListener("submit", function (e) {
         successPopup.classList.add("show");
 
         form.reset();
+        resetCustomSelect("category");
+resetCustomSelect("partnershipType");
+resetCustomSelect("supportType");
+resetCustomSelect("budget");
 
     })
 
