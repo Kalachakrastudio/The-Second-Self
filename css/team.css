@@ -36,7 +36,10 @@ TEAM CARD
 position:relative;
 
 overflow:hidden;
-  height:460px;
+ 
+aspect-ratio:3/4;
+
+min-height:480px;
 
 border-radius:24px;
 
@@ -64,16 +67,6 @@ box-shadow:
 /*=========================================
 IMAGE
 =========================================*/
-
-.team-image{
-
-position:absolute;
-
-inset:0;
-
-overflow:hidden;
-
-}
 
 .team-image img{
 
@@ -176,7 +169,10 @@ CONTENT
 
 position:absolute;
 
-inset:0;
+top:0;
+left:0;
+right:0;
+bottom:0;
 
 display:flex;
 
@@ -195,9 +191,7 @@ NAME + ROLE
 
 .team-main{
 
-opacity:1;
-
-transform:translateY(0);
+margin-bottom:0;
 
 transition:.4s ease;
 
@@ -207,9 +201,11 @@ transition:.4s ease;
 
 opacity:0;
 
-transform:translateY(-20px);
+height:0;
 
-pointer-events:none;
+overflow:hidden;
+
+margin:0;
 
 }
 
@@ -259,9 +255,11 @@ QUOTE + SOCIAL
 
 .team-extra{
 
-opacity:0;
+max-height:0;
 
-transform:translateY(20px);
+overflow:hidden;
+
+opacity:0;
 
 transition:.45s ease;
 
@@ -269,9 +267,9 @@ transition:.45s ease;
 
 .team-card:hover .team-extra{
 
-opacity:1;
+max-height:220px;
 
-transform:translateY(0);
+opacity:1;
 
 }
 
