@@ -140,7 +140,7 @@ left:0;
 right:0;
 bottom:0;
 
-height:45%;
+height:28%;
 
 background:
 
@@ -202,17 +202,19 @@ NAME + ROLE
 
 .team-main{
 
-margin-top:auto;
+position:absolute;
+
+left:30px;
+
+bottom:30px;
 
 transition:.45s;
-
-pointer-events:auto;
 
 }
 
 .team-card:hover .team-main{
 
-transform:translateY(-110px);
+bottom:95px;
 
 }
 
@@ -280,13 +282,13 @@ opacity:1;
 
 max-height:220px;
 
-transform:translateY(-90px);
+transform:translateY(-45px);
 
 }
 
 .team-quote{
 
-margin-top:25px;
+margin-top:15px;
 
 line-height:1.9;
 
@@ -324,7 +326,7 @@ display:flex;
 
 gap:14px;
 
-margin-top:24px;
+margin-top:15px;
 
 }
 
