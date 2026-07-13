@@ -176,10 +176,7 @@ CONTENT
 
 position:absolute;
 
-left:0;
-right:0;
-top:0;
-bottom:0;
+inset:0;
 
 display:flex;
 
@@ -198,13 +195,21 @@ NAME + ROLE
 
 .team-main{
 
-transition:.45s ease;
+opacity:1;
+
+transform:translateY(0);
+
+transition:.4s ease;
 
 }
 
 .team-card:hover .team-main{
 
-transform:translateY(-70px);
+opacity:0;
+
+transform:translateY(-20px);
+
+pointer-events:none;
 
 }
 
@@ -256,9 +261,7 @@ QUOTE + SOCIAL
 
 opacity:0;
 
-max-height:0;
-
-overflow:hidden;
+transform:translateY(20px);
 
 transition:.45s ease;
 
@@ -268,9 +271,7 @@ transition:.45s ease;
 
 opacity:1;
 
-max-height:250px;
-
-margin-top:18px;
+transform:translateY(0);
 
 }
 
