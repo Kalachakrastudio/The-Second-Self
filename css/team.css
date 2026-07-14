@@ -31,12 +31,7 @@ background:none;
 
 .team-hero{
 
-background:
-linear-gradient(
-180deg,
-transparent,
-transparent
-)!important;
+background:transparent !important;
 
 }
 /*=========================================
