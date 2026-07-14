@@ -28,17 +28,28 @@ section{
 background:none;
 
 }
+
+.team-hero{
+
+background:
+linear-gradient(
+180deg,
+transparent,
+transparent
+)!important;
+
+}
 /*=========================================
 TEAM SECTION
 =========================================*/
 
 .team-section{
-    padding:120px 0;
-    background:radial-gradient(circle at top,
-    rgba(215,31,40,.08),
-    transparent 65%);
-}
 
+padding:120px 0;
+
+background:transparent;
+
+}
 .team-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
@@ -400,18 +411,15 @@ JOIN TEAM
 
 .join-team{
 
-    padding:140px 0;
+padding:140px 0;
 
-    position:relative;
+position:relative;
 
-    overflow:hidden;
+overflow:hidden;
 
-    text-align:center;
+text-align:center;
 
-    background:
-    radial-gradient(circle at center,
-    rgba(215,31,40,.08),
-    transparent 65%);
+background:transparent;
 
 }
 
