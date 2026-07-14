@@ -370,192 +370,112 @@ JOIN TEAM
 
 .join-team{
 
-padding:120px 0;
+    padding:140px 0;
 
-text-align:center;
+    position:relative;
 
-position:relative;
+    overflow:hidden;
 
-background:
-radial-gradient(
-circle at center,
-rgba(215,31,40,.08),
-transparent 70%
-);
+    text-align:center;
 
-overflow:hidden;
+    background:
+    radial-gradient(circle at center,
+    rgba(215,31,40,.08),
+    transparent 65%);
 
 }
 
 .join-team .container{
 
-max-width:850px;
+    max-width:900px;
 
-margin:auto;
+    margin:auto;
 
 }
-
-/* Small Top Line */
 
 .join-team::before{
 
-content:"";
+    content:"";
 
-position:absolute;
+    display:block;
 
-top:70px;
+    width:80px;
 
-left:50%;
+    height:3px;
 
-transform:translateX(-50%);
+    margin:0 auto 35px;
 
-width:90px;
+    background:#D71F28;
 
-height:3px;
+    border-radius:50px;
 
-background:#D71F28;
-
-border-radius:50px;
-
-box-shadow:0 0 20px rgba(215,31,40,.5);
+    box-shadow:0 0 20px rgba(215,31,40,.45);
 
 }
-
-/* Heading */
 
 .join-team h2{
 
-font-size:3rem;
+    font-size:3rem;
 
-font-weight:700;
+    font-weight:700;
 
-line-height:1.2;
+    text-transform:uppercase;
 
-color:#fff;
+    letter-spacing:2px;
 
-margin-bottom:25px;
-
-text-transform:uppercase;
-
-letter-spacing:1px;
+    margin-bottom:25px;
 
 }
-
-/* Paragraph */
 
 .join-team p{
 
-max-width:720px;
+    max-width:700px;
 
-margin:0 auto 45px;
+    margin:0 auto 45px;
 
-font-size:1.05rem;
+    color:#bcbcbc;
 
-line-height:2;
+    font-size:1.05rem;
 
-color:#bdbdbd;
+    line-height:2;
 
 }
-
-/* Button */
 
 .join-team .btn-primary{
 
-display:inline-flex;
+    display:inline-flex;
 
-align-items:center;
+    align-items:center;
 
-justify-content:center;
+    gap:12px;
 
-gap:12px;
+    padding:16px 36px;
 
-padding:16px 38px;
+    border-radius:50px;
 
-background:#D71F28;
-
-color:#fff;
-
-text-decoration:none;
-
-font-weight:600;
-
-font-size:15px;
-
-letter-spacing:1px;
-
-text-transform:uppercase;
-
-border-radius:50px;
-
-border:2px solid #D71F28;
-
-transition:.35s ease;
+    text-decoration:none;
 
 }
-
-.join-team .btn-primary:hover{
-
-background:transparent;
-
-color:#fff;
-
-transform:translateY(-5px);
-
-box-shadow:0 15px 35px rgba(215,31,40,.35);
-
-}
-
-.join-team .btn-primary i{
-
-transition:.35s;
-
-}
-
-.join-team .btn-primary:hover i{
-
-transform:translateX(6px);
-
-}
-
-/*=========================================
-RESPONSIVE
-=========================================*/
 
 @media(max-width:768px){
 
 .join-team{
 
-padding:90px 0;
-
-}
-
-.join-team::before{
-
-top:50px;
+    padding:90px 0;
 
 }
 
 .join-team h2{
 
-font-size:2.2rem;
+    font-size:2rem;
 
 }
 
 .join-team p{
 
-font-size:.95rem;
+    font-size:.95rem;
 
-line-height:1.9;
-
-padding:0 10px;
-
-}
-
-.join-team .btn-primary{
-
-width:100%;
-
-max-width:320px;
+    line-height:1.8;
 
 }
 
