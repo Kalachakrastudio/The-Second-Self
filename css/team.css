@@ -1,3 +1,33 @@
+body{
+
+background:
+
+radial-gradient(
+circle at top left,
+rgba(215,31,40,.08),
+transparent 30%
+),
+
+radial-gradient(
+circle at bottom center,
+rgba(215,31,40,.10),
+transparent 40%
+),
+
+linear-gradient(
+180deg,
+#0a0a0a,
+#050505
+);
+
+background-attachment:fixed;
+
+}
+section{
+
+background:none;
+
+}
 /*=========================================
 TEAM SECTION
 =========================================*/
