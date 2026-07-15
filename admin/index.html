@@ -1,1 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color" content="#D71F28">
+
+<title>Admin Login | The Second Self</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="css/login.css">
+
+<link rel="icon" href="../Image/favicon.png">
+
+</head>
+
+<body>
+
+<div class="background-glow"></div>
+
+<div class="login-wrapper">
+
+<div class="login-card">
+
+<img
+src="../Image/The Second Self Logo.png"
+alt="The Second Self"
+class="logo">
+
+<p class="admin-tag">
+
+ADMIN PANEL
+
+</p>
+
+<h1>
+
+Welcome Back
+
+</h1>
+
+<p class="subtitle">
+
+Sign in to continue managing
+The Second Self.
+
+</p>
+
+<form id="loginForm">
+
+<div class="input-group">
+
+<label>
+
+Username
+
+</label>
+
+<div class="input-box">
+
+<i class="fa-solid fa-user"></i>
+
+<input
+type="text"
+id="username"
+placeholder="Enter Username"
+required>
+
+</div>
+
+</div>
+
+<div class="input-group">
+
+<label>
+
+Password
+
+</label>
+
+<div class="input-box">
+
+<i class="fa-solid fa-lock"></i>
+
+<input
+type="password"
+id="password"
+placeholder="Enter Password"
+required>
+
+<i
+class="fa-solid fa-eye toggle-password"
+id="togglePassword"></i>
+
+</div>
+
+</div>
+
+<p id="errorMessage"></p>
+
+<button
+type="submit"
+class="login-btn">
+
+LOGIN
+
+</button>
+
+</form>
+
+<div class="footer">
+
+© 2026 The Second Self
+
+</div>
+
+</div>
+
+</div>
+
+<script src="js/login.js"></script>
+
+</body>
+
+</html>
