@@ -78,9 +78,9 @@ z-index:2;
 
 width:100%;
 
-max-width:1100px;
+width:min(95vw,1020px);
 
-min-height:650px;
+height:min(88vh,600px);
 
 display:grid;
 
@@ -112,7 +112,7 @@ height:100%;
 
 .login-left{
 
-padding:70px;
+padding:55px;
 
 display:flex;
 
@@ -138,7 +138,7 @@ rgba(0,0,0,.15)
 
 .login-left .logo{
 
-width:220px;
+width:180px;
 
 margin-bottom:35px;
 
@@ -148,7 +148,9 @@ margin-bottom:35px;
 
 font-family:"Bebas Neue";
 
-font-size:4.8rem;
+font-size:4rem;
+
+line-height:.9;
 
 letter-spacing:2px;
 
@@ -174,7 +176,7 @@ RIGHT PANEL
 
 .login-right{
 
-padding:60px;
+padding:45px;
 
 display:flex;
 
@@ -411,9 +413,41 @@ display:none;
 
 }
 
+.subtitle{
+
+max-width:320px;
+
+margin:0 auto 35px;
+
+}
+  
+#loginForm{
+
+width:100%;
+
+max-width:320px;
+
+}
+
+.input-group{
+
+text-align:left;
+
+}
+
 .login-right{
 
 padding:35px 28px;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
 
 }
 
@@ -426,6 +460,14 @@ font-size:2.5rem;
 .logo{
 
 width:150px;
+
+}
+  
+  .footer{
+
+text-align:center;
+
+width:100%;
 
 }
 
