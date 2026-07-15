@@ -76,25 +76,25 @@ z-index:2;
 
 width:100%;
 
-max-width:460px;
+max-width:1100px;
 
-padding:55px;
+min-height:620px;
 
-background:
+display:grid;
 
-rgba(255,255,255,.04);
+grid-template-columns:1fr 420px;
+
+background:rgba(255,255,255,.04);
 
 backdrop-filter:blur(18px);
 
 border:1px solid rgba(255,255,255,.08);
 
-border-radius:24px;
+border-radius:28px;
 
-text-align:center;
+overflow:hidden;
 
-box-shadow:
-
-0 0 60px rgba(215,31,40,.15);
+box-shadow:0 0 60px rgba(215,31,40,.15);
 
 }
 
