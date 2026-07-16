@@ -245,7 +245,7 @@ display:flex;
 
 }
 
-.modal-content{
+.modal-box{
 
 width:100%;
 
@@ -399,7 +399,7 @@ grid-template-columns:1fr;
 
 }
 
-.modal-content{
+.modal-box{
 
 padding:25px;
 
