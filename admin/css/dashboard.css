@@ -82,17 +82,34 @@ SIDEBAR
 
 width:280px;
 
-background:#0d0d0d;
+height:100vh;
 
-border-right:1px solid var(--border);
+overflow-y:auto;
 
-display:flex;
+overflow-x:hidden;
 
-flex-direction:column;
+position:sticky;
 
-padding:25px;
+top:0;
 
-flex-shrink:0;
+}
+.sidebar::-webkit-scrollbar{
+
+width:6px;
+
+}
+
+.sidebar::-webkit-scrollbar-thumb{
+
+background:#333;
+
+border-radius:20px;
+
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover{
+
+background:#D71F28;
 
 }
 
