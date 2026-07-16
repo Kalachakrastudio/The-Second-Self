@@ -106,3 +106,8 @@ eventForm.addEventListener("submit",(e)=>{
     closeEventModal();
 
 });
+function eventsInit(){
+
+    console.log("Events Module Loaded");
+
+}
