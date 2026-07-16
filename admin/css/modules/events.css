@@ -676,3 +676,40 @@ width:100%;
 }
 
 }
+.empty-row{
+
+text-align:center;
+
+padding:60px 20px !important;
+
+color:#888;
+
+}
+
+.empty-row i{
+
+font-size:42px;
+
+color:#D71F28;
+
+margin-bottom:15px;
+
+display:block;
+
+}
+
+.empty-row p{
+
+font-size:18px;
+
+color:#fff;
+
+margin-bottom:8px;
+
+}
+
+.empty-row small{
+
+color:#888;
+
+}
