@@ -90,7 +90,7 @@ overflow-x:hidden;
 
 position:sticky;
 
-top:0;
+top:10px;
 
 }
 .sidebar::-webkit-scrollbar{
