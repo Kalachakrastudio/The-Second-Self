@@ -69,11 +69,15 @@ animation:pulse 6s infinite;
 
     max-width:980px;
 
-    height:580px;
+    height:auto;
+
+    min-height:560px;
+    
+    max-height:90vh;
 
     display:grid;
 
-    grid-template-columns:1fr 400px;
+    grid-template-columns:58% 42%;
 
     overflow:hidden;
 
@@ -100,8 +104,8 @@ height:100%;
 
 .login-left{
 
-padding:45px;
-
+padding:40px 50px;
+    
 display:flex;
 
 flex-direction:column;
@@ -126,7 +130,7 @@ rgba(0,0,0,.15)
 
 .login-left .logo{
 
-width:180px;
+width:150px;
 
 margin-bottom:35px;
 
@@ -136,7 +140,7 @@ margin-bottom:35px;
 
 font-family:"Bebas Neue";
 
-font-size:3.5rem;
+font-size:3.4rem;
 
 line-height:.9;
 
@@ -164,7 +168,7 @@ RIGHT PANEL
 
 .login-right{
 
-padding:35px;
+padding:35px 40px;
 
 display:flex;
 
