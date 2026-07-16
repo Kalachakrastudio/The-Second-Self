@@ -1,8 +1,26 @@
 <div class="page-toolbar">
 
+    <div class="toolbar-left">
+
+        <input
+            type="text"
+            id="eventSearch"
+            placeholder="Search Event...">
+
+        <select id="eventStatus">
+
+            <option value="all">All Status</option>
+            <option value="Upcoming">Upcoming</option>
+            <option value="Live">Live</option>
+            <option value="Completed">Completed</option>
+
+        </select>
+
+    </div>
+
     <button
-    id="addEventBtn"
-    class="primary-btn">
+        class="primary-btn"
+        id="addEventBtn">
 
         <i class="fa-solid fa-plus"></i>
 
@@ -12,121 +30,225 @@
 
 </div>
 
+
 <div class="table-card">
 
-    <table class="event-table">
+<table>
 
-        <thead>
+<thead>
 
-            <tr>
+<tr>
 
-                <th>Event</th>
+<th>Event</th>
 
-                <th>Date</th>
+<th>Date</th>
 
-                <th>Venue</th>
+<th>Venue</th>
 
-                <th>Status</th>
+<th>Status</th>
 
-                <th>Tickets</th>
+<th>Tickets</th>
 
-                <th>Actions</th>
+<th>Actions</th>
 
-            </tr>
+</tr>
 
-        </thead>
+</thead>
 
-        <tbody id="eventTableBody">
+<tbody id="eventTable">
 
-        </tbody>
+<tr>
 
-    </table>
+<td colspan="6" class="empty-row">
+
+No Events Found
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
 
 </div>
 
-<!-- Add Event Modal -->
 
-<div class="modal" id="eventModal">
+<!-- ==========================
+ADD EVENT MODAL
+========================== -->
 
-    <div class="modal-content">
+<div
+id="eventModal"
+class="modal">
 
-        <div class="modal-header">
+<div class="modal-box">
 
-            <h3>Create Event</h3>
+<div class="modal-header">
 
-            <button id="closeModal">
+<h2>
 
-                <i class="fa-solid fa-xmark"></i>
+Create Event
 
-            </button>
+</h2>
 
-        </div>
+<button
+id="closeModal">
 
-        <form id="eventForm">
+<i class="fa-solid fa-xmark"></i>
 
-            <div class="form-grid">
+</button>
 
-                <div>
+</div>
 
-                    <label>Event Name</label>
 
-                    <input
-                    type="text"
-                    id="eventName"
-                    required>
+<form id="eventForm">
 
-                </div>
+<div class="grid-2">
 
-                <div>
+<div>
 
-                    <label>Date</label>
+<label>
 
-                    <input
-                    type="date"
-                    id="eventDate"
-                    required>
+Event Name
 
-                </div>
+</label>
 
-                <div>
+<input
+type="text"
+id="eventName"
+required>
 
-                    <label>Venue</label>
+</div>
 
-                    <input
-                    type="text"
-                    id="eventVenue"
-                    required>
+<div>
 
-                </div>
+<label>
 
-                <div>
+Event Date
 
-                    <label>Status</label>
+</label>
 
-                    <select id="eventStatus">
+<input
+type="date"
+id="eventDate"
+required>
 
-                        <option>Upcoming</option>
+</div>
 
-                        <option>Live</option>
+<div>
 
-                        <option>Completed</option>
+<label>
 
-                    </select>
+Event Time
 
-                </div>
+</label>
 
-            </div>
+<input
+type="time"
+id="eventTime"
+required>
 
-            <button
-            class="primary-btn"
-            type="submit">
+</div>
 
-                Save Event
+<div>
 
-            </button>
+<label>
 
-        </form>
+Venue
 
-    </div>
+</label>
+
+<input
+type="text"
+id="eventVenue"
+required>
+
+</div>
+
+<div>
+
+<label>
+
+City
+
+</label>
+
+<input
+type="text"
+id="eventCity"
+required>
+
+</div>
+
+<div>
+
+<label>
+
+Status
+
+</label>
+
+<select id="eventStatusSelect">
+
+<option>Upcoming</option>
+
+<option>Live</option>
+
+<option>Completed</option>
+
+</select>
+
+</div>
+
+</div>
+
+<hr>
+
+<h3>
+
+Ticket Categories
+
+</h3>
+
+<div id="ticketContainer">
+
+</div>
+
+<button
+type="button"
+id="addTicketRow"
+class="secondary-btn">
+
+<i class="fa-solid fa-plus"></i>
+
+Add Ticket
+
+</button>
+
+<div class="modal-footer">
+
+<button
+type="button"
+id="cancelEvent"
+class="cancel-btn">
+
+Cancel
+
+</button>
+
+<button
+type="submit"
+class="primary-btn">
+
+Save Event
+
+</button>
+
+</div>
+
+</form>
+
+</div>
 
 </div>
