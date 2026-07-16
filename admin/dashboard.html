@@ -1,1 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dashboard | The Second Self Admin</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="../css/dashboard.css">
+
+<link rel="icon" href="../../Image/favicon.png">
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-top">
+
+            <img src="../../Image/The Second Self Logo.png"
+                 class="logo">
+
+            <h2>ADMIN</h2>
+
+        </div>
+
+        <ul class="sidebar-menu">
+
+            <li class="active">
+
+                <i class="fa-solid fa-table-columns"></i>
+
+                Dashboard
+
+            </li>
+
+            <li>
+
+                <i class="fa-solid fa-calendar"></i>
+
+                Events
+
+            </li>
+
+            <li>
+
+                <i class="fa-solid fa-users"></i>
+
+                Performers
+
+            </li>
+
+            <li>
+
+                <i class="fa-solid fa-chart-column"></i>
+
+                Reports
+
+            </li>
+
+            <li>
+
+                <i class="fa-solid fa-qrcode"></i>
+
+                Ticket Scanner
+
+            </li>
+
+            <li>
+
+                <i class="fa-solid fa-star"></i>
+
+                Scoring
+
+            </li>
+
+            <li>
+
+                <i class="fa-solid fa-user-gear"></i>
+
+                Users
+
+            </li>
+
+            <li>
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Logout
+
+            </li>
+
+        </ul>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main class="main-content">
+
+        <!-- Header -->
+
+        <header class="topbar">
+
+            <div>
+
+                <h1>Dashboard</h1>
+
+                <p>Welcome back, Admin</p>
+
+            </div>
+
+            <div class="top-right">
+
+                <button class="notification">
+
+                    <i class="fa-solid fa-bell"></i>
+
+                </button>
+
+                <div class="profile">
+
+                    <i class="fa-solid fa-user"></i>
+
+                    <span>Administrator</span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+        <!-- Event Selector -->
+
+        <section class="event-filter">
+
+            <select>
+
+                <option>Select Event</option>
+
+                <option>Open Mic Episode 1</option>
+
+                <option>The Second Self Episode 2</option>
+
+                <option>Open Mic Pune</option>
+
+            </select>
+
+        </section>
+
+        <!-- Statistics -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-microphone"></i>
+
+                <h2>32</h2>
+
+                <p>Performers</p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-ticket"></i>
+
+                <h2>280</h2>
+
+                <p>Tickets</p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-hand-holding-heart"></i>
+
+                <h2>7</h2>
+
+                <p>Sponsors</p>
+
+            </div>
+
+            <div class="stat-card">
+
+                <i class="fa-solid fa-star"></i>
+
+                <h2>1240</h2>
+
+                <p>Votes</p>
+
+            </div>
+
+        </section>
+
+        <!-- Quick Actions -->
+
+        <section class="quick-actions">
+
+            <button>
+
+                <i class="fa-solid fa-plus"></i>
+
+                Add Event
+
+            </button>
+
+            <button>
+
+                <i class="fa-solid fa-user-plus"></i>
+
+                Add Performer
+
+            </button>
+
+            <button>
+
+                <i class="fa-solid fa-file-lines"></i>
+
+                View Reports
+
+            </button>
+
+            <button>
+
+                <i class="fa-solid fa-qrcode"></i>
+
+                Open Scanner
+
+            </button>
+
+        </section>
+
+        <!-- Recent Activity -->
+
+        <section class="activity">
+
+            <h2>Recent Activity</h2>
+
+            <div class="activity-box">
+
+                <div>✔ 120 Tickets booked</div>
+
+                <div>✔ Judge 2 submitted scores</div>
+
+                <div>✔ New Sponsor Request</div>
+
+                <div>✔ Event updated</div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="../js/dashboard.js"></script>
+
+</body>
+
+</html>
