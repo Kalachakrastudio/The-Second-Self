@@ -1,113 +1,81 @@
-// =========================================
-// Events Module
-// =========================================
+function eventsInit(){
 
-const eventModal = document.getElementById("eventModal");
+    const eventModal = document.getElementById("eventModal");
 
-const addEventBtn = document.getElementById("addEventBtn");
+    const addEventBtn = document.getElementById("addEventBtn");
 
-const closeModal = document.getElementById("closeModal");
+    const closeModal = document.getElementById("closeModal");
 
-const cancelEvent = document.getElementById("cancelEvent");
+    const cancelEvent = document.getElementById("cancelEvent");
 
-function openEventModal(){
+    const ticketContainer = document.getElementById("ticketContainer");
 
-    eventModal.classList.add("show");
+    const addTicketBtn = document.getElementById("addTicketRow");
 
-}
+    function openModal(){
 
-function closeEventModal(){
-
-    eventModal.classList.remove("show");
-
-}
-
-addEventBtn.addEventListener("click",openEventModal);
-
-closeModal.addEventListener("click",closeEventModal);
-
-cancelEvent.addEventListener("click",closeEventModal);
-
-window.addEventListener("click",(e)=>{
-
-    if(e.target===eventModal){
-
-        closeEventModal();
+        eventModal.classList.add("show");
 
     }
 
-});
+    function closeModalFn(){
 
-// =========================================
-// Ticket Rows
-// =========================================
+        eventModal.classList.remove("show");
 
-const ticketContainer=document.getElementById("ticketContainer");
+    }
 
-const addTicketBtn=document.getElementById("addTicketRow");
+    addEventBtn.addEventListener("click",openModal);
 
-function createTicketRow(){
+    closeModal.addEventListener("click",closeModalFn);
 
-    const row=document.createElement("div");
+    cancelEvent.addEventListener("click",closeModalFn);
 
-    row.className="ticket-row";
+    eventModal.addEventListener("click",(e)=>{
 
-    row.innerHTML=`
+        if(e.target===eventModal){
 
-<input
-type="text"
-placeholder="Ticket Name">
+            closeModalFn();
 
-<input
-type="number"
-placeholder="Price">
+        }
 
-<input
-type="number"
-placeholder="Limit">
+    });
 
-<button
-type="button"
-class="delete-ticket">
+    function createTicketRow(){
 
-<i class="fa-solid fa-trash"></i>
+        const row=document.createElement("div");
 
-</button>
+        row.className="ticket-row";
 
-`;
+        row.innerHTML=`
 
-    row.querySelector(".delete-ticket").onclick=()=>{
+            <input type="text" placeholder="Ticket Name">
 
-        row.remove();
+            <input type="number" placeholder="Price">
 
-    };
+            <input type="number" placeholder="Limit">
 
-    ticketContainer.appendChild(row);
+            <button type="button" class="delete-ticket">
 
-}
+                <i class="fa-solid fa-trash"></i>
 
-addTicketBtn.addEventListener("click",createTicketRow);
+            </button>
 
-// First Ticket
+        `;
 
-createTicketRow();
-// =========================================
-// Event Save
-// =========================================
+        row.querySelector(".delete-ticket").onclick=()=>{
 
-const eventForm=document.getElementById("eventForm");
+            row.remove();
 
-eventForm.addEventListener("submit",(e)=>{
+        };
 
-    e.preventDefault();
+        ticketContainer.appendChild(row);
 
-    alert("Next step: Save Event");
+    }
 
-    closeEventModal();
+    addTicketBtn.addEventListener("click",createTicketRow);
 
-});
-function eventsInit(){
+    createTicketRow();
 
-    console.log("Events Module Loaded");
+    console.log("Events Module Initialized");
 
 }
