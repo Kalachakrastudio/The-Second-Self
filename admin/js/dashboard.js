@@ -1,6 +1,53 @@
-const contentArea=document.getElementById("contentArea");
+const contentArea = document.getElementById("contentArea");
 
-function loadPage(page,title){
+/* =========================================
+PAGE CONFIG
+========================================= */
+
+const pages = {
+
+dashboard:{
+title:"Dashboard",
+subtitle:"Overview of today's activity."
+},
+
+events:{
+title:"Events",
+subtitle:"Manage events, tickets and categories."
+},
+
+performers:{
+title:"Performers",
+subtitle:"Manage performer profiles."
+},
+
+scanner:{
+title:"Scanner",
+subtitle:"Scan audience tickets."
+},
+
+scoring:{
+title:"Scoring",
+subtitle:"Judge & audience scoring."
+},
+
+reports:{
+title:"Reports",
+subtitle:"View registrations and reports."
+},
+
+users:{
+title:"Users",
+subtitle:"Manage users and permissions."
+}
+
+};
+
+/* =========================================
+LOAD PAGE
+========================================= */
+
+function loadPage(page){
 
 fetch(`modules/${page}.html`)
 
@@ -10,34 +57,40 @@ fetch(`modules/${page}.html`)
 
 contentArea.innerHTML=data;
 
-document.getElementById("pageTitle").textContent=title;
+document.getElementById("pageTitle").textContent=pages[page].title;
+
+document.getElementById("pageSubtitle").textContent=pages[page].subtitle;
 
 });
 
 }
 
-document.querySelectorAll(".sidebar-menu li")
+/* =========================================
+SIDEBAR
+========================================= */
+
+document.querySelectorAll(".sidebar-menu li[data-page]")
 
 .forEach(item=>{
 
 item.addEventListener("click",()=>{
 
-document.querySelector(".sidebar-menu .active")
+document
+
+.querySelector(".sidebar-menu .active")
 
 ?.classList.remove("active");
 
 item.classList.add("active");
 
-loadPage(
-
-item.dataset.page,
-
-item.dataset.title
-
-);
+loadPage(item.dataset.page);
 
 });
 
 });
 
-loadPage("dashboard","Dashboard");
+/* =========================================
+FIRST PAGE
+========================================= */
+
+loadPage("dashboard");
