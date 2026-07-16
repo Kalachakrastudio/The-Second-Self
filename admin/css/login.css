@@ -9,22 +9,28 @@ body{
 
 body{
 
-    font-family:Poppins,sans-serif;
-    background:#050505;
-    color:#fff;
+font-family:Poppins,sans-serif;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+background:#050505;
 
-    position:relative;
+color:#fff;
+
+overflow-x:hidden;
+
+overflow-y:auto;
+
+position:relative;
 
 }
 /*============================*/
 
 .background-glow{
 
-position:absolute;
+position:fixed;
+
+inset:0;
+
+margin:auto;
 
 width:700px;
 
@@ -50,15 +56,15 @@ animation:pulse 6s infinite;
 
     width:100%;
 
-    height:100vh;
+    min-height:100vh;
+
+    padding:20px;
 
     display:flex;
 
     justify-content:center;
 
     align-items:center;
-
-    padding:25px;
 
 }
 /*============================*/
@@ -69,12 +75,8 @@ animation:pulse 6s infinite;
 
     max-width:980px;
 
-    height:auto;
-
-    min-height:560px;
+    height:clamp(520px,82vh,620px);
     
-    max-height:90vh;
-
     display:grid;
 
     grid-template-columns:58% 42%;
@@ -104,7 +106,7 @@ height:100%;
 
 .login-left{
 
-padding:40px 50px;
+padding:35px 40px;
     
 display:flex;
 
@@ -168,13 +170,11 @@ RIGHT PANEL
 
 .login-right{
 
-padding:35px 40px;
-
 display:flex;
 
 flex-direction:column;
 
-justify-content:center;
+padding:32px 40px;
 
 }
 
@@ -213,7 +213,7 @@ color:#bdbdbd;
 
 line-height:1.8;
 
-margin-bottom:25px;
+margin-bottom:18px;
 
 }
 
@@ -319,7 +319,7 @@ cursor:pointer;
 
 transition:.35s;
 
-margin-top:15px;
+margin-top:8px;
 
 }
 
@@ -349,11 +349,9 @@ min-height:22px;
 
 .footer{
 
-margin-top:35px;
+margin-top:auto;
 
-color:#777;
-
-font-size:.8rem;
+padding-top:15px;
 
 }
 
@@ -410,7 +408,7 @@ body{
 
 .login-card{
 
-    width:100%;
+    width:calc(100% - 0px);
 
     height:auto;
 
@@ -458,7 +456,11 @@ body{
 
 #loginForm{
 
-    width:100%;
+width:100%;
+
+max-width:320px;
+
+margin:auto;
 
 }
 
@@ -472,11 +474,11 @@ body{
 
 .footer{
 
-    text-align:center;
+    margin-top:18px;
+
+text-align:center;
 
     width:100%;
-
-    margin-top:20px;
 
 }
 
