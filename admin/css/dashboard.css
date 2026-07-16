@@ -68,9 +68,15 @@ LAYOUT
 =========================================*/
 
 .dashboard{
-    display:flex;
-    min-height:100dvh;
-    width:100%;
+
+display:flex;
+
+width:100%;
+
+height:100dvh;
+
+overflow:hidden;
+
 }
 
 /*=========================================
@@ -83,11 +89,15 @@ width:280px;
 
 height:100vh;
 
-position:sticky;
+background:#0c0c0c;
 
-top:0;
+display:flex;
 
-overflow-y:auto;
+flex-direction:column;
+
+overflow:hidden;
+
+border-right:1px solid rgba(255,255,255,.08);
 
 flex-shrink:0;
 
@@ -115,9 +125,11 @@ background:#D71F28;
 
 .sidebar-top{
 
-    text-align: center;
-    margin-bottom: 30px;
-    margin-top: 30px;
+padding:30px 20px;
+
+text-align:center;
+
+flex-shrink:0;
 
 }
 
@@ -143,6 +155,12 @@ color:var(--primary);
 
 .sidebar-menu{
 
+flex:1;
+
+overflow-y:auto;
+
+overflow-x:hidden;
+
 list-style:none;
 
 display:flex;
@@ -150,6 +168,8 @@ display:flex;
 flex-direction:column;
 
 gap:10px;
+
+padding:0 15px 20px;
 
 }
 
@@ -209,11 +229,11 @@ MAIN
 
 flex:1;
 
-padding:35px;
+height:100vh;
 
 overflow-y:auto;
 
-height:100vh;
+padding:35px;
 
 }
 
@@ -541,77 +561,117 @@ background:var(--primary);
 RESPONSIVE
 =========================================*/
 
-@media(max-width:1200px){
+/*=========================================
+MOBILE
+=========================================*/
 
-.stats-grid{
+@media screen and (max-width:900px){
 
-grid-template-columns:repeat(2,1fr);
+html,
+body{
+
+    width:100%;
+    height:100%;
+    overflow-x:hidden;
+    overflow-y:auto;
 
 }
-
-.quick-actions{
-
-grid-template-columns:repeat(2,1fr);
-
-}
-
-}
-
-@media(max-width:900px){
 
 .dashboard{
 
-flex-direction:column;
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    min-height:100vh;
+    height:auto;
 
 }
+
+/*==============================
+SIDEBAR
+==============================*/
 
 .sidebar{
 
     width:100%;
-
     height:auto;
-
     position:relative;
+    top:0;
+    left:0;
+
+    padding:16px;
 
     overflow:visible;
 
-    padding:18px;
+    border-right:none;
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.sidebar-top{
+
+    margin:10px 0 20px;
+    text-align:center;
+
+}
+
+.sidebar-top img{
+
+    width:130px;
+
+}
+
+.sidebar-top h2{
+
+    font-size:1.6rem;
 
 }
 
 .sidebar-menu{
 
-display:flex;
+    display:flex;
+    flex-direction:row;
 
-flex-direction:row;
+    gap:12px;
 
-overflow-x:auto;
+    overflow-x:auto;
+    overflow-y:hidden;
 
-overflow-y:hidden;
+    padding-bottom:8px;
 
-gap:12px;
+    scroll-behavior:smooth;
 
-padding-bottom:10px;
+    -webkit-overflow-scrolling:touch;
 
-scrollbar-width:none;
+    scrollbar-width:none;
 
 }
 
 .sidebar-menu::-webkit-scrollbar{
 
-display:none;
+    display:none;
 
 }
 
 .sidebar-menu li{
 
-white-space:nowrap;
+    flex:0 0 auto;
+
+    min-width:150px;
+
+    justify-content:center;
 
 }
 
+/*==============================
+MAIN CONTENT
+==============================*/
+
 .main-content{
 
-    padding:20px;
+    width:100%;
+
+    flex:1;
 
     height:auto;
 
@@ -619,45 +679,106 @@ white-space:nowrap;
 
     overflow:visible;
 
-    padding-bottom:80px;
+    padding:20px 18px 70px;
 
 }
 
+/*==============================
+HEADER
+==============================*/
+
 .topbar{
 
-flex-direction:column;
+    display:flex;
 
-align-items:flex-start;
+    flex-direction:column;
 
-gap:20px;
+    align-items:flex-start;
+
+    gap:18px;
+
+    margin-bottom:25px;
+
+}
+
+.topbar h1{
+
+    font-size:2.3rem;
+
+}
+
+.top-right{
+
+    width:100%;
+
+    justify-content:space-between;
+
+}
+
+/*==============================
+EVENT
+==============================*/
+
+.event-filter{
+
+    width:100%;
 
 }
 
 .event-filter select{
 
-width:100%;
+    width:100%;
 
 }
 
+/*==============================
+CARDS
+==============================*/
+
 .stats-grid{
 
-grid-template-columns:1fr;
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    gap:18px;
 
 }
 
 .quick-actions{
 
-grid-template-columns:1fr;
+    display:grid;
+
+    grid-template-columns:1fr;
+
+    gap:18px;
+
+}
+
+.activity{
+
+    padding:22px;
 
 }
 
 }
+
+/*=========================================
+100dvh Support
+=========================================*/
+
 @supports(height:100dvh){
 
-    .dashboard{
+body{
 
-        min-height:100dvh;
+min-height:100dvh;
 
-    }
+}
+
+.dashboard{
+
+min-height:100dvh;
+
+}
 
 }
