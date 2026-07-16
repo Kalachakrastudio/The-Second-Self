@@ -1,35 +1,25 @@
-*{
-
-margin:0;
-padding:0;
-box-sizing:border-box;
-
+html,
+body{
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+    overflow-x:hidden;
 }
 
 body{
 
-font-family:Poppins,sans-serif;
+    font-family:Poppins,sans-serif;
+    background:#050505;
+    color:#fff;
 
-background:#050505;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-color:#fff;
-
-min-height:100vh;
-
-overflow-x:hidden;
-
-overflow-y:auto;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-position:relative;
+    position:relative;
 
 }
-
 /*============================*/
 
 .background-glow{
@@ -58,48 +48,46 @@ animation:pulse 6s infinite;
 
 .login-wrapper{
 
-width:100%;
+    width:100%;
 
-padding:20px;
+    height:100vh;
 
-display:flex;
+    display:flex;
 
-justify-content:center;
+    justify-content:center;
 
-align-items:center;
+    align-items:center;
 
-z-index:2;
+    padding:25px;
 
 }
-
 /*============================*/
 
 .login-card{
 
-width:100%;
+    width:100%;
 
-width:min(95vw,1020px);
+    max-width:980px;
 
-height:min(88vh,600px);
+    height:580px;
 
-display:grid;
+    display:grid;
 
-grid-template-columns:1fr 430px;
+    grid-template-columns:1fr 400px;
 
-background:rgba(255,255,255,.04);
+    overflow:hidden;
 
-backdrop-filter:blur(18px);
+    border-radius:24px;
 
-border:1px solid rgba(255,255,255,.08);
+    background:rgba(255,255,255,.04);
 
-border-radius:28px;
+    border:1px solid rgba(255,255,255,.08);
 
-overflow:hidden;
+    backdrop-filter:blur(18px);
 
-box-shadow:0 0 60px rgba(215,31,40,.15);
+    box-shadow:0 0 50px rgba(215,31,40,.18);
 
 }
-
 /*=================================
 LEFT PANEL
 =================================*/
@@ -112,7 +100,7 @@ height:100%;
 
 .login-left{
 
-padding:55px;
+padding:45px;
 
 display:flex;
 
@@ -148,7 +136,7 @@ margin-bottom:35px;
 
 font-family:"Bebas Neue";
 
-font-size:4rem;
+font-size:3.5rem;
 
 line-height:.9;
 
@@ -176,7 +164,7 @@ RIGHT PANEL
 
 .login-right{
 
-padding:45px;
+padding:35px;
 
 display:flex;
 
@@ -188,7 +176,7 @@ justify-content:center;
 
 .login-right h2{
 
-font-size:3rem;
+font-size:2.5rem;
 
 font-family:"Bebas Neue";
 
@@ -221,7 +209,7 @@ color:#bdbdbd;
 
 line-height:1.8;
 
-margin-bottom:40px;
+margin-bottom:25px;
 
 }
 
@@ -229,7 +217,7 @@ margin-bottom:40px;
 
 .input-group{
 
-margin-bottom:25px;
+margin-bottom:18px;
 
 text-align:left;
 
@@ -289,7 +277,7 @@ border:none;
 
 outline:none;
 
-padding:18px 14px;
+padding:14px 14px;
 
 font-size:15px;
 
@@ -309,7 +297,7 @@ cursor:pointer;
 
 width:100%;
 
-padding:18px;
+padding:15px;
 
 border:none;
 
@@ -397,77 +385,94 @@ opacity:.5;
 
 /*============================*/
 
-@media(max-width:900px){
+@media (max-width:900px){
+
+html,
+body{
+
+    overflow:hidden;
+
+}
+
+.login-wrapper{
+
+    width:100%;
+
+    height:100vh;
+
+    padding:18px;
+
+}
 
 .login-card{
 
-grid-template-columns:1fr;
+    width:100%;
 
-max-width:460px;
+    height:auto;
+
+    max-width:420px;
+
+    grid-template-columns:1fr;
 
 }
 
 .login-left{
 
-display:none;
-
-}
-
-.subtitle{
-
-max-width:320px;
-
-margin:0 auto 35px;
-
-}
-  
-#loginForm{
-
-width:100%;
-
-max-width:320px;
-
-}
-
-.input-group{
-
-text-align:left;
+    display:none;
 
 }
 
 .login-right{
 
-padding:35px 28px;
+    padding:28px 24px;
 
-display:flex;
+    display:flex;
 
-flex-direction:column;
+    flex-direction:column;
 
-justify-content:center;
+    align-items:center;
 
-align-items:center;
+    justify-content:center;
 
-text-align:center;
+    text-align:center;
 
 }
 
 .login-right h2{
 
-font-size:2.5rem;
+    font-size:2.2rem;
 
 }
 
-.logo{
+.subtitle{
 
-width:150px;
+    max-width:300px;
+
+    margin:0 auto 25px;
 
 }
-  
-  .footer{
 
-text-align:center;
+#loginForm{
 
-width:100%;
+    width:100%;
+
+}
+
+.input-group{
+
+    width:100%;
+
+    text-align:left;
+
+}
+
+.footer{
+
+    text-align:center;
+
+    width:100%;
+
+    margin-top:20px;
 
 }
 
