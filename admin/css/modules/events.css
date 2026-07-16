@@ -376,7 +376,7 @@ margin-bottom:25px;
 
 }
 
-.modal-header h3{
+.modal-header h2{
 
 font-family:"Bebas Neue";
 
@@ -404,7 +404,7 @@ cursor:pointer;
 FORM
 =========================================*/
 
-.form-grid{
+.grid-2{
 
 display:grid;
 
@@ -416,7 +416,7 @@ margin-bottom:30px;
 
 }
 
-.form-grid label{
+.grid-2 label{
 
 display:block;
 
@@ -426,8 +426,8 @@ font-size:14px;
 
 }
 
-.form-grid input,
-.form-grid select{
+.grid-2 input,
+.grid-2 select{
 
 width:100%;
 
@@ -441,19 +441,22 @@ border-radius:12px;
 
 color:#fff;
 
+font-size:15px;
+
 outline:none;
 
 transition:.3s;
 
 }
 
-.form-grid input:focus,
-.form-grid select:focus{
+.grid-2 input:focus,
+.grid-2 select:focus{
 
 border-color:#D71F28;
 
-}
+box-shadow:0 0 15px rgba(215,31,40,.2);
 
+}
 /*=========================================
 RESPONSIVE
 =========================================*/
@@ -506,7 +509,7 @@ font-size:2.2rem;
 
 }
 
-.form-grid{
+.grid-2{
 
 grid-template-columns:1fr;
 
@@ -514,7 +517,9 @@ grid-template-columns:1fr;
 
 .modal-box{
 
-padding:25px;
+max-height:90vh;
+
+overflow-y:auto;
 
 }
 
@@ -545,13 +550,15 @@ border-top:1px solid rgba(255,255,255,.08);
 
 }
 
-.ticket-section h4{
+.ticket-section h3{
 
-font-size:18px;
+font-size:22px;
 
-margin-bottom:18px;
+margin-bottom:8px;
 
-font-weight:600;
+font-family:"Bebas Neue";
+
+letter-spacing:1px;
 
 }
 
@@ -559,9 +566,11 @@ font-weight:600;
 
 display:grid;
 
-grid-template-columns:2fr 1fr 1fr auto;
+grid-template-columns:2.2fr 1fr 1fr 55px;
 
 gap:15px;
+
+align-items:center;
 
 margin-bottom:15px;
 
@@ -625,6 +634,8 @@ display:flex;
 
 justify-content:flex-end;
 
+align-items:center;
+
 gap:15px;
 
 margin-top:35px;
@@ -680,9 +691,11 @@ width:100%;
 
 text-align:center;
 
-padding:60px 20px !important;
+padding:70px 20px !important;
 
-color:#888;
+font-size:16px;
+
+color:#8d8d8d;
 
 }
 
