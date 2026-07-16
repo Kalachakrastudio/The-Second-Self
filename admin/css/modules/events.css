@@ -2,14 +2,13 @@
 EVENT PAGE
 =========================================*/
 
-.page-header{
+.page-toolbar{
 
 display:flex;
-justify-content:space-between;
-align-items:center;
+
+justify-content:flex-end;
+
 margin-bottom:30px;
-gap:20px;
-flex-wrap:wrap;
 
 }
 
