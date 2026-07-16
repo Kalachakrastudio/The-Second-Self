@@ -68,13 +68,9 @@ LAYOUT
 =========================================*/
 
 .dashboard{
-
-display:flex;
-
-min-height:100vh;
-
-width:100%;
-
+    display:flex;
+    min-height:100dvh;
+    width:100%;
 }
 
 /*=========================================
@@ -571,15 +567,15 @@ flex-direction:column;
 
 .sidebar{
 
-width:100%;
+    width:100%;
 
-height:auto;
+    height:auto;
 
-position:relative;
+    position:relative;
 
-overflow:visible;
+    overflow:visible;
 
-padding:18px;
+    padding:18px;
 
 }
 
@@ -615,11 +611,15 @@ white-space:nowrap;
 
 .main-content{
 
-padding:20px;
+    padding:20px;
 
-height:auto;
+    height:auto;
 
-overflow:visible;
+    min-height:auto;
+
+    overflow:visible;
+
+    padding-bottom:80px;
 
 }
 
@@ -650,5 +650,14 @@ grid-template-columns:1fr;
 grid-template-columns:1fr;
 
 }
+
+}
+@supports(height:100dvh){
+
+    .dashboard{
+
+        min-height:100dvh;
+
+    }
 
 }
