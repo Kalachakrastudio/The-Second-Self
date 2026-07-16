@@ -1,96 +1,119 @@
 const contentArea = document.getElementById("contentArea");
 
-/* =========================================
-PAGE CONFIG
-========================================= */
+async function loadPage(page,title){
 
-const pages = {
+    const html = await fetch(`modules/${page}.html`);
 
-dashboard:{
-title:"Dashboard",
-subtitle:"Overview of today's activity."
-},
+    const data = await html.text();
 
-events:{
-title:"Events",
-subtitle:"Manage events, tickets and categories."
-},
+    contentArea.innerHTML = data;
 
-performers:{
-title:"Performers",
-subtitle:"Manage performer profiles."
-},
+    document.getElementById("pageTitle").textContent = title;
 
-scanner:{
-title:"Scanner",
-subtitle:"Scan audience tickets."
-},
-
-scoring:{
-title:"Scoring",
-subtitle:"Judge & audience scoring."
-},
-
-reports:{
-title:"Reports",
-subtitle:"View registrations and reports."
-},
-
-users:{
-title:"Users",
-subtitle:"Manage users and permissions."
-}
-
-};
-
-/* =========================================
-LOAD PAGE
-========================================= */
-
-function loadPage(page){
-
-fetch(`modules/${page}.html`)
-
-.then(res=>res.text())
-
-.then(data=>{
-
-contentArea.innerHTML=data;
-
-document.getElementById("pageTitle").textContent=pages[page].title;
-
-document.getElementById("pageSubtitle").textContent=pages[page].subtitle;
-
-});
+    loadModule(page);
 
 }
 
-/* =========================================
-SIDEBAR
-========================================= */
+function loadModule(page){
+
+    switch(page){
+
+        case "dashboard":
+
+            if(typeof dashboardInit==="function"){
+
+                dashboardInit();
+
+            }
+
+        break;
+
+        case "events":
+
+            if(typeof eventsInit==="function"){
+
+                eventsInit();
+
+            }
+
+        break;
+
+        case "participants":
+
+            if(typeof participantsInit==="function"){
+
+                participantsInit();
+
+            }
+
+        break;
+
+        case "scanner":
+
+            if(typeof scannerInit==="function"){
+
+                scannerInit();
+
+            }
+
+        break;
+
+        case "scoring":
+
+            if(typeof scoringInit==="function"){
+
+                scoringInit();
+
+            }
+
+        break;
+
+        case "reports":
+
+            if(typeof reportsInit==="function"){
+
+                reportsInit();
+
+            }
+
+        break;
+
+        case "users":
+
+            if(typeof usersInit==="function"){
+
+                usersInit();
+
+            }
+
+        break;
+
+    }
+
+}
 
 document.querySelectorAll(".sidebar-menu li[data-page]")
 
 .forEach(item=>{
 
-item.addEventListener("click",()=>{
+    item.addEventListener("click",()=>{
 
-document
+        document.querySelector(".sidebar-menu .active")
 
-.querySelector(".sidebar-menu .active")
+        ?.classList.remove("active");
 
-?.classList.remove("active");
+        item.classList.add("active");
 
-item.classList.add("active");
+        loadPage(
 
-loadPage(item.dataset.page);
+            item.dataset.page,
+
+            item.dataset.title
+
+        );
+
+    });
 
 });
 
-});
-
-/* =========================================
-FIRST PAGE
-========================================= */
-
-loadPage("dashboard");
+loadPage("dashboard","Dashboard");
