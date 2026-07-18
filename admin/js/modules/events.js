@@ -307,27 +307,22 @@ console.log(err);
 }
 function formatDate(dateString){
 
-    const date = new Date(dateString);
+    const d = dateString.substring(0,10).split("-");
 
-    return date.toLocaleDateString("en-IN",{
-
-        day:"2-digit",
-        month:"short",
-        year:"numeric"
-
-    });
+    return `${d[2]} ${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][Number(d[1])-1]} ${d[0]}`;
 
 }
 
-function formatTime(dateString){
+function formatTime(timeString){
 
-    const date = new Date(dateString);
+    const date = new Date(timeString);
 
     return date.toLocaleTimeString("en-IN",{
 
-        hour:"numeric",
+        hour:"2-digit",
         minute:"2-digit",
-        hour12:true
+        hour12:true,
+        timeZone:"UTC"
 
     });
 
