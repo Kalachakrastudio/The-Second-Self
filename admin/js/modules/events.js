@@ -1,6 +1,6 @@
 function initEvents() {
 const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbzk6Jb8ZQOxiFcTtjjo-9Drynh2pRXGIaQJjCVZrSIPgjlPcvBLlbuioR-i74-40U96/exec";
+"https://script.google.com/macros/s/AKfycbyHGLKfZBiq-Uvpb7giASfXDJaHcp-LMrTu7MlnA__085VvScgt5aylJ_ppUh5j5WUq/exec";
 
 let events = [];
 
@@ -129,8 +129,16 @@ tickets:tickets
 
 };
 
+if(editIndex !== null){
+
+updateEvent(event);
+
+}else{
+
 saveEvent(event);
 
+}
+    
 });
 function renderEvents(){
 
@@ -194,7 +202,7 @@ ${event.status}
 
 <button
 class="action-btn edit-btn"
-data-id="${index}">
+data-id="${event.id}">
 
 <i class="fa-solid fa-pen"></i>
 
@@ -202,7 +210,7 @@ data-id="${index}">
 
 <button
 class="action-btn delete-btn"
-data-id="${index}">
+data-id="${event.id}">
 
 <i class="fa-solid fa-trash"></i>
 
@@ -215,10 +223,138 @@ data-id="${index}">
 `;
 
 });
+    document.querySelectorAll(".edit-btn").forEach(btn=>{
+
+    btn.onclick=()=>{
+
+        editEvent(btn.dataset.id);
+
+    };
+
+});
+
+document.querySelectorAll(".delete-btn").forEach(btn=>{
+
+    btn.onclick=()=>{
+
+        deleteEvent(btn.dataset.id);
+
+    };
+
+});
 
 }
 loadEvents();
 
+    async function deleteEvent(id){
+
+if(!confirm("Delete this event?")) return;
+
+const response = await fetch(SCRIPT_URL,{
+
+method:"POST",
+
+headers:{
+"Content-Type":"text/plain;charset=utf-8"
+},
+
+body:JSON.stringify({
+
+action:"deleteEvent",
+
+id:id
+
+})
+
+});
+
+const result=await response.json();
+
+if(result.success){
+
+loadEvents();
+
+}
+
+}
+    function editEvent(id){
+
+const event = events.find(e=>e.id==id);
+
+if(!event) return;
+
+modal.classList.add("show");
+
+document.getElementById("eventName").value=event.name;
+
+document.getElementById("eventDate").value =
+event.date.substring(0,10);
+
+document.getElementById("eventTime").value =
+event.time.substring(11,16);
+
+document.getElementById("eventVenue").value=event.venue;
+
+document.getElementById("eventCity").value=event.city;
+
+document.getElementById("eventStatusSelect").value=event.status;
+
+ticketContainer.innerHTML="";
+
+event.tickets.forEach(ticket=>{
+
+createTicketRow();
+
+const row=ticketContainer.lastElementChild;
+
+row.querySelector(".ticket-name").value=ticket.name;
+
+row.querySelector(".ticket-price").value=ticket.price;
+
+row.querySelector(".ticket-limit").value=ticket.limit;
+
+});
+
+editIndex=id;
+
+}
+async function updateEvent(event){
+
+event.id=editIndex;
+
+const response=await fetch(SCRIPT_URL,{
+
+method:"POST",
+
+headers:{
+"Content-Type":"text/plain;charset=utf-8"
+},
+
+body:JSON.stringify({
+
+action:"updateEvent",
+
+...event
+
+})
+
+});
+
+const result=await response.json();
+
+if(result.success){
+
+alert("Event Updated");
+
+editIndex=null;
+
+closeModal();
+
+loadEvents();
+
+}
+
+}
 async function saveEvent(event){
 
 try{
@@ -306,6 +442,7 @@ console.log(err);
 }
 
 }
+    
 function formatDate(dateString){
 
     const d = dateString.substring(0,10).split("-");
