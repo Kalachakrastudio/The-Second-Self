@@ -1,6 +1,6 @@
 function initEvents() {
 const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbyHGLKfZBiq-Uvpb7giASfXDJaHcp-LMrTu7MlnA__085VvScgt5aylJ_ppUh5j5WUq/exec";
+"https://script.google.com/macros/s/AKfycbwPp_aUynKrvDb1649CU375qW0MTc-KuYkIez21-ZDR7L7rYJkj3u_-FZNo2qilffoU/exec";
 
 let events = [];
 
@@ -177,11 +177,9 @@ table.innerHTML+=`
 <td>${event.name}</td>
 
 <td>
-    ${event.date}
+    ${formatDate(event.date)}
     <br>
-    <small style="color:#888;">
-        ${event.time}
-    </small>
+    <small>${formatTime(event.time)}</small>
 </td>
 
 <td>${event.city}</td>
@@ -288,10 +286,12 @@ modal.classList.add("show");
 document.getElementById("eventName").value=event.name;
 
 document.getElementById("eventDate").value =
-event.date.substring(0,10);
+new Date(event.date).toISOString().split("T")[0];
 
 document.getElementById("eventTime").value =
-event.time.substring(11,16);
+new Date(event.time)
+.toISOString()
+.substring(11,16);
 
 document.getElementById("eventVenue").value=event.venue;
 
@@ -445,9 +445,15 @@ console.log(err);
     
 function formatDate(dateString){
 
-    const d = dateString.substring(0,10).split("-");
+    const date = new Date(dateString);
 
-    return `${d[2]} ${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][Number(d[1])-1]} ${d[0]}`;
+    return date.toLocaleDateString("en-IN",{
+
+        day:"2-digit",
+        month:"short",
+        year:"numeric"
+
+    });
 
 }
 
