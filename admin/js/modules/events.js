@@ -218,32 +218,28 @@ async function saveEvent(event){
 try{
 
 const response = await fetch(SCRIPT_URL,{
-
-method:"POST",
-
-body:JSON.stringify({
-
-action:"saveEvent",
-
-name:event.name,
-
-date:event.date,
-
-time:event.time,
-
-venue:event.venue,
-
-city:event.city,
-
-status:event.status,
-
-tickets:event.tickets
-
-})
-
+    method:"POST",
+    redirect:"follow",
+    headers:{
+        "Content-Type":"text/plain;charset=utf-8"
+    },
+    body:JSON.stringify({
+        action:"saveEvent",
+        name:event.name,
+        date:event.date,
+        time:event.time,
+        venue:event.venue,
+        city:event.city,
+        status:event.status,
+        tickets:event.tickets
+    })
 });
 
-const result = await response.json();
+const text = await response.text();
+
+console.log(text);
+
+const result = JSON.parse(text);
 
 if(result.success){
 
