@@ -168,7 +168,12 @@ table.innerHTML+=`
 
 <td>${event.name}</td>
 
-<td>${event.date}</td>
+<td>
+    ${formatDate(event.date)}<br>
+    <small style="color:#888;">
+        ${formatTime(event.date)}
+    </small>
+</td>
 
 <td>${event.city}</td>
 
@@ -300,5 +305,31 @@ console.log(err);
 }
 
 }
+function formatDate(dateString){
 
+    const date = new Date(dateString);
+
+    return date.toLocaleDateString("en-IN",{
+
+        day:"2-digit",
+        month:"short",
+        year:"numeric"
+
+    });
+
+}
+
+function formatTime(dateString){
+
+    const date = new Date(dateString);
+
+    return date.toLocaleTimeString("en-IN",{
+
+        hour:"numeric",
+        minute:"2-digit",
+        hour12:true
+
+    });
+
+}
 }
