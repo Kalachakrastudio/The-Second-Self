@@ -1,119 +1,104 @@
 const contentArea = document.getElementById("contentArea");
 
-async function loadPage(page,title){
+async function loadPage(page, title) {
 
-    const html = await fetch(`modules/${page}.html`);
+    try {
 
-    const data = await html.text();
+        const response = await fetch(`modules/${page}.html`);
 
-    contentArea.innerHTML = data;
+        const html = await response.text();
 
-    document.getElementById("pageTitle").textContent = title;
+        contentArea.innerHTML = html;
 
-    loadModule(page);
+        document.getElementById("pageTitle").textContent = title;
 
-}
+        loadModule(page);
 
-function loadModule(page){
+    } catch (error) {
 
-    switch(page){
-
-        case "dashboard":
-
-            if(typeof dashboardInit==="function"){
-
-                dashboardInit();
-
-            }
-
-        break;
-
-        case "events":
-
-            if(typeof eventsInit==="function"){
-
-                eventsInit();
-
-            }
-
-        break;
-
-        case "participants":
-
-            if(typeof participantsInit==="function"){
-
-                participantsInit();
-
-            }
-
-        break;
-
-        case "scanner":
-
-            if(typeof scannerInit==="function"){
-
-                scannerInit();
-
-            }
-
-        break;
-
-        case "scoring":
-
-            if(typeof scoringInit==="function"){
-
-                scoringInit();
-
-            }
-
-        break;
-
-        case "reports":
-
-            if(typeof reportsInit==="function"){
-
-                reportsInit();
-
-            }
-
-        break;
-
-        case "users":
-
-            if(typeof usersInit==="function"){
-
-                usersInit();
-
-            }
-
-        break;
+        console.error("Error loading page:", error);
 
     }
 
 }
 
-document.querySelectorAll(".sidebar-menu li[data-page]")
+function loadModule(page) {
 
-.forEach(item=>{
+    switch (page) {
 
-    item.addEventListener("click",()=>{
+        case "dashboard":
+
+            if (typeof dashboardInit === "function") {
+                dashboardInit();
+            }
+
+            break;
+
+        case "events":
+
+            if (typeof initEvents === "function") {
+                initEvents();
+            }
+
+            break;
+
+        case "performers":
+
+            if (typeof initPerformers === "function") {
+                initPerformers();
+            }
+
+            break;
+
+        case "scanner":
+
+            if (typeof initScanner === "function") {
+                initScanner();
+            }
+
+            break;
+
+        case "scoring":
+
+            if (typeof initScoring === "function") {
+                initScoring();
+            }
+
+            break;
+
+        case "reports":
+
+            if (typeof initReports === "function") {
+                initReports();
+            }
+
+            break;
+
+        case "users":
+
+            if (typeof initUsers === "function") {
+                initUsers();
+            }
+
+            break;
+
+    }
+
+}
+
+document.querySelectorAll(".sidebar-menu li[data-page]").forEach(item => {
+
+    item.addEventListener("click", () => {
 
         document.querySelector(".sidebar-menu .active")
-
-        ?.classList.remove("active");
+            ?.classList.remove("active");
 
         item.classList.add("active");
 
-        loadPage(
-
-            item.dataset.page,
-
-            item.dataset.title
-
-        );
+        loadPage(item.dataset.page, item.dataset.title);
 
     });
 
 });
 
-loadPage("dashboard","Dashboard");
+loadPage("dashboard", "Dashboard");
