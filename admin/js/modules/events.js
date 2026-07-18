@@ -211,7 +211,7 @@ data-id="${index}">
 });
 
 }
-renderEvents();
+loadEvents();
 
 async function saveEvent(event){
 
@@ -272,32 +272,32 @@ alert("Connection Error");
 }
 
 }
-}
 
 async function loadEvents(){
 
 try{
 
-const response=await fetch(
-
-SCRIPT_URL+"?action=getEvents"
-
+const response = await fetch(
+SCRIPT_URL + "?action=getEvents"
 );
 
-const result=await response.json();
+const result = await response.json();
+
+console.log(result);
 
 if(result.success){
 
-events=result.events;
+events = result.events;
 
-loadEvents();
-
-}
+renderEvents();
 
 }
-catch(err){
+
+}catch(err){
 
 console.log(err);
+
+}
 
 }
 
