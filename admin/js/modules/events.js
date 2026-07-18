@@ -1,3 +1,4 @@
+function initEvents() {
 const SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbzcB0mzh6vqlDx-kdDD0bMj4qcgZWculxfeTEhB63VNVuUcNF1aVigXtEgZwMBS5XAI/exec";
 
@@ -274,4 +275,5 @@ alert("Connection Error");
 
 }
 
+}
 }
