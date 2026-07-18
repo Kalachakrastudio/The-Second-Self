@@ -1,6 +1,6 @@
 function initEvents() {
 const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbwIfn6XUQxdzsuzbJ4Gm-l3FP_1eOE6YWn_Np0MwpnhxMDrZfYlP00I5Pb92fdmuJEK/exec";
+"https://script.google.com/macros/s/AKfycbzk6Jb8ZQOxiFcTtjjo-9Drynh2pRXGIaQJjCVZrSIPgjlPcvBLlbuioR-i74-40U96/exec";
 
 let events = [];
 
@@ -169,9 +169,10 @@ table.innerHTML+=`
 <td>${event.name}</td>
 
 <td>
-    ${formatDate(event.date)}<br>
+    ${event.date}
+    <br>
     <small style="color:#888;">
-        ${formatTime(event.date)}
+        ${event.time}
     </small>
 </td>
 
