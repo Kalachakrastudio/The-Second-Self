@@ -1,4 +1,7 @@
-let events = JSON.parse(localStorage.getItem("events")) || [];
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbzcB0mzh6vqlDx-kdDD0bMj4qcgZWculxfeTEhB63VNVuUcNF1aVigXtEgZwMBS5XAI/exec";
+
+let events = [];
 
 let editIndex = null;
 
@@ -125,13 +128,7 @@ tickets:tickets
 
 };
 
-events.push(event);
-
-localStorage.setItem("events",JSON.stringify(events));
-
-closeModal();
-
-renderEvents();
+saveEvent(event);
 
 });
 function renderEvents(){
@@ -214,3 +211,67 @@ data-id="${index}">
 
 }
 renderEvents();
+
+async function saveEvent(event){
+
+try{
+
+const response = await fetch(SCRIPT_URL,{
+
+method:"POST",
+
+body:JSON.stringify({
+
+action:"saveEvent",
+
+name:event.name,
+
+date:event.date,
+
+time:event.time,
+
+venue:event.venue,
+
+city:event.city,
+
+status:event.status,
+
+tickets:event.tickets
+
+})
+
+});
+
+const result = await response.json();
+
+if(result.success){
+
+alert("Event Created Successfully");
+
+closeModal();
+
+form.reset();
+
+resetTicketContainer();
+
+loadEvents();
+
+}
+
+else{
+
+alert("Unable to Save Event");
+
+}
+
+}
+
+catch(error){
+
+console.log(error);
+
+alert("Connection Error");
+
+}
+
+}
