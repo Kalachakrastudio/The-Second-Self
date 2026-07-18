@@ -1,6 +1,6 @@
 function initEvents() {
 const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbxScJW-t_olk29aoAaMqKziqlJ9hS3pMtpuZRZbG6tkYLCr_nqFYHjNqM2bq7XoYUqQ/exec";
+"https://script.google.com/macros/s/AKfycbwIfn6XUQxdzsuzbJ4Gm-l3FP_1eOE6YWn_Np0MwpnhxMDrZfYlP00I5Pb92fdmuJEK/exec";
 
 let events = [];
 
@@ -251,7 +251,7 @@ form.reset();
 
 resetTicketContainer();
 
-loadEvents();
+await loadEvents();
 
 }
 
@@ -272,4 +272,33 @@ alert("Connection Error");
 }
 
 }
+}
+
+async function loadEvents(){
+
+try{
+
+const response=await fetch(
+
+SCRIPT_URL+"?action=getEvents"
+
+);
+
+const result=await response.json();
+
+if(result.success){
+
+events=result.events;
+
+loadEvents();
+
+}
+
+}
+catch(err){
+
+console.log(err);
+
+}
+
 }
