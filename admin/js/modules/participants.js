@@ -111,7 +111,8 @@ window.viewParticipant = function(rowId){
     selectedParticipant = participants.find(
         p => p.rowId == rowId
     );
-
+console.log("Selected Participant");
+console.log(selectedParticipant);
     document.getElementById("participantDetails").innerHTML = `
 
         <div class="info-row">
