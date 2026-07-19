@@ -23,27 +23,22 @@ async function loadParticipants(){
 
     try{
 
+        console.log("Before Fetch");
+
         const response = await fetch(
             SCRIPT_URL + "?action=getPerformers"
         );
 
+        console.log("After Fetch");
+
         const result = await response.json();
 
-        console.log("API Response:", result);
+        console.log(result);
 
-        if(result.success){
+    }
+    catch(err){
 
-            participants = result.performers;
-
-            console.log("Participants:", participants);
-
-            renderParticipants(participants);
-
-        }
-
-    }catch(err){
-
-        console.error(err);
+        console.error("Fetch Error:", err);
 
     }
 
