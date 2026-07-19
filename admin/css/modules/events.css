@@ -145,7 +145,7 @@ box-shadow:0 10px 30px rgba(215,31,40,.35);
 }
 
 /*=========================================
-TABLE
+TABLE CONTAINER
 =========================================*/
 
 .table-card{
@@ -158,13 +158,64 @@ border-radius:20px;
 
 overflow-x:auto;
 
-overflow-y:hidden;
+overflow-y:auto;
+
+max-height:65vh;
+
+position:relative;
+
+}
+
+
+/* Smooth scrolling */
+
+.table-card::-webkit-scrollbar{
+
+height:8px;
+
+width:8px;
+
+}
+
+
+.table-card::-webkit-scrollbar-track{
+
+background:#111;
+
+}
+
+
+.table-card::-webkit-scrollbar-thumb{
+
+background:#333;
+
+border-radius:20px;
+
+}
+
+
+.table-card::-webkit-scrollbar-thumb:hover{
+
+background:#D71F28;
+
+}
+.event-table thead{
+
+position:sticky;
+
+top:0;
+
+z-index:10;
+
+background:#191919;
 
 }
 
 .event-table{
 
 width:100%;
+
+min-width:900px;
 
 border-collapse:collapse;
 
@@ -558,13 +609,20 @@ overflow-y:auto;
 
 .table-card{
 
+width:100%;
+
+max-height:70vh;
+
 overflow-x:auto;
+
+overflow-y:auto;
 
 }
 
+
 .event-table{
 
-min-width:760px;
+min-width:900px;
 
 }
 
