@@ -13,6 +13,7 @@ const RAZORPAY_KEY = "rzp_test_TB3dk6zMNTlX6l";
 
 const form = document.getElementById("ticketForm");
 let events = [];
+let selectedEvent = null;
 const loadingPopup =
 document.getElementById("loadingPopup");
 
@@ -177,6 +178,18 @@ function populateEventDropdown(){
         `;
 
     });
+
+    document.getElementById("eventDate").addEventListener("change", function(){
+
+    const eventId = this.value;
+
+    selectedEvent = events.find(e => e.id === eventId);
+
+    if(!selectedEvent) return;
+
+    populateTicketDropdown(selectedEvent);
+
+});
 
     console.log(eventSelect.innerHTML);
 
