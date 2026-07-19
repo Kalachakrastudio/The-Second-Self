@@ -161,25 +161,33 @@ async function loadEvents(){
 }
 function populateEventDropdown(){
 
+    console.log("populateEventDropdown Called");
+
+    console.log(events);
+
     const eventSelect =
     document.getElementById("eventDate");
+
+    console.log(eventSelect);
 
     eventSelect.innerHTML =
     `<option value="">Choose Event</option>`;
 
     events.forEach(event=>{
 
+        console.log(event);
+
         eventSelect.innerHTML += `
-
-        <option value="${event.id}">
-            ${event.name} • ${event.city}
-        </option>
-
+            <option value="${event.id}">
+                ${event.name} • ${event.city}
+            </option>
         `;
 
     });
 
-    rebuildCustomSelect("eventDate");
+    console.log(eventSelect.innerHTML);
+
+    // rebuildCustomSelect("eventDate");
 
 }
 window.onload = function () {
