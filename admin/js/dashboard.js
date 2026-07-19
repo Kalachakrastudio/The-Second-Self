@@ -79,9 +79,9 @@ function loadModule(page){
             break;
 
         case "performers":
-            if(typeof initPerformers==="function") initPerformers();
+            if(typeof initParticipants==="function") initParticipants();
             break;
-
+            
         case "scanner":
             if(typeof initScanner==="function") initScanner();
             break;
