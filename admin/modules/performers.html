@@ -1,1 +1,131 @@
+<section class="page-container">
 
+
+<div class="page-header">
+
+<h1>Participants</h1>
+
+<p>
+Manage performer registrations and selection
+</p>
+
+</div>
+
+
+
+<div class="participant-tools">
+
+
+<select id="eventFilter">
+
+<option value="">
+All Events
+</option>
+
+</select>
+
+
+
+<input 
+type="text"
+id="searchParticipant"
+placeholder="Search performer..."
+>
+
+
+</div>
+
+
+
+
+<div class="table-card">
+
+
+<table>
+
+
+<thead>
+
+<tr>
+
+<th>Name</th>
+
+<th>Category</th>
+
+<th>City</th>
+
+<th>Age</th>
+
+<th>Status</th>
+
+<th>Action</th>
+
+
+</tr>
+
+</thead>
+
+
+
+<tbody id="participantTable">
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- Action Modal -->
+
+<div id="actionModal" class="modal">
+
+
+<div class="modal-box">
+
+
+<h2 id="modalName">
+</h2>
+
+
+<p id="modalDetails">
+</p>
+
+
+<div class="modal-buttons">
+
+
+<button 
+class="select-btn"
+onclick="selectParticipant()"
+>
+Select
+</button>
+
+
+
+<button 
+class="reject-btn"
+onclick="rejectParticipant()"
+>
+Reject
+</button>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<script src="js/participants.js"></script>
