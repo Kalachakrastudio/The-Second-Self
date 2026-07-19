@@ -469,11 +469,4 @@ document
 };
 loadParticipants();
 
-    document
-.getElementById("confirmAssign")
-.onclick = function(){
-
-    console.log("Confirm Clicked");
-
-};
 }
