@@ -266,6 +266,80 @@ document
 
 };
 
+    async function updatePerformer(action){
+
+    if(!selectedParticipant){
+
+        alert("No participant selected.");
+
+        return;
+
+    }
+
+    console.log("Sending:", action);
+    console.log(selectedParticipant);
+
+    try{
+
+        const response = await fetch(SCRIPT_URL,{
+
+            method:"POST",
+
+            body:JSON.stringify({
+
+                action:action,
+
+                rowId:selectedParticipant.rowId,
+
+                eventId:""
+
+            })
+
+        });
+
+        const result = await response.json();
+
+        console.log(result);
+
+        if(result.success){
+
+            alert(result.message);
+
+            document
+            .getElementById("participantModal")
+            .classList.remove("show");
+
+            loadParticipants();
+
+        }else{
+
+            alert(result.message);
+
+        }
+
+    }catch(err){
+
+        console.error(err);
+
+    }
+
+}
+    document
+.getElementById("selectParticipant")
+.onclick = function(){
+
+    updatePerformer("selectPerformer");
+
+};
+
+document
+.getElementById("rejectParticipant")
+.onclick = function(){
+
+    updatePerformer("rejectPerformer");
+
+};
+
 loadParticipants();
 
 }
