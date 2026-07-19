@@ -114,107 +114,143 @@ window.viewParticipant = function(rowId){
 
     document.getElementById("participantDetails").innerHTML = `
 
-        <div class="detail-grid">
-
-            <div class="detail-item">
-                <label>Name</label>
-                <span>${selectedParticipant.Name || "-"}</span>
-            </div>
-
-            <div class="detail-item">
-                <label>Age</label>
-                <span>${selectedParticipant.Age || "-"}</span>
-            </div>
-
-            <div class="detail-item">
-                <label>Gender</label>
-                <span>${selectedParticipant.Gender || "-"}</span>
-            </div>
-
-            <div class="detail-item">
-                <label>Mobile</label>
-                <span>${selectedParticipant.Mobile || "-"}</span>
-            </div>
-
-            <div class="detail-item">
-                <label>Email</label>
-                <span>${selectedParticipant.Email || "-"}</span>
-            </div>
-
-            <div class="detail-item">
-                <label>Profession</label>
-                <span>${selectedParticipant.Profession || "-"}</span>
-            </div>
-
-            <div class="detail-item">
-                <label>City</label>
-                <span>${selectedParticipant.City || "-"}</span>
-            </div>
-
-            <div class="detail-item">
-                <label>State</label>
-                <span>${selectedParticipant.State || "-"}</span>
-            </div>
-
-            <div class="detail-item">
-                <label>Category</label>
-                <span>${selectedParticipant.Category || "-"}</span>
-            </div>
-
-            <div class="detail-item">
-                <label>Performance Title</label>
-                <span>${selectedParticipant.Title || "-"}</span>
-            </div>
-
-            <div class="detail-item">
-                <label>Language</label>
-                <span>${selectedParticipant.Language || "-"}</span>
-            </div>
-
-            <div class="detail-item">
-                <label>Duration</label>
-                <span>${selectedParticipant.Duration || "-"}</span>
-            </div>
-
+        <div class="info-row">
+            <div class="info-label">Name</div>
+            <div class="info-value">${selectedParticipant.Name || "-"}</div>
         </div>
 
-        <div class="detail-block">
+        <div class="info-row">
+            <div class="info-label">Age</div>
+            <div class="info-value">${selectedParticipant.Age || "-"}</div>
+        </div>
 
-            <label>Story</label>
+        <div class="info-row">
+            <div class="info-label">Gender</div>
+            <div class="info-value">${selectedParticipant.Gender || "-"}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-label">Mobile</div>
+            <div class="info-value">${selectedParticipant.Mobile || "-"}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-label">Email</div>
+            <div class="info-value">${selectedParticipant.Email || "-"}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-label">Profession</div>
+            <div class="info-value">${selectedParticipant.Profession || "-"}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-label">City</div>
+            <div class="info-value">${selectedParticipant.City || "-"}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-label">State</div>
+            <div class="info-value">${selectedParticipant.State || "-"}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-label">Category</div>
+            <div class="info-value">${selectedParticipant.Category || "-"}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-label">Performance Title</div>
+            <div class="info-value">${selectedParticipant.Title || "-"}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-label">Language</div>
+            <div class="info-value">${selectedParticipant.Language || "-"}</div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-label">Duration</div>
+            <div class="info-value">${selectedParticipant.Duration || "-"}</div>
+        </div>
+
+        <div class="story-box">
+
+            <h3>Story</h3>
 
             <p>${selectedParticipant.Story || "-"}</p>
 
         </div>
 
-        <div class="detail-grid">
+        <div class="info-row">
+            <div class="info-label">Instagram</div>
 
-            <div class="detail-item">
-                <label>Instagram</label>
-                <span>${selectedParticipant.Instagram || "-"}</span>
+            <div class="info-value">
+
+                ${
+                    selectedParticipant.Instagram
+
+                    ? `<a href="${selectedParticipant.Instagram}" target="_blank" class="profile-link">Open Instagram</a>`
+
+                    : "-"
+                }
+
             </div>
+        </div>
 
-            <div class="detail-item">
-                <label>YouTube</label>
-                <span>${selectedParticipant.YouTube || "-"}</span>
+        <div class="info-row">
+            <div class="info-label">YouTube</div>
+
+            <div class="info-value">
+
+                ${
+                    selectedParticipant.YouTube
+
+                    ? `<a href="${selectedParticipant.YouTube}" target="_blank" class="profile-link">Open YouTube</a>`
+
+                    : "-"
+                }
+
             </div>
+        </div>
 
-            <div class="detail-item">
-                <label>Website</label>
-                <span>${selectedParticipant.Website || "-"}</span>
+        <div class="info-row">
+            <div class="info-label">Website</div>
+
+            <div class="info-value">
+
+                ${
+                    selectedParticipant.Website
+
+                    ? `<a href="${selectedParticipant.Website}" target="_blank" class="profile-link">Visit Website</a>`
+
+                    : "-"
+                }
+
             </div>
+        </div>
 
-            <div class="detail-item">
-                <label>Video Link</label>
-               <span>${selectedParticipant.VideoLink || "-"}</span>
+        <div class="info-row">
+            <div class="info-label">Performance Video</div>
+
+            <div class="info-value">
+
+                ${
+                    selectedParticipant["Video Link"]
+
+                    ? `<a href="${selectedParticipant["Video Link"]}" target="_blank" class="profile-link">Watch Video</a>`
+
+                    : "-"
+                }
+
             </div>
-
         </div>
 
     `;
 
     document
-        .getElementById("participantModal")
-        .classList.add("show");
+    .getElementById("participantModal")
+    .classList.add("show");
 
 }
 
