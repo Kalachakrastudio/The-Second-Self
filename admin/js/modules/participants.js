@@ -71,39 +71,39 @@ function renderParticipants(data){
         return;
     }
 
-    data.forEach(p=>{
+   data.forEach(p => {
 
-        table.innerHTML += `
-       <tr>
+    table.innerHTML += `
+    <tr>
 
-    <td>${p.Name}</td>
+        <td>${p.Name}</td>
 
-    <td>${p.Category}</td>
+        <td>${p.Category}</td>
 
-    <td>${p.City}</td>
+        <td>${p.City}</td>
 
-    <td>
-        <span class="status upcoming">
-            Pending
-        </span>
-    </td>
+        <td>
+            <span class="status upcoming">
+                Pending
+            </span>
+        </td>
 
-    <td class="action-cell">
+        <td class="action-cell">
+            <button
+                class="action-btn"
+                onclick="viewParticipant(${p.rowId})">
 
-        <button
-            class="action-btn"
-            onclick="viewParticipant(${p.rowId})">
+                <i class="fa-solid fa-eye"></i>
 
-            <i class="fa-solid fa-eye"></i>
+            </button>
+        </td>
 
-        </button>
+    </tr>
+    `;
 
-    </td>
+});   // <-- closes forEach
 
-</tr>
-    });
-
-}
+}      // <-- closes renderParticipants
 
 
 window.viewParticipant = function(rowId){
