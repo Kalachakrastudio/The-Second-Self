@@ -326,9 +326,13 @@ document
 }
     document
 .getElementById("selectParticipant")
-.onclick = function(){
+.onclick = async function(){
 
-    updatePerformer("selectPerformer");
+    await loadEvents();
+
+    document
+    .getElementById("assignEventModal")
+    .classList.add("show");
 
 };
 
@@ -340,6 +344,67 @@ document
 
 };
 
+    async function loadEvents(){
+
+    try{
+
+        const response = await fetch(
+            SCRIPT_URL + "?action=getEvents"
+        );
+
+        const result = await response.json();
+
+        const eventSelect =
+        document.getElementById("assignEventSelect");
+
+        eventSelect.innerHTML =
+        `<option value="">Select Event</option>`;
+
+        if(result.success){
+
+            result.events.forEach(event=>{
+
+                eventSelect.innerHTML += `
+
+                <option value="${event.id}">
+
+                    ${event.name}
+                    (${event.date})
+
+                </option>
+
+                `;
+
+            });
+
+        }
+
+    }catch(err){
+
+        console.error(err);
+
+    }
+
+}
+    document
+.getElementById("closeAssignModal")
+.onclick = function(){
+
+    document
+    .getElementById("assignEventModal")
+    .classList.remove("show");
+
+};
+
+document
+.getElementById("cancelAssign")
+.onclick = function(){
+
+    document
+    .getElementById("assignEventModal")
+    .classList.remove("show");
+
+};
 loadParticipants();
 
 }
