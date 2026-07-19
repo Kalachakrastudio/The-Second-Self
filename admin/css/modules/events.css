@@ -324,6 +324,7 @@ display:flex;
 .modal-box{
 
     width:min(900px,95vw);
+    max-width:900px;
 
     max-height:90vh;
 
@@ -334,18 +335,34 @@ display:flex;
 
     background:#111;
 
+    border:1px solid rgba(255,255,255,.08);
     border-radius:22px;
 
-    border:1px solid rgba(255,255,255,.08);
-
     animation:popup .3s ease;
+
+    scrollbar-width:none;          /* Firefox */
+
+    -ms-overflow-style:none;       /* IE */
+
+}
+
+.modal-box::-webkit-scrollbar{
+
+    width:0;
+    height:0;
 
 }
 .modal-box *{
 
-    max-width:100%;
-
     box-sizing:border-box;
+    max-width:100%;
+    min-width:0;
+
+}
+.modal-box form{
+
+    width:100%;
+    overflow:hidden;
 
 }
 
