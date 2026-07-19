@@ -18,176 +18,83 @@ document.getElementById("participantTable");
 
 async function loadParticipants(){
 
+    try{
 
-try{
+        const response = await fetch(
+            SCRIPT_URL + "?action=getPerformers"
+        );
 
+        const result = await response.json();
 
-const response =
-await fetch(
-SCRIPT_URL+"?action=getPerformers"
-);
+        if(result.success){
 
+            participants = result.performers;
 
+            renderParticipants(participants);
 
-const result =
-await response.json();
+        }
 
+    }
+    catch(error){
 
+        console.error(error);
 
-if(result.success){
-
-
-participants=result.performers;
-
-
-populateFilters();
-
-renderParticipants(participants);
-
+    }
 
 }
-
-
-
-}
-
-catch(err){
-
-console.log(err);
-
-}
-
-
-}
-
-
 
 function renderParticipants(data){
 
+    table.innerHTML = "";
 
-table.innerHTML="";
+    if(data.length === 0){
 
+        table.innerHTML = `
+        <tr>
+            <td colspan="6" class="empty-row">
+                <i class="fa-solid fa-users"></i>
+                <p>No Participants Found</p>
+                <small>New performer registrations will appear here.</small>
+            </td>
+        </tr>`;
+        return;
+    }
 
+    data.forEach(p=>{
 
-if(data.length===0){
+        table.innerHTML += `
+        <tr>
 
+            <td>${p.Name}</td>
 
-table.innerHTML=`
+            <td>${p.Category}</td>
 
-<tr>
+            <td>${p.City}</td>
 
-<td colspan="6" class="empty-row">
+            <td>${p.Event || "-"}</td>
 
+            <td>
+                <span class="status upcoming">
+                    Pending
+                </span>
+            </td>
 
-<i class="fa-solid fa-user-slash"></i>
+            <td class="action-cell">
 
+                <button
+                    class="action-btn"
+                    onclick="viewParticipant(${p.rowId})">
 
-<p>
-No Pending Participants
-</p>
+                    <i class="fa-solid fa-eye"></i>
 
+                </button>
 
-<small>
-All performers are processed.
-</small>
+            </td>
 
-
-</td>
-
-</tr>
-
-`;
-
-return;
+        </tr>`;
+    });
 
 }
-
-
-
-data.forEach((p)=>{
-
-
-table.innerHTML +=`
-
-<tr>
-
-
-<td>
-
-${p.Name}
-
-</td>
-
-
-
-<td>
-
-${p.Category}
-
-</td>
-
-
-
-<td>
-
-${p.City}
-
-</td>
-
-
-
-<td>
-
-Not Assigned
-
-</td>
-
-
-
-<td>
-
-<span class="status upcoming">
-
-Pending
-
-</span>
-
-</td>
-
-
-
-<td>
-
-
-<button
-
-class="action-btn"
-
-onclick="viewParticipant(${p.rowId})"
-
->
-
-<i class="fa-solid fa-eye"></i>
-
-
-</button>
-
-
-</td>
-
-
-
-</tr>
-
-
-`;
-
-});
-
-
-}
-
-
 
 
 window.viewParticipant=function(rowId){
