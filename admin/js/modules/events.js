@@ -1,6 +1,6 @@
 function initEvents() {
 const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbwPp_aUynKrvDb1649CU375qW0MTc-KuYkIez21-ZDR7L7rYJkj3u_-FZNo2qilffoU/exec";
+"https://script.google.com/macros/s/AKfycbxQRN02uVtga4fMpDyt-NL7t8EmBXqJeFBt2VMGvM1Af0roD2jj0fW81nVACbcRqPtC/exec";
 
 let events = [];
 
