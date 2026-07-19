@@ -180,6 +180,8 @@ function populateEventDropdown(){
 }
 window.onload = function () {
 
+    loadEvents();
+
     updateSummary();
 
     document
