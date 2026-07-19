@@ -163,19 +163,12 @@ function populateEventDropdown(){
 
     console.log("populateEventDropdown Called");
 
-    console.log(events);
-
-    const eventSelect =
-    document.getElementById("eventDate");
-
-    console.log(eventSelect);
+    const eventSelect = document.getElementById("eventDate");
 
     eventSelect.innerHTML =
     `<option value="">Choose Event</option>`;
 
     events.forEach(event=>{
-
-        console.log(event);
 
         eventSelect.innerHTML += `
             <option value="${event.id}">
@@ -187,7 +180,11 @@ function populateEventDropdown(){
 
     console.log(eventSelect.innerHTML);
 
-    // rebuildCustomSelect("eventDate");
+    console.log("Calling rebuildCustomSelect...");
+
+    rebuildCustomSelect("eventDate");
+
+    console.log("Finished rebuildCustomSelect");
 
 }
 window.onload = function () {
