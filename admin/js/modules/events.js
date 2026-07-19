@@ -1,6 +1,6 @@
 function initEvents() {
 const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbxQRN02uVtga4fMpDyt-NL7t8EmBXqJeFBt2VMGvM1Af0roD2jj0fW81nVACbcRqPtC/exec";
+"https://script.google.com/macros/s/AKfycbwQRiWw82Bp1PCWfnKUqr6Hh_pfm3KbHNzXgC_8Yxa1Jkmh_V5IAVHjB0BZpCX0XlNX/exec";
 
 let events = [];
 
@@ -177,9 +177,21 @@ table.innerHTML+=`
 <td>${event.name}</td>
 
 <td>
-    ${formatDate(event.date)}
-    <br>
-    <small>${formatTime(event.time)}</small>
+   ${new Date(event.date).toLocaleDateString("en-IN",{
+day:"2-digit",
+month:"short",
+year:"numeric"
+})}
+
+<br>
+
+<small>
+${new Date("1970-01-01T"+event.time).toLocaleTimeString("en-IN",{
+hour:"numeric",
+minute:"2-digit",
+hour12:true
+})}
+</small>
 </td>
 
 <td>${event.city}</td>
@@ -286,12 +298,10 @@ modal.classList.add("show");
 document.getElementById("eventName").value=event.name;
 
 document.getElementById("eventDate").value =
-new Date(event.date).toISOString().split("T")[0];
+event.date;
 
 document.getElementById("eventTime").value =
-new Date(event.time)
-.toISOString()
-.substring(11,16);
+event.time;
 
 document.getElementById("eventVenue").value=event.venue;
 
