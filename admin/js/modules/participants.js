@@ -67,6 +67,7 @@ function renderParticipants(data){
                 <small>New performer registrations will appear here.</small>
             </td>
         </tr>`;
+        console.log(table.innerHTML);
         return;
     }
 
