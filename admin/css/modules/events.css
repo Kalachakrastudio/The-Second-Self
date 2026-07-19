@@ -545,8 +545,174 @@ border-color:#D71F28;
 
 }
 /*=========================================
-RESPONSIVE
+TICKET SECTION
 =========================================*/
+
+.ticket-section{
+
+    margin-top:30px;
+    padding-top:25px;
+    border-top:1px solid rgba(255,255,255,.08);
+
+}
+
+.ticket-section h3{
+
+    font-family:"Bebas Neue";
+    font-size:22px;
+    letter-spacing:1px;
+    margin-bottom:8px;
+
+}
+
+.ticket-section p{
+
+    color:#9f9f9f;
+    margin-bottom:20px;
+    font-size:14px;
+
+}
+
+#ticketContainer{
+
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    margin-top:20px;
+
+}
+
+.ticket-row{
+
+    display:grid;
+    grid-template-columns:minmax(220px,2fr) 140px 140px 60px;
+    gap:20px;
+    align-items:center;
+
+}
+
+.ticket-row input{
+
+    width:100%;
+    height:52px;
+    padding:0 16px;
+
+    background:#181818;
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:12px;
+
+    color:#fff;
+    font-size:15px;
+
+    outline:none;
+    transition:.3s;
+
+}
+
+.ticket-row input:focus{
+
+    border-color:#D71F28;
+    box-shadow:0 0 15px rgba(215,31,40,.2);
+
+}
+
+.delete-ticket{
+
+    width:60px;
+    height:52px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border:none;
+    border-radius:12px;
+
+    background:#202020;
+    color:#fff;
+
+    cursor:pointer;
+    transition:.3s;
+
+}
+
+.delete-ticket:hover{
+
+    background:#D71F28;
+
+}
+
+.add-ticket-btn{
+
+    margin-top:20px;
+
+}
+
+.modal-footer{
+
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    gap:15px;
+
+    margin-top:35px;
+
+}
+
+.cancel-btn{
+
+    padding:14px 24px;
+
+    border:none;
+    border-radius:50px;
+
+    background:#2d2d2d;
+    color:#fff;
+
+    cursor:pointer;
+    transition:.3s;
+
+}
+
+.cancel-btn:hover{
+
+    background:#444;
+
+}
+
+/*=========================================
+TICKET RESPONSIVE
+=========================================*/
+
+@media (max-width:768px){
+
+    .ticket-row{
+
+        grid-template-columns:1fr;
+        gap:12px;
+
+    }
+
+    .delete-ticket{
+
+        width:100%;
+        height:52px;
+
+    }
+
+    .modal-footer{
+
+        flex-direction:column;
+
+    }
+
+    .modal-footer button{
+
+        width:100%;
+
+    }
+
+}
 
 /*=========================================
 RESPONSIVE
