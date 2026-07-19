@@ -545,296 +545,376 @@ border-color:#D71F28;
 
 }
 /*=========================================
+RESPONSIVE
+=========================================*/
+
+@media(max-width:768px){
+
+.page-toolbar{
+
+flex-direction:column;
+
+align-items:stretch;
+
+}
+
+.toolbar-left{
+
+width:100%;
+
+flex-direction:column;
+
+}
+
+.toolbar-left input,
+
+.toolbar-left select{
+
+width:100%;
+
+}
+
+.primary-btn{
+
+width:100%;
+
+justify-content:center;
+
+}
+  
+.page-header{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+}
+
+.page-header h2{
+
+font-size:2.2rem;
+
+}
+
+.grid-2{
+
+grid-template-columns:1fr;
+
+}
+
+.modal-box{
+
+max-height:90vh;
+
+overflow-y:auto;
+
+}
+
+.table-card{
+
+    width:100%;
+
+    overflow-x:scroll;
+
+    overflow-y:auto;
+
+    max-height:340px;
+
+}
+
+.event-table{
+
+    width:900px;
+
+    min-width:900px;
+
+}
+
+.event-table thead,
+.event-table tbody tr{
+
+    display:table;
+    width:100%;
+    table-layout:fixed;
+
+}
+
+.event-table tbody{
+
+    display:block;
+
+    height:260px;   /* Around 4 rows */
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+}
+
+.event-table thead{
+
+    display:table;
+    width:100%;
+    table-layout:fixed;
+
+}
+
+}
+
+.main-content{
+
+    min-width:0;
+
+}
+
+#contentArea{
+
+    min-width:0;
+
+    width:100%;
+
+}
+/*=========================================
 TICKET SECTION
 =========================================*/
 
 .ticket-section{
 
-    margin-top:30px;
-    padding-top:25px;
-    border-top:1px solid rgba(255,255,255,.08);
+margin-top:30px;
 
-}
+padding-top:25px;
 
-.ticket-section h3{
-
-    font-family:"Bebas Neue";
-    font-size:22px;
-    letter-spacing:1px;
-    margin-bottom:8px;
-
-}
-
-.ticket-section p{
-
-    color:#9f9f9f;
-    margin-bottom:20px;
-    font-size:14px;
+border-top:1px solid rgba(255,255,255,.08);
 
 }
 
 #ticketContainer{
 
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-    margin-top:20px;
+display:flex;
+
+flex-direction:column;
+
+gap:18px;
+
+margin-top:20px;
+
+}
+
+.ticket-section h3{
+
+font-size:22px;
+
+margin-bottom:8px;
+
+font-family:"Bebas Neue";
+
+letter-spacing:1px;
 
 }
 
 .ticket-row{
 
-    display:grid;
-    grid-template-columns:minmax(220px,2fr) 140px 140px 60px;
-    gap:20px;
-    align-items:center;
+display:grid;
+
+grid-template-columns:minmax(220px,2fr) 140px 140px 60px;
+
+gap:20px;
+
+align-items:stretch;
+
+width:100%;
+
+margin-bottom:18px;
 
 }
 
 .ticket-row input{
 
-    width:100%;
-    height:52px;
-    padding:0 16px;
+width:100%;
 
-    background:#181818;
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:12px;
+min-width:0;
 
-    color:#fff;
-    font-size:15px;
+height:52px;
 
-    outline:none;
-    transition:.3s;
+padding:0 16px;
+
+background:#181818;
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:12px;
+
+color:#fff;
+
+font-size:15px;
+
+outline:none;
+
+transition:.3s;
 
 }
 
 .ticket-row input:focus{
 
-    border-color:#D71F28;
-    box-shadow:0 0 15px rgba(215,31,40,.2);
+border-color:#D71F28;
+
+box-shadow:0 0 15px rgba(215,31,40,.18);
 
 }
 
+
 .delete-ticket{
 
-    width:60px;
-    height:52px;
+width:60px;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
+height:52px;
 
-    border:none;
-    border-radius:12px;
+display:flex;
 
-    background:#202020;
-    color:#fff;
+justify-content:center;
 
-    cursor:pointer;
-    transition:.3s;
+align-items:center;
+
+border:none;
+
+border-radius:12px;
+
+background:#2a2a2a;
+
+color:#fff;
+
+font-size:16px;
+
+cursor:pointer;
+
+transition:.3s;
+
+flex-shrink:0;
 
 }
 
 .delete-ticket:hover{
 
-    background:#D71F28;
+background:#D71F28;
+
+transform:scale(1.05);
 
 }
 
+
 .add-ticket-btn{
 
-    margin-top:20px;
+margin-top:20px;
+
+margin-bottom:10px;
 
 }
 
 .modal-footer{
 
-    display:flex;
-    justify-content:flex-end;
-    align-items:center;
-    gap:15px;
+display:flex;
 
-    margin-top:35px;
+justify-content:flex-end;
+
+align-items:center;
+
+gap:15px;
+
+margin-top:35px;
 
 }
 
 .cancel-btn{
 
-    padding:14px 24px;
+padding:14px 24px;
 
-    border:none;
-    border-radius:50px;
+border:none;
 
-    background:#2d2d2d;
-    color:#fff;
+border-radius:50px;
 
-    cursor:pointer;
-    transition:.3s;
+background:#2d2d2d;
+
+color:#fff;
+
+cursor:pointer;
+
+transition:.3s;
 
 }
 
 .cancel-btn:hover{
 
-    background:#444;
+background:#444;
 
 }
 
-/*=========================================
-TICKET RESPONSIVE
-=========================================*/
+@media(max-width:768px){
 
-@media (max-width:768px){
+.ticket-row{
 
-    .ticket-row{
+grid-template-columns:1fr;
 
-        grid-template-columns:1fr;
-        gap:12px;
-
-    }
-
-    .delete-ticket{
-
-        width:100%;
-        height:52px;
-
-    }
-
-    .modal-footer{
-
-        flex-direction:column;
-
-    }
-
-    .modal-footer button{
-
-        width:100%;
-
-    }
+gap:12px;
 
 }
 
-/*=========================================
-RESPONSIVE
-=========================================*/
+.delete-ticket{
 
-@media (max-width:768px){
+width:100%;
 
-    /* Toolbar */
-
-    .page-toolbar{
-        flex-direction:column;
-        align-items:stretch;
-        gap:15px;
-    }
-
-    .toolbar-left{
-        width:100%;
-        flex-direction:column;
-        gap:12px;
-    }
-
-    .toolbar-left input,
-    .toolbar-left select,
-    .primary-btn{
-        width:100%;
-    }
-
-    .primary-btn{
-        justify-content:center;
-    }
-
-    /* Page Header */
-
-    .page-header{
-        flex-direction:column;
-        align-items:flex-start;
-    }
-
-    .page-header h2{
-        font-size:2.2rem;
-    }
-
-    /* Modal */
-
-    .grid-2{
-        grid-template-columns:1fr;
-    }
-
-    .modal-box{
-        max-height:90vh;
-        overflow-y:auto;
-    }
-
-    /* Table */
-
-    .table-card{
-        width:100%;
-        max-width:100%;
-        max-height:340px;
-        overflow:auto;
-        -webkit-overflow-scrolling:touch;
-    }
-
-    .event-table{
-        width:900px;
-        min-width:900px;
-    }
-
-    /* Ticket Section */
-
-    .ticket-row{
-        grid-template-columns:1fr;
-        gap:12px;
-    }
-
-    .delete-ticket{
-        width:100%;
-        height:52px;
-    }
-
-    .modal-footer{
-        flex-direction:column;
-    }
-
-    .modal-footer button{
-        width:100%;
-    }
+height:52px;
 
 }
 
-/* Prevent flex from shrinking the page */
+.modal-footer{
 
-.main-content{
-    min-width:0;
+flex-direction:column;
+
 }
 
-#contentArea{
-    width:100%;
-    min-width:0;
+.modal-footer button{
+
+width:100%;
+
 }
 
-/* Empty Table */
-
+}
 .empty-row{
-    text-align:center;
-    padding:70px 20px !important;
-    color:#8d8d8d;
+
+text-align:center;
+
+padding:70px 20px !important;
+
+font-size:16px;
+
+color:#8d8d8d;
+
 }
 
 .empty-row i{
-    display:block;
-    margin-bottom:15px;
-    font-size:42px;
-    color:#D71F28;
+
+font-size:42px;
+
+color:#D71F28;
+
+margin-bottom:15px;
+
+display:block;
+
 }
 
 .empty-row p{
-    margin-bottom:8px;
-    font-size:18px;
-    color:#fff;
+
+font-size:18px;
+
+color:#fff;
+
+margin-bottom:8px;
+
 }
 
 .empty-row small{
-    color:#888;
+
+color:#888;
+
 }
