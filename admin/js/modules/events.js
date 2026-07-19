@@ -140,35 +140,26 @@ saveEvent(event);
 }
     
 });
-function renderEvents(){
+function renderEvents(data = events){
 
 table.innerHTML="";
 
-if(events.length===0){
+if (data.length === 0) {
 
-table.innerHTML=`
+    table.innerHTML = `
+    <tr>
+        <td colspan="6" class="empty-row">
+            <i class="fa-solid fa-calendar-xmark"></i>
+            <p>No Events Found</p>
+            <small>Create your first event.</small>
+        </td>
+    </tr>
+    `;
 
-<tr>
-
-<td colspan="6" class="empty-row">
-
-<i class="fa-solid fa-calendar-xmark"></i>
-
-<p>No Events Found</p>
-
-<small>Create your first event.</small>
-
-</td>
-
-</tr>
-
-`;
-
-return;
-
+    return;
 }
 
-events.forEach((event,index)=>{
+data.forEach((event,index)=>{
 
 table.innerHTML+=`
 
@@ -441,7 +432,7 @@ if(result.success){
 
 events = result.events;
 
-renderEvents();
+filterEvents();
 
 }
 
@@ -452,33 +443,41 @@ console.log(err);
 }
 
 }
+
+function filterEvents() {
+
+    const search = document
+        .getElementById("eventSearch")
+        .value
+        .toLowerCase();
+
+    const status = document
+        .getElementById("eventStatus")
+        .value;
+
+    const filtered = events.filter(event => {
+
+        const matchSearch =
+            (event.name || "").toLowerCase().includes(search) ||
+            (event.city || "").toLowerCase().includes(search) ||
+            (event.venue || "").toLowerCase().includes(search);
+
+        const matchStatus =
+            status === "all" ||
+            event.status === status;
+
+        return matchSearch && matchStatus;
+
+    });
+
+    renderEvents(filtered);
+
+}
     
-function formatDate(dateString){
-
-    const date = new Date(dateString);
-
-    return date.toLocaleDateString("en-IN",{
-
-        day:"2-digit",
-        month:"short",
-        year:"numeric"
-
-    });
-
-}
-
-function formatTime(timeString){
-
-    const date = new Date(timeString);
-
-    return date.toLocaleTimeString("en-IN",{
-
-        hour:"2-digit",
-        minute:"2-digit",
-        hour12:true,
-        timeZone:"UTC"
-
-    });
-
-}
+document
+.getElementById("eventSearch")
+.addEventListener("input", filterEvents);
+document
+.getElementById("eventStatus")
+.addEventListener("change", filterEvents);
 }
