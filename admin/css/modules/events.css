@@ -156,9 +156,61 @@ border:1px solid rgba(255,255,255,.08);
 
 border-radius:20px;
 
+overflow:hidden;
+
+max-height:420px;
+
+overflow-y:auto;
+
 overflow-x:auto;
 
-overflow-y:hidden;
+}
+.event-table thead th{
+
+position:sticky;
+
+top:0;
+
+z-index:10;
+
+background:#191919;
+
+}
+
+/* Scrollbar */
+
+.table-card::-webkit-scrollbar{
+
+width:8px;
+height:8px;
+
+}
+
+.table-card::-webkit-scrollbar-track{
+
+background:#181818;
+
+}
+
+.table-card::-webkit-scrollbar-thumb{
+
+background:#D71F28;
+border-radius:20px;
+
+}
+
+.table-card::-webkit-scrollbar-thumb:hover{
+
+background:#ff3945;
+
+}
+
+/* Firefox */
+
+.table-card{
+
+scrollbar-width:thin;
+scrollbar-color:#D71F28 #181818;
 
 }
 
