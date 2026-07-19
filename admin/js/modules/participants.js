@@ -74,35 +74,33 @@ function renderParticipants(data){
     data.forEach(p=>{
 
         table.innerHTML += `
-        <tr>
+       <tr>
 
-            <td>${p.Name}</td>
+    <td>${p.Name}</td>
 
-            <td>${p.Category}</td>
+    <td>${p.Category}</td>
 
-            <td>${p.City}</td>
+    <td>${p.City}</td>
 
-            <td>${p.Event || "-"}</td>
+    <td>
+        <span class="status upcoming">
+            Pending
+        </span>
+    </td>
 
-            <td>
-                <span class="status upcoming">
-                    Pending
-                </span>
-            </td>
+    <td class="action-cell">
 
-            <td class="action-cell">
+        <button
+            class="action-btn"
+            onclick="viewParticipant(${p.rowId})">
 
-                <button
-                    class="action-btn"
-                    onclick="viewParticipant(${p.rowId})">
+            <i class="fa-solid fa-eye"></i>
 
-                    <i class="fa-solid fa-eye"></i>
+        </button>
 
-                </button>
+    </td>
 
-            </td>
-
-        </tr>`;
+</tr>
     });
 
 }
