@@ -129,24 +129,29 @@ async function loadEvents(){
 
     try{
 
+        console.log("Loading Events...");
+
         const response = await fetch(
-
             scriptURL + "?action=getAvailableEvents"
-
         );
 
+        console.log(response);
+
         const result = await response.json();
+
+        console.log(result);
 
         if(result.success){
 
             events = result.events;
+
+            console.log(events);
 
             populateEventDropdown();
 
         }
 
     }
-
     catch(err){
 
         console.log(err);
