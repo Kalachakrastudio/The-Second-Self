@@ -1,34 +1,46 @@
-const API_URL =
-"https://script.google.com/macros/s/AKfycbyLcx8yNVd-6ksf7_imAd3dWy37Fy9KVBpGBaYrL_Qa1zq_7_TrVtxnE6X5XoKak-9u/exec";
+function initParticipants(){
+
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbwQRiWw82Bp1PCWfnKUqr6Hh_pfm3KbHNzXgC_8Yxa1Jkmh_V5IAVHjB0BZpCX0XlNX/exec";
 
 
 
 let participants=[];
 
-let selectedRow=null;
+let selectedParticipant=null;
 
 
 
-// ==========================
-// Load Participants
-// ==========================
+const table =
+document.getElementById("participantTable");
+
+
 
 async function loadParticipants(){
 
 
-const res =
+try{
+
+
+const response =
 await fetch(
-API_URL+"?action=getPerformers"
+SCRIPT_URL+"?action=getPerformers"
 );
 
 
-const data =
-await res.json();
+
+const result =
+await response.json();
 
 
-participants =
-data.performers;
 
+if(result.success){
+
+
+participants=result.performers;
+
+
+populateFilters();
 
 renderParticipants(participants);
 
@@ -37,30 +49,65 @@ renderParticipants(participants);
 
 
 
+}
 
-// ==========================
-// Render Table
-// ==========================
+catch(err){
 
-function renderParticipants(list){
+console.log(err);
+
+}
 
 
-const table =
-document.getElementById(
-"participantTable"
-);
+}
 
+
+
+function renderParticipants(data){
 
 
 table.innerHTML="";
 
 
 
-list.forEach(p=>{
+if(data.length===0){
 
 
-table.innerHTML += `
+table.innerHTML=`
 
+<tr>
+
+<td colspan="6" class="empty-row">
+
+
+<i class="fa-solid fa-user-slash"></i>
+
+
+<p>
+No Pending Participants
+</p>
+
+
+<small>
+All performers are processed.
+</small>
+
+
+</td>
+
+</tr>
+
+`;
+
+return;
+
+}
+
+
+
+data.forEach((p)=>{
+
+
+table.innerHTML +=`
 
 <tr>
 
@@ -91,7 +138,7 @@ ${p.City}
 
 <td>
 
-${p.Age}
+Not Assigned
 
 </td>
 
@@ -99,7 +146,7 @@ ${p.Age}
 
 <td>
 
-<span class="status pending">
+<span class="status upcoming">
 
 Pending
 
@@ -114,18 +161,14 @@ Pending
 
 <button
 
-class="action-button"
+class="action-btn"
 
-onclick="openAction(
-${p.rowId},
-'${p.Name}',
-'${p.Category}',
-'${p.Story}'
-)"
+onclick="viewParticipant(${p.rowId})"
 
 >
 
-Action
+<i class="fa-solid fa-eye"></i>
+
 
 </button>
 
@@ -139,7 +182,6 @@ Action
 
 `;
 
-
 });
 
 
@@ -147,161 +189,72 @@ Action
 
 
 
-// ==========================
-// Open Action Popup
-// ==========================
 
-function openAction(
-rowId,
-name,
-category,
-story
-){
+window.viewParticipant=function(rowId){
 
 
-selectedRow=rowId;
+selectedParticipant =
+participants.find(
+p=>p.rowId==rowId
+);
 
 
 
-document
-.getElementById("modalName")
-.innerHTML=name;
+document.getElementById(
+"participantDetails"
+).innerHTML=`
+
+<p><b>Name:</b>
+${selectedParticipant.Name}
+</p>
 
 
+<p><b>Age:</b>
+${selectedParticipant.Age}
+</p>
 
-document
-.getElementById("modalDetails")
-.innerHTML=
 
-`
+<p><b>Category:</b>
+${selectedParticipant.Category}
+</p>
 
-Category:
-${category}
 
-<br><br>
+<p><b>Story:</b></p>
 
-Story:
+<p>
+${selectedParticipant.Story}
+</p>
 
-${story}
 
 `;
 
 
 
 document
-.getElementById("actionModal")
-.style.display="flex";
+.getElementById("participantModal")
+.classList.add("show");
 
 
 }
 
 
 
-// ==========================
-// Select
-// ==========================
-
-async function selectParticipant(){
-
-
-let eventId =
-prompt(
-"Enter Event ID"
-);
-
-
-
-if(!eventId)
-return;
-
-
-
-await fetch(
-API_URL,
-{
-
-method:"POST",
-
-body:JSON.stringify({
-
-action:"selectPerformer",
-
-rowId:selectedRow,
-
-eventId:eventId
-
-})
-
-});
-
-
-closeModal();
-
-
-loadParticipants();
-
-
-}
-
-
-
-
-// ==========================
-// Reject
-// ==========================
-
-async function rejectParticipant(){
-
-
-
-await fetch(
-
-API_URL,
-
-{
-
-method:"POST",
-
-body:JSON.stringify({
-
-action:"rejectPerformer",
-
-rowId:selectedRow
-
-})
-
-}
-
-);
-
-
-
-closeModal();
-
-
-loadParticipants();
-
-
-}
-
-
-
-// ==========================
-// Close Modal
-// ==========================
-
-function closeModal(){
 
 
 document
-.getElementById("actionModal")
-.style.display="none";
+.getElementById("closeParticipantModal")
+.onclick=()=>{
+
+document
+.getElementById("participantModal")
+.classList.remove("show");
+
+};
+
+
+
+loadParticipants();
+
 
 
 }
-
-
-
-// Start
-
-loadParticipants();
