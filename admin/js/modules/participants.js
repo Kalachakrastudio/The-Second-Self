@@ -18,7 +18,9 @@ document.getElementById("participantTable");
 
 
 async function loadParticipants(){
-  console.log("Loading participants...");
+
+    console.log("Loading participants...");
+
     try{
 
         const response = await fetch(
@@ -27,23 +29,25 @@ async function loadParticipants(){
 
         const result = await response.json();
 
+        console.log("API Response:", result);
+
         if(result.success){
 
             participants = result.performers;
+
+            console.log("Participants:", participants);
 
             renderParticipants(participants);
 
         }
 
-    }
-    catch(error){
+    }catch(err){
 
-        console.error(error);
+        console.error(err);
 
     }
 
 }
-
 function renderParticipants(data){
 
     table.innerHTML = "";
