@@ -291,7 +291,15 @@ transition:.3s;
 background:#D71F28;
 
 }
+.event-table td:last-child{
+    white-space: nowrap;
+}
 
+.action-btn{
+    margin-right:8px;
+    margin-bottom:0;
+    vertical-align:middle;
+}
 /*=========================================
 MODAL
 =========================================*/
