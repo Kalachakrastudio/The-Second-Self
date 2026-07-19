@@ -179,27 +179,43 @@ function populateEventDropdown(){
 
     });
 
-    document.getElementById("eventDate").addEventListener("change", function(){
+    rebuildCustomSelect("eventDate");
+
+}
+function populateTicketDropdown(event){
+
+    const ticketSelect =
+    document.getElementById("ticketType");
+
+    ticketSelect.innerHTML =
+    `<option value="">Select Ticket</option>`;
+
+    event.tickets.forEach(ticket=>{
+
+        ticketSelect.innerHTML += `
+            <option value="${ticket.price}">
+                ${ticket.name} - ₹${ticket.price}
+            </option>
+        `;
+
+    });
+
+    rebuildCustomSelect("ticketType");
+
+    updateSummary();
+
+}
+document.getElementById("eventDate").addEventListener("change", function(){
 
     const eventId = this.value;
 
-    selectedEvent = events.find(e => e.id === eventId);
+    selectedEvent = events.find(event => event.id === eventId);
 
     if(!selectedEvent) return;
 
     populateTicketDropdown(selectedEvent);
 
 });
-
-    console.log(eventSelect.innerHTML);
-
-    console.log("Calling rebuildCustomSelect...");
-
-    rebuildCustomSelect("eventDate");
-
-    console.log("Finished rebuildCustomSelect");
-
-}
 window.onload = function () {
 
     loadEvents();
