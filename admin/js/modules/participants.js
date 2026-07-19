@@ -205,7 +205,7 @@ window.viewParticipant = function(rowId){
 
             <div class="detail-item">
                 <label>Video Link</label>
-                <span>${selectedParticipant["Video Link"] || "-"}</span>
+               <span>${selectedParticipant.VideoLink || "-"}</span>
             </div>
 
         </div>
@@ -219,8 +219,16 @@ window.viewParticipant = function(rowId){
 }
 
 
+document
+.getElementById("closeParticipantModal")
+.onclick = () => {
+
+    document
+    .getElementById("participantModal")
+    .classList.remove("show");
+
+};
+
 loadParticipants();
-
-
 
 }
