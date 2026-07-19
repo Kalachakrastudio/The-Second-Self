@@ -1,4 +1,5 @@
 function initParticipants(){
+    console.log("Participants page initialized");
 
 const SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbwQRiWw82Bp1PCWfnKUqr6Hh_pfm3KbHNzXgC_8Yxa1Jkmh_V5IAVHjB0BZpCX0XlNX/exec";
@@ -17,7 +18,7 @@ document.getElementById("participantTable");
 
 
 async function loadParticipants(){
-
+  console.log("Loading participants...");
     try{
 
         const response = await fetch(
