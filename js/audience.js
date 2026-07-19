@@ -6,7 +6,7 @@ const successPopup =
 document.getElementById("successPopup");
 
 const scriptURL =
-"https://script.google.com/macros/s/AKfycbxS4r7iNHtbIjfalJ7Iec8NyCQGmeuLmWrPzl6mP8b3ygWIJSBwCl6K13HkqjXEaxvn/exec";
+"https://script.google.com/macros/s/AKfycbzQJxn3Di-BqI_VZLSmF3qr7-De48OQMqFAVhqh4Kcn0KURgWyxL1YLivZSKe9uSfA/exec";
 
 // Replace this with your Razorpay Test Key
 const RAZORPAY_KEY = "rzp_test_TB3dk6zMNTlX6l";
@@ -152,7 +152,8 @@ function saveBooking(paymentId){
 
         email: form.email.value,
 
-        event: form.eventDate.value,
+        eventId: selectedEvent.id,
+        eventName: selectedEvent.name,
 
         ticketType: document.getElementById("ticketType").selectedOptions[0].text,
 
