@@ -145,80 +145,32 @@ box-shadow:0 10px 30px rgba(215,31,40,.35);
 }
 
 /*=========================================
-TABLE CONTAINER
+TABLE
 =========================================*/
 
 .table-card{
 
-    width:100%;
+background:#121212;
 
-    max-width:100%;
+border:1px solid rgba(255,255,255,.08);
 
-    overflow-x:auto;
+border-radius:20px;
 
-    overflow-y:auto;
+overflow-x:auto;
 
-    max-height:520px;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:20px;
-
-    background:#121212;
-
-    -webkit-overflow-scrolling:touch;
+overflow-y:hidden;
 
 }
 
 .event-table{
 
-    border-collapse:collapse;
+width:100%;
 
-    min-width:900px;
-
-    width:900px;
+border-collapse:collapse;
 
 }
 
-/* Smooth scrolling */
-
-.table-card::-webkit-scrollbar{
-
-height:8px;
-
-width:8px;
-
-}
-
-
-.table-card::-webkit-scrollbar-track{
-
-background:#111;
-
-}
-
-
-.table-card::-webkit-scrollbar-thumb{
-
-background:#333;
-
-border-radius:20px;
-
-}
-
-
-.table-card::-webkit-scrollbar-thumb:hover{
-
-background:#D71F28;
-
-}
 .event-table thead{
-
-position:sticky;
-
-top:0;
-
-z-index:10;
 
 background:#191919;
 
@@ -606,42 +558,15 @@ overflow-y:auto;
 
 .table-card{
 
-    width:100%;
-    max-width:100%;
-
-    overflow:auto;
-
-    max-height:340px;
-
-    -webkit-overflow-scrolling:touch;
+overflow-x:auto;
 
 }
 
 .event-table{
 
-    width:max-content;
-
-    min-width:900px;
-
-    border-collapse:collapse;
+min-width:760px;
 
 }
-
-
-
-}
-
-.main-content{
-
-    min-width:0;
-
-}
-
-#contentArea{
-
-    min-width:0;
-
-    width:100%;
 
 }
 /*=========================================
