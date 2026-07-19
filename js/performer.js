@@ -18,34 +18,36 @@ form.addEventListener("submit", function (e) {
 
     const formData = {
 
-        sheet: "Performers",
+    sheet: "Performers",
 
-        name: form.name.value,
-        age: form.age.value,
-        gender: form.gender.value,
+    name: form.name.value,
+    age: form.age.value,
+    gender: form.gender.value,
 
-        mobile: form.mobile.value,
-        email: form.email.value,
+    mobile: form.mobile.value,
+    email: form.email.value,
 
-        profession: form.profession.value,
-        city: form.city.value,
-        state: form.state.value,
+    profession: form.profession.value,
+    city: form.city.value,
+    state: form.state.value,
 
-        category: form.category.value,
-        title: form.title.value,
+    category: form.category.value,
+    title: form.title.value,
 
-        language: form.language.value,
-        duration: form.duration.value,
+    language: form.language.value,
+    duration: form.duration.value,
 
-        story: form.story.value,
+    story: form.story.value,
 
-        instagram: form.instagram.value,
-        youtube: form.youtube.value,
-        website: form.website.value,
+    instagram: form.instagram.value,
+    youtube: form.youtube.value,
+    website: form.website.value,
 
-        videoLink: form.videoLink.value
+    videoLink: form.videoLink.value,
 
-    };
+    status: "Pending"
+
+};
 
     fetch(scriptURL, {
 
