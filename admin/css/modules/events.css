@@ -298,25 +298,20 @@ MODAL
 
 .modal{
 
-position:fixed;
+    position:fixed;
+    inset:0;
 
-left:0;
-top:0;
+    display:none;
+    justify-content:center;
+    align-items:center;
 
-width:100%;
-height:100%;
+    padding:20px;
 
-background:rgba(0,0,0,.65);
+    background:rgba(0,0,0,.65);
 
-display:none;
+    overflow:hidden;
 
-justify-content:center;
-
-align-items:center;
-
-padding:20px;
-
-z-index:9999;
+    z-index:9999;
 
 }
 
@@ -328,21 +323,22 @@ display:flex;
 
 .modal-box{
 
-width:min(900px,95vw);
+    width:min(900px,95vw);
 
-max-height:90vh;
+    max-height:90vh;
 
-overflow-y:auto;
+    overflow-x:hidden;
+    overflow-y:auto;
 
-padding:35px;
+    padding:35px;
 
-background:#111;
+    background:#111;
 
-border-radius:22px;
+    border-radius:22px;
 
-border:1px solid rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.08);
 
-animation:popup .3s ease;
+    animation:popup .3s ease;
 
 }
 
