@@ -405,6 +405,68 @@ document
     .classList.remove("show");
 
 };
+    document
+.getElementById("confirmAssign")
+.onclick = async function(){
+
+    const eventId =
+    document.getElementById("assignEventSelect").value;
+
+    if(eventId==""){
+
+        alert("Please select an event.");
+
+        return;
+
+    }
+
+    try{
+
+        const response = await fetch(SCRIPT_URL,{
+
+            method:"POST",
+
+            body:JSON.stringify({
+
+                action:"selectPerformer",
+
+                rowId:selectedParticipant.rowId,
+
+                eventId:eventId
+
+            })
+
+        });
+
+        const result = await response.json();
+
+        if(result.success){
+
+            alert(result.message);
+
+            document
+            .getElementById("assignEventModal")
+            .classList.remove("show");
+
+            document
+            .getElementById("participantModal")
+            .classList.remove("show");
+
+            loadParticipants();
+
+        }else{
+
+            alert(result.message);
+
+        }
+
+    }catch(err){
+
+        console.error(err);
+
+    }
+
+};
 loadParticipants();
 
 }
