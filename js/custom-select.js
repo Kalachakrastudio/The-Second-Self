@@ -92,3 +92,74 @@ function resetCustomSelect(selectId){
     select.dispatchEvent(new Event("change"));
 
 }
+function rebuildCustomSelect(selectId){
+
+    const select = document.getElementById(selectId);
+
+    if(!select) return;
+
+    const wrapper = select.parentElement;
+
+    if(!wrapper.classList.contains("custom-select")) return;
+
+    // Remove old UI
+    wrapper.querySelector(".select-selected")?.remove();
+    wrapper.querySelector(".select-items")?.remove();
+
+    // Create selected box
+    const selected = document.createElement("div");
+    selected.className = "select-selected";
+    selected.textContent = select.options[select.selectedIndex].textContent;
+
+    wrapper.appendChild(selected);
+
+    // Create option list
+    const options = document.createElement("div");
+    options.className = "select-items";
+
+    [...select.options].forEach((option,index)=>{
+
+        if(index===0) return;
+
+        const item = document.createElement("div");
+
+        item.textContent = option.textContent;
+
+        item.onclick = function(){
+
+            select.selectedIndex = index;
+
+            selected.textContent = option.textContent;
+
+            select.dispatchEvent(new Event("change"));
+
+            wrapper.classList.remove("active");
+
+        };
+
+        options.appendChild(item);
+
+    });
+
+    wrapper.appendChild(options);
+
+    selected.onclick = function(e){
+
+        e.stopPropagation();
+
+        document.querySelectorAll(".custom-select")
+            .forEach(drop=>{
+
+                if(drop!==wrapper){
+
+                    drop.classList.remove("active");
+
+                }
+
+            });
+
+        wrapper.classList.toggle("active");
+
+    };
+
+}
