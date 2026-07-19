@@ -341,6 +341,13 @@ display:flex;
     animation:popup .3s ease;
 
 }
+.modal-box *{
+
+    max-width:100%;
+
+    box-sizing:border-box;
+
+}
 
 @keyframes popup{
 
@@ -607,16 +614,11 @@ letter-spacing:1px;
 
 display:grid;
 
-grid-template-columns:minmax(220px,2fr) 140px 140px 60px;
+    grid-template-columns:2fr 1fr 1fr 60px;
 
-gap:20px;
+    gap:20px;
 
-align-items:stretch;
-
-width:100%;
-
-margin-bottom:18px;
-
+    align-items:center;
 }
 
 .ticket-row input{
