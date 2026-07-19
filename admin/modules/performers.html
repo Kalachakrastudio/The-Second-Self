@@ -1,50 +1,49 @@
-<section class="page-container">
+<div class="page-toolbar">
 
 
-<div class="page-header">
-
-<h1>Participants</h1>
-
-<p>
-Manage performer registrations and selection
-</p>
-
-</div>
+<div class="toolbar-left">
 
 
+<input
+type="text"
+id="participantSearch"
+placeholder="Search Participant..."
+>
 
-<div class="participant-tools">
 
+<select id="participantEventFilter">
 
-<select id="eventFilter">
-
-<option value="">
+<option value="all">
 All Events
 </option>
 
 </select>
 
 
+<select id="participantCategoryFilter">
 
-<input 
-type="text"
-id="searchParticipant"
-placeholder="Search performer..."
->
+<option value="all">
+All Categories
+</option>
+
+</select>
+
+
+</div>
 
 
 </div>
 
 
 
-
 <div class="table-card">
 
 
-<table>
+<table class="event-table">
 
 
 <thead>
+
 
 <tr>
 
@@ -54,20 +53,39 @@ placeholder="Search performer..."
 
 <th>City</th>
 
-<th>Age</th>
+<th>Event</th>
 
 <th>Status</th>
 
-<th>Action</th>
+<th>Actions</th>
 
 
 </tr>
+
 
 </thead>
 
 
 
 <tbody id="participantTable">
+
+
+<tr>
+
+<td colspan="6" class="empty-row">
+
+<i class="fa-solid fa-users"></i>
+
+<p>No Participants Found</p>
+
+<small>
+New performer registrations will appear here.
+</small>
+
+
+</td>
+
+</tr>
 
 
 </tbody>
@@ -79,43 +97,65 @@ placeholder="Search performer..."
 </div>
 
 
-</section>
 
 
 
-<!-- Action Modal -->
+<!-- PARTICIPANT MODAL -->
 
-<div id="actionModal" class="modal">
+
+<div
+id="participantModal"
+class="modal">
 
 
 <div class="modal-box">
 
 
-<h2 id="modalName">
+<div class="modal-header">
+
+
+<h2>
+Participant Details
 </h2>
 
 
-<p id="modalDetails">
-</p>
+<button id="closeParticipantModal">
 
+<i class="fa-solid fa-xmark"></i>
 
-<div class="modal-buttons">
-
-
-<button 
-class="select-btn"
-onclick="selectParticipant()"
->
-Select
 </button>
 
 
+</div>
 
-<button 
-class="reject-btn"
-onclick="rejectParticipant()"
->
+
+
+<div id="participantDetails">
+
+
+</div>
+
+
+
+<div class="modal-footer">
+
+
+<button
+class="cancel-btn"
+id="rejectParticipant">
+
 Reject
+
+</button>
+
+
+
+<button
+class="primary-btn"
+id="selectParticipant">
+
+Select
+
 </button>
 
 
@@ -124,8 +164,5 @@ Reject
 
 </div>
 
+
 </div>
-
-
-
-<script src="js/participants.js"></script>
