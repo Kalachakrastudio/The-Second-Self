@@ -1,5 +1,5 @@
 const scriptURL =
-"https://script.google.com/macros/s/AKfycbxS4r7iNHtbIjfalJ7Iec8NyCQGmeuLmWrPzl6mP8b3ygWIJSBwCl6K13HkqjXEaxvn/exec";
+"https://script.google.com/macros/s/AKfycby7ipVj3tXJJbtTkemYL_WwLeNWERJAjnJr5ERY2AlvlexoVy0qID5gzoEspecAHldy/exec";
 
 const form = document.getElementById("performerForm");
 
