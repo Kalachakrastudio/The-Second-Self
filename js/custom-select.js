@@ -117,29 +117,34 @@ function rebuildCustomSelect(selectId){
     const options = document.createElement("div");
     options.className = "select-items";
 
-    [...select.options].forEach((option,index)=>{
+    console.log("Rebuilding:", selectId);
+console.log(select.options.length);
 
-        if(index===0) return;
+Array.from(select.options).forEach((option,index)=>{
 
-        const item = document.createElement("div");
+    console.log(index, option.textContent);
 
-        item.textContent = option.textContent;
+    if(index===0) return;
 
-        item.onclick = function(){
+    const item = document.createElement("div");
 
-            select.selectedIndex = index;
+    item.textContent = option.textContent;
 
-            selected.textContent = option.textContent;
+    item.onclick = function(){
 
-            select.dispatchEvent(new Event("change"));
+        select.selectedIndex = index;
 
-            wrapper.classList.remove("active");
+        selected.textContent = option.textContent;
 
-        };
+        select.dispatchEvent(new Event("change"));
 
-        options.appendChild(item);
+        wrapper.classList.remove("active");
 
-    });
+    };
+
+    options.appendChild(item);
+
+});
 
     wrapper.appendChild(options);
 
