@@ -224,12 +224,6 @@ background:#191919;
 
 }
 
-.event-table thead{
-
-background:#191919;
-
-}
-
 .event-table th{
 
 padding:18px;
@@ -613,51 +607,27 @@ overflow-y:auto;
 .table-card{
 
     width:100%;
+    max-width:100%;
 
-    overflow-x:scroll;
-
-    overflow-y:auto;
+    overflow:auto;
 
     max-height:340px;
+
+    -webkit-overflow-scrolling:touch;
 
 }
 
 .event-table{
 
-    width:900px;
+    width:max-content;
 
     min-width:900px;
 
-}
-
-.event-table thead,
-.event-table tbody tr{
-
-    display:table;
-    width:100%;
-    table-layout:fixed;
+    border-collapse:collapse;
 
 }
 
-.event-table tbody{
 
-    display:block;
-
-    height:260px;   /* Around 4 rows */
-
-    overflow-y:auto;
-
-    overflow-x:hidden;
-
-}
-
-.event-table thead{
-
-    display:table;
-    width:100%;
-    table-layout:fixed;
-
-}
 
 }
 
