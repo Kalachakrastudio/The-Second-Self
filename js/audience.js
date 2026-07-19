@@ -165,7 +165,6 @@ function populateEventDropdown(){
     document.getElementById("eventDate");
 
     eventSelect.innerHTML =
-
     `<option value="">Choose Event</option>`;
 
     events.forEach(event=>{
@@ -173,14 +172,14 @@ function populateEventDropdown(){
         eventSelect.innerHTML += `
 
         <option value="${event.id}">
-
             ${event.name} • ${event.city}
-
         </option>
 
         `;
 
     });
+
+    rebuildCustomSelect("eventDate");
 
 }
 window.onload = function () {
