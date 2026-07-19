@@ -150,24 +150,35 @@ TABLE CONTAINER
 
 .table-card{
 
-background:#121212;
+    width:100%;
 
-border:1px solid rgba(255,255,255,.08);
+    max-width:100%;
 
-border-radius:20px;
+    overflow-x:auto;
 
-width:100%;
+    overflow-y:auto;
 
-max-width:100%;
+    max-height:520px;
 
-overflow:auto;
+    border:1px solid rgba(255,255,255,.08);
 
-max-height:65vh;
+    border-radius:20px;
 
-position:relative;
+    background:#121212;
+
+    -webkit-overflow-scrolling:touch;
 
 }
 
+.event-table{
+
+    border-collapse:collapse;
+
+    min-width:900px;
+
+    width:900px;
+
+}
 
 /* Smooth scrolling */
 
@@ -210,16 +221,6 @@ top:0;
 z-index:10;
 
 background:#191919;
-
-}
-
-.event-table{
-
-width:100%;
-
-min-width:1000px;
-
-border-collapse:collapse;
 
 }
 
@@ -612,16 +613,20 @@ overflow-y:auto;
 .table-card{
 
     width:100%;
-    overflow:hidden;
-    border-radius:16px;
+
+    overflow-x:scroll;
+
+    overflow-y:auto;
+
+    max-height:340px;
 
 }
 
 .event-table{
 
-    width:100%;
-    min-width:700px;
-    border-collapse:collapse;
+    width:900px;
+
+    min-width:900px;
 
 }
 
@@ -653,6 +658,20 @@ overflow-y:auto;
     table-layout:fixed;
 
 }
+
+}
+
+.main-content{
+
+    min-width:0;
+
+}
+
+#contentArea{
+
+    min-width:0;
+
+    width:100%;
 
 }
 /*=========================================
