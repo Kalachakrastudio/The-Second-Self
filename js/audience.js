@@ -12,6 +12,7 @@ const scriptURL =
 const RAZORPAY_KEY = "rzp_test_TB3dk6zMNTlX6l";
 
 const form = document.getElementById("ticketForm");
+let events = [];
 const loadingPopup =
 document.getElementById("loadingPopup");
 
@@ -124,7 +125,59 @@ console.log(total);
     "₹" + total;
 
 }
+async function loadEvents(){
 
+    try{
+
+        const response = await fetch(
+
+            scriptURL + "?action=getAvailableEvents"
+
+        );
+
+        const result = await response.json();
+
+        if(result.success){
+
+            events = result.events;
+
+            populateEventDropdown();
+
+        }
+
+    }
+
+    catch(err){
+
+        console.log(err);
+
+    }
+
+}
+function populateEventDropdown(){
+
+    const eventSelect =
+    document.getElementById("eventDate");
+
+    eventSelect.innerHTML =
+
+    `<option value="">Choose Event</option>`;
+
+    events.forEach(event=>{
+
+        eventSelect.innerHTML += `
+
+        <option value="${event.id}">
+
+            ${event.name} • ${event.city}
+
+        </option>
+
+        `;
+
+    });
+
+}
 window.onload = function () {
 
     updateSummary();
