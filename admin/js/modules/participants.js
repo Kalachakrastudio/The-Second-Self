@@ -106,67 +106,117 @@ function renderParticipants(data){
 }
 
 
-window.viewParticipant=function(rowId){
+window.viewParticipant = function(rowId){
 
+    selectedParticipant = participants.find(
+        p => p.rowId == rowId
+    );
 
-selectedParticipant =
-participants.find(
-p=>p.rowId==rowId
-);
+    document.getElementById("participantDetails").innerHTML = `
 
+        <div class="detail-grid">
 
+            <div class="detail-item">
+                <label>Name</label>
+                <span>${selectedParticipant.Name || "-"}</span>
+            </div>
 
-document.getElementById(
-"participantDetails"
-).innerHTML=`
+            <div class="detail-item">
+                <label>Age</label>
+                <span>${selectedParticipant.Age || "-"}</span>
+            </div>
 
-<p><b>Name:</b>
-${selectedParticipant.Name}
-</p>
+            <div class="detail-item">
+                <label>Gender</label>
+                <span>${selectedParticipant.Gender || "-"}</span>
+            </div>
 
+            <div class="detail-item">
+                <label>Mobile</label>
+                <span>${selectedParticipant.Mobile || "-"}</span>
+            </div>
 
-<p><b>Age:</b>
-${selectedParticipant.Age}
-</p>
+            <div class="detail-item">
+                <label>Email</label>
+                <span>${selectedParticipant.Email || "-"}</span>
+            </div>
 
+            <div class="detail-item">
+                <label>Profession</label>
+                <span>${selectedParticipant.Profession || "-"}</span>
+            </div>
 
-<p><b>Category:</b>
-${selectedParticipant.Category}
-</p>
+            <div class="detail-item">
+                <label>City</label>
+                <span>${selectedParticipant.City || "-"}</span>
+            </div>
 
+            <div class="detail-item">
+                <label>State</label>
+                <span>${selectedParticipant.State || "-"}</span>
+            </div>
 
-<p><b>Story:</b></p>
+            <div class="detail-item">
+                <label>Category</label>
+                <span>${selectedParticipant.Category || "-"}</span>
+            </div>
 
-<p>
-${selectedParticipant.Story}
-</p>
+            <div class="detail-item">
+                <label>Performance Title</label>
+                <span>${selectedParticipant.Title || "-"}</span>
+            </div>
 
+            <div class="detail-item">
+                <label>Language</label>
+                <span>${selectedParticipant.Language || "-"}</span>
+            </div>
 
-`;
+            <div class="detail-item">
+                <label>Duration</label>
+                <span>${selectedParticipant.Duration || "-"}</span>
+            </div>
 
+        </div>
 
+        <div class="detail-block">
 
-document
-.getElementById("participantModal")
-.classList.add("show");
+            <label>Story</label>
 
+            <p>${selectedParticipant.Story || "-"}</p>
+
+        </div>
+
+        <div class="detail-grid">
+
+            <div class="detail-item">
+                <label>Instagram</label>
+                <span>${selectedParticipant.Instagram || "-"}</span>
+            </div>
+
+            <div class="detail-item">
+                <label>YouTube</label>
+                <span>${selectedParticipant.YouTube || "-"}</span>
+            </div>
+
+            <div class="detail-item">
+                <label>Website</label>
+                <span>${selectedParticipant.Website || "-"}</span>
+            </div>
+
+            <div class="detail-item">
+                <label>Video Link</label>
+                <span>${selectedParticipant["Video Link"] || "-"}</span>
+            </div>
+
+        </div>
+
+    `;
+
+    document
+        .getElementById("participantModal")
+        .classList.add("show");
 
 }
-
-
-
-
-
-document
-.getElementById("closeParticipantModal")
-.onclick=()=>{
-
-document
-.getElementById("participantModal")
-.classList.remove("show");
-
-};
-
 
 
 loadParticipants();
