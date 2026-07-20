@@ -211,7 +211,7 @@ SEARCH
 
     flex:1;
 
-    height:50px;
+    height:56px;
 
     padding:0 18px;
 
@@ -223,7 +223,7 @@ SEARCH
 
     color:#fff;
 
-    font-size:15px;
+    font-size:16px;
 
     outline:none;
 
@@ -240,6 +240,7 @@ SEARCH
 .search-box button{
 
     width:130px;
+     height:56px;
 
     border:none;
 
@@ -629,6 +630,18 @@ RESPONSIVE
 
 }
 
+    .search-box input{
+
+    width:100%;
+
+    height:58px;
+
+    font-size:16px;
+
+    padding:0 18px;
+
+}
+    
 .ticket-body{
 
     grid-template-columns:1fr;
@@ -650,6 +663,10 @@ RESPONSIVE
 .search-box button{
 
     width:100%;
+
+    height:58px;
+
+    font-size:16px;
 
 }
 
