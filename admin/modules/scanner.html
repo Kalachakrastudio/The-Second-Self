@@ -1,227 +1,57 @@
-<!--=====================================
-EVENT INFO
-======================================-->
+<section class="scanner-page">
 
-<div class="event-banner">
+    <div class="page-header">
 
-    <div class="event-info">
+        <div>
 
-        <h2 id="currentEventName">
+            <h2>QR Scanner</h2>
 
-            Loading Event...
-
-        </h2>
-
-        <p id="currentEventDate">
-
-            Loading Date...
-
-        </p>
-
-    </div>
-
-</div>
-
-<!--=====================================
-STATS
-======================================-->
-
-<div class="scanner-stats">
-
-    <div class="stat-card">
-
-        <h3 id="totalTickets">0</h3>
-        <span>Total Tickets</span>
-
-    </div>
-
-    <div class="stat-card">
-
-        <h3 id="checkedInCount">0</h3>
-        <span>Checked In</span>
-
-    </div>
-
-    <div class="stat-card">
-
-        <h3 id="pendingCount">0</h3>
-        <span>Pending</span>
-
-    </div>
-
-</div>
-
-<!--=====================================
-SCANNER GRID
-======================================-->
-
-<div class="scanner-grid">
-
-    <!-- Scanner -->
-
-    <div class="scanner-card">
-
-        <h3>QR Scanner</h3>
-
-        <div id="reader"></div>
-
-    </div>
-
-    <!-- Search -->
-
-    <div class="scanner-card">
-
-        <h3>Search Ticket</h3>
-
-        <div class="search-box">
-
-            <input
-            type="text"
-            id="searchInput"
-            placeholder="Ticket ID or Mobile Number">
-
-            <button id="searchBtn">
-
-                Search
-
-            </button>
+            <p>Scan tickets and manage audience check-ins.</p>
 
         </div>
 
     </div>
 
-</div>
+    <!-- Event Selector -->
 
-<!--=====================================
-TICKET DETAILS
-======================================-->
+    <div class="card">
 
-<div
-class="ticket-card"
-id="ticketCard"
-style="display:none;">
+        <h3>Today's Event</h3>
 
-    <div class="ticket-header">
-
-        <h2 id="ticketName">
-
-            Ticket Holder
-
-        </h2>
-
-        <span id="ticketStatus">
-
-            Pending
-
-        </span>
+        <select id="eventSelect"></select>
 
     </div>
 
-    <div class="ticket-body">
+    <!-- Statistics -->
 
-        <div class="detail">
+    <div class="stats-grid">
 
-            <label>Ticket ID</label>
-
-            <p id="ticketId"></p>
-
-        </div>
-
-        <div class="detail">
-
-            <label>Mobile</label>
-
-            <p id="ticketMobile"></p>
-
-        </div>
-
-        <div class="detail">
-
-            <label>Event</label>
-
-            <p id="ticketEvent"></p>
-
-        </div>
-
-        <div class="detail">
-
-            <label>Event Date</label>
-
-            <p id="ticketDate"></p>
-
-        </div>
-
-        <div class="detail">
-
-            <label>Ticket Type</label>
-
-            <p id="ticketType"></p>
-
-        </div>
+        ...
 
     </div>
 
-    <button
-    id="checkInBtn"
-    class="checkin-btn">
+    <!-- Scanner + Search -->
 
-        Mark As Check In
+    <div class="scanner-grid">
 
-    </button>
-
-</div>
-
-<!--=====================================
-RECENT CHECKINS
-======================================-->
-
-<div class="recent-checkins">
-
-    <h3>Recent Check Ins</h3>
-
-    <div id="recentList">
-
-        <p>No Check Ins Yet</p>
+        ...
 
     </div>
 
-</div>
+    <!-- Recent Check-ins -->
+
+    <div class="card">
+
+        ...
+
+    </div>
 
 </section>
 
-<!--=====================================
-LOADER
-======================================-->
-
 <div id="loader" class="loader">
-
-    <div class="loader-box">
-
-        <div class="spinner"></div>
-
-        <h2>Checking Ticket...</h2>
-
-        <p>Please wait</p>
-
-    </div>
-
+    ...
 </div>
-
-<!--=====================================
-RESULT POPUP
-======================================-->
 
 <div id="resultPopup" class="result-popup">
-
-    <div class="popup-card">
-
-        <div id="popupIcon"></div>
-
-        <h2 id="popupTitle"></h2>
-
-        <p id="popupMessage"></p>
-
-    </div>
-
+    ...
 </div>
-
