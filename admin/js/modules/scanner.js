@@ -1,10 +1,9 @@
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbxdgDhEJnRSpGsqoRK-2-7WCRZfldseJ8m1l4ONXYIqoTsQ8ODKGWIO2PjvUzWylChu/exec";
+
 let html5QrCode = null;
 let scanning = false;
 let selectedEvent = "";
-function initScanner(){
-
-const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbxdgDhEJnRSpGsqoRK-2-7WCRZfldseJ8m1l4ONXYIqoTsQ8ODKGWIO2PjvUzWylChu/exec";
 
 const eventSelect =
 document.getElementById("scannerEvent");
@@ -300,26 +299,71 @@ scanning=true;
 searchTicket(ticketId,true);
 
 }
-fetch(url)
 
-.then(res=>res.json())
+async function searchTicket(value, isScan = false){
 
-.then(data=>{
+    if(!value){
 
-    hideLoader();
+        showPopup(
+            "warning",
+            "Missing Ticket",
+            "Enter a Ticket ID or Mobile Number."
+        );
 
-    showTicket(data,isScan);
+        return;
 
-    scanning = false;
+    }
 
-})
+    showLoader();
 
-.catch(err=>{
+    let url;
 
-    hideLoader();
+    if(value.toUpperCase().startsWith("TSS")){
 
-    scanning = false;
+        url =
+        SCRIPT_URL +
+        "?action=searchTicket" +
+        "&eventId=" + encodeURIComponent(selectedEvent) +
+        "&ticket=" + encodeURIComponent(value);
 
-    console.log(err);
+    }
 
-});
+    else{
+
+        url =
+        SCRIPT_URL +
+        "?action=searchTicket" +
+        "&eventId=" + encodeURIComponent(selectedEvent) +
+        "&mobile=" + encodeURIComponent(value);
+
+    }
+
+    try{
+
+        const response = await fetch(url);
+
+        const data = await response.json();
+
+        hideLoader();
+
+        showTicket(data, isScan);
+
+    }
+
+    catch(err){
+
+        hideLoader();
+
+        scanning = false;
+
+        console.log(err);
+
+        showPopup(
+            "error",
+            "Connection Error",
+            "Unable to connect to server."
+        );
+
+    }
+
+}
