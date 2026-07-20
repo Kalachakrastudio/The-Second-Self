@@ -1,13 +1,10 @@
+let html5QrCode = null;
+let scanning = false;
+let selectedEvent = "";
 function initScanner(){
 
 const SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbxdgDhEJnRSpGsqoRK-2-7WCRZfldseJ8m1l4ONXYIqoTsQ8ODKGWIO2PjvUzWylChu/exec";
-
-let html5QrCode = null;
-
-let scanning = false;
-
-let selectedEvent = "";
 
 const eventSelect =
 document.getElementById("scannerEvent");
@@ -102,6 +99,7 @@ popup.classList.add("show");
 setTimeout(()=>{
 
 popup.classList.remove("show");
+    scanning = false;
 
 },2500);
 
@@ -157,9 +155,30 @@ ${event.name}
 
 });
 
-selectedEvent=data.events[0].id;
+if(data.events.length===0){
 
-startCamera();
+    hideLoader();
+
+    showPopup(
+        "warning",
+        "No Event",
+        "No event available today."
+    );
+
+    return;
+
+}
+
+  selectedEvent = data.events[0].id;
+
+document.getElementById("scannerEvent").value =
+selectedEvent;
+
+setTimeout(()=>{
+
+    startCamera();
+
+},300);
 
 loadStatistics();
 
@@ -180,15 +199,21 @@ async function startCamera(){
 
 if(html5QrCode){
 
-try{
+    try{
 
-await html5QrCode.stop();
+        await html5QrCode.stop();
 
-}catch(e){}
+        await html5QrCode.clear();
+
+    }catch(e){}
 
 }
 
-html5QrCode=new Html5Qrcode("reader");
+if(!html5QrCode){
+
+    html5QrCode = new Html5Qrcode("reader");
+
+}
 
 try{
 
@@ -239,35 +264,27 @@ break;
 }
 
 await html5QrCode.start(
-
-camera,
-
-{
-
-fps:10,
-
-qrbox:260
-
-},
-
-onScanSuccess
-
+    camera,
+    {
+        fps:10,
+        qrbox:{
+            width:250,
+            height:250
+        }
+    },
+    onScanSuccess
 );
 
 }
 
 catch(err){
 
-console.log(err);
+console.error(err);
 
 showPopup(
-
-"error",
-
-"Camera Error",
-
-err
-
+    "error",
+    "Camera Error",
+    "Unable to access camera. Please allow camera permission and refresh the page."
 );
 
 }
@@ -283,4 +300,26 @@ scanning=true;
 searchTicket(ticketId,true);
 
 }
+fetch(url)
 
+.then(res=>res.json())
+
+.then(data=>{
+
+    hideLoader();
+
+    showTicket(data,isScan);
+
+    scanning = false;
+
+})
+
+.catch(err=>{
+
+    hideLoader();
+
+    scanning = false;
+
+    console.log(err);
+
+});
