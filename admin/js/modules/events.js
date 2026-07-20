@@ -50,9 +50,17 @@ class="delete-ticket">
 
 `;
 
-row.querySelector(".delete-ticket").onclick=()=>{
+row.querySelector(".delete-ticket").onclick = ()=>{
 
-row.remove();
+    if(document.querySelectorAll(".ticket-row").length===1){
+
+        alert("At least one ticket is required.");
+
+        return;
+
+    }
+
+    row.remove();
 
 };
 
@@ -72,9 +80,11 @@ modal.classList.add("show");
 
 form.reset();
 
-editIndex=null;
+editIndex = null;
 
 resetTicketContainer();
+
+rebuildCustomSelect("eventStatusSelect");
 
 };
 function closeModal(){
@@ -88,28 +98,51 @@ document.getElementById("closeModal").onclick=closeModal;
 document.getElementById("cancelEvent").onclick=closeModal;
 document.getElementById("addTicketRow").onclick=()=>{
 
-createTicketRow();
+    createTicketRow();
 
 };
-form.addEventListener("submit",function(e){
+    form.addEventListener("submit", function(e){
 
-e.preventDefault();
+    e.preventDefault();
 
-const tickets=[];
+    let valid = true;
 
-document.querySelectorAll(".ticket-row").forEach(row=>{
+    const tickets = [];
 
-tickets.push({
+    document.querySelectorAll(".ticket-row").forEach(row=>{
 
-name:row.querySelector(".ticket-name").value,
+    const name =
+    row.querySelector(".ticket-name").value.trim();
 
-price:row.querySelector(".ticket-price").value,
+    const price =
+    row.querySelector(".ticket-price").value;
 
-limit:row.querySelector(".ticket-limit").value
+    const limit =
+    row.querySelector(".ticket-limit").value;
+
+    if(name=="" || price=="" || limit==""){
+
+        valid = false;
+
+    }
+
+    tickets.push({
+
+        name,
+        price,
+        limit
+
+    });
 
 });
 
-});
+if(!valid){
+
+    alert("Please complete all ticket details.");
+
+    return;
+
+}
 
 const event={
 
@@ -299,22 +332,32 @@ document.getElementById("eventVenue").value=event.venue;
 document.getElementById("eventCity").value=event.city;
 
 document.getElementById("eventStatusSelect").value=event.status;
+        rebuildCustomSelect("eventStatusSelect");
 
 ticketContainer.innerHTML="";
 
-event.tickets.forEach(ticket=>{
+if(event.tickets.length === 0){
 
-createTicketRow();
+    createTicketRow();
 
-const row=ticketContainer.lastElementChild;
+}else{
 
-row.querySelector(".ticket-name").value=ticket.name;
+    event.tickets.forEach(ticket=>{
 
-row.querySelector(".ticket-price").value=ticket.price;
+        createTicketRow();
 
-row.querySelector(".ticket-limit").value=ticket.limit;
+        const row = ticketContainer.lastElementChild;
 
-});
+        row.querySelector(".ticket-name").value = ticket.name;
+
+        row.querySelector(".ticket-price").value = ticket.price;
+
+        row.querySelector(".ticket-limit").value = ticket.limit;
+
+    });
+
+}
+
 
 editIndex=id;
 
@@ -393,6 +436,7 @@ closeModal();
 form.reset();
 
 resetTicketContainer();
+    rebuildCustomSelect("eventStatusSelect");
 
 await loadEvents();
 
@@ -456,11 +500,25 @@ function filterEvents() {
         .value;
 
     const filtered = events.filter(event => {
+        
+            const ticketNames = event.tickets
+    .map(ticket => ticket.name)
+    .join(" ");
 
-        const matchSearch =
-            (event.name || "").toLowerCase().includes(search) ||
-            (event.city || "").toLowerCase().includes(search) ||
-            (event.venue || "").toLowerCase().includes(search);
+const matchSearch =
+(
+(event.name || "") +
+" " +
+(event.city || "") +
+" " +
+(event.venue || "") +
+" " +
+(event.status || "") +
+" " +
+ticketNames
+)
+.toLowerCase()
+.includes(search);
 
         const matchStatus =
             status === "all" ||
@@ -480,4 +538,6 @@ document
 document
 .getElementById("eventStatus")
 .addEventListener("change", filterEvents);
+    rebuildCustomSelect("eventStatus");
+rebuildCustomSelect("eventStatusSelect");
 }
