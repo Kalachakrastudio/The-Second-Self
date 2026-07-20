@@ -123,11 +123,11 @@ async function startScanner(){
 
             {
 
-                fps:10,
+                fps:15,
 
                 qrbox:{
-                    width:250,
-                    height:250
+                    width:280,
+                    height:280
                 }
 
             },
