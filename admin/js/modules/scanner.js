@@ -74,9 +74,15 @@ function showPopup(type,title,message){
     },2500);
 
 }
-async function startScanner(){
+//=====================================
+// START CAMERA
+//=====================================
 
-    html5QrCode = new Html5Qrcode("reader");
+const html5QrCode = new Html5Qrcode("reader");
+
+window.addEventListener("load", startScanner);
+
+async function startScanner(){
 
     try{
 
@@ -85,7 +91,7 @@ async function startScanner(){
 
         if(cameras.length===0){
 
-            alert("Camera Not Found");
+            alert("No Camera Found");
 
             return;
 
@@ -93,19 +99,16 @@ async function startScanner(){
 
         let cameraId = cameras[0].id;
 
+        // Prefer back camera
         cameras.forEach(cam=>{
 
             const label =
             cam.label.toLowerCase();
 
             if(
-
                 label.includes("back") ||
-
                 label.includes("rear") ||
-
                 label.includes("environment")
-
             ){
 
                 cameraId = cam.id;
@@ -120,7 +123,7 @@ async function startScanner(){
 
             {
 
-                fps:15,
+                fps:10,
 
                 qrbox:{
                     width:250,
@@ -133,11 +136,15 @@ async function startScanner(){
 
         );
 
+        console.log("Scanner Started");
+
     }
 
     catch(error){
 
         console.log(error);
+
+        alert("Unable to open camera.");
 
     }
 
