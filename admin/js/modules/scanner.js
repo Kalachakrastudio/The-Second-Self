@@ -1,5 +1,5 @@
 const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbxdgDhEJnRSpGsqoRK-2-7WCRZfldseJ8m1l4ONXYIqoTsQ8ODKGWIO2PjvUzWylChu/exec";
+"https://script.google.com/macros/s/AKfycbyuJllt7nuNM4npjcqOgulQ9MJHzfMU7K3plf1ZIQGn6NIZaDbAphKPMsd1NZU4pkJC/exec";
 
 let html5QrCode = null;
 let scanning = false;
