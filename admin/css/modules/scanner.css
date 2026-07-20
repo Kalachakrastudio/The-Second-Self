@@ -1,3 +1,34 @@
+body{
+
+    margin:0;
+    background:#101010;
+    font-family:Poppins,sans-serif;
+    color:#fff;
+
+}
+
+.container{
+
+    width:min(1200px,92%);
+    margin:auto;
+
+    padding:35px 0 80px;
+
+}
+
+.card{
+
+    background:#181818;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+    padding:25px;
+
+    margin-bottom:25px;
+
+}
 /*=====================================
 SCANNER PAGE
 ======================================*/
@@ -151,15 +182,7 @@ CARD
 
 .scanner-card{
 
-    background:#181818;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:20px;
-
-    padding:25px;
-
-    box-shadow:0 10px 35px rgba(0,0,0,.35);
+   margin-bottom:25px;
 
 }
 
@@ -179,19 +202,7 @@ QR READER
 
 #reader{
 
-    width:100%;
-
-    overflow:hidden;
-
-    border-radius:18px;
-
-    border:2px solid #2d2d2d;
-
-    background:#101010;
-
-    padding:10px;
-
-    box-sizing:border-box;
+    min-height:420px;
 
 }
 
@@ -203,7 +214,9 @@ SEARCH
 
     display:flex;
 
-    gap:12px;
+    gap:15px;
+
+    margin-top:20px;
 
 }
 
@@ -211,26 +224,13 @@ SEARCH
 
     flex:1;
 
-    height:56px;
+    height:54px;
 
     padding:0 18px;
 
-    background:#242424;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:12px;
-
-    color:#fff;
-
     font-size:16px;
 
-    outline:none;
-
-    transition:.3s;
-
 }
-
 .search-box input:focus{
 
     border-color:#D71F28;
@@ -239,25 +239,11 @@ SEARCH
 
 .search-box button{
 
-    width:130px;
-     height:56px;
+    width:170px;
 
-    border:none;
-
-    border-radius:12px;
-
-    background:#D71F28;
-
-    color:#fff;
-
-    cursor:pointer;
-
-    font-weight:600;
-
-    transition:.3s;
+    height:54px;
 
 }
-
 .search-box button:hover{
 
     background:#bf1c23;
@@ -630,31 +616,7 @@ RESPONSIVE
 
 }
 
-    .search-box input{
-
-    width:100%;
-
-    height:58px;
-
-    font-size:16px;
-
-    padding:0 18px;
-
-}
-    
-.ticket-body{
-
-    grid-template-columns:1fr;
-
-}
-
-.scanner-stats{
-
-    grid-template-columns:1fr;
-
-}
-
-.search-box{
+   .search-box{
 
     flex-direction:column;
 
@@ -664,11 +626,50 @@ RESPONSIVE
 
     width:100%;
 
-    height:58px;
+}
+
+.search-box input{
+
+    height:56px;
 
     font-size:16px;
 
 }
+
+    
+.ticket-body{
+
+    grid-template-columns:1fr;
+
+}
+    .ticket-card{
+
+    margin-top:25px;
+
+}
+
+.scanner-stats{
+
+    grid-template-columns:1fr;
+
+}
+    table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+    td{
+
+    padding:14px;
+
+}
+    button{
+
+    height:52px;
+
+    border-radius:12px;
 
 }
 
