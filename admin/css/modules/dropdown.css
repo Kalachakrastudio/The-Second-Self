@@ -5,7 +5,7 @@ CUSTOM SELECT
 .custom-select{
 
      position: relative;
-    width: fit-content !important; 
+    width: 40%; 
     min-width: 180px;
 
 }
