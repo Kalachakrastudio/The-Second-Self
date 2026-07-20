@@ -1,45 +1,250 @@
 <section class="scanner-page">
 
-    <!-- Event Selector -->
+    <!-- ===========================
+    Event Selection
+    ============================ -->
 
-    <div class="card">
+    <div class="scanner-card">
 
-        <h3>Today's Event</h3>
+        <div class="card-header">
 
-        <select id="eventSelect"></select>
+            <h3>
+                <i class="fa-solid fa-calendar-days"></i>
+                Select Event
+            </h3>
+
+        </div>
+
+        <div class="event-selector">
+
+            <select id="eventSelect">
+
+                <option value="">
+                    Loading Events...
+                </option>
+
+            </select>
+
+        </div>
 
     </div>
 
-    <!-- Statistics -->
+    <!-- ===========================
+    Statistics
+    ============================ -->
 
-    <div class="stats-grid">
+    <div class="scanner-stats">
 
-        ...
+        <div class="stat-card">
+
+            <i class="fa-solid fa-ticket"></i>
+
+            <div>
+
+                <h4>Total Tickets</h4>
+
+                <span id="totalTickets">0</span>
+
+            </div>
+
+        </div>
+
+        <div class="stat-card">
+
+            <i class="fa-solid fa-circle-check"></i>
+
+            <div>
+
+                <h4>Checked In</h4>
+
+                <span id="checkedIn">0</span>
+
+            </div>
+
+        </div>
+
+        <div class="stat-card">
+
+            <i class="fa-solid fa-user-clock"></i>
+
+            <div>
+
+                <h4>Remaining</h4>
+
+                <span id="remainingTickets">0</span>
+
+            </div>
+
+        </div>
 
     </div>
 
-    <!-- Scanner + Search -->
+    <!-- ===========================
+    Scanner + Search
+    ============================ -->
 
     <div class="scanner-grid">
 
-        ...
+        <!-- QR Scanner -->
+
+        <div class="scanner-card">
+
+            <div class="card-header">
+
+                <h3>
+
+                    <i class="fa-solid fa-qrcode"></i>
+
+                    QR Scanner
+
+                </h3>
+
+            </div>
+
+            <div id="reader"></div>
+
+        </div>
+
+        <!-- Search Ticket -->
+
+        <div class="scanner-card">
+
+            <div class="card-header">
+
+                <h3>
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    Search Ticket
+
+                </h3>
+
+            </div>
+
+            <div class="search-box">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Ticket ID or Mobile Number">
+
+                <button id="searchBtn">
+
+                    <i class="fa-solid fa-search"></i>
+
+                    Search
+
+                </button>
+
+            </div>
+
+            <!-- Ticket Result -->
+
+            <div
+                id="ticketCard"
+                class="ticket-card"
+                style="display:none;">
+
+            </div>
+
+        </div>
 
     </div>
 
-    <!-- Recent Check-ins -->
+    <!-- ===========================
+    Recent Check-ins
+    ============================ -->
 
-    <div class="card">
+    <div class="scanner-card">
 
-        ...
+        <div class="card-header">
+
+            <h3>
+
+                <i class="fa-solid fa-clock-rotate-left"></i>
+
+                Recent Check-Ins
+
+            </h3>
+
+        </div>
+
+        <div class="table-wrapper">
+
+            <table class="checkin-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Ticket ID</th>
+
+                        <th>Name</th>
+
+                        <th>Time</th>
+
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="recentCheckins">
+
+                    <tr>
+
+                        <td colspan="4" class="empty">
+
+                            No Check-Ins Yet
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
 
     </div>
 
 </section>
 
+
+<!-- =====================================
+Loading Overlay
+===================================== -->
+
 <div id="loader" class="loader">
-    ...
+
+    <div class="loader-box">
+
+        <div class="spinner"></div>
+
+        <h3>Checking Ticket...</h3>
+
+        <p>Please wait</p>
+
+    </div>
+
 </div>
 
+
+<!-- =====================================
+Result Popup
+===================================== -->
+
 <div id="resultPopup" class="result-popup">
-    ...
+
+    <div class="popup-card">
+
+        <div id="popupIcon"></div>
+
+        <h2 id="popupTitle"></h2>
+
+        <p id="popupMessage"></p>
+
+    </div>
+
 </div>
