@@ -39,9 +39,9 @@ if(result.success){
 
     participants = result.performers;
 
-    console.log(participants);
+    populateCategoryFilter();
 
-    renderParticipants(participants);
+    applyFilters();
 
 }
 
@@ -104,7 +104,71 @@ function renderParticipants(data){
 });   // <-- closes forEach
 
 }      // <-- closes renderParticipants
+function populateCategoryFilter(){
 
+    const categoryFilter =
+    document.getElementById("participantCategoryFilter");
+
+    categoryFilter.innerHTML =
+    `<option value="all">All Categories</option>`;
+
+    const categories = [];
+
+    participants.forEach(p=>{
+
+        if(
+            p.Category &&
+            !categories.includes(p.Category)
+        ){
+
+            categories.push(p.Category);
+
+        }
+
+    });
+
+    categories.sort();
+
+    categories.forEach(category=>{
+
+        categoryFilter.innerHTML += `
+            <option value="${category}">
+                ${category}
+            </option>
+        `;
+
+    });
+
+}
+    function applyFilters(){
+
+    const search =
+    document.getElementById("participantSearch")
+    .value
+    .toLowerCase();
+
+    const category =
+    document.getElementById("participantCategoryFilter")
+    .value;
+
+    const filtered = participants.filter(p=>{
+
+        const matchSearch =
+        (p.Name || "")
+        .toLowerCase()
+        .includes(search);
+
+        const matchCategory =
+        category=="all" ||
+        p.Category==category;
+
+        return matchSearch && matchCategory;
+
+    });
+
+    renderParticipants(filtered);
+
+}
 
 window.viewParticipant = function(rowId){
 
@@ -467,6 +531,13 @@ document
     }
 
 };
+    document
+.getElementById("participantSearch")
+.addEventListener("input",applyFilters);
+
+document
+.getElementById("participantCategoryFilter")
+.addEventListener("change",applyFilters);
 loadParticipants();
 
 }
