@@ -40,7 +40,7 @@ if(result.success){
     participants = result.performers;
 
     populateCategoryFilter();
-
+rebuildCustomSelect("participantCategoryFilter");
     applyFilters();
 
 }
@@ -153,10 +153,19 @@ function populateCategoryFilter(){
 
     const filtered = participants.filter(p=>{
 
-        const matchSearch =
-        (p.Name || "")
-        .toLowerCase()
-        .includes(search);
+       const matchSearch =
+
+(
+(p.Name || "") +
+" " +
+(p.City || "") +
+" " +
+(p.Category || "") +
+" " +
+(p.Mobile || "")
+)
+.toLowerCase()
+.includes(search);
 
         const matchCategory =
         category=="all" ||
@@ -440,7 +449,7 @@ document
                 `;
 
             });
-
+rebuildCustomSelect("assignEventSelect");
         }
 
     }catch(err){
@@ -539,5 +548,6 @@ document
 .getElementById("participantCategoryFilter")
 .addEventListener("change",applyFilters);
 loadParticipants();
-
+rebuildCustomSelect("participantCategoryFilter");
+rebuildCustomSelect("assignEventSelect");
 }
