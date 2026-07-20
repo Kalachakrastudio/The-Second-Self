@@ -1,254 +1,286 @@
+function initScanner(){
+
 const SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbxdgDhEJnRSpGsqoRK-2-7WCRZfldseJ8m1l4ONXYIqoTsQ8ODKGWIO2PjvUzWylChu/exec";
 
+let html5QrCode = null;
+
 let scanning = false;
 
-let currentTicket = null;
+let selectedEvent = "";
 
-let todayEvent = null;
+const eventSelect =
+document.getElementById("scannerEvent");
 
-let html5QrCode;
+const searchInput =
+document.getElementById("scannerSearch");
+
+const searchBtn =
+document.getElementById("scannerSearchBtn");
 
 const loader =
-document.getElementById("loader");
+document.getElementById("scannerLoader");
+
+const popup =
+document.getElementById("scannerPopup");
 
 const ticketCard =
-document.getElementById("ticketCard");
+document.getElementById("scannerTicket");
+
+loadEvents();
+
+searchBtn.onclick=function(){
+
+searchTicket(
+searchInput.value.trim(),
+false
+);
+
+};
+
+eventSelect.onchange=function(){
+
+selectedEvent=this.value;
+
+loadStatistics();
+
+loadRecentCheckins();
+
+};
+
+}
+
 function showLoader(){
 
-    loader.classList.add("show");
+document
+.getElementById("scannerLoader")
+.classList
+.add("show");
 
 }
 
 function hideLoader(){
 
-    loader.classList.remove("show");
+document
+.getElementById("scannerLoader")
+.classList
+.remove("show");
 
 }
+
 function showPopup(type,title,message){
 
-    const popup =
-    document.getElementById("resultPopup");
+const popup =
+document.getElementById("scannerPopup");
 
-    const icon =
-    document.getElementById("popupIcon");
+document.getElementById("popupTitle").innerHTML=title;
 
-    const heading =
-    document.getElementById("popupTitle");
+document.getElementById("popupMessage").innerHTML=message;
 
-    const body =
-    document.getElementById("popupMessage");
+const icon=document.getElementById("popupIcon");
 
-    heading.textContent = title;
+if(type=="success"){
 
-    body.innerHTML = message;
-
-    switch(type){
-
-        case "success":
-
-            icon.innerHTML="✅";
-
-            break;
-
-        case "warning":
-
-            icon.innerHTML="⚠️";
-
-            break;
-
-        default:
-
-            icon.innerHTML="❌";
-
-    }
-
-    popup.classList.add("show");
-
-    setTimeout(()=>{
-
-        popup.classList.remove("show");
-
-        scanning=false;
-
-    },2500);
+icon.innerHTML="✅";
 
 }
-//=====================================
-// START CAMERA
-//=====================================
 
-const html5QrCode = new Html5Qrcode("reader");
+else if(type=="warning"){
 
-window.addEventListener("load", startScanner);
-
-async function startScanner(){
-
-    try{
-
-        const cameras =
-        await Html5Qrcode.getCameras();
-
-        if(cameras.length===0){
-
-            alert("No Camera Found");
-
-            return;
-
-        }
-
-        let cameraId = cameras[0].id;
-
-        // Prefer back camera
-        cameras.forEach(cam=>{
-
-            const label =
-            cam.label.toLowerCase();
-
-            if(
-                label.includes("back") ||
-                label.includes("rear") ||
-                label.includes("environment")
-            ){
-
-                cameraId = cam.id;
-
-            }
-
-        });
-
-        await html5QrCode.start(
-
-            cameraId,
-
-            {
-
-                fps:15,
-
-                qrbox:{
-                    width:280,
-                    height:280
-                }
-
-            },
-
-            onScanSuccess
-
-        );
-
-        console.log("Scanner Started");
-
-    }
-
-    catch(error){
-
-        console.log(error);
-
-        alert("Unable to open camera.");
-
-    }
+icon.innerHTML="⚠️";
 
 }
-function onScanSuccess(decodedText){
 
-    if(scanning) return;
+else{
 
-    scanning = true;
-
-    showLoader();
-
-    searchTicket(decodedText,true);
+icon.innerHTML="❌";
 
 }
-document
-.getElementById("searchBtn")
-.onclick=()=>{
 
-    const value =
-    document
-    .getElementById("searchInput")
-    .value
-    .trim();
+popup.classList.add("show");
 
-    if(value===""){
+setTimeout(()=>{
 
-        alert("Enter Ticket ID or Mobile Number.");
+popup.classList.remove("show");
 
-        return;
-
-    }
-
-    showLoader();
-
-    searchTicket(value,false);
-
-};
-async function searchTicket(value,isScan=false){
-
-    ticketCard.style.display="none";
-
-    try{
-
-        let url;
-
-        if(
-
-            value.toUpperCase().startsWith("TSS")
-
-        ){
-
-            url =
-            SCRIPT_URL +
-            "?action=searchTicket&ticket=" +
-            encodeURIComponent(value);
-
-        }
-
-        else{
-
-            url =
-            SCRIPT_URL +
-            "?action=searchTicket&mobile=" +
-            encodeURIComponent(value);
-
-        }
-
-        const response =
-        await fetch(url);
-
-        const data =
-        await response.json();
-
-        hideLoader();
-
-        if(!data.found){
-
-            showPopup(
-
-                "error",
-
-                "Ticket Not Found",
-
-                "No ticket found."
-
-            );
-
-            return;
-
-        }
-
-        currentTicket = data;
-
-        validateTicket(data,isScan);
-
-    }
-
-    catch(error){
-
-        hideLoader();
-
-        console.log(error);
-
-    }
+},2500);
 
 }
+async function loadEvents(){
+
+showLoader();
+
+try{
+
+const res=await fetch(
+
+SCRIPT_URL+
+"?action=getScannerEvents"
+
+);
+
+const data=await res.json();
+
+hideLoader();
+
+if(!data.success){
+
+showPopup(
+
+"error",
+
+"Error",
+
+"Unable to load events."
+
+);
+
+return;
+
+}
+
+const select=document.getElementById("scannerEvent");
+
+select.innerHTML="";
+
+data.events.forEach(event=>{
+
+select.innerHTML+=`
+
+<option value="${event.id}">
+
+${event.name}
+
+</option>
+
+`;
+
+});
+
+selectedEvent=data.events[0].id;
+
+startCamera();
+
+loadStatistics();
+
+loadRecentCheckins();
+
+}
+
+catch(err){
+
+hideLoader();
+
+console.log(err);
+
+}
+}
+
+async function startCamera(){
+
+if(html5QrCode){
+
+try{
+
+await html5QrCode.stop();
+
+}catch(e){}
+
+}
+
+html5QrCode=new Html5Qrcode("reader");
+
+try{
+
+const cameras=
+
+await Html5Qrcode.getCameras();
+
+if(cameras.length==0){
+
+showPopup(
+
+"error",
+
+"No Camera",
+
+"No camera detected."
+
+);
+
+return;
+
+}
+
+let camera=cameras[0].id;
+
+for(const cam of cameras){
+
+const label=
+
+cam.label.toLowerCase();
+
+if(
+
+label.includes("back")||
+
+label.includes("rear")||
+
+label.includes("environment")
+
+){
+
+camera=cam.id;
+
+break;
+
+}
+
+}
+
+await html5QrCode.start(
+
+camera,
+
+{
+
+fps:10,
+
+qrbox:260
+
+},
+
+onScanSuccess
+
+);
+
+}
+
+catch(err){
+
+console.log(err);
+
+showPopup(
+
+"error",
+
+"Camera Error",
+
+err
+
+);
+
+}
+
+}
+
+function onScanSuccess(ticketId){
+
+if(scanning) return;
+
+scanning=true;
+
+searchTicket(ticketId,true);
+
+}
+
