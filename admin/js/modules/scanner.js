@@ -636,3 +636,430 @@ function showTicket(data,isScan=false){
     `;
 
 }
+/*=========================================
+MANUAL CHECK IN
+=========================================*/
+
+async function manualCheckIn(ticketId){
+
+    showLoader();
+
+    try{
+
+        const response = await fetch(
+
+            SCANNER_SCRIPT_URL,
+
+            {
+
+                method:"POST",
+
+                headers:{
+                    "Content-Type":"text/plain;charset=utf-8"
+                },
+
+                body:JSON.stringify({
+
+                    action:"checkIn",
+
+                    ticketId:ticketId,
+
+                    eventId:selectedEvent
+
+                })
+
+            }
+
+        );
+
+        const data = await response.json();
+
+        hideLoader();
+
+        processCheckInResponse(data);
+
+    }
+
+    catch(err){
+
+        hideLoader();
+
+        console.error(err);
+
+        showPopup(
+            "error",
+            "Connection Error",
+            "Unable to connect with server."
+        );
+
+    }
+
+}
+/*=========================================
+AUTO CHECK IN
+=========================================*/
+
+async function autoCheckIn(ticketId){
+
+    showLoader();
+
+    try{
+
+        const response = await fetch(
+
+            SCANNER_SCRIPT_URL,
+
+            {
+
+                method:"POST",
+
+                headers:{
+                    "Content-Type":"text/plain;charset=utf-8"
+                },
+
+                body:JSON.stringify({
+
+                    action:"checkIn",
+
+                    ticketId:ticketId,
+
+                    eventId:selectedEvent
+
+                })
+
+            }
+
+        );
+
+        const data = await response.json();
+
+        hideLoader();
+
+        processCheckInResponse(data);
+
+    }
+
+    catch(err){
+
+        hideLoader();
+
+        console.error(err);
+
+        showPopup(
+            "error",
+            "Connection Error",
+            "Unable to connect with server."
+        );
+
+    }
+
+}
+
+/*=========================================
+PROCESS CHECK IN RESPONSE
+=========================================*/
+
+function processCheckInResponse(data){
+
+    scanning = false;
+
+    // Ticket checked successfully
+
+    if(data.success){
+
+        showPopup(
+
+            "success",
+
+            "Check-In Successful",
+
+            `
+
+            <b>${data.name}</b>
+
+            <br><br>
+
+            ${data.ticketId}
+
+            <br><br>
+
+            ${data.checkInTime}
+
+            `
+
+        );
+
+        loadStatistics();
+
+        loadRecentCheckins();
+
+        ticketCard.style.display="none";
+
+        return;
+
+    }
+
+    // Already checked
+
+    if(data.alreadyChecked){
+
+        showPopup(
+
+            "warning",
+
+            "Already Checked In",
+
+            `
+
+            <b>${data.name}</b>
+
+            <br><br>
+
+            ${data.ticketId}
+
+            <br><br>
+
+            ${data.checkInTime}
+
+            `
+
+        );
+
+        return;
+
+    }
+
+    // Wrong Event
+
+    if(data.invalidEvent){
+
+        showPopup(
+
+            "warning",
+
+            "Invalid Ticket",
+
+            `
+
+            This ticket belongs to
+
+            <br><br>
+
+            <b>${data.event}</b>
+
+            <br><br>
+
+            Event Date
+
+            <br>
+
+            ${data.eventDate}
+
+            `
+
+        );
+
+        return;
+
+    }
+
+    // Old Event
+
+    if(data.expired){
+
+        showPopup(
+
+            "warning",
+
+            "Old Event Ticket",
+
+            `
+
+            ${data.event}
+
+            <br><br>
+
+            ${data.eventDate}
+
+            <br><br>
+
+            Ticket cannot be used today.
+
+            `
+
+        );
+
+        return;
+
+    }
+
+    // Invalid Ticket
+
+    showPopup(
+
+        "error",
+
+        "Invalid Ticket",
+
+        "This ticket is not valid."
+
+    );
+
+}
+/*=========================================
+LOAD STATISTICS
+=========================================*/
+
+async function loadStatistics(){
+
+    if(!selectedEvent) return;
+
+    try{
+
+        const response = await fetch(
+
+            SCANNER_SCRIPT_URL +
+
+            "?action=getScannerStats" +
+
+            "&eventId=" + encodeURIComponent(selectedEvent)
+
+        );
+
+        const data = await response.json();
+
+        if(!data.success) return;
+
+        document.getElementById("statTotal").textContent =
+        data.totalTickets;
+
+        document.getElementById("statChecked").textContent =
+        data.checkedIn;
+
+        document.getElementById("statPending").textContent =
+        data.pending;
+
+        document.getElementById("statRevenue").textContent =
+        "₹" + Number(data.revenue).toLocaleString("en-IN");
+
+    }
+
+    catch(err){
+
+        console.error(err);
+
+    }
+
+}
+/*=========================================
+RECENT CHECK INS
+=========================================*/
+
+async function loadRecentCheckins(){
+
+    if(!selectedEvent) return;
+
+    try{
+
+        const response = await fetch(
+
+            SCANNER_SCRIPT_URL +
+
+            "?action=getRecentCheckins" +
+
+            "&eventId=" + encodeURIComponent(selectedEvent)
+
+        );
+
+        const data = await response.json();
+
+        if(!data.success) return;
+
+        const table =
+        document.getElementById("recentCheckins");
+
+        table.innerHTML = "";
+
+        if(data.checkins.length===0){
+
+            table.innerHTML=`
+
+            <tr>
+
+                <td colspan="4" class="empty-row">
+
+                    No Check-ins Yet
+
+                </td>
+
+            </tr>
+
+            `;
+
+            return;
+
+        }
+
+        data.checkins.forEach(item=>{
+
+            table.innerHTML += `
+
+                <tr>
+
+                    <td>${item.time}</td>
+
+                    <td>${item.ticketId}</td>
+
+                    <td>${item.name}</td>
+
+                    <td>
+
+                        <span class="status success">
+
+                            Checked In
+
+                        </span>
+
+                    </td>
+
+                </tr>
+
+            `;
+
+        });
+
+    }
+
+    catch(err){
+
+        console.error(err);
+
+    }
+
+}
+/*=========================================
+REFRESH DASHBOARD
+=========================================*/
+
+function refreshDashboard(){
+
+    loadStatistics();
+
+    loadRecentCheckins();
+
+}
+/*=========================================
+CLEAR TICKET
+=========================================*/
+
+function clearTicket(){
+
+    ticketCard.style.display="none";
+
+    ticketCard.innerHTML="";
+}
+document.addEventListener("DOMContentLoaded",()=>{
+
+    initScanner();
+
+});
