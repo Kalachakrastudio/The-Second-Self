@@ -1126,13 +1126,12 @@ function clearTicket(){
 
     ticketCard.innerHTML="";
 }
-document.addEventListener("DOMContentLoaded",()=>{
+function startScanner(){
 
     initScanner();
-    console.log(document.getElementById("reader"));
-console.log(document.getElementById("scannerEvent"));
-console.log(document.getElementById("scannerSearchBtn"));
 
-});
+    console.log("Scanner Started");
+
+}
 
 console.log("SCANNER JS LOADED");
