@@ -1121,3 +1121,5 @@ console.log(document.getElementById("scannerEvent"));
 console.log(document.getElementById("scannerSearchBtn"));
 
 });
+
+console.log("SCANNER JS LOADED");
