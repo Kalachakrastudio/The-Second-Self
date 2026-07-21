@@ -130,8 +130,6 @@ function hideLoader(){
 
     }
 
-}
-
 function initScanner(){
 
     eventSelect =
@@ -227,7 +225,6 @@ if(searchInput){
 
     };
 
-}
 }
 /*=========================================
 LOAD EVENTS
