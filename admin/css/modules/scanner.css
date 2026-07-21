@@ -73,7 +73,7 @@ EVENT SELECT
 STATISTICS
 ==================================================*/
 
-.scanner-stats{
+.scanner-stat{
 
     display:grid;
 
@@ -83,7 +83,7 @@ STATISTICS
 
 }
 
-.stat-card{
+.scanner-stat{
 
     background:#171717;
 
@@ -103,7 +103,7 @@ STATISTICS
 
 }
 
-.stat-card:hover{
+.scanner-stat:hover{
 
     border-color:#D71F28;
 
@@ -111,7 +111,7 @@ STATISTICS
 
 }
 
-.stat-card i{
+.scanner-stat i{
 
     width:60px;
 
@@ -133,7 +133,7 @@ STATISTICS
 
 }
 
-.stat-card h4{
+.scanner-stat h4{
 
     margin:0;
 
@@ -145,7 +145,7 @@ STATISTICS
 
 }
 
-.stat-card span{
+.scanner-stat span{
 
     display:block;
 
@@ -213,19 +213,17 @@ CAMERA
 SEARCH
 ==================================================*/
 
-.search-box{
+.scanner-search{
 
     display:flex;
-
-    align-items:center;
-
     gap:14px;
-
+    width:100%;
     margin-bottom:24px;
 
 }
 
-.search-box input{
+
+.scanner-search input{
 
     flex:1;
 
@@ -245,29 +243,30 @@ SEARCH
 
     outline:none;
 
-    transition:.25s;
-
 }
 
-.search-box input:focus{
+
+.scanner-search input:focus{
 
     border-color:#D71F28;
 
 }
 
-.search-box input::placeholder{
+
+.scanner-search input::placeholder{
 
     color:#777;
 
 }
 
-.search-box button{
+
+
+.scanner-search button{
+
 
     height:56px;
 
-    min-width:150px;
-
-    padding:0 24px;
+    padding:0 28px;
 
     border:none;
 
@@ -295,17 +294,17 @@ SEARCH
 
 }
 
-.search-box button:hover{
 
-    background:#bf1720;
+.scanner-search button:hover{
+
+    background:#b91820;
 
 }
-
 /*==================================================
 TICKET
 ==================================================*/
 
-.ticket-card{
+.scanner-ticket{
 
     display:none;
 
@@ -317,9 +316,11 @@ TICKET
 
     padding:22px;
 
+    margin-top:20px;
+
 }
 
-.ticket-card h3{
+.scanner-ticket h3{
 
     margin:0 0 18px;
 
@@ -327,7 +328,7 @@ TICKET
 
 }
 
-.ticket-card table{
+.scanner-ticket table{
 
     width:100%;
 
@@ -335,7 +336,7 @@ TICKET
 
 }
 
-.ticket-card td{
+.scanner-ticket td{
 
     padding:12px 0;
 
@@ -345,7 +346,7 @@ TICKET
 
 }
 
-.ticket-card td:first-child{
+.scanner-ticket td:first-child{
 
     width:120px;
 
@@ -353,7 +354,7 @@ TICKET
 
 }
 
-.ticket-card button{
+.scanner-ticket button{
 
     width:100%;
 
@@ -381,13 +382,13 @@ TICKET
 TABLE
 ==================================================*/
 
-.table-wrapper{
+.scanner-table{
 
     overflow:auto;
 
 }
 
-.checkin-table{
+.scanner-table{
 
     width:100%;
 
@@ -395,7 +396,7 @@ TABLE
 
 }
 
-.checkin-table th{
+.scanner-table th{
 
     background:#111;
 
@@ -409,7 +410,7 @@ TABLE
 
 }
 
-.checkin-table td{
+.scanner-table td{
 
     padding:16px;
 
@@ -435,7 +436,7 @@ TABLE
 LOADER
 ==================================================*/
 
-.loader{
+scanner-loader{
 
     position:fixed;
 
@@ -453,13 +454,13 @@ LOADER
 
 }
 
-.loader.show{
+scanner-loader.show{
 
     display:flex;
 
 }
 
-.loader-box{
+scanner-loader-box{
 
     width:300px;
 
@@ -501,7 +502,7 @@ LOADER
 
 }
 
-.loader-box h3{
+scanner-loader-box h3{
 
     color:#fff;
 
@@ -509,7 +510,7 @@ LOADER
 
 }
 
-.loader-box p{
+scanner-loader-box p{
 
     color:#888;
 
@@ -519,7 +520,7 @@ LOADER
 POPUP
 ==================================================*/
 
-.result-popup{
+.scannerPopup{
 
     position:fixed;
 
@@ -537,7 +538,7 @@ POPUP
 
 }
 
-.result-popup.show{
+.scannerPopup.show{
 
     display:flex;
 
@@ -621,7 +622,7 @@ grid-template-columns:1fr;
 
 }
 
-.scanner-stats{
+.scanner-stat{
 
 grid-template-columns:repeat(2,1fr);
 
@@ -643,35 +644,29 @@ padding:18px;
 
 }
 
-.scanner-stats{
+.scanner-stat{
 
 grid-template-columns:1fr;
 
 }
 
-.search-box{
+.scanner-search{
 
-flex-direction:column;
-
-}
-
-.search-box input{
-
-width:100%;
-
-height:54px;
-
-font-size:16px;
+    flex-direction:column;
 
 }
 
-.search-box button{
 
-width:100%;
+.scanner-search input{
 
-height:54px;
+    width:100%;
 
-min-width:100%;
+}
+
+
+.scanner-search button{
+
+    width:100%;
 
 }
 
@@ -681,13 +676,13 @@ min-height:320px;
 
 }
 
-.stat-card span{
+.scanner-stat span{
 
 font-size:24px;
 
 }
 
-.checkin-table{
+.scanner-table{
 
 min-width:650px;
 
