@@ -27,15 +27,24 @@ let popup;
 let recentTable;
 let reader;
 
-    function showLoader(){
+  function showLoader(){
 
-    loader.classList.add("show");
+    if(loader){
+
+        loader.classList.add("show");
+
+    }
 
 }
 
+
 function hideLoader(){
 
-    loader.classList.remove("show");
+    if(loader){
+
+        loader.classList.remove("show");
+
+    }
 
 }
     function showPopup(type,title,message){
@@ -136,15 +145,19 @@ INIT
 
 }
 
+if(searchInput){
+
     searchInput.addEventListener("keypress",e=>{
 
-        if(e.key==="Enter"){
+        if(e.key==="Enter" && searchBtn){
 
             searchBtn.click();
 
         }
 
     });
+
+}
 
   if(eventSelect){
 
