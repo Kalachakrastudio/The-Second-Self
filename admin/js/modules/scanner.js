@@ -1,9 +1,25 @@
-const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbyuJllt7nuNM4npjcqOgulQ9MJHzfMU7K3plf1ZIQGn6NIZaDbAphKPMsd1NZU4pkJC/exec";
+/*=========================================
+SCANNER
+=========================================*/
+
+const SCANNER_SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbxdgDhEJnRSpGsqoRK-2-7WCRZfldseJ8m1l4ONXYIqoTsQ8ODKGWIO2PjvUzWylChu/exec";
 
 let html5QrCode = null;
+
 let scanning = false;
+
 let selectedEvent = "";
+
+let scannerStarted = false;
+
+let recentCheckins = [];
+
+let scannerEvents = [];
+
+/*=========================================
+DOM
+=========================================*/
 
 const eventSelect =
 document.getElementById("scannerEvent");
@@ -14,301 +30,334 @@ document.getElementById("scannerSearch");
 const searchBtn =
 document.getElementById("scannerSearchBtn");
 
+const ticketCard =
+document.getElementById("scannerTicket");
+
 const loader =
 document.getElementById("scannerLoader");
 
 const popup =
 document.getElementById("scannerPopup");
 
-const ticketCard =
-document.getElementById("scannerTicket");
+const recentTable =
+document.getElementById("recentCheckins");
 
-loadEvents();
+const totalTickets =
+document.getElementById("totalTickets");
 
-searchBtn.onclick=function(){
+const checkedTickets =
+document.getElementById("checkedTickets");
 
-searchTicket(
-searchInput.value.trim(),
-false
-);
+const pendingTickets =
+document.getElementById("pendingTickets");
 
-};
+const reader =
+document.getElementById("reader");
 
-eventSelect.onchange=function(){
+/*=========================================
+INIT
+=========================================*/
 
-selectedEvent=this.value;
+function initScanner(){
 
-loadStatistics();
+    loadEvents();
 
-loadRecentCheckins();
+    searchBtn.onclick = () => {
 
-};
+        const value = searchInput.value.trim();
 
-}
+        if(value === ""){
 
-function showLoader(){
+            showPopup(
+                "warning",
+                "Search",
+                "Enter Ticket ID or Mobile Number."
+            );
 
-document
-.getElementById("scannerLoader")
-.classList
-.add("show");
+            return;
 
-}
+        }
 
-function hideLoader(){
+        searchTicket(value,false);
 
-document
-.getElementById("scannerLoader")
-.classList
-.remove("show");
+    };
 
-}
+    searchInput.addEventListener("keypress",e=>{
 
-function showPopup(type,title,message){
+        if(e.key==="Enter"){
 
-const popup =
-document.getElementById("scannerPopup");
+            searchBtn.click();
 
-document.getElementById("popupTitle").innerHTML=title;
+        }
 
-document.getElementById("popupMessage").innerHTML=message;
+    });
 
-const icon=document.getElementById("popupIcon");
+    eventSelect.onchange = function(){
 
-if(type=="success"){
+        selectedEvent = this.value;
 
-icon.innerHTML="✅";
+        rebuildCustomSelect("scannerEvent");
 
-}
+        loadStatistics();
 
-else if(type=="warning"){
+        loadRecentCheckins();
 
-icon.innerHTML="⚠️";
-
-}
-
-else{
-
-icon.innerHTML="❌";
+    };
 
 }
 
-popup.classList.add("show");
+/*=========================================
+LOAD EVENTS
+=========================================*/
 
-setTimeout(()=>{
-
-popup.classList.remove("show");
-    scanning = false;
-
-},2500);
-
-}
 async function loadEvents(){
 
-showLoader();
-
-try{
-
-const res=await fetch(
-
-SCRIPT_URL+
-"?action=getScannerEvents"
-
-);
-
-const data=await res.json();
-
-hideLoader();
-
-if(!data.success){
-
-showPopup(
-
-"error",
-
-"Error",
-
-"Unable to load events."
-
-);
-
-return;
-
-}
-
-const select=document.getElementById("scannerEvent");
-
-select.innerHTML="";
-
-data.events.forEach(event=>{
-
-select.innerHTML+=`
-
-<option value="${event.id}">
-
-${event.name}
-
-</option>
-
-`;
-
-});
-
-if(data.events.length===0){
-
-    hideLoader();
-
-    showPopup(
-        "warning",
-        "No Event",
-        "No event available today."
-    );
-
-    return;
-
-}
-
-  selectedEvent = data.events[0].id;
-
-document.getElementById("scannerEvent").value =
-selectedEvent;
-
-setTimeout(()=>{
-
-    startCamera();
-
-},300);
-
-loadStatistics();
-
-loadRecentCheckins();
-
-}
-
-catch(err){
-
-hideLoader();
-
-console.log(err);
-
-}
-}
-
-async function startCamera(){
-
-if(html5QrCode){
+    showLoader();
 
     try{
 
-        await html5QrCode.stop();
+        const response = await fetch(
 
-        await html5QrCode.clear();
+            SCANNER_SCRIPT_URL +
+            "?action=getScannerEvents"
 
-    }catch(e){}
+        );
 
-}
+        const result = await response.json();
 
-if(!html5QrCode){
+        hideLoader();
 
-    html5QrCode = new Html5Qrcode("reader");
+        if(!result.success){
 
-}
+            showPopup(
+                "error",
+                "Unable to Load",
+                "Couldn't load today's events."
+            );
 
-try{
+            return;
 
-const cameras=
-
-await Html5Qrcode.getCameras();
-
-if(cameras.length==0){
-
-showPopup(
-
-"error",
-
-"No Camera",
-
-"No camera detected."
-
-);
-
-return;
-
-}
-
-let camera=cameras[0].id;
-
-for(const cam of cameras){
-
-const label=
-
-cam.label.toLowerCase();
-
-if(
-
-label.includes("back")||
-
-label.includes("rear")||
-
-label.includes("environment")
-
-){
-
-camera=cam.id;
-
-break;
-
-}
-
-}
-
-await html5QrCode.start(
-    camera,
-    {
-        fps:10,
-        qrbox:{
-            width:250,
-            height:250
         }
-    },
-    onScanSuccess
-);
+
+        scannerEvents = result.events || [];
+
+        eventSelect.innerHTML = "";
+
+        if(scannerEvents.length === 0){
+
+            eventSelect.innerHTML = `
+                <option value="">
+                    No Active Event
+                </option>
+            `;
+
+            rebuildCustomSelect("scannerEvent");
+
+            showPopup(
+                "warning",
+                "No Event",
+                "There is no active event available for today."
+            );
+
+            return;
+
+        }
+
+        scannerEvents.forEach(event=>{
+
+            eventSelect.innerHTML += `
+
+                <option value="${event.id}">
+
+                    ${event.name}
+
+                </option>
+
+            `;
+
+        });
+
+        selectedEvent = scannerEvents[0].id;
+
+        eventSelect.value = selectedEvent;
+
+        rebuildCustomSelect("scannerEvent");
+
+        if(!scannerStarted){
+
+            scannerStarted = true;
+
+            setTimeout(()=>{
+
+                startCamera();
+
+            },300);
+
+        }
+
+        loadStatistics();
+
+        loadRecentCheckins();
+
+    }
+
+    catch(err){
+
+        hideLoader();
+
+        console.error(err);
+
+        showPopup(
+            "error",
+            "Connection Error",
+            "Unable to connect with server."
+        );
+
+    }
+
+}
+/*=========================================
+START CAMERA
+=========================================*/
+
+async function startCamera(){
+
+    try{
+
+        // Stop previous scanner if running
+        if(html5QrCode){
+
+            try{
+
+                await html5QrCode.stop();
+                await html5QrCode.clear();
+
+            }
+
+            catch(e){}
+
+        }
+
+        html5QrCode = new Html5Qrcode("reader");
+
+        const cameras = await Html5Qrcode.getCameras();
+
+        if(cameras.length===0){
+
+            showPopup(
+                "error",
+                "Camera Not Found",
+                "No camera was detected on this device."
+            );
+
+            return;
+
+        }
+
+        let cameraId = cameras[0].id;
+
+        // Prefer Back Camera
+
+        cameras.forEach(camera=>{
+
+            const label = camera.label.toLowerCase();
+
+            if(
+
+                label.includes("back") ||
+
+                label.includes("rear") ||
+
+                label.includes("environment")
+
+            ){
+
+                cameraId = camera.id;
+
+            }
+
+        });
+
+        await html5QrCode.start(
+
+            cameraId,
+
+            {
+
+                fps:10,
+
+                qrbox:{
+                    width:250,
+                    height:250
+                },
+
+                aspectRatio:1
+
+            },
+
+            onScanSuccess,
+
+            ()=>{}
+
+        );
+
+    }
+
+    catch(err){
+
+        console.error(err);
+
+        showPopup(
+
+            "error",
+
+            "Camera Error",
+
+            "Unable to access camera. Please allow camera permission."
+
+        );
+
+    }
 
 }
 
-catch(err){
+/*=========================================
+SCAN SUCCESS
+=========================================*/
 
-console.error(err);
+function onScanSuccess(decodedText){
 
-showPopup(
-    "error",
-    "Camera Error",
-    "Unable to access camera. Please allow camera permission and refresh the page."
-);
+    if(scanning) return;
 
-}
+    scanning = true;
 
-}
+    showLoader();
 
-function onScanSuccess(ticketId){
-
-if(scanning) return;
-
-scanning=true;
-
-searchTicket(ticketId,true);
+    searchTicket(decodedText,true);
 
 }
+setTimeout(()=>{
 
-async function searchTicket(value, isScan = false){
+    popup.classList.remove("show");
 
-    if(!value){
+    scanning = false;
+
+},2500);
+/*=========================================
+SEARCH TICKET
+=========================================*/
+
+async function searchTicket(value,isScan=false){
+
+    if(value==""){
 
         showPopup(
             "warning",
-            "Missing Ticket",
-            "Enter a Ticket ID or Mobile Number."
+            "Empty Search",
+            "Please enter Ticket ID or Mobile Number."
         );
+
+        scanning=false;
 
         return;
 
@@ -316,25 +365,26 @@ async function searchTicket(value, isScan = false){
 
     showLoader();
 
-    let url;
+    let url =
+    SCANNER_SCRIPT_URL +
+    "?action=searchTicket" +
+    "&eventId=" + encodeURIComponent(selectedEvent);
+
+    value=value.trim();
 
     if(value.toUpperCase().startsWith("TSS")){
 
-        url =
-        SCRIPT_URL +
-        "?action=searchTicket" +
-        "&eventId=" + encodeURIComponent(selectedEvent) +
-        "&ticket=" + encodeURIComponent(value);
+        url +=
+        "&ticket=" +
+        encodeURIComponent(value);
 
     }
 
     else{
 
-        url =
-        SCRIPT_URL +
-        "?action=searchTicket" +
-        "&eventId=" + encodeURIComponent(selectedEvent) +
-        "&mobile=" + encodeURIComponent(value);
+        url +=
+        "&mobile=" +
+        encodeURIComponent(value);
 
     }
 
@@ -346,7 +396,7 @@ async function searchTicket(value, isScan = false){
 
         hideLoader();
 
-        showTicket(data, isScan);
+        showTicket(data,isScan);
 
     }
 
@@ -354,16 +404,235 @@ async function searchTicket(value, isScan = false){
 
         hideLoader();
 
-        scanning = false;
+        scanning=false;
 
-        console.log(err);
+        console.error(err);
 
         showPopup(
             "error",
             "Connection Error",
-            "Unable to connect to server."
+            "Unable to connect with server."
         );
 
     }
+
+}
+/*=========================================
+SHOW TICKET
+=========================================*/
+
+function showTicket(data,isScan=false){
+
+    hideLoader();
+
+    scanning=false;
+
+    ticketCard.style.display="none";
+
+    //==========================
+    // Ticket Not Found
+    //==========================
+
+    if(!data.found){
+
+        showPopup(
+            "error",
+            "Ticket Not Found",
+            "No ticket found."
+        );
+
+        return;
+
+    }
+
+    //==========================
+    // Wrong Event
+    //==========================
+
+    if(data.invalidEvent){
+
+        showPopup(
+
+            "warning",
+
+            "Invalid Ticket",
+
+            `
+
+            This ticket belongs to
+
+            <br><br>
+
+            <b>${data.event}</b>
+
+            <br><br>
+
+            Event Date :
+
+            <b>${data.eventDate}</b>
+
+            `
+
+        );
+
+        return;
+
+    }
+
+    //==========================
+    // Old Ticket
+    //==========================
+
+    if(data.expired){
+
+        showPopup(
+
+            "warning",
+
+            "Old Ticket",
+
+            `
+
+            This ticket belongs to
+
+            <br><br>
+
+            <b>${data.event}</b>
+
+            <br><br>
+
+            Event Date :
+
+            <b>${data.eventDate}</b>
+
+            <br><br>
+
+            Ticket can't be used today.
+
+            `
+
+        );
+
+        return;
+
+    }
+
+    //==========================
+    // QR Scan
+    //==========================
+
+    if(isScan){
+
+        autoCheckIn(data.ticketId);
+
+        return;
+
+    }
+
+    //==========================
+    // Multiple Tickets
+    //==========================
+
+    if(data.multiple){
+
+        ticketCard.style.display="block";
+
+        let html="";
+
+        data.tickets.forEach(ticket=>{
+
+            html += `
+
+            <div class="ticket-item">
+
+                <h4>${ticket.name}</h4>
+
+                <p>${ticket.ticketId}</p>
+
+                <p>${ticket.event}</p>
+
+                <p>${ticket.status}</p>
+
+                <button
+                onclick="manualCheckIn('${ticket.ticketId}')">
+
+                    Check In
+
+                </button>
+
+            </div>
+
+            `;
+
+        });
+
+        ticketCard.innerHTML=html;
+
+        return;
+
+    }
+
+    //==========================
+    // Single Ticket
+    //==========================
+
+    ticketCard.style.display="block";
+
+    ticketCard.innerHTML=`
+
+        <h3>Ticket Details</h3>
+
+        <table>
+
+            <tr>
+
+                <td>Ticket ID</td>
+
+                <td>${data.ticketId}</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Name</td>
+
+                <td>${data.name}</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Mobile</td>
+
+                <td>${data.mobile}</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Event</td>
+
+                <td>${data.event}</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Status</td>
+
+                <td>${data.status}</td>
+
+            </tr>
+
+        </table>
+
+        <button
+        onclick="manualCheckIn('${data.ticketId}')">
+
+            Mark As Check-In
+
+        </button>
+
+    `;
 
 }
