@@ -13,47 +13,97 @@ let selectedEvent = "";
 
 let scannerStarted = false;
 
-let recentCheckins = [];
-
 let scannerEvents = [];
 
 /*=========================================
 DOM
 =========================================*/
+let eventSelect;
+let searchInput;
+let searchBtn;
+let ticketCard;
+let loader;
+let popup;
+let recentTable;
+let reader;
+
+    function showLoader(){
+
+    loader.classList.add("show");
+
+}
+
+function hideLoader(){
+
+    loader.classList.remove("show");
+
+}
+    function showPopup(type,title,message){
+
+    popup.classList.add("show");
+
+    document.getElementById("popupTitle").innerHTML =
+    title;
+
+    document.getElementById("popupMessage").innerHTML =
+    message;
+
+    const icon =
+    document.getElementById("popupIcon");
+
+    if(type=="success"){
+
+        icon.innerHTML =
+        '<i class="fa-solid fa-circle-check"></i>';
+
+        icon.style.color="#00c853";
+
+    }
+
+    else if(type=="warning"){
+
+        icon.innerHTML =
+        '<i class="fa-solid fa-circle-exclamation"></i>';
+
+        icon.style.color="#ffc107";
+
+    }
+
+    else{
+
+        icon.innerHTML =
+        '<i class="fa-solid fa-circle-xmark"></i>';
+
+        icon.style.color="#ff5252";
+
+    }
+
+}
 
 function initScanner(){
 
-const eventSelect =
+    eventSelect =
 document.getElementById("scannerEvent");
 
-const searchInput =
+searchInput =
 document.getElementById("scannerSearch");
 
-const searchBtn =
+searchBtn =
 document.getElementById("scannerSearchBtn");
 
-const ticketCard =
+ticketCard =
 document.getElementById("scannerTicket");
 
-const loader =
+loader =
 document.getElementById("scannerLoader");
 
-const popup =
+popup =
 document.getElementById("scannerPopup");
 
-const recentTable =
+recentTable =
 document.getElementById("recentCheckins");
 
-const totalTickets =
-document.getElementById("totalTickets");
-
-const checkedTickets =
-document.getElementById("checkedTickets");
-
-const pendingTickets =
-document.getElementById("pendingTickets");
-
-const reader =
+reader =
 document.getElementById("reader");
 
 /*=========================================
@@ -62,7 +112,9 @@ INIT
 
     loadEvents();
 
-    searchBtn.onclick = () => {
+   if(searchBtn){
+
+    searchBtn.onclick = ()=>{
 
         const value = searchInput.value.trim();
 
@@ -82,6 +134,8 @@ INIT
 
     };
 
+}
+
     searchInput.addEventListener("keypress",e=>{
 
         if(e.key==="Enter"){
@@ -91,6 +145,8 @@ INIT
         }
 
     });
+
+  if(eventSelect){
 
     eventSelect.onchange = function(){
 
@@ -181,20 +237,20 @@ async function loadEvents(){
 
         eventSelect.value = selectedEvent;
 
-        rebuildCustomSelect("scannerEvent");
+      rebuildCustomSelect("scannerEvent");
 
-        if(!scannerStarted){
 
-            scannerStarted = true;
+if(!scannerStarted){
 
-            setTimeout(()=>{
+    scannerStarted=true;
 
-                startCamera();
+    setTimeout(()=>{
 
-            },300);
+        startCamera();
 
-        }
+    },500);
 
+}
         loadStatistics();
 
         loadRecentCheckins();
@@ -336,13 +392,6 @@ function onScanSuccess(decodedText){
     searchTicket(decodedText,true);
 
 }
-setTimeout(()=>{
-
-    popup.classList.remove("show");
-
-    scanning = false;
-
-},2500);
 /*=========================================
 SEARCH TICKET
 =========================================*/
@@ -425,9 +474,11 @@ function showTicket(data,isScan=false){
 
     hideLoader();
 
-    scanning=false;
+    if(!isScan){
 
-    ticketCard.style.display="none";
+        scanning=false;
+
+    }
 
     //==========================
     // Ticket Not Found
@@ -554,7 +605,7 @@ function showTicket(data,isScan=false){
                 <p>${ticket.status}</p>
 
                 <button
-                onclick="manualCheckIn('${ticket.ticketId}')">
+                onclick='manualCheckIn("${ticket.ticketId}")'>
 
                     Check In
 
@@ -627,7 +678,7 @@ function showTicket(data,isScan=false){
         </table>
 
         <button
-        onclick="manualCheckIn('${data.ticketId}')">
+        onclick='manualCheckIn("${data.ticketId}")'>
 
             Mark As Check-In
 
@@ -761,7 +812,11 @@ PROCESS CHECK IN RESPONSE
 
 function processCheckInResponse(data){
 
-    scanning = false;
+    setTimeout(()=>{
+
+    scanning=false;
+
+},2000);
 
     // Ticket checked successfully
 
@@ -1061,59 +1116,8 @@ function clearTicket(){
 document.addEventListener("DOMContentLoaded",()=>{
 
     initScanner();
+    console.log(document.getElementById("reader"));
+console.log(document.getElementById("scannerEvent"));
+console.log(document.getElementById("scannerSearchBtn"));
 
 });
-
-function showLoader(){
-
-    loader.classList.add("show");
-
-}
-
-function hideLoader(){
-
-    loader.classList.remove("show");
-
-}
-
-function showPopup(type,title,message){
-
-    popup.classList.add("show");
-
-    document.getElementById("popupTitle").innerHTML =
-    title;
-
-    document.getElementById("popupMessage").innerHTML =
-    message;
-
-    const icon =
-    document.getElementById("popupIcon");
-
-    if(type=="success"){
-
-        icon.innerHTML='<i class="fa-solid fa-circle-check"></i>';
-        icon.style.color="#2ecc71";
-
-    }
-
-    else if(type=="warning"){
-
-        icon.innerHTML='<i class="fa-solid fa-circle-exclamation"></i>';
-        icon.style.color="#f1c40f";
-
-    }
-
-    else{
-
-        icon.innerHTML='<i class="fa-solid fa-circle-xmark"></i>';
-        icon.style.color="#e74c3c";
-
-    }
-
-    setTimeout(()=>{
-
-        popup.classList.remove("show");
-
-    },2500);
-
-}
