@@ -49,7 +49,50 @@ function hideLoader(){
 }
     function showPopup(type,title,message){
 
+    if(!popup){
+        console.error("Popup element missing");
+        return;
+    }
+
     popup.classList.add("show");
+
+    document.getElementById("popupTitle").innerHTML = title;
+
+    document.getElementById("popupMessage").innerHTML = message;
+
+    const icon = document.getElementById("popupIcon");
+
+    if(!icon) return;
+
+
+    if(type=="success"){
+
+        icon.innerHTML =
+        '<i class="fa-solid fa-circle-check"></i>';
+
+        icon.style.color="#00c853";
+
+    }
+
+    else if(type=="warning"){
+
+        icon.innerHTML =
+        '<i class="fa-solid fa-circle-exclamation"></i>';
+
+        icon.style.color="#ffc107";
+
+    }
+
+    else{
+
+        icon.innerHTML =
+        '<i class="fa-solid fa-circle-xmark"></i>';
+
+        icon.style.color="#ff5252";
+
+    }
+
+}
 
     document.getElementById("popupTitle").innerHTML =
     title;
@@ -118,7 +161,20 @@ document.getElementById("reader");
 /*=========================================
 INIT
 =========================================*/
+if(
+!eventSelect ||
+!searchInput ||
+!ticketCard ||
+!loader ||
+!popup ||
+!reader
+){
 
+console.error("Scanner DOM missing");
+
+return;
+
+}
     loadEvents();
 
    if(searchBtn){
@@ -164,8 +220,6 @@ if(searchInput){
     eventSelect.onchange = function(){
 
         selectedEvent = this.value;
-
-        rebuildCustomSelect("scannerEvent");
 
         loadStatistics();
 
@@ -1125,13 +1179,6 @@ function clearTicket(){
     ticketCard.style.display="none";
 
     ticketCard.innerHTML="";
-}
-function startScanner(){
-
-    initScanner();
-
-    console.log("Scanner Started");
-
 }
 
 console.log("SCANNER JS LOADED");
