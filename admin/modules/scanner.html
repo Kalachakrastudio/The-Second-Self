@@ -1,27 +1,28 @@
 <section class="scanner-page">
 
-    <!-- ===========================
+    <!-- ==========================
     Event Selection
-    ============================ -->
+    =========================== -->
 
     <div class="scanner-card">
 
         <div class="card-header">
 
             <h3>
+
                 <i class="fa-solid fa-calendar-days"></i>
-                Select Event
+
+                Today's Event
+
             </h3>
 
         </div>
 
-        <div class="event-selector">
+        <div class="custom-select">
 
-            <select id="eventSelect">
+            <select id="scannerEvent">
 
-                <option value="">
-                    Loading Events...
-                </option>
+                <option value="">Loading Events...</option>
 
             </select>
 
@@ -29,9 +30,9 @@
 
     </div>
 
-    <!-- ===========================
+    <!-- ==========================
     Statistics
-    ============================ -->
+    =========================== -->
 
     <div class="scanner-stats">
 
@@ -43,7 +44,7 @@
 
                 <h4>Total Tickets</h4>
 
-                <span id="totalTickets">0</span>
+                <span id="statTotal">0</span>
 
             </div>
 
@@ -57,7 +58,7 @@
 
                 <h4>Checked In</h4>
 
-                <span id="checkedIn">0</span>
+                <span id="statChecked">0</span>
 
             </div>
 
@@ -69,9 +70,23 @@
 
             <div>
 
-                <h4>Remaining</h4>
+                <h4>Pending</h4>
 
-                <span id="remainingTickets">0</span>
+                <span id="statPending">0</span>
+
+            </div>
+
+        </div>
+
+        <div class="stat-card">
+
+            <i class="fa-solid fa-indian-rupee-sign"></i>
+
+            <div>
+
+                <h4>Revenue</h4>
+
+                <span id="statRevenue">₹0</span>
 
             </div>
 
@@ -79,13 +94,13 @@
 
     </div>
 
-    <!-- ===========================
-    Scanner + Search
-    ============================ -->
+    <!-- ==========================
+    Scanner & Search
+    =========================== -->
 
     <div class="scanner-grid">
 
-        <!-- QR Scanner -->
+        <!-- Camera -->
 
         <div class="scanner-card">
 
@@ -105,7 +120,7 @@
 
         </div>
 
-        <!-- Search Ticket -->
+        <!-- Search -->
 
         <div class="scanner-card">
 
@@ -124,11 +139,11 @@
             <div class="search-box">
 
                 <input
+                    id="scannerSearch"
                     type="text"
-                    id="searchInput"
                     placeholder="Ticket ID or Mobile Number">
 
-                <button id="searchBtn">
+                <button id="scannerSearchBtn">
 
                     <i class="fa-solid fa-search"></i>
 
@@ -138,10 +153,8 @@
 
             </div>
 
-            <!-- Ticket Result -->
-
             <div
-                id="ticketCard"
+                id="scannerTicket"
                 class="ticket-card"
                 style="display:none;">
 
@@ -151,9 +164,9 @@
 
     </div>
 
-    <!-- ===========================
+    <!-- ==========================
     Recent Check-ins
-    ============================ -->
+    =========================== -->
 
     <div class="scanner-card">
 
@@ -163,7 +176,7 @@
 
                 <i class="fa-solid fa-clock-rotate-left"></i>
 
-                Recent Check-Ins
+                Recent Check-ins
 
             </h3>
 
@@ -177,11 +190,11 @@
 
                     <tr>
 
+                        <th>Time</th>
+
                         <th>Ticket ID</th>
 
                         <th>Name</th>
-
-                        <th>Time</th>
 
                         <th>Status</th>
 
@@ -193,9 +206,9 @@
 
                     <tr>
 
-                        <td colspan="4" class="empty">
+                        <td colspan="4" class="empty-row">
 
-                            No Check-Ins Yet
+                            No Check-ins Yet
 
                         </td>
 
@@ -211,12 +224,11 @@
 
 </section>
 
+<!-- ==========================
+Loader
+========================== -->
 
-<!-- =====================================
-Loading Overlay
-===================================== -->
-
-<div id="loader" class="loader">
+<div id="scannerLoader" class="loader">
 
     <div class="loader-box">
 
@@ -224,18 +236,17 @@ Loading Overlay
 
         <h3>Checking Ticket...</h3>
 
-        <p>Please wait</p>
+        <p>Please wait...</p>
 
     </div>
 
 </div>
 
+<!-- ==========================
+Popup
+========================== -->
 
-<!-- =====================================
-Result Popup
-===================================== -->
-
-<div id="resultPopup" class="result-popup">
+<div id="scannerPopup" class="result-popup">
 
     <div class="popup-card">
 
