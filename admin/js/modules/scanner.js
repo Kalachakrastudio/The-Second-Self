@@ -21,6 +21,8 @@ let scannerEvents = [];
 DOM
 =========================================*/
 
+function initScanner(){
+
 const eventSelect =
 document.getElementById("scannerEvent");
 
@@ -57,8 +59,6 @@ document.getElementById("reader");
 /*=========================================
 INIT
 =========================================*/
-
-function initScanner(){
 
     loadEvents();
 
@@ -1063,3 +1063,57 @@ document.addEventListener("DOMContentLoaded",()=>{
     initScanner();
 
 });
+
+function showLoader(){
+
+    loader.classList.add("show");
+
+}
+
+function hideLoader(){
+
+    loader.classList.remove("show");
+
+}
+
+function showPopup(type,title,message){
+
+    popup.classList.add("show");
+
+    document.getElementById("popupTitle").innerHTML =
+    title;
+
+    document.getElementById("popupMessage").innerHTML =
+    message;
+
+    const icon =
+    document.getElementById("popupIcon");
+
+    if(type=="success"){
+
+        icon.innerHTML='<i class="fa-solid fa-circle-check"></i>';
+        icon.style.color="#2ecc71";
+
+    }
+
+    else if(type=="warning"){
+
+        icon.innerHTML='<i class="fa-solid fa-circle-exclamation"></i>';
+        icon.style.color="#f1c40f";
+
+    }
+
+    else{
+
+        icon.innerHTML='<i class="fa-solid fa-circle-xmark"></i>';
+        icon.style.color="#e74c3c";
+
+    }
+
+    setTimeout(()=>{
+
+        popup.classList.remove("show");
+
+    },2500);
+
+}
