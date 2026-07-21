@@ -260,18 +260,18 @@ LOADER
 POPUP
 ========================================= -->
 
-<div
-    id="scannerPopup"
-    class="scanner-popup">
+<<div id="scannerPopup" class="popup">
 
-    <div class="scanner-popup-card">
+    <div id="popupIcon"></div>
 
-        <div id="popupIcon">✔</div>
+    <h3 id="popupTitle"></h3>
 
-        <h2 id="popupTitle"></h2>
-
-        <p id="popupMessage"></p>
-
-    </div>
+    <p id="popupMessage"></p>
 
 </div>
+
+    <div id="scannerLoader">
+    Loading...
+</div>
+
+    <script src="../modules/scanner.js" defer></script>
