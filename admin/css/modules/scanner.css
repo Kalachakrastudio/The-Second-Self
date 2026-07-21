@@ -73,7 +73,9 @@ EVENT SELECT
 STATISTICS
 ==================================================*/
 
-.scanner-stat{
+.scanner-stats{
+
+    width:100%;
 
     display:grid;
 
@@ -82,6 +84,7 @@ STATISTICS
     gap:20px;
 
 }
+
 
 .scanner-stat{
 
@@ -99,9 +102,12 @@ STATISTICS
 
     gap:18px;
 
+    min-height:110px;
+
     transition:.25s;
 
 }
+
 
 .scanner-stat:hover{
 
@@ -111,11 +117,14 @@ STATISTICS
 
 }
 
+
 .scanner-stat i{
 
     width:60px;
 
     height:60px;
+
+    flex-shrink:0;
 
     border-radius:14px;
 
@@ -133,23 +142,10 @@ STATISTICS
 
 }
 
-.scanner-stat h4{
+
+.scanner-stat h2{
 
     margin:0;
-
-    color:#aaa;
-
-    font-size:14px;
-
-    font-weight:500;
-
-}
-
-.scanner-stat span{
-
-    display:block;
-
-    margin-top:6px;
 
     color:#fff;
 
@@ -159,6 +155,16 @@ STATISTICS
 
 }
 
+
+.scanner-stat p{
+
+    margin:5px 0 0;
+
+    color:#888;
+
+    font-size:14px;
+
+}
 /*==================================================
 MAIN GRID
 ==================================================*/
