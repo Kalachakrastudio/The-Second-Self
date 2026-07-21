@@ -4,8 +4,6 @@ PAGE TOOLBAR
 
 .page-toolbar{
 
-display:grid;
-
 justify-content:space-between;
 
 align-items:center;
