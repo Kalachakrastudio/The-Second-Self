@@ -94,42 +94,6 @@ function hideLoader(){
 
 }
 
-    document.getElementById("popupTitle").innerHTML =
-    title;
-
-    document.getElementById("popupMessage").innerHTML =
-    message;
-
-    const icon =
-    document.getElementById("popupIcon");
-
-    if(type=="success"){
-
-        icon.innerHTML =
-        '<i class="fa-solid fa-circle-check"></i>';
-
-        icon.style.color="#00c853";
-
-    }
-
-    else if(type=="warning"){
-
-        icon.innerHTML =
-        '<i class="fa-solid fa-circle-exclamation"></i>';
-
-        icon.style.color="#ffc107";
-
-    }
-
-    else{
-
-        icon.innerHTML =
-        '<i class="fa-solid fa-circle-xmark"></i>';
-
-        icon.style.color="#ff5252";
-
-    }
-
 function initScanner(){
 
     eventSelect =
@@ -225,6 +189,7 @@ if(searchInput){
 
     };
 
+}
 }
 /*=========================================
 LOAD EVENTS
