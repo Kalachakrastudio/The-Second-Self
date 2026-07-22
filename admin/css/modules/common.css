@@ -178,9 +178,6 @@ button,
     padding:14px 26px;
 
 
-    border-radius:14px;
-
-
 }
 
 
@@ -223,9 +220,6 @@ button,
     padding:14px 24px;
 
 
-    border-radius:14px;
-
-
 }
 
 
@@ -259,9 +253,6 @@ button,
     color:#fff;
 
 
-    border-radius:12px;
-
-
 }
 
 
@@ -290,9 +281,6 @@ button,
 
 
     color:#fff;
-
-
-    border-radius:12px;
 
 
 }
@@ -853,6 +841,41 @@ grid-template-columns:1fr;
 padding:25px;
 
 }
+
+
+}
+
+/*==================================================
+GLOBAL BUTTON THEME OVERRIDE
+==================================================*/
+
+
+button,
+.primary-btn,
+.secondary-btn,
+.action-btn,
+.quick-actions button,
+.scanner-search button,
+.cancel-btn,
+.delete-ticket,
+.add-ticket-btn,
+.modal-footer button{
+
+
+    border-radius:50px !important;
+
+
+}
+/*==================================================
+ICON BUTTON STYLE
+==================================================*/
+
+
+.action-btn,
+.delete-ticket{
+
+
+    border-radius:14px !important;
 
 
 }
