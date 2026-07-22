@@ -218,17 +218,17 @@ CAMERA
 SEARCH
 ==================================================*/
 
-/*.scanner-search{
+.scanner-search{
 
     display:flex;
     gap:14px;
     width:100%;
     margin-bottom:24px;
 
-}*/
+}
 
 
-.scanner-search input{
+/*.scanner-search input{
 
     flex:1;
 
@@ -248,7 +248,7 @@ SEARCH
 
     outline:none;
 
-}
+}*/
 
 
 .scanner-search input:focus{
