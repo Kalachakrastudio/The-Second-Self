@@ -1,164 +1,348 @@
-/*=========================================
-CUSTOM SELECT
-=========================================*/
+/*==================================================
+CUSTOM DROPDOWN CSS
+==================================================*/
+
+
+/*==================================================
+WRAPPER
+==================================================*/
+
 
 .custom-select{
 
-     position: relative;
-    width: 100%; 
-    min-width: 180px;
 
-}
+    position:relative;
 
-.custom-select select{
 
-    display:none;
+    width:100%;
 
-}
 
-.select-selected{
+    min-width:180px;
 
-    height:50px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    padding:0 18px;
-
-    background:#181818;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:12px;
-
-    color:#fff;
-
-    cursor:pointer;
-
-    transition:.3s;
 
     user-select:none;
 
-}
-
-.select-selected:hover{
-
-    border-color:#D71F28;
 
 }
 
-.select-selected.active{
 
-    border-color:#D71F28;
 
-    box-shadow:0 0 18px rgba(215,31,40,.25);
+.custom-select select{
 
-}
 
-.select-selected::after{
+    display:none;
 
-    content:"";
-
-    width:8px;
-    height:8px;
-
-    border-right:2px solid #fff;
-    border-bottom:2px solid #fff;
-
-    transform:rotate(45deg);
-
-    transition:.3s;
 
 }
 
-.select-selected.active::after{
 
-    transform:rotate(-135deg);
 
-    margin-top:6px;
 
-}
 
-.select-items{
+/*==================================================
+SELECT BUTTON
+==================================================*/
 
-    position:absolute;
 
-    top:calc(100% + 8px);
+.select-selected{
 
-    left:0;
-    right:0;
+
+    height:50px;
+
+
+    width:100%;
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    justify-content:space-between;
+
+
+    padding:0 18px;
+
 
     background:#181818;
 
-    border:1px solid rgba(255,255,255,.08);
 
-    border-radius:14px;
+    border:1px solid var(--border);
 
-    overflow:hidden;
 
-    max-height:260px;
+    border-radius:12px;
 
-    overflow-y:auto;
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transform:translateY(10px);
-
-    transition:.25s;
-
-    z-index:999;
-
-}
-
-.select-items.show{
-
-    opacity:1;
-
-    visibility:visible;
-
-    transform:translateY(0);
-
-}
-
-.select-items div{
-
-    padding:14px 18px;
 
     color:#fff;
 
+
     cursor:pointer;
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.select-selected:hover{
+
+
+    border-color:var(--primary);
+
+
+}
+
+
+
+.select-selected.active{
+
+
+    border-color:var(--primary);
+
+
+    box-shadow:
+
+
+    0 0 18px rgba(215,31,40,.25);
+
+
+}
+
+
+
+
+
+/*==================================================
+ARROW
+==================================================*/
+
+
+.select-selected::after{
+
+
+    content:"";
+
+
+    width:8px;
+
+
+    height:8px;
+
+
+    border-right:2px solid #fff;
+
+
+    border-bottom:2px solid #fff;
+
+
+    transform:rotate(45deg);
+
+
+    transition:.3s;
+
+
+}
+
+
+
+.select-selected.active::after{
+
+
+    transform:rotate(-135deg);
+
+
+    margin-top:7px;
+
+
+}
+
+
+
+
+
+/*==================================================
+OPTIONS
+==================================================*/
+
+
+.select-items{
+
+
+    position:absolute;
+
+
+    top:calc(100% + 8px);
+
+
+    left:0;
+
+
+    right:0;
+
+
+    background:#181818;
+
+
+    border:1px solid var(--border);
+
+
+    border-radius:14px;
+
+
+    overflow:hidden;
+
+
+    max-height:260px;
+
+
+    overflow-y:auto;
+
+
+    opacity:0;
+
+
+    visibility:hidden;
+
+
+    transform:translateY(10px);
+
 
     transition:.25s;
 
+
+    z-index:9999;
+
+
 }
+
+
+
+
+
+.select-items.show{
+
+
+    opacity:1;
+
+
+    visibility:visible;
+
+
+    transform:translateY(0);
+
+
+}
+
+
+
+
+
+.select-items div{
+
+
+    padding:14px 18px;
+
+
+    color:#fff;
+
+
+    cursor:pointer;
+
+
+    transition:.25s;
+
+
+}
+
+
+
+
 
 .select-items div:hover{
 
-    background:#D71F28;
+
+    background:var(--primary);
+
 
 }
+
+
+
+
 
 .select-items .same-as-selected{
 
+
     background:rgba(215,31,40,.18);
 
-    color:#D71F28;
+
+    color:var(--primary);
+
 
 }
+
+
+
+
+
+/*==================================================
+SCROLLBAR
+==================================================*/
+
 
 .select-items::-webkit-scrollbar{
 
+
     width:6px;
+
 
 }
 
+
+
 .select-items::-webkit-scrollbar-thumb{
 
-    background:#D71F28;
+
+    background:var(--primary);
+
 
     border-radius:20px;
+
+
+}
+
+
+
+
+
+/*==================================================
+MOBILE
+==================================================*/
+
+
+@media(max-width:768px){
+
+
+.custom-select{
+
+
+    width:100%;
+
+
+}
+
+
+.select-selected{
+
+
+    height:52px;
+
+
+}
+
+
 
 }
