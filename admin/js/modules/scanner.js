@@ -27,11 +27,24 @@ let popup;
 let recentTable;
 let reader;
 
-  function showLoader(){
+  function showLoader(title="Loading...",text="Please wait"){
 
     if(loader){
 
         loader.classList.add("show");
+
+        let t=document.getElementById("loaderTitle");
+        let p=document.getElementById("loaderText");
+
+
+        if(t){
+            t.innerHTML=title;
+        }
+
+
+        if(p){
+            p.innerHTML=text;
+        }
 
     }
 
@@ -197,7 +210,10 @@ LOAD EVENTS
 
 async function loadEvents(){
 
-    showLoader();
+   showLoader(
+"Loading Events...",
+"Fetching active events"
+);
 
     try{
 
@@ -441,7 +457,10 @@ async function searchTicket(value,isScan=false){
 
     }
 
-    showLoader();
+  showLoader(
+"Checking Ticket...",
+"Verifying ticket details"
+);
 
     let url =
     SCANNER_SCRIPT_URL +
