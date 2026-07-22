@@ -228,7 +228,7 @@ SEARCH
 }
 
 
-/*.scanner-search input{
+.scanner-search input{
 
     flex:1;
 
@@ -248,7 +248,7 @@ SEARCH
 
     outline:none;
 
-}*/
+}
 
 
 .scanner-search input:focus{
