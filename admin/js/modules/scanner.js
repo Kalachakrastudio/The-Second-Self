@@ -3,7 +3,7 @@ SCANNER
 =========================================*/
 
 const SCANNER_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbzaDRnFwOBVrKI3KKofkOFCPC_ity7TGyRXkOixU6XifG-XEuPyzFIAlxKoo57ZAUtf/exec";
+"https://script.google.com/macros/s/AKfycbyViFEkCXA8yn6J2MScPrXUUSmUCHUb6YKYJ9fAiRJ75gPegrMggIYcitsjfu1Xdw/exec";
 
 let html5QrCode = null;
 
