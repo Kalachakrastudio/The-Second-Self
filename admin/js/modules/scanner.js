@@ -60,12 +60,17 @@ function hideLoader(){
     }
 
 }
-    function showPopup(type,title,message){
+   function showPopup(type,title,message){
 
     if(!popup){
         console.error("Popup element missing");
         return;
     }
+
+
+    // remove previous timer if running
+    clearTimeout(window.popupTimer);
+
 
     popup.classList.add("show");
 
@@ -104,6 +109,11 @@ function hideLoader(){
         icon.style.color="#ff5252";
 
     }
+     window.popupTimer = setTimeout(()=>{
+
+    popup.classList.remove("show");
+
+},4000);
 
 }
 
@@ -237,7 +247,6 @@ async function loadEvents(){
             );
 
             return;
-
         }
 
         scannerEvents = result.events || [];
@@ -261,7 +270,6 @@ async function loadEvents(){
             );
 
             return;
-
         }
 
         scannerEvents.forEach(event=>{
@@ -510,7 +518,7 @@ async function searchTicket(value,isScan=false){
             "Connection Error",
             "Unable to connect with server."
         );
-
+ 
     }
 
 }
@@ -613,7 +621,7 @@ function showTicket(data,isScan=false){
         );
 
         return;
-
+ 
     }
 
     //==========================
@@ -790,7 +798,7 @@ async function manualCheckIn(ticketId){
             "Connection Error",
             "Unable to connect with server."
         );
-
+ 
     }
 
 }
@@ -899,7 +907,7 @@ function processCheckInResponse(data){
         ticketCard.style.display="none";
 
         return;
-
+ 
     }
 
     // Already checked
@@ -963,7 +971,7 @@ function processCheckInResponse(data){
         );
 
         return;
-
+ 
     }
 
     // Old Event
@@ -993,7 +1001,7 @@ function processCheckInResponse(data){
         );
 
         return;
-
+  
     }
 
     // Invalid Ticket
@@ -1163,3 +1171,36 @@ function clearTicket(){
 }
 
 console.log("SCANNER JS LOADED");
+
+/*==================================================
+POPUP ANIMATION
+==================================================*/
+
+
+.popup-card{
+
+    animation:popupShow .35s ease;
+
+}
+
+
+@keyframes popupShow{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.85) translateY(20px);
+
+    }
+
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1) translateY(0);
+
+    }
+
+}
