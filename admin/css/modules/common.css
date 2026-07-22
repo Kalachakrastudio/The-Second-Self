@@ -936,3 +936,69 @@ MOBILE BUTTON THEME
 
 
 }
+
+/*==================================================
+MODAL CLOSE BUTTON FIX
+==================================================*/
+
+
+.modal-header button,
+.modal-close,
+.close-btn{
+
+
+    width:42px !important;
+
+    height:42px !important;
+
+
+    padding:0 !important;
+
+
+    display:flex !important;
+
+    align-items:center !important;
+
+    justify-content:center !important;
+
+
+    border-radius:50% !important;
+
+
+    background:#181818 !important;
+
+
+    color:#fff !important;
+
+
+    border:1px solid rgba(255,255,255,.08) !important;
+
+
+    font-size:22px !important;
+
+
+    line-height:1 !important;
+
+
+    cursor:pointer;
+
+
+}
+
+
+
+/* hover */
+
+
+.modal-header button:hover,
+.modal-close:hover,
+.close-btn:hover{
+
+
+    background:#D71F28 !important;
+
+
+    border-color:#D71F28 !important;
+
+
+}
