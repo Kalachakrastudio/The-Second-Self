@@ -1,888 +1,584 @@
-/*=========================================
-PAGE TOOLBAR
-=========================================*/
+/*==================================================
+EVENT PAGE CSS
+==================================================*/
 
-.page-toolbar{
 
-display:flex;
+/*==================================================
+PAGE HEADER
+==================================================*/
 
-justify-content:space-between;
 
-align-items:center;
+.page-header{
 
-gap:18px;
-
-flex-wrap:wrap;
-
-margin:20px 0;
+    margin-bottom:25px;
 
 }
 
-.toolbar-left{
 
-display:flex;
 
-align-items:center;
+.page-header h2{
 
-gap:15px;
+    font-family:"Bebas Neue";
 
-flex:1;
+    font-size:2.8rem;
 
-min-width:0;
+    letter-spacing:2px;
+
+    margin-bottom:8px;
 
 }
 
-.toolbar-left input{
 
-    flex:1;
 
-    min-width:280px;
+.page-header p{
 
-    height:48px;
-
-    padding:0 18px;
-
-    background:#181818;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:12px;
-
-    color:#fff;
+    color:var(--muted);
 
     font-size:15px;
 
-    outline:none;
+}
 
-    transition:.3s;
+
+
+/*==================================================
+EVENT TOOLBAR
+==================================================*/
+
+
+.page-toolbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+
+    margin:20px 0;
 
 }
 
-.toolbar-left input:focus{
 
-border-color:#D71F28;
+
+.toolbar-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    flex:1;
 
 }
 
-.toolbar-left input::placeholder{
 
-    color:#777;
+
+.toolbar-left input{
+
+
+    height:48px;
+
+    min-width:280px;
+
+
+    padding:0 18px;
+
 
 }
+
+
 
 .toolbar-left select{
+
 
     width:220px;
 
     height:48px;
 
+
     padding:0 18px;
 
-    background:#181818;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:12px;
-
-    color:#fff;
-
-    font-size:15px;
-
-    outline:none;
 
     cursor:pointer;
 
-}
-
-.toolbar-left select:focus{
-
-border-color:#D71F28;
-
-}
-/*=========================================
-EVENT PAGE
-=========================================*/
-
-.page-header h2{
-
-font-family:"Bebas Neue";
-font-size:2.8rem;
-letter-spacing:2px;
-margin-bottom:8px;
 
 }
 
-.page-header p{
 
-color:#9f9f9f;
-font-size:15px;
 
-}
 
-/*=========================================
-PRIMARY BUTTON
-=========================================*/
 
-.primary-btn{
+/*==================================================
+EVENT TABLE
+==================================================*/
 
-display:inline-flex;
-
-flex-shrink:0;
-align-items:center;
-justify-content:center;
-gap:10px;
-
-padding:14px 26px;
-
-border:none;
-border-radius:50px;
-
-background:#D71F28;
-
-color:#fff;
-
-font-size:15px;
-font-weight:600;
-
-cursor:pointer;
-
-transition:.35s;
-
-}
-
-.primary-btn:hover{
-
-transform:translateY(-3px);
-
-box-shadow:0 10px 30px rgba(215,31,40,.35);
-
-}
-
-/*=========================================
-TABLE
-=========================================*/
 
 .table-card{
 
-background:#121212;
 
-border:1px solid rgba(255,255,255,.08);
+    max-height:420px;
 
-border-radius:20px;
-
-max-height:420px;
-
-overflow:auto;
-
-}
-.event-table thead th{
-
-position:sticky;
-
-top:0;
-
-z-index:10;
-
-background:#191919;
 
 }
 
-/* Scrollbar */
 
-.table-card::-webkit-scrollbar{
-
-width:8px;
-height:8px;
-
-}
-
-.table-card::-webkit-scrollbar-track{
-
-background:#181818;
-
-}
-
-.table-card::-webkit-scrollbar-thumb{
-
-background:#D71F28;
-border-radius:20px;
-
-}
-
-.table-card::-webkit-scrollbar-thumb:hover{
-
-background:#ff3945;
-
-}
-
-/* Firefox */
-
-.table-card{
-
-scrollbar-width:thin;
-scrollbar-color:#D71F28 #181818;
-
-}
 
 .event-table{
 
-width:100%;
 
-border-collapse:collapse;
+    width:100%;
+
+
+}
+
+
+
+.event-table thead th{
+
+
+    position:sticky;
+
+
+    top:0;
+
+
+    z-index:10;
+
 
 }
 
-.event-table thead{
 
-background:#191919;
-
-}
 
 .event-table th{
 
-padding:18px;
 
-text-align:left;
+    font-size:14px;
 
-font-weight:600;
-
-font-size:14px;
-
-color:#fff;
-
-border-bottom:1px solid rgba(255,255,255,.06);
 
 }
+
+
 
 .event-table td{
 
-padding:18px;
 
-font-size:14px;
+    font-size:14px;
 
-color:#d5d5d5;
-
-border-bottom:1px solid rgba(255,255,255,.05);
 
 }
+
+
 
 .event-table tbody tr{
 
-transition:.25s;
+
+    transition:.25s;
+
 
 }
+
+
 
 .event-table tbody tr:hover{
 
-background:rgba(215,31,40,.05);
+
+    background:rgba(215,31,40,.05);
+
 
 }
 
-/*=========================================
-STATUS
-=========================================*/
 
-.status{
 
-display:inline-flex;
+.event-table td:last-child{
 
-padding:8px 16px;
 
-border-radius:30px;
+    white-space:nowrap;
 
-font-size:12px;
-
-font-weight:600;
-
-letter-spacing:1px;
 
 }
 
-.status.upcoming{
 
-background:rgba(255,193,7,.15);
 
-color:#ffc107;
 
-}
 
-.status.live{
+/*==================================================
+EVENT ACTION BUTTON
+==================================================*/
 
-background:rgba(40,167,69,.15);
-
-color:#29d85f;
-
-}
-
-.status.completed{
-
-background:rgba(120,120,120,.15);
-
-color:#c8c8c8;
-
-}
-
-/*=========================================
-ACTION BUTTONS
-=========================================*/
 
 .action-btn{
 
-width:42px;
 
-height:42px;
+    width:42px;
 
-border:none;
 
-border-radius:12px;
+    height:42px;
 
-background:#1d1d1d;
 
-color:#fff;
+    border:none;
 
-cursor:pointer;
 
-margin-right:8px;
+    border-radius:12px;
 
-transition:.3s;
+
+    background:#1d1d1d;
+
+
+    color:#fff;
+
+
+    cursor:pointer;
+
+
+    margin-right:8px;
+
+
+    transition:.3s;
+
 
 }
+
+
 
 .action-btn:hover{
 
-background:#D71F28;
 
-}
-.event-table td:last-child{
-    white-space: nowrap;
-}
+    background:var(--primary);
 
-.action-btn{
-    margin-right:8px;
-    margin-bottom:0;
-    vertical-align:middle;
-}
-/*=========================================
-MODAL
-=========================================*/
-
-.modal{
-
-    position:fixed;
-    inset:0;
-
-    display:none;
-    justify-content:center;
-    align-items:center;
-
-    padding:20px;
-
-    background:rgba(0,0,0,.65);
-
-    overflow:hidden;
-
-    z-index:9999;
 
 }
 
-.modal.show{
 
-display:flex;
 
-}
 
-.modal-box{
+/*==================================================
+EVENT MODAL CONTENT
+==================================================*/
 
-    width:min(900px,95vw);
-    max-width:900px;
-
-    max-height:90vh;
-
-    overflow-x:hidden;
-    overflow-y:auto;
-
-    padding:35px;
-
-    background:#111;
-
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:22px;
-
-    animation:popup .3s ease;
-
-    scrollbar-width:none;          /* Firefox */
-
-    -ms-overflow-style:none;       /* IE */
-
-}
-
-.modal-box::-webkit-scrollbar{
-
-    width:0;
-    height:0;
-
-}
-.modal-box *{
-
-    box-sizing:border-box;
-    max-width:100%;
-    min-width:0;
-
-}
-.modal-box form{
-
-    width:100%;
-    overflow:hidden;
-
-}
-
-@keyframes popup{
-
-from{
-
-transform:translateY(25px);
-
-opacity:0;
-
-}
-
-to{
-
-transform:translateY(0);
-
-opacity:1;
-
-}
-
-}
-
-.modal-header{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-margin-bottom:25px;
-
-}
 
 .modal-header h2{
 
-font-family:"Bebas Neue";
 
-font-size:2rem;
+    font-family:"Bebas Neue";
 
-letter-spacing:1px;
 
-}
+    font-size:2rem;
 
-.modal-header button{
 
-background:none;
+    letter-spacing:1px;
 
-border:none;
-
-font-size:24px;
-
-color:#fff;
-
-cursor:pointer;
 
 }
 
-/*=========================================
-FORM
-=========================================*/
+
+
+
+
+/*==================================================
+EVENT FORM GRID
+==================================================*/
+
 
 .grid-2{
 
-display:grid;
 
-grid-template-columns:repeat(2,minmax(0,1fr));
+    display:grid;
 
-gap:22px;
 
-margin-bottom:30px;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+
+
+    gap:22px;
+
+
+    margin-bottom:30px;
+
 
 }
+
+
 
 .grid-2 label{
 
-display:block;
 
-margin-bottom:8px;
+    display:block;
 
-font-size:14px;
+
+    margin-bottom:8px;
+
+
+    font-size:14px;
+
 
 }
+
+
 
 .grid-2 input,
 .grid-2 select{
 
-width:100%;
 
-padding:15px;
-
-background:#181818;
-
-border:1px solid rgba(255,255,255,.08);
-
-border-radius:12px;
-
-color:#fff;
-
-font-size:15px;
-
-outline:none;
-
-transition:.3s;
-
-}
-
-.grid-2 input:focus,
-.grid-2 select:focus{
-
-border-color:#D71F28;
-
-box-shadow:0 0 15px rgba(215,31,40,.2);
-
-}
-.secondary-btn{
-
-display:inline-flex;
-
-align-items:center;
-
-gap:10px;
-
-padding:14px 22px;
-
-border-radius:12px;
-
-border:1px solid rgba(255,255,255,.08);
-
-background:#202020;
-
-color:#fff;
-
-cursor:pointer;
-
-transition:.3s;
-
-}
-
-.secondary-btn:hover{
-
-background:#D71F28;
-
-border-color:#D71F28;
-
-}
-/*=========================================
-RESPONSIVE
-=========================================*/
-
-@media(max-width:768px){
-
-.page-toolbar{
-    flex-direction:column;
-    align-items:stretch;
-}
-
-.toolbar-left{
-    display:flex;
-    flex-direction:column;
     width:100%;
-}
 
-.toolbar-left input,
-.toolbar-left select,
-.primary-btn{
-    width:100%;
-    min-width:100%;
+
     height:52px;
-    box-sizing:border-box;
-}
 
-.page-header{
 
-flex-direction:column;
+    padding:0 15px;
 
-align-items:flex-start;
 
 }
 
-.page-header h2{
 
-font-size:2.2rem;
 
-}
 
-.grid-2{
+/*==================================================
+TICKET ROW OVERRIDE
+==================================================*/
 
-grid-template-columns:1fr;
-
-}
-
-.modal-box{
-
-max-height:90vh;
-
-overflow-y:auto;
-
-}
-
-.table-card{
-
-overflow-x:auto;
-
-}
-
-.event-table{
-
-min-width:760px;
-
-}
-
-}
-/*=========================================
-TICKET SECTION
-=========================================*/
-
-.ticket-section{
-
-margin-top:30px;
-
-padding-top:25px;
-
-border-top:1px solid rgba(255,255,255,.08);
-
-}
 
 #ticketContainer{
 
-display:flex;
 
-flex-direction:column;
+    display:flex;
 
-gap:18px;
 
-margin-top:20px;
+    flex-direction:column;
 
-}
 
-.ticket-section h3{
+    gap:18px;
 
-font-size:22px;
 
-margin-bottom:8px;
+    margin-top:20px;
 
-font-family:"Bebas Neue";
-
-letter-spacing:1px;
 
 }
 
-.ticket-row{
 
-display:grid;
-
-    grid-template-columns:2fr 1fr 1fr 60px;
-
-    gap:20px;
-
-    align-items:center;
-}
 
 .ticket-row input{
 
-width:100%;
 
-min-width:0;
+    height:52px;
 
-height:52px;
-
-padding:0 16px;
-
-background:#181818;
-
-border:1px solid rgba(255,255,255,.08);
-
-border-radius:12px;
-
-color:#fff;
-
-font-size:15px;
-
-outline:none;
-
-transition:.3s;
 
 }
 
-.ticket-row input:focus{
-
-border-color:#D71F28;
-
-box-shadow:0 0 15px rgba(215,31,40,.18);
-
-}
-
-
-.delete-ticket{
-
-width:60px;
-
-height:52px;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-border:none;
-
-border-radius:12px;
-
-background:#2a2a2a;
-
-color:#fff;
-
-font-size:16px;
-
-cursor:pointer;
-
-transition:.3s;
-
-flex-shrink:0;
-
-}
-
-.delete-ticket:hover{
-
-background:#D71F28;
-
-transform:scale(1.05);
-
-}
 
 
 .add-ticket-btn{
 
-margin-top:20px;
 
-margin-bottom:10px;
+    margin-top:20px;
+
 
 }
+
+
 
 .modal-footer{
 
-display:flex;
 
-justify-content:flex-end;
+    display:flex;
 
-align-items:center;
 
-gap:15px;
+    justify-content:flex-end;
 
-margin-top:35px;
+
+    gap:15px;
+
+
+    margin-top:35px;
+
 
 }
+
+
+
 
 .cancel-btn{
 
-padding:14px 24px;
 
-border:none;
+    padding:14px 24px;
 
-border-radius:50px;
 
-background:#2d2d2d;
+    border:none;
 
-color:#fff;
 
-cursor:pointer;
+    border-radius:50px;
 
-transition:.3s;
+
+    background:#2d2d2d;
+
+
+    color:#fff;
+
+
+    cursor:pointer;
+
 
 }
+
+
 
 .cancel-btn:hover{
 
-background:#444;
+
+    background:#444;
+
 
 }
+
+
+
+
+
+/*==================================================
+EVENT SCROLLBAR
+==================================================*/
+
+
+.table-card::-webkit-scrollbar{
+
+
+    width:8px;
+
+    height:8px;
+
+
+}
+
+
+
+.table-card::-webkit-scrollbar-thumb{
+
+
+    background:var(--primary);
+
+
+    border-radius:20px;
+
+
+}
+
+
+
+
+
+
+/*==================================================
+RESPONSIVE
+==================================================*/
+
 
 @media(max-width:768px){
 
-.ticket-row{
 
-grid-template-columns:1fr;
+.page-toolbar{
 
-gap:12px;
+
+    flex-direction:column;
+
+
+    align-items:stretch;
+
+
+}
+
+
+
+.toolbar-left{
+
+
+    width:100%;
+
+
+    flex-direction:column;
+
 
 }
 
-.delete-ticket{
 
-width:100%;
 
-height:52px;
+.toolbar-left input,
+.toolbar-left select{
+
+
+    width:100%;
+
+
+    min-width:100%;
+
+
+    height:52px;
+
 
 }
+
+
+
+.page-header h2{
+
+
+    font-size:2.2rem;
+
+
+}
+
+
+
+.grid-2{
+
+
+    grid-template-columns:1fr;
+
+
+}
+
+
+
+.table-card{
+
+
+    overflow-x:auto;
+
+
+}
+
+
+
+.event-table{
+
+
+    min-width:760px;
+
+
+}
+
+
 
 .modal-footer{
 
-flex-direction:column;
+
+    flex-direction:column;
+
 
 }
+
+
 
 .modal-footer button{
 
-width:100%;
+
+    width:100%;
+
 
 }
 
-}
-.empty-row{
 
-text-align:center;
-
-padding:70px 20px !important;
-
-font-size:16px;
-
-color:#8d8d8d;
-
-}
-
-.empty-row i{
-
-font-size:42px;
-
-color:#D71F28;
-
-margin-bottom:15px;
-
-display:block;
-
-}
-
-.empty-row p{
-
-font-size:18px;
-
-color:#fff;
-
-margin-bottom:8px;
-
-}
-
-.empty-row small{
-
-color:#888;
 
 }
