@@ -1178,35 +1178,3 @@ function clearTicket(){
 
 console.log("SCANNER JS LOADED");
 
-/*==================================================
-POPUP ANIMATION
-==================================================*/
-
-
-.popup-card{
-
-    animation:popupShow .35s ease;
-
-}
-
-
-@keyframes popupShow{
-
-    from{
-
-        opacity:0;
-
-        transform:scale(.85) translateY(20px);
-
-    }
-
-
-    to{
-
-        opacity:1;
-
-        transform:scale(1) translateY(0);
-
-    }
-
-}
