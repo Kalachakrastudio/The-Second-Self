@@ -1031,7 +1031,7 @@ async function loadStatistics(){
 
         const data = await response.json();
 
-        if(!data.success) return;
+       if(!data) return;
 
         document.getElementById("statTotal").textContent =
         data.totalTickets;
