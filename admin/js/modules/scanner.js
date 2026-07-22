@@ -160,7 +160,12 @@ console.error("Scanner DOM missing");
 return;
 
 }
-    loadEvents();
+    showLoader(
+"Loading Scanner...",
+"Preparing event data"
+);
+
+loadEvents();
 
    if(searchBtn){
 
@@ -1038,6 +1043,7 @@ async function loadStatistics(){
         );
 
         const data = await response.json();
+      console.log("STAT RESPONSE",data);
 
        if(!data) return;
 
