@@ -60,6 +60,17 @@ function hideLoader(){
     }
 
 }
+function hidePopup(){
+
+    clearTimeout(window.popupTimer);
+
+    if(popup){
+
+        popup.classList.remove("show");
+
+    }
+
+}
    function showPopup(type,title,message){
 
     if(!popup){
@@ -109,9 +120,9 @@ function hideLoader(){
         icon.style.color="#ff5252";
 
     }
-     window.popupTimer = setTimeout(()=>{
+    window.popupTimer = setTimeout(()=>{
 
-    popup.classList.remove("show");
+    hidePopup();
 
 },4000);
 
