@@ -58,13 +58,6 @@ min-width:0;
 
 }
 
-.toolbar-left select{
-
-    width:220px;
-
-    flex-shrink:0;
-
-}
 .toolbar-left input:focus{
 
 border-color:#D71F28;
@@ -79,23 +72,25 @@ border-color:#D71F28;
 
 .toolbar-left select{
 
-height:48px;
+    width:220px;
 
-padding:0 18px;
+    height:48px;
 
-background:#181818;
+    padding:0 18px;
 
-border:1px solid rgba(255,255,255,.08);
+    background:#181818;
 
-border-radius:12px;
+    border:1px solid rgba(255,255,255,.08);
 
-color:#fff;
+    border-radius:12px;
 
-font-size:15px;
+    color:#fff;
 
-outline:none;
+    font-size:15px;
 
-cursor:pointer;
+    outline:none;
+
+    cursor:pointer;
 
 }
 
@@ -609,11 +604,17 @@ RESPONSIVE
 
 .toolbar-left input,
 
-.toolbar-left select,
+.toolbar-left select{
 
-.primary-btn{
+      width:100%;
+    height:52px;
+
+
+}
+    .primary-btn{
 
     width:100%;
+    height:52px;
 
 }
 
