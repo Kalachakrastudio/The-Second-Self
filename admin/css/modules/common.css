@@ -879,3 +879,60 @@ ICON BUTTON STYLE
 
 
 }
+
+/*==================================================
+MOBILE BUTTON THEME
+==================================================*/
+
+@media(max-width:768px){
+
+
+    button,
+    .primary-btn,
+    .secondary-btn,
+    .quick-actions button,
+    .scanner-search button,
+    .cancel-btn,
+    .add-ticket-btn,
+    .modal-footer button{
+
+
+        width:100%;
+
+
+        min-height:52px;
+
+
+        border-radius:50px !important;
+
+
+        justify-content:center;
+
+
+    }
+
+
+
+    /* keep icon buttons square */
+
+
+    .action-btn,
+    .delete-ticket{
+
+
+        width:52px;
+
+
+        height:52px;
+
+
+        min-height:52px;
+
+
+        border-radius:14px !important;
+
+
+    }
+
+
+}
