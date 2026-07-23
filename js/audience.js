@@ -17,6 +17,40 @@ let selectedEvent = null;
 const loadingPopup =
 document.getElementById("loadingPopup");
 
+const messagePopup =
+document.getElementById("messagePopup");
+
+
+const messageTitle =
+document.getElementById("messageTitle");
+
+
+const messageText =
+document.getElementById("messageText");
+
+
+
+function showMessagePopup(title,message){
+
+    messageTitle.textContent = title;
+
+    messageText.textContent = message;
+
+    messagePopup.classList.add("show");
+
+}
+
+
+
+document
+.getElementById("closeMessagePopup")
+.addEventListener("click",function(){
+
+    messagePopup.classList.remove("show");
+
+});
+
+
 form.addEventListener("submit", function (e) {
 
     e.preventDefault();
@@ -31,17 +65,20 @@ if(ticket){
     const qty =
     Number(document.getElementById("quantity").value);
 
-    if(qty > remaining){
+  if(qty > remaining){
 
-        alert(
-            "Only " +
-            remaining +
-            " ticket(s) remaining."
-        );
+    showMessagePopup(
+        "Tickets Available",
+        `Only ${remaining} ticket${remaining > 1 ? "s" : ""} left for this ticket type.`
+    );
 
-        return;
+    document.getElementById("quantity").value = remaining;
 
-    }
+    updateSummary();
+
+    return;
+
+}
 
 }
 
@@ -295,13 +332,14 @@ document.getElementById("quantity").value = 1;
 
     if(qty > remaining){
 
-       alert(
-    `Only ${remaining} ticket${remaining > 1 ? "s" : ""} left for this ticket type.`
-);
+    showMessagePopup(
+        "Ticket Limit Reached",
+        `Only ${remaining} ticket${remaining > 1 ? "s" : ""} available.`
+    );
 
-        this.value = remaining;
+    this.value = remaining;
 
-    }
+}
 
     updateSummary();
 
@@ -352,13 +390,12 @@ document.getElementById("ticketType").selectedIndex - 1
 
 if(!data.success){
 
-    if(data.soldOut){
+   if(data.soldOut){
 
-        alert(
-            "Only " +
-            data.remaining +
-            " ticket(s) are available."
-        );
+    showMessagePopup(
+        "Booking Updated",
+        `Only ${data.remaining} ticket${data.remaining > 1 ? "s" : ""} available now. Please select again.`
+    );
 
     }else{
 
