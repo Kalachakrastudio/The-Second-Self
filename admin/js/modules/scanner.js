@@ -3,7 +3,37 @@ SCANNER
 =========================================*/
 
 const SCANNER_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbyViFEkCXA8yn6J2MScPrXUUSmUCHUb6YKYJ9fAiRJ75gPegrMggIYcitsjfu1Xdw/exec";
+"https://script.google.com/macros/s/AKfycbzAgnrpuKUdounVyoDMCJ_p0QAsvAtHD71gX-WK_DJN1y3RArHNqbS1j4-trIZXyxgv/exec";
+
+function fetchJSONP(url, callback){
+
+    const callbackName =
+    "jsonp_" + Date.now();
+
+    window[callbackName] = function(data){
+
+        callback(data);
+
+        delete window[callbackName];
+
+        script.remove();
+
+    };
+
+
+    const script =
+    document.createElement("script");
+
+
+    script.src =
+    url +
+    "&callback=" +
+    callbackName;
+
+
+    document.body.appendChild(script);
+
+}
 
 let html5QrCode = null;
 
@@ -511,13 +541,20 @@ async function searchTicket(value,isScan=false){
 
     try{
 
-        const response = await fetch(url);
+       fetchJSONP(
 
-        const data = await response.json();
+url,
 
-        hideLoader();
+function(data){
 
-        showTicket(data,isScan);
+hideLoader();
+
+showTicket(data,isScan);
+
+
+}
+
+);
 
     }
 
@@ -1043,17 +1080,41 @@ async function loadStatistics(){
 
     try{
 
-        const response = await fetch(
+       fetchJSONP(
 
-            SCANNER_SCRIPT_URL +
+SCANNER_SCRIPT_URL +
+"?action=getScannerStats" +
+"&eventId=" + encodeURIComponent(selectedEvent),
 
-            "?action=getScannerStats" +
+function(data){
 
-            "&eventId=" + encodeURIComponent(selectedEvent)
 
-        );
+console.log("STAT RESPONSE",data);
 
-        const data = await response.json();
+
+if(!data) return;
+
+
+document.getElementById("statTotal").textContent =
+data.totalTickets;
+
+
+document.getElementById("statChecked").textContent =
+data.checkedIn;
+
+
+document.getElementById("statPending").textContent =
+data.pending;
+
+
+document.getElementById("statRevenue").textContent =
+"₹" + Number(data.revenue)
+.toLocaleString("en-IN");
+
+
+}
+
+);
       console.log("STAT RESPONSE",data);
 
        if(!data) return;
@@ -1089,17 +1150,84 @@ async function loadRecentCheckins(){
 
     try{
 
-        const response = await fetch(
+        fetchJSONP(
 
-            SCANNER_SCRIPT_URL +
+SCANNER_SCRIPT_URL +
+"?action=getRecentCheckins" +
+"&eventId=" + encodeURIComponent(selectedEvent),
 
-            "?action=getRecentCheckins" +
+function(data){
 
-            "&eventId=" + encodeURIComponent(selectedEvent)
 
-        );
+if(!data.success) return;
 
-        const data = await response.json();
+
+const table =
+document.getElementById("recentCheckins");
+
+
+table.innerHTML="";
+
+
+if(data.checkins.length===0){
+
+
+table.innerHTML=`
+
+<tr>
+
+<td colspan="4" class="empty-row">
+
+No Check-ins Yet
+
+</td>
+
+</tr>
+
+`;
+
+return;
+
+}
+
+
+
+data.checkins.forEach(item=>{
+
+
+table.innerHTML += `
+
+<tr>
+
+<td>${item.time}</td>
+
+<td>${item.ticketId}</td>
+
+<td>${item.name}</td>
+
+<td>
+
+<span class="status success">
+
+Checked In
+
+</span>
+
+</td>
+
+
+</tr>
+
+
+`;
+
+
+});
+
+
+}
+
+);
 
         if(!data.success) return;
 
