@@ -20,6 +20,30 @@ document.getElementById("loadingPopup");
 form.addEventListener("submit", function (e) {
 
     e.preventDefault();
+    const ticket =
+document.getElementById("ticketType").selectedOptions[0];
+
+if(ticket){
+
+    const remaining =
+    Number(ticket.dataset.limit);
+
+    const qty =
+    Number(document.getElementById("quantity").value);
+
+    if(qty > remaining){
+
+        alert(
+            "Only " +
+            remaining +
+            " ticket(s) remaining."
+        );
+
+        return;
+
+    }
+
+}
 
     const amount = getTotalAmount();
 
@@ -246,16 +270,42 @@ window.onload = function () {
             option.dataset.limit;
 
         }
-
+document.getElementById("quantity").value = 1;
         updateSummary();
 
     });
-
-    document
-    .getElementById("quantity")
-    .addEventListener("input", updateSummary);
-
 };
+   document
+.getElementById("quantity")
+.addEventListener("input", function(){
+
+    const ticket =
+    document.getElementById("ticketType").selectedOptions[0];
+
+    if(!ticket){
+        updateSummary();
+        return;
+    }
+
+    const remaining =
+    Number(ticket.dataset.limit);
+
+    const qty =
+    Number(this.value);
+
+    if(qty > remaining){
+
+       alert(
+    `Only ${remaining} ticket${remaining > 1 ? "s" : ""} left for this ticket type.`
+);
+
+        this.value = remaining;
+
+    }
+
+    updateSummary();
+
+});
 function saveBooking(paymentId){
 
     const bookingData = {
@@ -298,15 +348,27 @@ document.getElementById("ticketType").selectedIndex - 1
 
 .then(data => {
 
-    loadingPopup.classList.remove("show");
+ loadingPopup.classList.remove("show");
 
-    if(!data.success){
+if(!data.success){
+
+    if(data.soldOut){
+
+        alert(
+            "Only " +
+            data.remaining +
+            " ticket(s) are available."
+        );
+
+    }else{
 
         alert(data.message);
 
-        return;
-
     }
+
+    return;
+
+}
 
     console.log(data);
 
