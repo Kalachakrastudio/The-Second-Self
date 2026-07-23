@@ -297,11 +297,18 @@ document.getElementById("ticketType").selectedIndex - 1
 .then(response => response.json())
 
 .then(data => {
-    console.log("Reached Here");
-
-    console.log(data);
 
     loadingPopup.classList.remove("show");
+
+    if(!data.success){
+
+        alert(data.message);
+
+        return;
+
+    }
+
+    console.log(data);
 
     document.getElementById("ticketID").textContent =
     data.ticketId;
