@@ -6,7 +6,7 @@ const successPopup =
 document.getElementById("successPopup");
 
 const scriptURL =
-"https://script.google.com/macros/s/AKfycbw39NtS-1DLyJ_POoEFwrKhY73ptnprX41gAJEbYiCkTOXuESXGLwCbjNxouSSea08o/exec";
+"https://script.google.com/macros/s/AKfycbwW-e50jMP1--CRofV0uFs8CvqI7UWNkzR-0yvcfEAni1ACxT05PRXst92ji31bHDKS/exec";
 
 // Replace this with your Razorpay Test Key
 const RAZORPAY_KEY = "rzp_test_TB3dk6zMNTlX6l";
@@ -50,8 +50,72 @@ document
 
 });
 
+ async function checkLiveAvailability(){
 
-form.addEventListener("submit", function (e) {
+    const ticket =
+    document.getElementById("ticketType").selectedOptions[0];
+
+
+    if(!ticket || !selectedEvent){
+
+        return false;
+
+    }
+
+
+    const ticketName =
+    ticket.dataset.name;
+
+
+    const quantity =
+    Number(document.getElementById("quantity").value);
+
+
+
+    const response = await fetch(
+
+        scriptURL +
+        "?action=checkAvailability" +
+        "&eventId=" + selectedEvent.id +
+        "&ticketType=" + encodeURIComponent(ticketName) +
+        "&quantity=" + quantity
+
+);
+
+
+    const result = await response.json();
+
+
+
+    if(quantity > result.remaining){
+
+
+        showMessagePopup(
+
+            "Tickets Not Available",
+
+            `Only ${result.remaining} ticket${result.remaining > 1 ? "s" : ""} left now. Please update your quantity.`
+
+        );
+
+
+        document.getElementById("quantity").value =
+        result.remaining;
+
+
+        updateSummary();
+
+
+        return false;
+
+    }
+
+
+    return true;
+
+}
+
+form.addEventListener("submit", async function (e) {
 
     e.preventDefault();
     const ticket =
@@ -81,7 +145,14 @@ if(ticket){
 }
 
 }
+const available = await checkLiveAvailability();
 
+
+if(!available){
+
+    return;
+
+}
     const amount = getTotalAmount();
 
     const options = {
