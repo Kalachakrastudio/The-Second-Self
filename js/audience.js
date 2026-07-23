@@ -234,23 +234,26 @@ window.onload = function () {
 
     updateSummary();
 
- document
-.getElementById("ticketType")
-.addEventListener("change", function(){
+    document
+    .getElementById("ticketType")
+    .addEventListener("change", function () {
 
-    const option =
-    this.selectedOptions[0];
+        const option = this.selectedOptions[0];
 
-    if(option){
+        if (option) {
 
-        document.getElementById("quantity").max =
-        option.dataset.limit;
+            document.getElementById("quantity").max =
+            option.dataset.limit;
 
-    }
+        }
 
-    updateSummary();
+        updateSummary();
 
-});
+    });
+
+    document
+    .getElementById("quantity")
+    .addEventListener("input", updateSummary);
 
 };
 function saveBooking(paymentId){
