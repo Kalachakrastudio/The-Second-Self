@@ -190,20 +190,32 @@ function populateTicketDropdown(event){
     ticketSelect.innerHTML =
     `<option value="">Select Ticket</option>`;
 
-    event.tickets.forEach(ticket=>{
+event.tickets.forEach(ticket=>{
 
-        ticketSelect.innerHTML += `
-            <option value="${ticket.price}">
-                ${ticket.name} - ₹${ticket.price}
-            </option>
-        `;
+    ticketSelect.innerHTML += `
+        <option
+            value="${ticket.price}"
+            data-name="${ticket.name}"
+            data-limit="${ticket.limit}">
 
-    });
+            ${ticket.name} - ₹${ticket.price}
+
+        </option>
+    `;
+
+});
 
     rebuildCustomSelect("ticketType");
 
     updateSummary();
+const option = ticketSelect.selectedOptions[0];
 
+if(option){
+
+    document.getElementById("quantity").max =
+    option.dataset.limit;
+
+}
 }
 document.getElementById("eventDate").addEventListener("change", function(){
 
@@ -222,13 +234,23 @@ window.onload = function () {
 
     updateSummary();
 
-    document
-        .getElementById("ticketType")
-        .addEventListener("change", updateSummary);
+ document
+.getElementById("ticketType")
+.addEventListener("change", function(){
 
-    document
-        .getElementById("quantity")
-        .addEventListener("input", updateSummary);
+    const option =
+    this.selectedOptions[0];
+
+    if(option){
+
+        document.getElementById("quantity").max =
+        option.dataset.limit;
+
+    }
+
+    updateSummary();
+
+});
 
 };
 function saveBooking(paymentId){
@@ -248,7 +270,10 @@ function saveBooking(paymentId){
         eventId: selectedEvent.id,
         eventName: selectedEvent.name,
 
-        ticketType: document.getElementById("ticketType").selectedOptions[0].text,
+        ticketType:
+selectedEvent.tickets[
+document.getElementById("ticketType").selectedIndex - 1
+].name,
 
         quantity: document.getElementById("quantity").value,
 
