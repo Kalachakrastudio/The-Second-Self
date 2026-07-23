@@ -1078,66 +1078,43 @@ async function loadStatistics(){
 
     if(!selectedEvent) return;
 
-    try{
 
-       fetchJSONP(
+    fetchJSONP(
 
-SCANNER_SCRIPT_URL +
-"?action=getScannerStats" +
-"&eventId=" + encodeURIComponent(selectedEvent),
-
-function(data){
+        SCANNER_SCRIPT_URL +
+        "?action=getScannerStats" +
+        "&eventId=" + encodeURIComponent(selectedEvent),
 
 
-console.log("STAT RESPONSE",data);
+        function(data){
 
 
-if(!data) return;
+            console.log("STAT RESPONSE",data);
 
 
-document.getElementById("statTotal").textContent =
-data.totalTickets;
+            if(!data) return;
 
 
-document.getElementById("statChecked").textContent =
-data.checkedIn;
+            document.getElementById("statTotal").textContent =
+            data.totalTickets;
 
 
-document.getElementById("statPending").textContent =
-data.pending;
+            document.getElementById("statChecked").textContent =
+            data.checkedIn;
 
 
-document.getElementById("statRevenue").textContent =
-"₹" + Number(data.revenue)
-.toLocaleString("en-IN");
+            document.getElementById("statPending").textContent =
+            data.pending;
 
 
-}
+            document.getElementById("statRevenue").textContent =
+            "₹" + Number(data.revenue)
+            .toLocaleString("en-IN");
 
-);
-      console.log("STAT RESPONSE",data);
 
-       if(!data) return;
+        }
 
-        document.getElementById("statTotal").textContent =
-        data.totalTickets;
-
-        document.getElementById("statChecked").textContent =
-        data.checkedIn;
-
-        document.getElementById("statPending").textContent =
-        data.pending;
-
-        document.getElementById("statRevenue").textContent =
-        "₹" + Number(data.revenue).toLocaleString("en-IN");
-
-    }
-
-    catch(err){
-
-        console.error(err);
-
-    }
+    );
 
 }
 /*=========================================
@@ -1148,117 +1125,57 @@ async function loadRecentCheckins(){
 
     if(!selectedEvent) return;
 
-    try{
 
-        fetchJSONP(
+    fetchJSONP(
 
-SCANNER_SCRIPT_URL +
-"?action=getRecentCheckins" +
-"&eventId=" + encodeURIComponent(selectedEvent),
-
-function(data){
+        SCANNER_SCRIPT_URL +
+        "?action=getRecentCheckins" +
+        "&eventId=" + encodeURIComponent(selectedEvent),
 
 
-if(!data.success) return;
+        function(data){
 
 
-const table =
-document.getElementById("recentCheckins");
+            console.log("RECENT RESPONSE",data);
 
 
-table.innerHTML="";
+            if(!data.success) return;
 
 
-if(data.checkins.length===0){
+            const table =
+            document.getElementById("recentCheckins");
 
 
-table.innerHTML=`
-
-<tr>
-
-<td colspan="4" class="empty-row">
-
-No Check-ins Yet
-
-</td>
-
-</tr>
-
-`;
-
-return;
-
-}
+            table.innerHTML="";
 
 
-
-data.checkins.forEach(item=>{
-
-
-table.innerHTML += `
-
-<tr>
-
-<td>${item.time}</td>
-
-<td>${item.ticketId}</td>
-
-<td>${item.name}</td>
-
-<td>
-
-<span class="status success">
-
-Checked In
-
-</span>
-
-</td>
+            if(data.checkins.length===0){
 
 
-</tr>
+                table.innerHTML=`
 
+                <tr>
 
-`;
-
-
-});
-
-
-}
-
-);
-
-        if(!data.success) return;
-
-        const table =
-        document.getElementById("recentCheckins");
-
-        table.innerHTML = "";
-
-        if(data.checkins.length===0){
-
-            table.innerHTML=`
-
-            <tr>
-
-                <td colspan="4" class="empty-row">
+                    <td colspan="4" class="empty-row">
 
                     No Check-ins Yet
 
-                </td>
+                    </td>
 
-            </tr>
+                </tr>
 
-            `;
+                `;
 
-            return;
+                return;
 
-        }
+            }
 
-        data.checkins.forEach(item=>{
 
-            table.innerHTML += `
+
+            data.checkins.forEach(item=>{
+
+
+                table.innerHTML += `
 
                 <tr>
 
@@ -1270,27 +1187,27 @@ Checked In
 
                     <td>
 
-                        <span class="status success">
+                    <span class="status success">
 
-                            Checked In
+                    Checked In
 
-                        </span>
+                    </span>
 
                     </td>
 
+
                 </tr>
 
-            `;
+                `;
 
-        });
 
-    }
+            });
 
-    catch(err){
 
-        console.error(err);
+        }
 
-    }
+    );
+
 
 }
 /*=========================================
