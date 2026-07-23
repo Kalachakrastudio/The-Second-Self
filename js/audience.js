@@ -6,7 +6,7 @@ const successPopup =
 document.getElementById("successPopup");
 
 const scriptURL =
-"https://script.google.com/macros/s/AKfycbzQJxn3Di-BqI_VZLSmF3qr7-De48OQMqFAVhqh4Kcn0KURgWyxL1YLivZSKe9uSfA/exec";
+"https://script.google.com/macros/s/AKfycbyViFEkCXA8yn6J2MScPrXUUSmUCHUb6YKYJ9fAiRJ75gPegrMggIYcitsjfu1Xdw/exec";
 
 // Replace this with your Razorpay Test Key
 const RAZORPAY_KEY = "rzp_test_TB3dk6zMNTlX6l";
