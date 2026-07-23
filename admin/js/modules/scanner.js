@@ -3,7 +3,7 @@ SCANNER
 =========================================*/
 
 const SCANNER_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbzAgnrpuKUdounVyoDMCJ_p0QAsvAtHD71gX-WK_DJN1y3RArHNqbS1j4-trIZXyxgv/exec";
+"https://script.google.com/macros/s/AKfycbzUOQILFz33n9sxHD2F5rAx0YubkD-126u5Bj-mUQQIngEk6woMV-591GUL0_45mouU/exec";
 
 function fetchJSONP(url, callback){
 
@@ -25,10 +25,24 @@ function fetchJSONP(url, callback){
     document.createElement("script");
 
 
-    script.src =
-    url +
-    "&callback=" +
-    callbackName;
+   script.src =
+url +
+"&callback=" +
+callbackName;
+
+script.onerror=function(){
+
+    hideLoader();
+
+    scanning=false;
+
+    showPopup(
+        "error",
+        "Server Error",
+        "Unable to connect"
+    );
+
+};
 
 
     document.body.appendChild(script);
@@ -484,9 +498,7 @@ function onScanSuccess(decodedText){
 
     if(scanning) return;
 
-    scanning = true;
-
-    showLoader();
+    scanning=true;
 
     searchTicket(decodedText,true);
 
@@ -709,7 +721,7 @@ function showTicket(data,isScan=false){
 
                 <p>${ticket.ticketId}</p>
 
-                <p>${ticket.event}</p>
+                <p>${ticket.eventName}</p>
 
                 <p>${ticket.status}</p>
 
@@ -921,11 +933,13 @@ PROCESS CHECK IN RESPONSE
 
 function processCheckInResponse(data){
 
-    setTimeout(()=>{
+ setTimeout(()=>{
 
-    scanning=false;
+scanning=false;
 
-},2000);
+clearTicket();
+
+},1500);
 
     // Ticket checked successfully
 
