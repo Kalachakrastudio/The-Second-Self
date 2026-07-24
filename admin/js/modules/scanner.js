@@ -24,13 +24,17 @@ function fetchJSONP(url, callback){
     const script =
     document.createElement("script");
 
-
-   script.src =
+script.src =
 url +
 "&callback=" +
 callbackName;
 
+console.log("JSONP URL:");
+console.log(script.src);
+    
 script.onerror=function(){
+
+    console.error("JSONP Failed:", script.src);
 
     hideLoader();
 
@@ -38,8 +42,8 @@ script.onerror=function(){
 
     showPopup(
         "error",
-        "Server Error",
-        "Unable to connect"
+        "JSONP Failed",
+        "Open Console and copy the URL."
     );
 
 };
