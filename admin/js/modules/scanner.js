@@ -3,12 +3,22 @@ SCANNER
 =========================================*/
 
 const SCANNER_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbyH6VsqYq2eLrOB59gxpxTHtXhJhAmbYS9IxYd9zI9lCOq6001Q0PMRb8-KxCsDaEBX/exec";
+"https://script.google.com/macros/s/AKfycbyFU5AzCgxOhL9x7bF4gxhpwN29rBrNQoP-ipwqKhR8HMRs3UtZBceod8dglTMS2YLw/exec";
 
 function fetchJSONP(url, callback){
 
     const callbackName =
     "jsonp_" + Date.now();
+
+    function fetchJSONP(url, callback){
+
+    const callbackName =
+    "jsonp_" + Date.now();
+
+
+    const script =
+    document.createElement("script");
+
 
     window[callbackName] = function(data){
 
@@ -21,8 +31,32 @@ function fetchJSONP(url, callback){
     };
 
 
-    const script =
-    document.createElement("script");
+    script.src =
+    url +
+    "&callback=" +
+    callbackName;
+
+
+    script.onerror=function(){
+
+        console.error("JSONP Failed",script.src);
+
+        hideLoader();
+
+        scanning=false;
+
+        showPopup(
+            "error",
+            "Server Error",
+            "Unable to connect"
+        );
+
+    };
+
+
+    document.body.appendChild(script);
+
+}
 
 script.src =
 url +
