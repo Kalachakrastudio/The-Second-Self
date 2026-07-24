@@ -3,14 +3,9 @@ SCANNER
 =========================================*/
 
 const SCANNER_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbyFU5AzCgxOhL9x7bF4gxhpwN29rBrNQoP-ipwqKhR8HMRs3UtZBceod8dglTMS2YLw/exec";
+"https://script.google.com/macros/s/AKfycbzxwv7sfQ9Xzw4lTrUbNZxYbnMPMM2jQ4EUrgWOPc_norxIEfKc3rRRNrCT0aWj6K05/exec";
 
 function fetchJSONP(url, callback){
-
-    const callbackName =
-    "jsonp_" + Date.now();
-
-    function fetchJSONP(url, callback){
 
     const callbackName =
     "jsonp_" + Date.now();
@@ -22,39 +17,55 @@ function fetchJSONP(url, callback){
 
     window[callbackName] = function(data){
 
+        console.log("JSONP SUCCESS",data);
+
         callback(data);
+
 
         delete window[callbackName];
 
-        script.remove();
+        document.body.removeChild(script);
 
     };
+
+
+    script.type = "text/javascript";
 
 
     script.src =
     url +
     "&callback=" +
-    callbackName;
+    callbackName +
+    "&_=" +
+    Date.now();
 
 
     script.onerror=function(){
 
-        console.error("JSONP Failed",script.src);
+        console.error(
+            "JSONP LOAD ERROR",
+            script.src
+        );
+
+
+        delete window[callbackName];
+
+        document.body.removeChild(script);
+
 
         hideLoader();
 
-        scanning=false;
 
         showPopup(
             "error",
             "Server Error",
-            "Unable to connect"
+            "Unable to load data"
         );
 
     };
 
 
-    document.body.appendChild(script);
+    document.head.appendChild(script);
 
 }
 
@@ -1150,8 +1161,13 @@ async function loadStatistics(){
             console.log("STAT RESPONSE",data);
 
 
-            if(!data) return;
+            if(!data || data.success !== true){
 
+    console.log("Invalid stats response",data);
+
+    return;
+
+}
 
             document.getElementById("statTotal").textContent =
             data.totalTickets;
@@ -1197,7 +1213,13 @@ async function loadRecentCheckins(){
             console.log("RECENT RESPONSE",data);
 
 
-            if(!data.success) return;
+          if(!data || data.success !== true){
+
+    console.log("Invalid recent response",data);
+
+    return;
+
+}
 
 
             const table =
