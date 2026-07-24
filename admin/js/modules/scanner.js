@@ -3,7 +3,7 @@ SCANNER
 =========================================*/
 
 const SCANNER_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbxzmcPADwjfLyU-BHcIOsHrRUI_W0XuOKsRRxANRkSc-VTeUDeKGjKEWe7npgOfL-jf/exec";
+"https://script.google.com/macros/s/AKfycbyR_PqevnIF4DL9SsbBISoINun5dZu98umIWK5IOSELHYCZqUEGW5f-ypb9HF2P8e4I/exec";
 
 function fetchJSONP(url, callback){
 
@@ -15,11 +15,21 @@ function fetchJSONP(url, callback){
     document.createElement("script");
 
 
-    window[callbackName] = function(data){
+    let finished=false;
 
-        console.log("JSONP SUCCESS", data);
+
+    window[callbackName]=function(data){
+
+        finished=true;
+
+        console.log(
+            "JSONP SUCCESS",
+            data
+        );
+
 
         callback(data);
+
 
         delete window[callbackName];
 
@@ -28,22 +38,23 @@ function fetchJSONP(url, callback){
     };
 
 
-    script.type = "text/javascript";
-
-
-    script.src =
-    url +
-    "&callback=" +
-    callbackName +
-    "&_=" +
-    Date.now();
+script.src =
+url +
+(url.includes("?") ? "&" : "?") +
+"callback=" +
+callbackName +
+"&_=" +
+Date.now();
 
 
 
-    script.onerror = function(){
+    script.onerror=function(){
+
+        if(finished) return;
+
 
         console.error(
-            "JSONP LOAD ERROR",
+            "JSONP FAILED",
             script.src
         );
 
@@ -51,9 +62,6 @@ function fetchJSONP(url, callback){
         delete window[callbackName];
 
         script.remove();
-
-
-        hideLoader();
 
 
         showPopup(
@@ -65,6 +73,29 @@ function fetchJSONP(url, callback){
     };
 
 
+    document.head.appendChild(script);
+
+
+    setTimeout(()=>{
+
+        if(!finished){
+
+            delete window[callbackName];
+
+            script.remove();
+
+
+            showPopup(
+                "error",
+                "Timeout",
+                "Server response delayed"
+            );
+
+        }
+
+    },10000);
+
+}
     document.head.appendChild(script);
 
 }
