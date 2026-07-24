@@ -61,10 +61,12 @@ function fetchJSONP(url, callback){
             "Server Error",
             "Unable to load data"
         );
+         );
 
 
     document.head.appendChild(script);
 
+}
 }
 
 let html5QrCode = null;
