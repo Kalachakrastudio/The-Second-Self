@@ -3,7 +3,7 @@ SCANNER
 =========================================*/
 
 const SCANNER_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbzxwv7sfQ9Xzw4lTrUbNZxYbnMPMM2jQ4EUrgWOPc_norxIEfKc3rRRNrCT0aWj6K05/exec";
+"https://script.google.com/macros/s/AKfycbxzmcPADwjfLyU-BHcIOsHrRUI_W0XuOKsRRxANRkSc-VTeUDeKGjKEWe7npgOfL-jf/exec";
 
 function fetchJSONP(url, callback){
 
