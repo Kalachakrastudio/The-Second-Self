@@ -328,109 +328,123 @@ LOAD EVENTS
 
 async function loadEvents(){
 
-   showLoader(
+showLoader(
 "Loading Events...",
 "Fetching active events"
 );
 
-    try{
+try{
 
-        const response = await fetch(
+fetchJSONP(
 
-            SCANNER_SCRIPT_URL +
-            "?action=getScannerEvents"
+SCANNER_SCRIPT_URL +
+"?action=getScannerEvents",
 
-        );
+function(result){
 
-        const result = await response.json();
+hideLoader();
 
-        hideLoader();
 
-        if(!result.success){
+if(!result.success){
 
-            showPopup(
-                "error",
-                "Unable to Load",
-                "Couldn't load today's events."
-            );
+showPopup(
+"error",
+"Unable to Load",
+"Couldn't load today's events."
+);
 
-            return;
-        }
+return;
 
-        scannerEvents = result.events || [];
+}
 
-        eventSelect.innerHTML = "";
 
-        if(scannerEvents.length === 0){
+scannerEvents = result.events || [];
 
-            eventSelect.innerHTML = `
-                <option value="">
-                    No Active Event
-                </option>
-            `;
 
-            rebuildCustomSelect("scannerEvent");
+eventSelect.innerHTML="";
 
-            showPopup(
-                "warning",
-                "No Event",
-                "There is no active event available for today."
-            );
 
-            return;
-        }
+if(scannerEvents.length === 0){
 
-        scannerEvents.forEach(event=>{
+eventSelect.innerHTML =
+`
+<option value="">
+No Active Event
+</option>
+`;
 
-            eventSelect.innerHTML += `
+rebuildCustomSelect("scannerEvent");
 
-                <option value="${event.id}">
 
-                    ${event.name}
+showPopup(
+"warning",
+"No Event",
+"There is no active event available."
+);
 
-                </option>
+return;
 
-            `;
+}
 
-        });
 
-        selectedEvent = scannerEvents[0].id;
 
-        eventSelect.value = selectedEvent;
+scannerEvents.forEach(event=>{
 
-      rebuildCustomSelect("scannerEvent");
+eventSelect.innerHTML +=
+`
+<option value="${event.id}">
+${event.name}
+</option>
+`;
+
+});
+
+
+selectedEvent=scannerEvents[0].id;
+
+eventSelect.value=selectedEvent;
+
+
+rebuildCustomSelect("scannerEvent");
 
 
 if(!scannerStarted){
 
-    scannerStarted=true;
+scannerStarted=true;
 
-    setTimeout(()=>{
+setTimeout(()=>{
 
-        startCamera();
+startCamera();
 
-    },500);
+},500);
 
 }
-        loadStatistics();
 
-        loadRecentCheckins();
 
-    }
+loadStatistics();
 
-    catch(err){
+loadRecentCheckins();
 
-        hideLoader();
 
-        console.error(err);
+}
 
-        showPopup(
-            "error",
-            "Connection Error",
-            "Unable to connect with server."
-        );
+);
 
-    }
+
+}
+catch(err){
+
+hideLoader();
+
+console.error(err);
+
+showPopup(
+"error",
+"Connection Error",
+"Unable to connect with server."
+);
+
+}
 
 }
 /*=========================================
