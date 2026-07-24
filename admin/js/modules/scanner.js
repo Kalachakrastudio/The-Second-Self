@@ -17,14 +17,13 @@ function fetchJSONP(url, callback){
 
     window[callbackName] = function(data){
 
-        console.log("JSONP SUCCESS",data);
+        console.log("JSONP SUCCESS", data);
 
         callback(data);
 
-
         delete window[callbackName];
 
-        document.body.removeChild(script);
+        script.remove();
 
     };
 
@@ -40,7 +39,8 @@ function fetchJSONP(url, callback){
     Date.now();
 
 
-    script.onerror=function(){
+
+    script.onerror = function(){
 
         console.error(
             "JSONP LOAD ERROR",
@@ -50,7 +50,7 @@ function fetchJSONP(url, callback){
 
         delete window[callbackName];
 
-        document.body.removeChild(script);
+        script.remove();
 
 
         hideLoader();
@@ -61,12 +61,13 @@ function fetchJSONP(url, callback){
             "Server Error",
             "Unable to load data"
         );
-         );
+
+    };
 
 
     document.head.appendChild(script);
 
-
+}
 let html5QrCode = null;
 
 let scanning = false;
