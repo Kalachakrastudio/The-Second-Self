@@ -32,19 +32,25 @@ callbackName;
 console.log("JSONP URL:");
 console.log(script.src);
     
-script.onerror=function(){
+script.onerror = async function(){
 
-    console.error("JSONP Failed:", script.src);
+    console.error(script.src);
 
-    hideLoader();
+    try{
 
-    scanning=false;
+        const r = await fetch(script.src);
 
-    showPopup(
-        "error",
-        "JSONP Failed",
-        "Open Console and copy the URL."
-    );
+        const t = await r.text();
+
+        console.log(t);
+
+        alert(t);
+
+    }catch(e){
+
+        console.log(e);
+
+    }
 
 };
 
