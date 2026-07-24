@@ -62,8 +62,6 @@ function fetchJSONP(url, callback){
             "Unable to load data"
         );
 
-    };
-
 
     document.head.appendChild(script);
 
