@@ -66,8 +66,6 @@ function fetchJSONP(url, callback){
 
     document.head.appendChild(script);
 
-}
-}
 
 let html5QrCode = null;
 
