@@ -96,9 +96,7 @@ Date.now();
     },10000);
 
 }
-    document.head.appendChild(script);
 
-}
 let html5QrCode = null;
 
 let scanning = false;
