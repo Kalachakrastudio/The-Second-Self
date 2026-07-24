@@ -537,44 +537,58 @@ TICKET RESULT
 
 
 /*==================================================
-SCAN TABLE
+SCANNER TABLE RESPONSIVE
 ==================================================*/
-
 
 .scanner-table{
 
+    width:100%;
 
-    overflow:auto;
+    overflow-x:auto;
 
-
-}
-
-
-
-.scanner-table th{
-
-
-    background:#111;
-
-
-    color:var(--primary);
-
+    -webkit-overflow-scrolling:touch;
 
 }
 
 
+.scanner-table table{
 
-.scanner-table td{
-
-
-    color:#ddd;
-
+    min-width:600px;
 
 }
 
 
+/* MOBILE TABLE */
+@media(max-width:768px){
 
 
+    .scanner-table{
+
+        border-radius:16px;
+
+    }
+
+
+    .scanner-table table{
+
+        min-width:520px;
+
+    }
+
+
+    .scanner-table th,
+    .scanner-table td{
+
+        padding:12px 10px;
+
+        font-size:13px;
+
+        white-space:nowrap;
+
+    }
+
+
+}
 
 /*==================================================
 LOADER
