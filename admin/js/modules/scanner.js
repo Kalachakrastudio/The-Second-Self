@@ -69,41 +69,6 @@ function fetchJSONP(url, callback){
 
 }
 
-script.src =
-url +
-"&callback=" +
-callbackName;
-
-console.log("JSONP URL:");
-console.log(script.src);
-    
-script.onerror = async function(){
-
-    console.error(script.src);
-
-    try{
-
-        const r = await fetch(script.src);
-
-        const t = await r.text();
-
-        console.log(t);
-
-        alert(t);
-
-    }catch(e){
-
-        console.log(e);
-
-    }
-
-};
-
-
-    document.body.appendChild(script);
-
-}
-
 let html5QrCode = null;
 
 let scanning = false;
