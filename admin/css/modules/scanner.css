@@ -586,6 +586,22 @@ SCANNER TABLE RESPONSIVE
         white-space:nowrap;
 
     }
+    .scanner-table::after{
+
+    content:"Swipe →";
+
+    display:block;
+
+    text-align:right;
+
+    padding:8px 15px;
+
+    color:#777;
+
+    font-size:12px;
+
+}
+
 
 
 }
@@ -856,9 +872,7 @@ RESPONSIVE
 
 .scanner-card{
 
-
-    padding:18px;
-
+    overflow:hidden;
 
 }
 
