@@ -538,50 +538,76 @@ color:#ccc;
 
 
 /*==================================================
-EMPTY STATE
+EMPTY TABLE STATE
 ==================================================*/
-
 
 .empty-row,
 .empty{
 
+    text-align:center !important;
+    vertical-align:middle !important;
 
-text-align:center;
+    padding:80px 20px !important;
 
-padding:60px 20px!important;
-
-color:#888;
-
+    color:#888;
 
 }
 
+.empty-row{
+
+    display:table-cell;
+
+}
 
 .empty-row i{
 
+    display:block;
 
-font-size:42px;
+    width:100%;
 
-color:var(--primary);
+    margin:0 auto 18px;
 
-display:block;
+    text-align:center;
 
-margin-bottom:15px;
+    font-size:46px;
 
+    color:var(--primary);
 
 }
-
 
 .empty-row p{
 
+    display:block;
 
-font-size:18px;
+    width:100%;
 
-color:#fff;
+    margin:0 0 8px;
 
+    text-align:center;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    color:#fff;
 
 }
 
+.empty-row small{
 
+    display:block;
+
+    width:100%;
+
+    text-align:center;
+
+    color:#888;
+
+    font-size:14px;
+
+    line-height:1.6;
+
+}
 
 /*==================================================
 MODAL COMMON
