@@ -2,7 +2,7 @@ function initParticipants(){
     console.log("Participants page initialized");
 
 const SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbxCxfx2-a1Mj9fsSBobGHXQ2WEMM4FgDa8KOvu05TkKvRhJnRmbkuWFJJiRDRUtk3Cc/exec";
+"https://script.google.com/macros/s/AKfycbyG4NcvfirTM1jLOGvff3Cu1uMobEEsAWrs1cx3chAs14zqwp2rsD8MJv48YTHCBkXG/exec";
 
 
 
