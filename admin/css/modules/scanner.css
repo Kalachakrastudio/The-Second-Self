@@ -543,17 +543,17 @@ SCANNER TABLE RESPONSIVE
 .scanner-table{
 
     width:100%;
-
     overflow-x:auto;
-
+    overflow-y:hidden;
     -webkit-overflow-scrolling:touch;
 
 }
 
-
 .scanner-table table{
 
+    width:100%;
     min-width:600px;
+    border-collapse:collapse;
 
 }
 
@@ -562,12 +562,11 @@ SCANNER TABLE RESPONSIVE
 @media(max-width:768px){
 
 
-    .scanner-table{
+   .scanner-table{
 
-        border-radius:16px;
+        max-width:100%;
 
     }
-
 
     .scanner-table table{
 
@@ -575,15 +574,12 @@ SCANNER TABLE RESPONSIVE
 
     }
 
-
     .scanner-table th,
     .scanner-table td{
 
-        padding:12px 10px;
-
-        font-size:13px;
-
+        padding:12px;
         white-space:nowrap;
+        font-size:13px;
 
     }
     .scanner-table::after{
@@ -916,13 +912,6 @@ RESPONSIVE
 
 }
 
-
-
-.scanner-table{
-
-        max-width:100%;
-
-    }
 
 }
 
