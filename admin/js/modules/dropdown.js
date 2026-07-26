@@ -9,15 +9,13 @@ if(!select || !select.options || select.options.length===0){
 
     if(!select) return;
 
-    if(select.parentElement.classList.contains("custom-select")){
+if(select.parentElement.classList.contains("custom-select")){
 
-        const old=select.parentElement;
+    console.log("Already converted:",id);
 
-        old.parentNode.insertBefore(select,old);
+    return;
 
-        old.remove();
-
-    }
+}
 
     const wrapper=document.createElement("div");
 
