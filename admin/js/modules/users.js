@@ -72,7 +72,6 @@ if(saveBtn){
     loadUsers();
 
 initUserSearch();
- setTimeout(()=>{
 
  setTimeout(()=>{
 
