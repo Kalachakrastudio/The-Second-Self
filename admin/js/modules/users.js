@@ -669,9 +669,15 @@ function showUserPopup(title,message){
 
 function closeUserPopup(){
 
-    document
-    .getElementById("userPopup")
-    .classList.remove("show");
+    const popup =
+    document.getElementById("userPopup");
+
+
+    if(popup){
+
+        popup.classList.remove("show");
+
+    }
 
 }
 
@@ -680,8 +686,35 @@ const closePopupBtn =
 document.getElementById("closeUserPopup");
 
 
+const userPopup =
+document.getElementById("userPopup");
+
+
+
 if(closePopupBtn){
 
-    closePopupBtn.onclick = closeUserPopup;
+    closePopupBtn.onclick = function(){
+
+        closeUserPopup();
+
+    };
+
+}
+
+
+
+if(userPopup){
+
+    userPopup.onclick = function(e){
+
+        // only close when clicking background
+
+        if(e.target === userPopup){
+
+            closeUserPopup();
+
+        }
+
+    };
 
 }
