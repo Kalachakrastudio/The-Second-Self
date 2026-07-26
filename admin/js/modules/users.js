@@ -491,13 +491,16 @@ user["Password"];
 
 
 
-document.getElementById("userRole").value =
-user["Role"];
+setSelectValue(
+"userRole",
+user["Role"]
+);
 
 
-
-document.getElementById("userStatus").value =
-user["Status"];
+setSelectValue(
+"userStatus",
+user["Status"]
+);
 
 
 
