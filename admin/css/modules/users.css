@@ -113,3 +113,75 @@ USER TOOLBAR
     }
 
 }
+/*=========================================
+USER MODAL
+=========================================*/
+
+.user-modal{
+
+    width:min(650px,95%);
+    max-height:90vh;
+    overflow:auto;
+
+}
+
+.form-grid{
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+
+}
+
+.form-group{
+
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+
+}
+
+.form-group label{
+
+    font-size:14px;
+    font-weight:600;
+
+}
+
+.form-group input,
+.form-group select{
+
+    width:100%;
+
+}
+
+.modal-footer{
+
+    display:flex;
+    justify-content:flex-end;
+    gap:12px;
+    margin-top:24px;
+
+}
+
+@media(max-width:768px){
+
+    .form-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .modal-footer{
+
+        flex-direction:column;
+
+    }
+
+    .modal-footer button{
+
+        width:100%;
+
+    }
+
+}
