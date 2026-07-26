@@ -74,6 +74,8 @@ if(saveBtn){
 initUserSearch();
  setTimeout(()=>{
 
+ setTimeout(()=>{
+
     rebuildCustomSelect("userRole");
     rebuildCustomSelect("userStatus");
 
