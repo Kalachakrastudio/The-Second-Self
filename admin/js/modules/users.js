@@ -247,6 +247,13 @@ ${user["Role"]}
 </span>
 
 
+<span class="user-status ${user["Status"].toLowerCase()}">
+
+${user["Status"]}
+
+</span>
+
+
 <div class="user-actions">
 
 
