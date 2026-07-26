@@ -73,12 +73,18 @@ if(saveBtn){
 
 initUserSearch();
 
- setTimeout(()=>{
+setTimeout(()=>{
 
     rebuildCustomSelect("userRole");
+
+},500);
+
+
+setTimeout(()=>{
+
     rebuildCustomSelect("userStatus");
 
-},300);
+},500);
 
 }
 /*=========================================
