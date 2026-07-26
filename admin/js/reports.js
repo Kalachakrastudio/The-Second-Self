@@ -92,7 +92,10 @@ return;
 document.getElementById("reportBody").innerHTML=
 `
 <tr>
-<td colspan="10">
+<td colspan="20" class="report-loading">
+
+<i class="fa-solid fa-spinner fa-spin"></i>
+<br>
 Loading data...
 </td>
 </tr>
@@ -175,7 +178,15 @@ if(data.length===0){
 body.innerHTML=
 `
 <tr>
-<td>No Data Found</td>
+<td colspan="20" class="report-loading">
+
+<i class="fa-solid fa-database"></i>
+
+<br>
+
+No Data Found
+
+</td>
 </tr>
 `;
 
