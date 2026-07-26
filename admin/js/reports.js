@@ -178,15 +178,33 @@ if(data.length===0){
 body.innerHTML=
 `
 <tr>
-<td colspan="20" class="report-loading">
 
-<i class="fa-solid fa-database"></i>
+<td colspan="20">
 
+
+<div class="empty-row">
+
+
+<i class="fa-solid fa-file-circle-xmark"></i>
+
+
+<p>
+No Report Data Found
+</p>
+
+
+<small>
+Select a report type to view data.
 <br>
+Choose Performers, Bookings, or Partners from the dropdown.
+</small>
 
-No Data Found
+
+</div>
+
 
 </td>
+
 </tr>
 `;
 
