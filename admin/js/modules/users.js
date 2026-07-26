@@ -52,16 +52,6 @@ function initUsers(){
 
     };
 
-
-
-    // IMPORTANT
-    // Build dropdown only once page loads
-
-    rebuildCustomSelect("userRole");
-
-    rebuildCustomSelect("userStatus");
-
-
 }
 /*=========================================
 USER MODAL
@@ -92,6 +82,18 @@ function openUserModal(){
 
 
     userModal.classList.add("show");
+
+
+
+    setTimeout(()=>{
+
+
+        rebuildCustomSelect("userRole");
+
+        rebuildCustomSelect("userStatus");
+
+
+    },100);
 
 
 }
