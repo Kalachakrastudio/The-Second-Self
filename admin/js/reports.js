@@ -157,7 +157,7 @@ Error loading data
 
 
 function renderReport(data){
-
+console.log("REPORT DATA:",data);
 
 const head =
 document.getElementById("reportHead");
@@ -173,47 +173,42 @@ body.innerHTML="";
 
 
 
-if(data.length===0){
+if(!data || data.length === 0){
 
-body.innerHTML = `
+    console.log("Empty report data");
 
-<tr>
+    body.innerHTML = `
 
-<td colspan="20">
+    <tr>
+
+        <td colspan="20">
+
+            <div class="report-empty">
+
+                <i class="fa-solid fa-file-circle-xmark"></i>
+
+                <h3>No Data Found</h3>
+
+                <p>
+                No records available for this report.
+                </p>
+
+                <small>
+                Select another report type or add data first.
+                </small>
+
+            </div>
+
+        </td>
+
+    </tr>
+
+    `;
 
 
-<div class="report-empty">
-
-
-<i class="fa-solid fa-file-circle-xmark"></i>
-
-
-<h3>No Report Data Found</h3>
-
-
-<p>
-Select a report type to view data.
-</p>
-
-
-<small>
-Choose Performers, Bookings, or Partners from the dropdown.
-</small>
-
-
-</div>
-
-
-</td>
-
-</tr>
-
-`;
-
-return;
+    return;
 
 }
-
 
 
 let columns =
