@@ -613,107 +613,61 @@ EMPTY TABLE STATE
 MODAL COMMON
 ==================================================*/
 
+.modal-overlay{
+
+    position:fixed;
+    inset:0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+
+    background:rgba(0,0,0,.70);
+
+    opacity:0;
+    visibility:hidden;
+
+    transition:.25s ease;
+
+    z-index:9999;
+
+}
+
+.modal-overlay.show{
+
+    opacity:1;
+    visibility:visible;
+
+}
 
 .modal{
 
+    width:min(900px,95vw);
+    max-height:90vh;
 
-position:fixed;
+    overflow-y:auto;
 
-inset:0;
+    background:var(--card);
 
+    border:1px solid var(--border);
 
-display:none;
+    border-radius:22px;
 
+    padding:30px;
 
-justify-content:center;
+    transform:scale(.95);
 
-align-items:center;
-
-
-padding:20px;
-
-
-background:rgba(0,0,0,.65);
-
-
-z-index:9999;
-
+    transition:.25s ease;
 
 }
 
+.modal-overlay.show .modal{
 
-
-.modal.show{
-
-display:flex;
+    transform:scale(1);
 
 }
-
-
-
-.modal-box{
-
-
-width:min(900px,95vw);
-
-
-max-height:90vh;
-
-
-overflow-y:auto;
-
-
-padding:35px;
-
-
-background:#111;
-
-
-border-radius:22px;
-
-
-border:1px solid var(--border);
-
-
-}
-
-
-
-.modal-header{
-
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-
-margin-bottom:25px;
-
-
-}
-
-
-
-.modal-header button{
-
-
-background:none;
-
-border:none;
-
-color:#fff;
-
-font-size:24px;
-
-cursor:pointer;
-
-
-}
-
-
-
 
 /*==================================================
 TICKET SECTION COMMON
