@@ -51,6 +51,13 @@ function initUsers(){
         }
 
     };
+    setTimeout(()=>{
+
+    rebuildCustomSelect("userRole");
+
+    rebuildCustomSelect("userStatus");
+
+},100);
 
 }
 /*=========================================
@@ -82,12 +89,6 @@ document.getElementById("userStatus").value="Active";
 
 
 userModal.classList.add("show");
-    setTimeout(()=>{
-
-    rebuildCustomSelect("userRole");
-    rebuildCustomSelect("userStatus");
-
-},50);
 
 
 }
