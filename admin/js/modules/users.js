@@ -676,6 +676,12 @@ function closeUserPopup(){
 }
 
 
-document
-.getElementById("closeUserPopup")
-.onclick = closeUserPopup;
+const closePopupBtn =
+document.getElementById("closeUserPopup");
+
+
+if(closePopupBtn){
+
+    closePopupBtn.onclick = closeUserPopup;
+
+}
