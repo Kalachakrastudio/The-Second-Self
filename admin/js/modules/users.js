@@ -91,8 +91,12 @@ function openUserModal(){
     document.getElementById("userStatus").value="Active";
 
 
-
     userModal.classList.add("show");
 
+
+}
+function closeModal(){
+
+    userModal.classList.remove("show");
 
 }
