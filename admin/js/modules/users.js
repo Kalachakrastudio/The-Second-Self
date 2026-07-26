@@ -85,15 +85,32 @@ function openUserModal(){
 
 
 
-    setTimeout(()=>{
+setTimeout(()=>{
 
+
+    const role =
+    document.getElementById("userRole");
+
+
+    const status =
+    document.getElementById("userStatus");
+
+
+    if(role && !role.parentElement.classList.contains("custom-select")){
 
         rebuildCustomSelect("userRole");
 
+    }
+
+
+    if(status && !status.parentElement.classList.contains("custom-select")){
+
         rebuildCustomSelect("userStatus");
 
+    }
 
-    },100);
+
+},100);
 
 
 }
