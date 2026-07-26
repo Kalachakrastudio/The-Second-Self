@@ -1028,3 +1028,42 @@ MODAL CLOSE BUTTON FIX
 
 
 }
+
+/*=========================================
+COMMON FORM STYLE
+=========================================*/
+
+input,
+select,
+textarea{
+
+    width:100%;
+    min-height:52px;
+
+    padding:0 18px;
+
+    background:var(--card-light);
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    color:var(--text);
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.25s;
+
+}
+
+textarea{
+
+    min-height:120px;
+
+    padding:16px 18px;
+
+    resize:vertical;
+
+}
