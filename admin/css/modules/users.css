@@ -178,27 +178,29 @@ USER MODAL
 
 }
 
-.user-native-select{
+.user-status{
 
-    height:52px;
-    width:100%;
-    padding:0 16px;
-
-    background:#181818;
-    color:#fff;
-
-    border:1px solid rgba(255,255,255,.08);
-
-    border-radius:12px;
-
-    cursor:pointer;
+    display:inline-block;
+    margin-top:8px;
+    padding:5px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:600;
 
 }
 
 
-.user-native-select option{
+.user-status.active{
 
-    background:#181818;
-    color:#fff;
+    background:#1f8f4d;
+    color:white;
+
+}
+
+
+.user-status.inactive{
+
+    background:#555;
+    color:white;
 
 }
