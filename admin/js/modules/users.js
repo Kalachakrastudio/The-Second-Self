@@ -2,7 +2,7 @@ let users = [];
 let editUserId = null;
 
 const USER_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbyG4NcvfirTM1jLOGvff3Cu1uMobEEsAWrs1cx3chAs14zqwp2rsD8MJv48YTHCBkXG/exec";
+"https://script.google.com/macros/s/AKfycbwEkM7C8FjrLRCBH9FQAOPT59-AxScThS13vO1G2Of1LobEdKp_Cq9eHcOj2ck7HH-Z/exec";
 
 let userModal;
 let addUserBtn;
