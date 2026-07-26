@@ -72,6 +72,8 @@ if(saveBtn){
     loadUsers();
 
 initUserSearch();
+ rebuildCustomSelect("userRole");
+rebuildCustomSelect("userStatus");
 }
 /*=========================================
 USER MODAL
