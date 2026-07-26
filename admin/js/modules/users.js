@@ -46,7 +46,7 @@ USER MODAL
 =========================================*/
 
 function openUserModal(){
-
+console.log("Open Modal Clicked");
     document.getElementById("userModalTitle").textContent =
     "Add User";
 
