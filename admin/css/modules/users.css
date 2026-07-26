@@ -117,14 +117,6 @@ USER TOOLBAR
 USER MODAL
 =========================================*/
 
-.user-modal{
-
-    width:min(650px,95%);
-    max-height:90vh;
-    overflow:auto;
-
-}
-
 .form-grid{
 
     display:grid;
