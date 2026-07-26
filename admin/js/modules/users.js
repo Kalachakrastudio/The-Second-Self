@@ -72,6 +72,12 @@ if(saveBtn){
     loadUsers();
 
 initUserSearch();
+ setTimeout(()=>{
+
+    rebuildCustomSelect("userRole");
+    rebuildCustomSelect("userStatus");
+
+},300);
 
 }
 /*=========================================
@@ -107,36 +113,7 @@ document.getElementById("userRole")
 
 
     userModal.classList.add("show");
-setTimeout(()=>{
 
-    const role =
-    document.getElementById("userRole");
-
-    const status =
-    document.getElementById("userStatus");
-
-
-    if(
-        role &&
-        !role.closest(".custom-select")
-    ){
-
-        rebuildCustomSelect("userRole");
-
-    }
-
-
-    if(
-        status &&
-        !status.closest(".custom-select")
-    ){
-
-        rebuildCustomSelect("userStatus");
-
-    }
-
-
-},100);
 }
 function closeModal(){
 
@@ -155,7 +132,7 @@ function updateCustomDropdown(id,value){
 
 
     const wrapper =
-    select.closest(".custom-select");
+select.parentElement;
 
 
     if(!wrapper){
