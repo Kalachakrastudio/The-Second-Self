@@ -31,10 +31,25 @@ function rebuildCustomSelect(id){
     select.selectedIndex = 0;
 }
 
+let currentIndex = select.selectedIndex;
+
+
+if(
+    currentIndex < 0 ||
+    !select.options[currentIndex]
+){
+
+    currentIndex = 0;
+
+    select.selectedIndex = 0;
+
+}
+
+
 selected.textContent =
-select.options[select.selectedIndex]
-    ? select.options[select.selectedIndex].text
-    : "";
+select.options[currentIndex]
+? select.options[currentIndex].text
+: "";
 
     wrapper.appendChild(selected);
 
@@ -44,7 +59,16 @@ select.options[select.selectedIndex]
 if(select.options.length===0){
     return;
 }
-    for(let i=0;i<select.options.length;i++){
+    if(!select.options || select.options.length === 0){
+
+    console.log("No options found for:", id);
+
+    return;
+
+}
+
+
+for(let i=0;i<select.options.length;i++){
 
         const item=document.createElement("div");
 
