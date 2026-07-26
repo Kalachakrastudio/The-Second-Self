@@ -129,7 +129,7 @@ function openUserModal(){
 
         updateCustomDropdown(
             "userRole",
-            "Judge"
+            "Admin"
         );
 
 
