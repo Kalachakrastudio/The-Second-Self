@@ -204,3 +204,88 @@ USER MODAL
     color:white;
 
 }
+.user-popup{
+
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.7);
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    z-index:9999;
+
+}
+
+
+.user-popup.show{
+
+    display:flex;
+
+}
+
+
+.user-popup-box{
+
+    width:350px;
+
+    background:#121212;
+
+    border-radius:12px;
+
+    padding:30px;
+
+    text-align:center;
+
+    border:1px solid #333;
+
+}
+
+
+.user-popup-box i{
+
+    font-size:45px;
+
+    color:#22c55e;
+
+    margin-bottom:15px;
+
+}
+
+
+.user-popup-box h3{
+
+    color:white;
+
+    margin-bottom:10px;
+
+}
+
+
+.user-popup-box p{
+
+    color:#aaa;
+
+}
+
+
+.user-popup-box button{
+
+    margin-top:20px;
+
+    padding:10px 30px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#D71F28;
+
+    color:white;
+
+    cursor:pointer;
+
+}
