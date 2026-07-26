@@ -73,19 +73,6 @@ if(saveBtn){
 
 initUserSearch();
 
-setTimeout(()=>{
-
-    rebuildCustomSelect("userRole");
-
-},500);
-
-
-setTimeout(()=>{
-
-    rebuildCustomSelect("userStatus");
-
-},500);
-
 }
 /*=========================================
 USER MODAL
@@ -120,33 +107,44 @@ document.getElementById("userRole")
 
 
     userModal.classList.add("show");
+ setTimeout(()=>{
+
+    rebuildCustomSelect("userRole");
+    rebuildCustomSelect("userStatus");
+
+},100);
 
 }
 function closeModal(){
 
     userModal.classList.remove("show");
+ 
 
 }
 
 function updateCustomDropdown(id,value){
 
-    const select=document.getElementById(id);
+    const select =
+    document.querySelector("#"+id+" select") ||
+    document.getElementById(id);
 
-    if(!select) return;
+
+    if(!select) {
+        console.log("Select missing:",id);
+        return;
+    }
 
 
     select.value=value;
 
 
     const wrapper =
-select.parentElement;
+    select.closest(".custom-select");
 
 
     if(!wrapper){
-
-        console.log("Dropdown wrapper missing:",id);
+        console.log("Wrapper missing:",id);
         return;
-
     }
 
 
@@ -157,14 +155,14 @@ select.parentElement;
     if(selected){
 
         selected.textContent =
-        value;
+        select.options[select.selectedIndex].text;
 
     }
 
 
     wrapper
     .querySelectorAll(".select-items div")
-    .forEach(item=>{
+    .forEach((item,index)=>{
 
 
         item.classList.remove(
@@ -172,7 +170,9 @@ select.parentElement;
         );
 
 
-        if(item.textContent.trim()==value){
+        if(
+            select.options[index].value == value
+        ){
 
             item.classList.add(
                 "same-as-selected"
@@ -183,7 +183,6 @@ select.parentElement;
     });
 
 }
-
 async function loadUsers(){
 
     try{
