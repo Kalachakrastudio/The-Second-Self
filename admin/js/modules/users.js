@@ -70,6 +70,8 @@ if(saveBtn){
     };
 
     loadUsers();
+
+initUserSearch();
 }
 /*=========================================
 USER MODAL
@@ -77,40 +79,98 @@ USER MODAL
 
 function openUserModal(){
 
-
-console.log("Open Modal Clicked");
-
-
-editUserId = null;
+    console.log("Open Modal Clicked");
 
 
-document.getElementById("userModalTitle").textContent =
-"Add User";
+    document.getElementById("userModalTitle").textContent =
+    "Add User";
 
 
-document.getElementById("userId").value="";
+    document.getElementById("userId").value="";
 
-document.getElementById("userName").value="";
-document.getElementById("userMobile").value="";
-document.getElementById("userEmail").value="";
-document.getElementById("userUsername").value="";
-document.getElementById("userPassword").value="";
-
-
-document.getElementById("userRole").value="Judge";
-
-document.getElementById("userStatus").value="Active";
+    document.getElementById("userName").value="";
+    document.getElementById("userMobile").value="";
+    document.getElementById("userEmail").value="";
+    document.getElementById("userUsername").value="";
+    document.getElementById("userPassword").value="";
 
 
-userModal.classList.add("show");
+    // RESET VALUES
 
+    setSelectValue(
+        "userRole",
+        "Judge"
+    );
+
+
+    setSelectValue(
+        "userStatus",
+        "Active"
+    );
+
+
+    userModal.classList.add("show");
 
 }
+
+
 function closeModal(){
 
     userModal.classList.remove("show");
 
 }
+
+function setSelectValue(id,value){
+
+    const select=document.getElementById(id);
+
+    if(!select) return;
+
+
+    select.value=value;
+
+
+    const wrapper=
+    select.parentElement;
+
+
+    const selected=
+    wrapper.querySelector(".select-selected");
+
+
+    if(selected){
+
+        selected.textContent =
+        select.options[select.selectedIndex].text;
+
+    }
+
+
+    wrapper
+    .querySelectorAll(".select-items div")
+    .forEach((item,index)=>{
+
+
+        item.classList.remove(
+            "same-as-selected"
+        );
+
+
+        if(
+            select.options[index].value == value
+        ){
+
+            item.classList.add(
+                "same-as-selected"
+            );
+
+        }
+
+
+    });
+
+}
+
 async function loadUsers(){
 
     try{
@@ -149,7 +209,7 @@ document.getElementById("usersGrid");
 grid.innerHTML="";
 
 
-if(users.length===0){
+if(data.length===0){
 
 grid.innerHTML=`
 
@@ -446,13 +506,23 @@ userModal.classList.add("show");
 
 
 }
-document
-.getElementById("userSearch")
-.addEventListener("input",function(){
+
+
+function initUserSearch(){
+
+const search =
+document.getElementById("userSearch");
+
+
+if(!search) return;
+
+
+search.oninput=function(){
 
 
 const value =
-this.value.toLowerCase();
+this.value.toLowerCase().trim();
+
 
 
 const filtered =
@@ -461,19 +531,31 @@ users.filter(user=>{
 
 return (
 
-String(user["Name"]).toLowerCase().includes(value)
+String(user["Name"] || "")
+.toLowerCase()
+.includes(value)
+
 
 ||
 
-String(user["Email"]).toLowerCase().includes(value)
+String(user["Email"] || "")
+.toLowerCase()
+.includes(value)
+
 
 ||
 
-String(user["Username"]).toLowerCase().includes(value)
+String(user["Username"] || "")
+.toLowerCase()
+.includes(value)
+
 
 ||
 
-String(user["Role"]).toLowerCase().includes(value)
+String(user["Role"] || "")
+.toLowerCase()
+.includes(value)
+
 
 );
 
@@ -484,4 +566,7 @@ String(user["Role"]).toLowerCase().includes(value)
 renderUsers(filtered);
 
 
-});
+};
+
+
+}
