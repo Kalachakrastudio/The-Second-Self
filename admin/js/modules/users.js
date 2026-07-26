@@ -72,8 +72,7 @@ if(saveBtn){
     loadUsers();
 
 initUserSearch();
- rebuildCustomSelect("userRole");
-rebuildCustomSelect("userStatus");
+
 }
 /*=========================================
 USER MODAL
@@ -108,7 +107,36 @@ document.getElementById("userRole")
 
 
     userModal.classList.add("show");
+setTimeout(()=>{
 
+    const role =
+    document.getElementById("userRole");
+
+    const status =
+    document.getElementById("userStatus");
+
+
+    if(
+        role &&
+        !role.closest(".custom-select")
+    ){
+
+        rebuildCustomSelect("userRole");
+
+    }
+
+
+    if(
+        status &&
+        !status.closest(".custom-select")
+    ){
+
+        rebuildCustomSelect("userStatus");
+
+    }
+
+
+},100);
 }
 function closeModal(){
 
