@@ -12,44 +12,60 @@ function initReports(){
 console.log("Reports loaded");
 
 
-
 const type =
 document.getElementById("reportType");
 
 
-if(!type)
-return;
+if(!type){
+    console.log("Report dropdown missing");
+    return;
+}
 
 
 
 type.onchange=function(){
 
-loadReport(this.value);
+    console.log(
+        "Selected:",
+        this.value
+    );
+
+    loadReport(this.value);
 
 };
 
 
 
-document
-.getElementById("reportSearch")
-.oninput=function(){
+const search =
+document.getElementById("reportSearch");
 
-filterReport(this.value);
+
+if(search){
+
+search.oninput=function(){
+
+    filterReport(this.value);
 
 };
-
-
-
-document
-.getElementById("exportReport")
-.onclick=
-exportReport;
-
-
 
 }
 
 
+
+
+const exportBtn =
+document.getElementById("exportReport");
+
+
+if(exportBtn){
+
+exportBtn.onclick =
+exportReport;
+
+}
+
+
+}
 
 async function loadReport(type){
 
@@ -95,7 +111,14 @@ console.log(err);
 
 }
 
-
+document.getElementById("reportBody").innerHTML=
+`
+<tr>
+<td colspan="10">
+Loading data...
+</td>
+</tr>
+`;
 
 }
 
