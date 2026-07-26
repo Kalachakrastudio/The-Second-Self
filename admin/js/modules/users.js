@@ -158,9 +158,11 @@ function updateCustomDropdown(id,value){
     select.closest(".custom-select");
 
 
-    if(!wrapper) {
-        console.log("No wrapper found",id);
+    if(!wrapper){
+
+        console.log("Dropdown wrapper missing:",id);
         return;
+
     }
 
 
@@ -171,16 +173,14 @@ function updateCustomDropdown(id,value){
     if(selected){
 
         selected.textContent =
-        select.options[select.selectedIndex].text;
+        value;
 
     }
 
 
-    const items =
-    wrapper.querySelectorAll(".select-items div");
-
-
-    items.forEach(item=>{
+    wrapper
+    .querySelectorAll(".select-items div")
+    .forEach(item=>{
 
 
         item.classList.remove(
@@ -188,10 +188,7 @@ function updateCustomDropdown(id,value){
         );
 
 
-        if(
-            item.textContent.trim() ==
-            value
-        ){
+        if(item.textContent.trim()==value){
 
             item.classList.add(
                 "same-as-selected"
@@ -199,11 +196,10 @@ function updateCustomDropdown(id,value){
 
         }
 
-
     });
 
-
 }
+
 async function loadUsers(){
 
     try{
