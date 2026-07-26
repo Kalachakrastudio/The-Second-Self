@@ -1,20 +1,28 @@
 function rebuildCustomSelect(id){
     console.log("Dropdown rebuild:", id);
 
-    const select=document.getElementById(id);
+   const select = document.getElementById(id);
 
 
 if(!select){
 
-    console.log("Select not found:",id);
+    console.log("Select not found:", id);
     return;
 
 }
 
 
-if(select.options.length===0){
+if(select.tagName !== "SELECT"){
 
-    console.log("No options:",id);
+    console.log("Not a select element:", id);
+    return;
+
+}
+
+
+if(!select.options || select.options.length === 0){
+
+    console.log("No options:", id);
     return;
 
 }
