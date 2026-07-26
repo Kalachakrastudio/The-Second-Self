@@ -409,10 +409,14 @@ await response.json();
 if(result.success){
 
 
-alert(
-editUserId 
-? "User Updated"
-: "User Added"
+showUserPopup(
+    editUserId
+    ? "User Updated"
+    : "User Added",
+    
+    editUserId
+    ? "User details updated successfully"
+    : "New user added successfully"
 );
 
 
@@ -476,7 +480,10 @@ await response.json();
 if(result.success){
 
 
-alert("User Deleted");
+showUserPopup(
+    "User Deleted",
+    "User removed successfully"
+);
 
 
 loadUsers();
@@ -636,3 +643,39 @@ renderUsers(filtered);
 
 
 }
+function showUserPopup(title,message){
+
+    const popup =
+    document.getElementById("userPopup");
+
+
+    const popupTitle =
+    document.getElementById("userPopupTitle");
+
+
+    const popupMessage =
+    document.getElementById("userPopupMessage");
+
+
+    popupTitle.textContent=title;
+
+    popupMessage.textContent=message;
+
+
+    popup.classList.add("show");
+
+}
+
+
+function closeUserPopup(){
+
+    document
+    .getElementById("userPopup")
+    .classList.remove("show");
+
+}
+
+
+document
+.getElementById("closeUserPopup")
+.onclick = closeUserPopup;
