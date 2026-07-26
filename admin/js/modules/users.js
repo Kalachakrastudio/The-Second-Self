@@ -31,11 +31,6 @@ function initUsers(){
 closeUserModal.onclick = closeModal;
 
 cancelUser.onclick = closeModal;
-// BUILD CUSTOM DROPDOWNS
-
-rebuildCustomSelect("userRole");
-
-rebuildCustomSelect("userStatus");
 
 
 userModal.onclick = function(e){
@@ -81,9 +76,37 @@ function openUserModal(){
     userModal.classList.add("show");
 
 
+setTimeout(()=>{
+
+    initUserDropdowns();
+
+},100);
+
+
 }
 function closeModal(){
 
     userModal.classList.remove("show");
+
+}
+function initUserDropdowns(){
+console.log("User dropdown init");
+    let role = document.getElementById("userRole");
+
+    let status = document.getElementById("userStatus");
+
+
+    if(role && !role.parentElement.classList.contains("custom-select")){
+
+        rebuildCustomSelect("userRole");
+
+    }
+
+
+    if(status && !status.parentElement.classList.contains("custom-select")){
+
+        rebuildCustomSelect("userStatus");
+
+    }
 
 }
