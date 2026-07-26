@@ -2,9 +2,21 @@ function rebuildCustomSelect(id){
     console.log("Dropdown rebuild:", id);
 
     const select=document.getElementById(id);
-if(!select || !select.options || select.options.length===0){
-    console.log("Skip dropdown:",id);
+
+
+if(!select){
+
+    console.log("Select not found:",id);
     return;
+
+}
+
+
+if(select.options.length===0){
+
+    console.log("No options:",id);
+    return;
+
 }
 
     if(!select) return;
