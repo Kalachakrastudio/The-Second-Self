@@ -2,7 +2,7 @@ let reportData=[];
 
 
 const REPORT_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycby92rQvl9pO_KG6Uy7KZ3Tr5ksV_-Jy6vWecVfILtjTmac9kkHcvVrt4G3U99YOHTTE/exec";
+"https://script.google.com/macros/s/AKfycbwognwSjNS52BkrhCAk3gyi2Z8nb-n2irDhXc_OuNdQMDDnmVuWi_sMQpHV3S8sOEKU/exec";
 
 
 
