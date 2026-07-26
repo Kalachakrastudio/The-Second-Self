@@ -8,7 +8,6 @@ const REPORT_SCRIPT_URL =
 
 function initReports(){
 
-
 console.log("Reports loaded");
 
 
@@ -17,20 +16,34 @@ document.getElementById("reportType");
 
 
 if(!type){
-    console.log("Report dropdown missing");
-    return;
+
+console.log("Report dropdown missing");
+
+return;
+
 }
+
+
+// create custom dropdown
+
+setTimeout(()=>{
+
+    rebuildCustomSelect("reportType");
+
+},100);
 
 
 
 type.onchange=function(){
 
-    console.log(
-        "Selected:",
-        this.value
-    );
+console.log(
+"Selected:",
+this.value
+);
 
-    loadReport(this.value);
+
+loadReport(this.value);
+
 
 };
 
@@ -44,7 +57,7 @@ if(search){
 
 search.oninput=function(){
 
-    filterReport(this.value);
+filterReport(this.value);
 
 };
 
@@ -67,11 +80,23 @@ exportReport;
 
 }
 
+
 async function loadReport(type){
 
 
 if(!type)
 return;
+
+
+
+document.getElementById("reportBody").innerHTML=
+`
+<tr>
+<td colspan="10">
+Loading data...
+</td>
+</tr>
+`;
 
 
 
@@ -109,16 +134,18 @@ catch(err){
 
 console.log(err);
 
-}
 
 document.getElementById("reportBody").innerHTML=
 `
 <tr>
 <td colspan="10">
-Loading data...
+Error loading data
 </td>
 </tr>
 `;
+
+}
+
 
 }
 
