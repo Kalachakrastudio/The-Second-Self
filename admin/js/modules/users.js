@@ -60,10 +60,14 @@ console.log("Open Modal Clicked");
     document.getElementById("userRole").value="Judge";
     document.getElementById("userStatus").value="Active";
 
+userModal.classList.add("show");
+
+setTimeout(()=>{
+
     rebuildCustomSelect("userRole");
     rebuildCustomSelect("userStatus");
-    
-    userModal.classList.add("show");
+
+},20);
 
 }
 
