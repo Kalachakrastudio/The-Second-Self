@@ -175,27 +175,28 @@ body.innerHTML="";
 
 if(data.length===0){
 
-body.innerHTML=
-`
+body.innerHTML = `
+
 <tr>
 
 <td colspan="20">
 
 
-<div class="empty-row">
+<div class="report-empty">
 
 
 <i class="fa-solid fa-file-circle-xmark"></i>
 
 
+<h3>No Report Data Found</h3>
+
+
 <p>
-No Report Data Found
+Select a report type to view data.
 </p>
 
 
 <small>
-Select a report type to view data.
-<br>
 Choose Performers, Bookings, or Partners from the dropdown.
 </small>
 
@@ -206,6 +207,7 @@ Choose Performers, Bookings, or Partners from the dropdown.
 </td>
 
 </tr>
+
 `;
 
 return;
