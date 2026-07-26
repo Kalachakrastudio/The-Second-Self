@@ -59,9 +59,19 @@ padding-left:48px;
 
 
 
-/* TABLE */
+/*=========================================
+REPORT TABLE CONTAINER
+=========================================*/
+
 
 .report-table-wrapper{
+
+width:100%;
+
+min-height:500px;
+
+max-height:calc(100vh - 260px);
+
 
 background:var(--card);
 
@@ -69,19 +79,74 @@ border:1px solid var(--border);
 
 border-radius:20px;
 
+
 overflow:auto;
+
+
+padding:0;
 
 }
 
 
+
+/* keep table wide */
 
 .report-table{
 
-min-width:1200px;
+width:max-content;
+
+min-width:100%;
+
+border-collapse:collapse;
 
 }
 
 
+
+/* header fixed feel */
+
+.report-table th{
+
+white-space:nowrap;
+
+position:sticky;
+
+top:0;
+
+z-index:2;
+
+}
+
+
+
+/* cells */
+
+.report-table td,
+.report-table th{
+
+white-space:nowrap;
+
+}
+
+
+
+/* loading / empty state */
+
+.report-table-wrapper tbody td{
+
+
+height:250px;
+
+text-align:center;
+
+vertical-align:middle;
+
+font-size:18px;
+
+color:#888;
+
+
+}
 
 /* MOBILE */
 
@@ -103,6 +168,21 @@ align-items:stretch;
 width:100%;
 
 }
+.report-table-wrapper{
 
+min-height:450px;
+
+max-height:calc(100vh - 220px);
+
+border-radius:16px;
+
+}
+
+
+.report-table{
+
+min-width:1200px;
+
+}
 
 }
