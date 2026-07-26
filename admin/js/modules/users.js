@@ -57,17 +57,54 @@ console.log("Open Modal Clicked");
     document.getElementById("userEmail").value="";
     document.getElementById("userUsername").value="";
     document.getElementById("userPassword").value="";
-    document.getElementById("userRole").value="Judge";
+    setTimeout(()=>{
+
+    let role=document.getElementById("userRole");
+
+    role.value="Judge";
+
+    role.parentElement
+    .querySelector(".select-selected")
+    .textContent="Judge";
+
+
+
+    let status=document.getElementById("userStatus");
+
+    status.value="Active";
+
+    status.parentElement
+    .querySelector(".select-selected")
+    .textContent="Active";
+
+
+},60);
     document.getElementById("userStatus").value="Active";
 
 userModal.classList.add("show");
 
 setTimeout(()=>{
 
-    rebuildCustomSelect("userRole");
-    rebuildCustomSelect("userStatus");
+    if(
+        !document.querySelector("#userRole")
+        .parentElement.classList.contains("custom-select")
+    ){
 
-},20);
+        rebuildCustomSelect("userRole");
+
+    }
+
+
+    if(
+        !document.querySelector("#userStatus")
+        .parentElement.classList.contains("custom-select")
+    ){
+
+        rebuildCustomSelect("userStatus");
+
+    }
+
+},50);
 
 }
 
