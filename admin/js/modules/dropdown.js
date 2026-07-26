@@ -2,8 +2,8 @@ function rebuildCustomSelect(id){
     console.log("Dropdown rebuild:", id);
 
     const select=document.getElementById(id);
-    if(!select || select.tagName!=="SELECT"){
-    console.log("Invalid dropdown:",id);
+ if(!select){
+    console.log("Dropdown not found:",id);
     return;
 }
 
