@@ -27,18 +27,26 @@ function initUsers(){
     }
 
     addUserBtn.onclick = openUserModal;
-    closeUserModal.onclick = closeModal;
-    cancelUser.onclick = closeModal;
 
-    userModal.onclick = function(e){
+closeUserModal.onclick = closeModal;
 
-        if(e.target===userModal){
+cancelUser.onclick = closeModal;
+// BUILD CUSTOM DROPDOWNS
 
-            closeModal();
+rebuildCustomSelect("userRole");
 
-        }
+rebuildCustomSelect("userStatus");
 
-    };
+
+userModal.onclick = function(e){
+
+    if(e.target===userModal){
+
+        closeModal();
+
+    }
+
+};
 
 }
 /*=========================================
@@ -46,9 +54,13 @@ USER MODAL
 =========================================*/
 
 function openUserModal(){
-console.log("Open Modal Clicked");
+
+    console.log("Open Modal Clicked");
+
+
     document.getElementById("userModalTitle").textContent =
     "Add User";
+
 
     document.getElementById("userId").value="";
 
@@ -57,57 +69,19 @@ console.log("Open Modal Clicked");
     document.getElementById("userEmail").value="";
     document.getElementById("userUsername").value="";
     document.getElementById("userPassword").value="";
-    setTimeout(()=>{
-
-    let role=document.getElementById("userRole");
-
-    role.value="Judge";
-
-    role.parentElement
-    .querySelector(".select-selected")
-    .textContent="Judge";
 
 
+    // SET NORMAL SELECT VALUES
 
-    let status=document.getElementById("userStatus");
+    document.getElementById("userRole").value="Judge";
 
-    status.value="Active";
-
-    status.parentElement
-    .querySelector(".select-selected")
-    .textContent="Active";
-
-
-},60);
     document.getElementById("userStatus").value="Active";
 
-userModal.classList.add("show");
 
-setTimeout(()=>{
+    userModal.classList.add("show");
 
-    if(
-        !document.querySelector("#userRole")
-        .parentElement.classList.contains("custom-select")
-    ){
-
-        rebuildCustomSelect("userRole");
-
-    }
-
-
-    if(
-        !document.querySelector("#userStatus")
-        .parentElement.classList.contains("custom-select")
-    ){
-
-        rebuildCustomSelect("userStatus");
-
-    }
-
-},50);
 
 }
-
 function closeModal(){
 
     userModal.classList.remove("show");
