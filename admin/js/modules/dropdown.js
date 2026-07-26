@@ -1,4 +1,5 @@
 function rebuildCustomSelect(id){
+    console.log("Dropdown rebuild:", id);
 
     const select=document.getElementById(id);
 
