@@ -140,7 +140,7 @@ async function loadUsers(){
     }
 
 }
-function renderUsers(){
+function renderUsers(data = users){
 
 const grid =
 document.getElementById("usersGrid");
@@ -168,8 +168,7 @@ return;
 }
 
 
-
-users.forEach((user,index)=>{
+data.forEach((user)=>{
 
 
 grid.innerHTML+=`
@@ -177,17 +176,22 @@ grid.innerHTML+=`
 <div class="user-card">
 
 
-<h3>${user.name}</h3>
+<h3>${user["Name"]}</h3>
 
 
 <p>
-${user.email}
+${user["Email"]}
+</p>
+
+
+<p>
+ID: ${user["User ID"]}
 </p>
 
 
 <span class="user-role">
 
-${user.role}
+${user["Role"]}
 
 </span>
 
@@ -442,3 +446,42 @@ userModal.classList.add("show");
 
 
 }
+document
+.getElementById("userSearch")
+.addEventListener("input",function(){
+
+
+const value =
+this.value.toLowerCase();
+
+
+const filtered =
+users.filter(user=>{
+
+
+return (
+
+String(user["Name"]).toLowerCase().includes(value)
+
+||
+
+String(user["Email"]).toLowerCase().includes(value)
+
+||
+
+String(user["Username"]).toLowerCase().includes(value)
+
+||
+
+String(user["Role"]).toLowerCase().includes(value)
+
+);
+
+
+});
+
+
+renderUsers(filtered);
+
+
+});
