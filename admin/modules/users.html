@@ -30,5 +30,149 @@
         class="users-grid">
 
     </div>
+    <!--=========================================
+ADD / EDIT USER MODAL
+==========================================-->
+
+<div class="modal-overlay" id="userModal">
+
+    <div class="modal user-modal">
+
+        <div class="modal-header">
+
+            <h3 id="userModalTitle">
+                Add User
+            </h3>
+
+            <button
+                class="modal-close"
+                id="closeUserModal">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <input
+                type="hidden"
+                id="userId">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+
+                    <label>Name</label>
+
+                    <input
+                        type="text"
+                        id="userName"
+                        placeholder="Full Name">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Mobile</label>
+
+                    <input
+                        type="text"
+                        id="userMobile"
+                        placeholder="9876543210">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Email</label>
+
+                    <input
+                        type="email"
+                        id="userEmail"
+                        placeholder="example@email.com">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Username</label>
+
+                    <input
+                        type="text"
+                        id="userUsername"
+                        placeholder="Username">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Password</label>
+
+                    <input
+                        type="password"
+                        id="userPassword"
+                        placeholder="Password">
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Role</label>
+
+                    <select id="userRole">
+
+                        <option>Admin</option>
+
+                        <option>Judge</option>
+
+                        <option>Scanner</option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Status</label>
+
+                    <select id="userStatus">
+
+                        <option>Active</option>
+
+                        <option>Inactive</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+
+            <button
+                class="secondary-btn"
+                id="cancelUser">
+
+                Cancel
+
+            </button>
+
+            <button
+                class="primary-btn"
+                id="saveUser">
+
+                Save User
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
 </div>
