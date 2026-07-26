@@ -1,4 +1,5 @@
 let users = [];
+let editUserId = null;
 
 const USER_SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbyG4NcvfirTM1jLOGvff3Cu1uMobEEsAWrs1cx3chAs14zqwp2rsD8MJv48YTHCBkXG/exec";
@@ -77,23 +78,26 @@ USER MODAL
 function openUserModal(){
 
 
-    console.log("Open Modal Clicked");
+console.log("Open Modal Clicked");
 
 
-    document.getElementById("userModalTitle").textContent =
-    "Add User";
+editUserId = null;
 
 
-    document.getElementById("userId").value="";
-
-    document.getElementById("userName").value="";
-    document.getElementById("userMobile").value="";
-    document.getElementById("userEmail").value="";
-    document.getElementById("userUsername").value="";
-    document.getElementById("userPassword").value="";
+document.getElementById("userModalTitle").textContent =
+"Add User";
 
 
-    document.getElementById("userRole").value="Judge";
+document.getElementById("userId").value="";
+
+document.getElementById("userName").value="";
+document.getElementById("userMobile").value="";
+document.getElementById("userEmail").value="";
+document.getElementById("userUsername").value="";
+document.getElementById("userPassword").value="";
+
+
+document.getElementById("userRole").value="Judge";
 
 document.getElementById("userStatus").value="Active";
 
@@ -193,7 +197,7 @@ ${user.role}
 
 <button
 class="action-btn"
-onclick="editUser(${index})">
+onclick="editUser('${user["User ID"]}')">
 
 <i class="fa-solid fa-pen"></i>
 
@@ -203,7 +207,7 @@ onclick="editUser(${index})">
 
 <button
 class="action-btn"
-onclick="deleteUser(${index})">
+onclick="deleteUser('${user["User ID"]}')">
 
 <i class="fa-solid fa-trash"></i>
 
@@ -228,24 +232,26 @@ async function saveUser(){
 const user={
 
 
+action:"saveUser",
+
 name:
-document.getElementById("userName").value.trim(),
+document.getElementById("userName").value,
 
 
 mobile:
-document.getElementById("userMobile").value.trim(),
+document.getElementById("userMobile").value,
 
 
 email:
-document.getElementById("userEmail").value.trim(),
+document.getElementById("userEmail").value,
 
 
 username:
-document.getElementById("userUsername").value.trim(),
+document.getElementById("userUsername").value,
 
 
 password:
-document.getElementById("userPassword").value.trim(),
+document.getElementById("userPassword").value,
 
 
 role:
@@ -260,13 +266,126 @@ document.getElementById("userStatus").value
 
 
 
-if(
-!user.name ||
-!user.username ||
-!user.password
-){
+try{
 
-alert("Please fill required fields");
+
+const response =
+await fetch(USER_SCRIPT_URL,{
+
+method:"POST",
+
+headers:{
+"Content-Type":"text/plain;charset=utf-8"
+},
+
+body:JSON.stringify(user)
+
+});
+
+
+const result =
+await response.json();
+
+
+
+if(result.success){
+
+
+alert("User Added");
+
+
+closeModal();
+
+
+loadUsers();
+
+
+}
+
+
+}
+catch(error){
+
+console.log(error);
+
+alert("Error saving user");
+
+}
+
+
+}
+async function deleteUser(id){
+
+
+if(!confirm("Delete this user?")) return;
+
+
+
+try{
+
+
+const response =
+await fetch(USER_SCRIPT_URL,{
+
+method:"POST",
+
+headers:{
+"Content-Type":"text/plain;charset=utf-8"
+},
+
+body:JSON.stringify({
+
+action:"deleteUser",
+
+id:id
+
+})
+
+});
+
+
+
+const result =
+await response.json();
+
+
+
+if(result.success){
+
+
+alert("User Deleted");
+
+
+loadUsers();
+
+
+}
+
+
+
+}
+catch(error){
+
+console.log(error);
+
+}
+
+
+}
+
+function editUser(id){
+
+
+const user =
+users.find(
+u => String(u["User ID"]) == String(id)
+);
+
+
+
+if(!user){
+
+alert("User not found");
 
 return;
 
@@ -274,13 +393,52 @@ return;
 
 
 
-users.push(user);
+editUserId=id;
 
 
-renderUsers();
+
+document.getElementById("userModalTitle").textContent =
+"Edit User";
 
 
-closeModal();
+
+document.getElementById("userName").value =
+user["Name"];
+
+
+
+document.getElementById("userMobile").value =
+user["Mobile"];
+
+
+
+document.getElementById("userEmail").value =
+user["Email"];
+
+
+
+document.getElementById("userUsername").value =
+user["Username"];
+
+
+
+document.getElementById("userPassword").value =
+user["Password"];
+
+
+
+document.getElementById("userRole").value =
+user["Role"];
+
+
+
+document.getElementById("userStatus").value =
+user["Status"];
+
+
+
+userModal.classList.add("show");
+
 
 
 }
