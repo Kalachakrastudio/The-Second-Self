@@ -191,29 +191,38 @@ REPORT EMPTY STATE
 =========================================*/
 
 
-.report-table tbody .empty-row{
+.report-empty{
 
 
 height:350px;
+
 
 display:flex;
 
 flex-direction:column;
 
+justify-content:center;
+
 align-items:center;
 
-justify-content:center;
+
+text-align:center;
+
+
+width:100%;
 
 
 }
 
 
-.report-table tbody .empty-row i{
+.report-empty i{
 
 
-font-size:50px;
+font-size:55px;
+
 
 color:var(--primary);
+
 
 margin-bottom:20px;
 
@@ -222,14 +231,14 @@ margin-bottom:20px;
 
 
 
-.report-table tbody .empty-row p{
+.report-empty h3{
 
 
-font-size:20px;
+font-size:22px;
 
-font-weight:600;
 
 color:#fff;
+
 
 margin-bottom:10px;
 
@@ -238,14 +247,29 @@ margin-bottom:10px;
 
 
 
-.report-table tbody .empty-row small{
+.report-empty p{
+
+
+color:#fff;
+
+
+font-size:16px;
+
+
+margin-bottom:5px;
+
+
+}
+
+
+
+.report-empty small{
+
+
+color:#888;
 
 
 font-size:14px;
-
-line-height:1.7;
-
-color:#888;
 
 
 }
