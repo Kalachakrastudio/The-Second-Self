@@ -66,13 +66,6 @@ function openUserModal(){
     document.getElementById("userPassword").value="";
 
 
-    // SET NORMAL SELECT VALUES
-
-    document.getElementById("userRole").value="Judge";
-
-    document.getElementById("userStatus").value="Active";
-
-
     userModal.classList.add("show");
 
 
@@ -89,23 +82,40 @@ function closeModal(){
     userModal.classList.remove("show");
 
 }
-function initUserDropdowns(){
-console.log("User dropdown init");
-    let role = document.getElementById("userRole");
 
+
+function initUserDropdowns(){
+
+    console.log("User dropdown init");
+
+
+    let role = document.getElementById("userRole");
     let status = document.getElementById("userStatus");
 
 
-    if(role && !role.parentElement.classList.contains("custom-select")){
+    if(role){
 
-        rebuildCustomSelect("userRole");
+        role.selectedIndex = 1; // Judge
+
+        if(!role.parentElement.classList.contains("custom-select")){
+
+            rebuildCustomSelect("userRole");
+
+        }
 
     }
 
 
-    if(status && !status.parentElement.classList.contains("custom-select")){
 
-        rebuildCustomSelect("userStatus");
+    if(status){
+
+        status.selectedIndex = 0; // Active
+
+        if(!status.parentElement.classList.contains("custom-select")){
+
+            rebuildCustomSelect("userStatus");
+
+        }
 
     }
 
