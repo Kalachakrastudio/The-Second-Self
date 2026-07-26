@@ -80,7 +80,8 @@ USER MODAL
 
 function openUserModal(){
 
- editUserId = null;
+    editUserId = null;
+
 
     document.getElementById("userModalTitle").textContent =
     "Add User";
@@ -93,26 +94,53 @@ function openUserModal(){
     document.getElementById("userPassword").value="";
 
 
-    updateCustomDropdown(
-        "userRole",
-        "Judge"
-    );
-document.getElementById("userRole")
-.dispatchEvent(new Event("change"));
-
-    updateCustomDropdown(
-        "userStatus",
-        "Active"
-    );
-
-
     userModal.classList.add("show");
- setTimeout(()=>{
 
-    rebuildCustomSelect("userRole");
-    rebuildCustomSelect("userStatus");
 
-},100);
+    setTimeout(()=>{
+
+
+        // create dropdown only once
+
+        if(
+            !document
+            .getElementById("userRole")
+            .closest(".custom-select")
+        ){
+
+            rebuildCustomSelect("userRole");
+
+        }
+
+
+        if(
+            !document
+            .getElementById("userStatus")
+            .closest(".custom-select")
+        ){
+
+            rebuildCustomSelect("userStatus");
+
+        }
+
+
+
+        // now update values
+
+        updateCustomDropdown(
+            "userRole",
+            "Judge"
+        );
+
+
+        updateCustomDropdown(
+            "userStatus",
+            "Active"
+        );
+
+
+    },100);
+
 
 }
 function closeModal(){
@@ -125,8 +153,7 @@ function closeModal(){
 function updateCustomDropdown(id,value){
 
     const select =
-    document.querySelector("#"+id+" select") ||
-    document.getElementById(id);
+document.getElementById(id);
 
 
     if(!select) {
@@ -522,14 +549,17 @@ document.getElementById("userPassword").value =
 user["Password"];
 
 
+userModal.classList.add("show");
+
+
+setTimeout(()=>{
+
 
 updateCustomDropdown(
 "userRole",
 user["Role"]
 );
 
- document.getElementById("userRole")
-.dispatchEvent(new Event("change"));
 
 updateCustomDropdown(
 "userStatus",
@@ -537,7 +567,7 @@ user["Status"]
 );
 
 
-userModal.classList.add("show");
+},100);
 
 
 
