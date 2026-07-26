@@ -1,18 +1,43 @@
+let userModal;
+let addUserBtn;
+let closeUserModal;
+let cancelUser;
+
+function initUsers(){
+
+    userModal = document.getElementById("userModal");
+    addUserBtn = document.getElementById("addUserBtn");
+    closeUserModal = document.getElementById("closeUserModal");
+    cancelUser = document.getElementById("cancelUser");
+
+    if(
+        !userModal ||
+        !addUserBtn ||
+        !closeUserModal ||
+        !cancelUser
+    ){
+        console.log("Users page not loaded.");
+        return;
+    }
+
+    addUserBtn.onclick = openUserModal;
+    closeUserModal.onclick = closeModal;
+    cancelUser.onclick = closeModal;
+
+    userModal.onclick = function(e){
+
+        if(e.target===userModal){
+
+            closeModal();
+
+        }
+
+    };
+
+}
 /*=========================================
 USER MODAL
 =========================================*/
-
-const userModal =
-document.getElementById("userModal");
-
-const addUserBtn =
-document.getElementById("addUserBtn");
-
-const closeUserModal =
-document.getElementById("closeUserModal");
-
-const cancelUser =
-document.getElementById("cancelUser");
 
 function openUserModal(){
 
@@ -38,19 +63,3 @@ function closeModal(){
     userModal.classList.remove("show");
 
 }
-
-addUserBtn.onclick = openUserModal;
-
-closeUserModal.onclick = closeModal;
-
-cancelUser.onclick = closeModal;
-
-userModal.onclick = function(e){
-
-    if(e.target===userModal){
-
-        closeModal();
-
-    }
-
-};
