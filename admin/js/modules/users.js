@@ -4,17 +4,15 @@ let closeUserModal;
 let cancelUser;
 
 function initUsers(){
+
     console.log("initUsers called");
+
+
     userModal = document.getElementById("userModal");
     addUserBtn = document.getElementById("addUserBtn");
     closeUserModal = document.getElementById("closeUserModal");
     cancelUser = document.getElementById("cancelUser");
-      console.log({
-        userModal,
-        addUserBtn,
-        closeUserModal,
-        cancelUser
-    });
+
 
     if(
         !userModal ||
@@ -26,22 +24,43 @@ function initUsers(){
         return;
     }
 
-    addUserBtn.onclick = openUserModal;
 
-closeUserModal.onclick = closeModal;
-
-cancelUser.onclick = closeModal;
+    addUserBtn.onclick = ()=>{
 
 
-userModal.onclick = function(e){
+        openUserModal();
 
-    if(e.target===userModal){
 
-        closeModal();
+    };
 
-    }
 
-};
+    closeUserModal.onclick = closeModal;
+
+
+    cancelUser.onclick = closeModal;
+
+
+
+    userModal.onclick=function(e){
+
+
+        if(e.target===userModal){
+
+            closeModal();
+
+        }
+
+    };
+
+
+
+    // IMPORTANT
+    // Build dropdown only once page loads
+
+    rebuildCustomSelect("userRole");
+
+    rebuildCustomSelect("userStatus");
+
 
 }
 /*=========================================
@@ -49,6 +68,7 @@ USER MODAL
 =========================================*/
 
 function openUserModal(){
+
 
     console.log("Open Modal Clicked");
 
@@ -66,57 +86,13 @@ function openUserModal(){
     document.getElementById("userPassword").value="";
 
 
+    document.getElementById("userRole").value="Judge";
+
+    document.getElementById("userStatus").value="Active";
+
+
+
     userModal.classList.add("show");
 
-
-setTimeout(()=>{
-
-    initUserDropdowns();
-
-},100);
-
-
-}
-function closeModal(){
-
-    userModal.classList.remove("show");
-
-}
-
-
-function initUserDropdowns(){
-
-    console.log("User dropdown init");
-
-
-    let role = document.getElementById("userRole");
-    let status = document.getElementById("userStatus");
-
-
-    if(role){
-
-        role.selectedIndex = 1; // Judge
-
-        if(!role.parentElement.classList.contains("custom-select")){
-
-            rebuildCustomSelect("userRole");
-
-        }
-
-    }
-
-
-
-    if(status){
-
-        status.selectedIndex = 0; // Active
-
-        if(!status.parentElement.classList.contains("custom-select")){
-
-            rebuildCustomSelect("userStatus");
-
-        }
-
-    }
 
 }
