@@ -81,8 +81,7 @@ USER MODAL
 
 function openUserModal(){
 
-    console.log("Open Modal Clicked");
-
+ editUserId = null;
 
     document.getElementById("userModalTitle").textContent =
     "Add User";
@@ -300,7 +299,9 @@ document.getElementById("userStatus").value
 const user={
 
 
-action:"saveUser",
+action: editUserId ? "updateUser" : "saveUser",
+
+id: editUserId,
 
 name:
 document.getElementById("userName").value,
@@ -359,12 +360,17 @@ await response.json();
 if(result.success){
 
 
-alert("User Added");
+alert(
+editUserId 
+? "User Updated"
+: "User Added"
+);
 
 
 closeModal();
 
-
+editUserId = null;
+ 
 loadUsers();
 
 
