@@ -26,15 +26,23 @@ function rebuildCustomSelect(id){
 
     selected.className="select-selected";
 
-    selected.textContent=
-    select.options[select.selectedIndex].text;
+   if (select.selectedIndex < 0 && select.options.length > 0) {
+    select.selectedIndex = 0;
+}
+
+selected.textContent =
+select.options[select.selectedIndex]
+    ? select.options[select.selectedIndex].text
+    : "";
 
     wrapper.appendChild(selected);
 
     const list=document.createElement("div");
 
     list.className="select-items";
-
+if(select.options.length===0){
+    return;
+}
     for(let i=0;i<select.options.length;i++){
 
         const item=document.createElement("div");
