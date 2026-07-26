@@ -87,6 +87,7 @@ for(let i=0;i<select.options.length;i++){
         item.onclick=function(){
 
             select.selectedIndex=i;
+            select.value = select.options[i].value;
 
             selected.textContent=this.textContent;
 
