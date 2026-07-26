@@ -98,7 +98,8 @@ function openUserModal(){
         "userRole",
         "Judge"
     );
-
+document.getElementById("userRole")
+.dispatchEvent(new Event("change"));
 
     updateCustomDropdown(
         "userStatus",
@@ -129,7 +130,10 @@ function updateCustomDropdown(id,value){
     select.closest(".custom-select");
 
 
-    if(!wrapper) return;
+    if(!wrapper) {
+        console.log("No wrapper found",id);
+        return;
+    }
 
 
     const selected =
@@ -144,23 +148,34 @@ function updateCustomDropdown(id,value){
     }
 
 
-    wrapper
-    .querySelectorAll(".select-items div")
-    .forEach((item,index)=>{
-
-        item.classList.remove("same-as-selected");
+    const items =
+    wrapper.querySelectorAll(".select-items div");
 
 
-        if(select.options[index].value == value){
+    items.forEach(item=>{
 
-            item.classList.add("same-as-selected");
+
+        item.classList.remove(
+            "same-as-selected"
+        );
+
+
+        if(
+            item.textContent.trim() ==
+            value
+        ){
+
+            item.classList.add(
+                "same-as-selected"
+            );
 
         }
 
+
     });
 
-}
 
+}
 async function loadUsers(){
 
     try{
@@ -506,6 +521,8 @@ updateCustomDropdown(
 user["Role"]
 );
 
+ document.getElementById("userRole")
+.dispatchEvent(new Event("change"));
 
 updateCustomDropdown(
 "userStatus",
