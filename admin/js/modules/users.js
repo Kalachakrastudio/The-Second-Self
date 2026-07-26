@@ -86,8 +86,6 @@ function openUserModal(){
     "Add User";
 
 
-    document.getElementById("userId").value="";
-
     document.getElementById("userName").value="";
     document.getElementById("userMobile").value="";
     document.getElementById("userEmail").value="";
@@ -95,15 +93,13 @@ function openUserModal(){
     document.getElementById("userPassword").value="";
 
 
-    // RESET VALUES
-
-    setSelectValue(
+    updateCustomDropdown(
         "userRole",
         "Judge"
     );
 
 
-    setSelectValue(
+    updateCustomDropdown(
         "userStatus",
         "Active"
     );
@@ -112,15 +108,13 @@ function openUserModal(){
     userModal.classList.add("show");
 
 }
-
-
 function closeModal(){
 
     userModal.classList.remove("show");
 
 }
 
-function setSelectValue(id,value){
+function updateCustomDropdown(id,value){
 
     const select=document.getElementById(id);
 
@@ -130,11 +124,14 @@ function setSelectValue(id,value){
     select.value=value;
 
 
-    const wrapper=
-    select.parentElement;
+    const wrapper =
+    select.closest(".custom-select");
 
 
-    const selected=
+    if(!wrapper) return;
+
+
+    const selected =
     wrapper.querySelector(".select-selected");
 
 
@@ -150,22 +147,14 @@ function setSelectValue(id,value){
     .querySelectorAll(".select-items div")
     .forEach((item,index)=>{
 
-
-        item.classList.remove(
-            "same-as-selected"
-        );
+        item.classList.remove("same-as-selected");
 
 
-        if(
-            select.options[index].value == value
-        ){
+        if(select.options[index].value == value){
 
-            item.classList.add(
-                "same-as-selected"
-            );
+            item.classList.add("same-as-selected");
 
         }
-
 
     });
 
@@ -291,7 +280,13 @@ onclick="deleteUser('${user["User ID"]}')">
 
 }
 async function saveUser(){
+console.log(
+document.getElementById("userRole").value
+);
 
+console.log(
+document.getElementById("userStatus").value
+);
 
 const user={
 
@@ -491,17 +486,16 @@ user["Password"];
 
 
 
-setSelectValue(
+updateCustomDropdown(
 "userRole",
 user["Role"]
 );
 
 
-setSelectValue(
+updateCustomDropdown(
 "userStatus",
 user["Status"]
 );
-
 
 
 userModal.classList.add("show");
