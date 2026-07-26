@@ -4,11 +4,17 @@ let closeUserModal;
 let cancelUser;
 
 function initUsers(){
-
+    console.log("initUsers called");
     userModal = document.getElementById("userModal");
     addUserBtn = document.getElementById("addUserBtn");
     closeUserModal = document.getElementById("closeUserModal");
     cancelUser = document.getElementById("cancelUser");
+      console.log({
+        userModal,
+        addUserBtn,
+        closeUserModal,
+        cancelUser
+    });
 
     if(
         !userModal ||
