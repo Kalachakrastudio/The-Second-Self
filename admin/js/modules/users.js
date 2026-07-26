@@ -72,6 +72,7 @@ if(saveBtn){
     loadUsers();
 
 initUserSearch();
+initUserPopup();
 
 }
 /*=========================================
@@ -97,50 +98,52 @@ function openUserModal(){
     userModal.classList.add("show");
 
 
-    setTimeout(()=>{
+   setTimeout(()=>{
+
+    const role =
+    document.getElementById("userRole");
 
 
-        // create dropdown only once
-
-        if(
-            !document
-            .getElementById("userRole")
-            .closest(".custom-select")
-        ){
-
-            rebuildCustomSelect("userRole");
-
-        }
-
-
-        if(
-            !document
-            .getElementById("userStatus")
-            .closest(".custom-select")
-        ){
-
-            rebuildCustomSelect("userStatus");
-
-        }
+    const status =
+    document.getElementById("userStatus");
 
 
 
-        // now update values
+    if(
+        role &&
+        !role.parentElement.classList.contains("custom-select")
+    ){
 
-        updateCustomDropdown(
-            "userRole",
-            "Admin"
-        );
+        rebuildCustomSelect("userRole");
 
-
-        updateCustomDropdown(
-            "userStatus",
-            "Active"
-        );
+    }
 
 
-    },100);
 
+    if(
+        status &&
+        !status.parentElement.classList.contains("custom-select")
+    ){
+
+        rebuildCustomSelect("userStatus");
+
+    }
+
+
+
+    updateCustomDropdown(
+        "userRole",
+        "Admin"
+    );
+
+
+    updateCustomDropdown(
+        "userStatus",
+        "Active"
+    );
+
+
+},200);
 
 }
 function closeModal(){
@@ -681,40 +684,41 @@ function closeUserPopup(){
 
 }
 
+function initUserPopup(){
 
-const closePopupBtn =
-document.getElementById("closeUserPopup");
-
-
-const userPopup =
-document.getElementById("userPopup");
+    const closePopupBtn =
+    document.getElementById("closeUserPopup");
 
 
-
-if(closePopupBtn){
-
-    closePopupBtn.onclick = function(){
-
-        closeUserPopup();
-
-    };
-
-}
+    const userPopup =
+    document.getElementById("userPopup");
 
 
 
-if(userPopup){
+    if(closePopupBtn){
 
-    userPopup.onclick = function(e){
-
-        // only close when clicking background
-
-        if(e.target === userPopup){
+        closePopupBtn.onclick = function(){
 
             closeUserPopup();
 
-        }
+        };
 
-    };
+    }
+
+
+
+    if(userPopup){
+
+        userPopup.onclick=function(e){
+
+            if(e.target === userPopup){
+
+                closeUserPopup();
+
+            }
+
+        };
+
+    }
 
 }
