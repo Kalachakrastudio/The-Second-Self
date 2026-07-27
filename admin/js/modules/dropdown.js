@@ -29,11 +29,28 @@ if(!select.options || select.options.length === 0){
 
     if(!select) return;
 
-if(select.parentElement.classList.contains("custom-select")){
+if(
+    select.parentElement &&
+    select.parentElement.classList.contains("custom-select")
+){
 
-    console.log("Already converted:",id);
+    const wrapper = select.parentElement;
 
-    return;
+    const oldSelected =
+    wrapper.querySelector(".select-selected");
+
+    const oldItems =
+    wrapper.querySelector(".select-items");
+
+    if(oldSelected) oldSelected.remove();
+
+    if(oldItems) oldItems.remove();
+
+}
+else{
+
+   const wrapper =
+select.parentElement;
 
 }
 
@@ -78,16 +95,6 @@ select.options[currentIndex]
     const list=document.createElement("div");
 
     list.className="select-items";
-if(select.options.length===0){
-    return;
-}
-    if(!select.options || select.options.length === 0){
-
-    console.log("No options found for:", id);
-
-    return;
-
-}
 
 
 for(let i=0;i<select.options.length;i++){
