@@ -202,3 +202,12 @@ min-width:1200px;
 }
 
 }
+.report-empty-cell{
+
+    height:360px !important;
+
+    text-align:center;
+
+    vertical-align:middle;
+
+}
