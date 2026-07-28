@@ -5,13 +5,17 @@ REPORT TOOLBAR
 
 .reports-toolbar{
 
-display:flex;
+    display:flex;
 
-align-items:center;
+    align-items:center;
 
-gap:18px;
+    gap:18px;
 
-margin-bottom:25px;
+    margin-bottom:25px;
+
+    position:relative;
+
+    z-index:500;
 
 }
 
@@ -23,7 +27,7 @@ margin-bottom:25px;
 
     position:relative;
 
-    z-index:100;
+    z-index:1000;
 
 }
 
@@ -88,7 +92,7 @@ REPORT TABLE CONTAINER
 
     position:relative;
 
-    z-index:1;
+    z-index:0;
 
 }
 
@@ -520,21 +524,22 @@ grid-column:auto;
     z-index:1000001;
 
 }
-.reports-toolbar{
+
+/* REPORT DROPDOWN FIX */
+
+.report-select .custom-select{
 
     position:relative;
 
-    z-index:1;
+    z-index:10000;
 
 }
 
-/* keep report content below modal */
 
-.reports-toolbar,
-.report-table-wrapper{
+.report-select .custom-options{
 
-    position:relative;
+    position:absolute;
 
-    z-index:1;
+    z-index:10001;
 
 }
