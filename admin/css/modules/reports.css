@@ -243,26 +243,58 @@ PARTNER MODAL
 }
 
 /*==================================
-PARTNER CRM MODAL
+PARTNER MODAL FIX
 ==================================*/
+
 .modal{
-overflow:visible;
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:rgba(0,0,0,.75);
+
+    z-index:999999;
+
+    overflow-y:auto;
+
+    padding:20px;
+
 }
 
 
 .partner-crm{
-overflow:visible;
+
+    position:relative;
+
+    z-index:1000000;
+
+    overflow:visible;
+
 }
 
 
 .custom-select{
-position:relative;
-z-index:100000;
+
+    position:relative;
+
+    z-index:100;
+
 }
 
 
 .custom-options{
-z-index:100001;
+
+    position:absolute;
+
+    z-index:200;
+
 }
 
 .crm-section{
@@ -471,5 +503,20 @@ grid-column:auto;
 
 }
 
+
+}
+
+.modal-box{
+
+    position:relative;
+
+    z-index:1000001;
+
+}
+.reports-toolbar{
+
+    position:relative;
+
+    z-index:1;
 
 }
