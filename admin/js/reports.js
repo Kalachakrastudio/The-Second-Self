@@ -180,35 +180,29 @@ document.getElementById("reportBody");
 head.innerHTML="";
 body.innerHTML="";
 
+if(!data || data.length === 0){
 
+    body.innerHTML = `
+    <tr>
+        <td colspan="100" class="report-empty-cell">
 
-if(!data || data.length===0){
+            <div class="empty-row">
 
-    console.log("Empty report data");
+                <i class="fa-solid fa-table-list"></i>
 
-    head.innerHTML="";
+                <p>No Report Data Available</p>
 
-   body.innerHTML = `
-<tr>
-    <td colspan="100" class="report-empty-cell">
+                <small>
+                    This report doesn't contain any records yet.
+                </small>
 
-        <div class="empty-row">
+            </div>
 
-            <i class="fa-solid fa-table-list"></i>
+        </td>
+    </tr>
+    `;
 
-            <p>No Report Data Found</p>
-
-            <small>
-                Select another report or add data first.
-            </small>
-
-        </div>
-
-    </td>
-</tr>
-`;
     return;
-
 }
 
 let columns =
@@ -269,32 +263,44 @@ columns.map(c=>
 
 function filterReport(value){
 
+    value = value.toLowerCase().trim();
 
-value=value.toLowerCase();
+    const filtered = reportData.filter(row => {
 
+        return Object.values(row).some(v =>
+            String(v).toLowerCase().includes(value)
+        );
 
-const filtered =
-reportData.filter(row=>{
+    });
 
+    if(filtered.length === 0){
 
-return Object.values(row)
-.some(v=>
+        document.getElementById("reportBody").innerHTML = `
+        <tr>
+            <td colspan="100" class="report-empty-cell">
 
-String(v)
-.toLowerCase()
-.includes(value)
+                <div class="empty-row">
 
-);
+                    <i class="fa-solid fa-magnifying-glass"></i>
 
+                    <p>No Matching Records</p>
 
-});
+                    <small>
+                        Try another keyword.
+                    </small>
 
+                </div>
 
-renderReport(filtered);
+            </td>
+        </tr>
+        `;
 
+        return;
+    }
+
+    renderReport(filtered);
 
 }
-
 
 
 
