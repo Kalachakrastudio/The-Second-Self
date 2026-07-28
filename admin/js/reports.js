@@ -604,3 +604,36 @@ document
 });
 
 }
+
+// ==============================
+// CLOSE PARTNER MODAL
+// ==============================
+
+const closeBtn = document.getElementById("closePartnerModal");
+
+if(closeBtn){
+
+    closeBtn.onclick = function(){
+
+        document
+            .getElementById("partnerModal")
+            .classList.remove("show");
+
+    };
+
+}
+const modal = document.getElementById("partnerModal");
+
+if(modal){
+
+    modal.onclick = function(e){
+
+        if(e.target === modal){
+
+            modal.classList.remove("show");
+
+        }
+
+    };
+
+}
