@@ -77,15 +77,14 @@ exportBtn.onclick =
 exportReport;
 
 }
-
-}
-
-const saveBtn =
-document.getElementById("saveFollowupBtn");
+    const saveBtn =
+document.getElementById("saveFollowup");
 
 if(saveBtn){
 
     saveBtn.onclick = savePartnerFollowup;
+
+}
 
 }
 
@@ -651,7 +650,7 @@ async function savePartnerFollowup(){
     document.getElementById("followupStatus").value;
 
     const discussion =
-    document.getElementById("discussion").value.trim();
+document.getElementById("followupNotes").value.trim();
 
     const nextFollowup =
     document.getElementById("nextFollowup").value;
@@ -704,9 +703,11 @@ async function savePartnerFollowup(){
 
             alert("Followup Saved Successfully");
 
-            document.getElementById("discussion").value="";
-
-            document.getElementById("nextFollowup").value="";
+            document.getElementById("followupNotes").value = "";
+            document.getElementById("nextFollowup").value = "";
+            document.getElementById("followupStatus").selectedIndex = 0;
+            
+            rebuildCustomSelect("followupStatus");
 
         }
 
