@@ -232,12 +232,6 @@ min-width:1200px;
 PARTNER MODAL
 =========================================*/
 
-.partner-modal{
-
-    max-width:950px;
-
-}
-
 #partnerDetails{
 
     display:flex;
@@ -251,19 +245,25 @@ PARTNER MODAL
 /*==================================
 PARTNER CRM MODAL
 ==================================*/
-
-
-.partner-crm{
-
-width:750px;
-
-max-height:90vh;
-
-overflow-y:auto;
-
+.modal{
+overflow:visible;
 }
 
 
+.partner-crm{
+overflow:visible;
+}
+
+
+.custom-select{
+position:relative;
+z-index:100000;
+}
+
+
+.custom-options{
+z-index:100001;
+}
 
 .crm-section{
 
