@@ -228,3 +228,22 @@ min-width:1200px;
     vertical-align:middle;
 
 }
+/*=========================================
+PARTNER MODAL
+=========================================*/
+
+.partner-modal{
+
+    max-width:950px;
+
+}
+
+#partnerDetails{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}
