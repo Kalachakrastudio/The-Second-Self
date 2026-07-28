@@ -1,6 +1,6 @@
-let reportData=[];
+let reportData = [];
 let currentReportType = "";
-let currentReportType = "";
+let selectedPartner = null;
 
 const REPORT_SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbwognwSjNS52BkrhCAk3gyi2Z8nb-n2irDhXc_OuNdQMDDnmVuWi_sMQpHV3S8sOEKU/exec";
