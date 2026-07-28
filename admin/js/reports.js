@@ -3,7 +3,7 @@ let currentReportType = "";
 let selectedPartner = null;
 
 const REPORT_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbxZujwzWBqZ9UazdJUnBoizig9sLlEFDodoVVd5aPcTkZcku32UGUI4aByxvNtPC2U/exec";
+"https://script.google.com/macros/s/AKfycbwtYcEcdHq9j3SUqQG_U3vbZCV6ivf5KHsLvasCd8idr6HuxrnEnsYVJmNdipcormlA/exec";
 
 
 
@@ -605,6 +605,9 @@ ${selectedPartner["Date"] || "-"}
 const modal = document.getElementById("partnerModal");
 
 modal.classList.add("show");
+    loadPartnerFollowups(
+    selectedPartner["Partner ID"]
+);
 
 // Close Button
 const closeBtn = document.getElementById("closePartnerModal");
@@ -724,6 +727,77 @@ document.getElementById("followupNotes").value.trim();
         console.log(err);
 
         alert("Unable to save followup.");
+
+    }
+
+}
+async function loadPartnerFollowups(partnerId){
+
+    const timeline =
+    document.getElementById("followupTimeline");
+
+    timeline.innerHTML = `
+        <div class="empty">
+            Loading...
+        </div>
+    `;
+
+    try{
+
+        const response = await fetch(
+
+            REPORT_SCRIPT_URL +
+            "?action=getPartnerFollowups&partnerId=" +
+            encodeURIComponent(partnerId)
+
+        );
+
+        const result = await response.json();
+
+        if(!result.success || result.data.length===0){
+
+            timeline.innerHTML = `
+                <div class="empty">
+                    No follow-up history yet
+                </div>
+            `;
+
+            return;
+
+        }
+
+        timeline.innerHTML =
+        result.data.map(item=>`
+
+            <div class="timeline-item">
+
+                <h4>${item.Status}</h4>
+
+                <p>${item.Discussion}</p>
+
+                <p>
+
+                    <strong>Next:</strong>
+
+                    ${item["Next Followup"] || "-"}
+
+                </p>
+
+                <small>
+
+                    ${item.Timestamp}
+
+                </small>
+
+            </div>
+
+        `).join("");
+
+    }
+
+    catch(err){
+
+        console.log(err);
 
     }
 
