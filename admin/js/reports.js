@@ -78,6 +78,26 @@ exportReport;
 
 }
 
+    // ==============================
+// CLOSE PARTNER MODAL
+// ==============================
+
+const closeModal =
+document.getElementById("closePartnerModal");
+
+
+if(closeModal){
+
+closeModal.onclick=function(){
+
+    document
+    .getElementById("partnerModal")
+    .classList.remove("show");
+
+};
+
+}
+
 
 }
 
@@ -422,12 +442,3 @@ window.viewPartner = function(partnerId){
 
 };
 
-document
-.getElementById("closePartnerModal")
-.addEventListener("click",function(){
-
-    document
-    .getElementById("partnerModal")
-    .classList.remove("show");
-
-});
