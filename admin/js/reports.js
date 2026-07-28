@@ -188,28 +188,25 @@ if(!data || data.length===0){
 
     head.innerHTML="";
 
-    body.innerHTML=`
+   body.innerHTML = `
+<tr>
+    <td colspan="100" class="report-empty-cell">
 
-    <tr>
-
-        <td
-            colspan="100"
-            class="empty-row report-empty-cell">
+        <div class="empty-row">
 
             <i class="fa-solid fa-table-list"></i>
 
-            <p>No report data available.</p>
+            <p>No Report Data Found</p>
 
             <small>
-                Select a report from the dropdown to view records.
+                Select another report or add data first.
             </small>
 
-        </td>
+        </div>
 
-    </tr>
-
-    `;
-
+    </td>
+</tr>
+`;
     return;
 
 }
