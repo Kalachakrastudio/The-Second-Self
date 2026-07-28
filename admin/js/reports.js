@@ -98,9 +98,7 @@ closeModal.onclick=function(){
 
     rebuildCustomSelect("followupStatus");
 
-    rebuildCustomSelect("reportType");
-
-},300);
+},500);
 
 };
 
