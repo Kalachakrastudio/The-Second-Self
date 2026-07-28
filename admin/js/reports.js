@@ -78,19 +78,6 @@ exportReport;
 
 }
 
-    // ==============================
-// CLOSE PARTNER MODAL
-// ==============================
-
-document.getElementById("partnerDetails").innerHTML = html;
-
-rebuildCustomSelect("followupStatus");
-
-document
-.getElementById("partnerModal")
-.classList.add("show");
-
-
 }
 
 
@@ -612,5 +599,8 @@ document
 .getElementById("partnerModal")
 .classList.add("show");
 
+    requestAnimationFrame(() => {
+    rebuildCustomSelect("followupStatus");
+});
 
 }
