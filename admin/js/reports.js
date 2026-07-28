@@ -2,6 +2,89 @@ let reportData = [];
 let currentReportType = "";
 let selectedPartner = null;
 
+//=====================================
+// REPORT PAGE POPUPS
+//=====================================
+
+function showSuccessPopup(message){
+
+    createReportPopup(
+        message,
+        "success",
+        "fa-circle-check"
+    );
+
+}
+
+
+function showWarningPopup(message){
+
+    createReportPopup(
+        message,
+        "warning",
+        "fa-triangle-exclamation"
+    );
+
+}
+
+
+function showErrorPopup(message){
+
+    createReportPopup(
+        message,
+        "error",
+        "fa-circle-xmark"
+    );
+
+}
+
+
+
+function createReportPopup(message,type,icon){
+
+
+let popup = document.getElementById("reportPopup");
+
+
+if(!popup){
+
+    popup = document.createElement("div");
+
+    popup.id = "reportPopup";
+
+    document.body.appendChild(popup);
+
+}
+
+
+popup.className =
+"report-popup " + type;
+
+
+popup.innerHTML = `
+
+<i class="fa-solid ${icon}"></i>
+
+<span>
+${message}
+</span>
+
+`;
+
+
+popup.classList.add("show");
+
+
+
+setTimeout(()=>{
+
+    popup.classList.remove("show");
+
+},3000);
+
+
+}
+
 const REPORT_SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbwtYcEcdHq9j3SUqQG_U3vbZCV6ivf5KHsLvasCd8idr6HuxrnEnsYVJmNdipcormlA/exec";
 
@@ -802,3 +885,4 @@ async function loadPartnerFollowups(partnerId){
     }
 
 }
+
