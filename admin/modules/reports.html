@@ -81,35 +81,218 @@ Export
 </div>
 
 <!-- =========================================
-PARTNER DETAILS MODAL
+PARTNER CRM MODAL
 ========================================= -->
 
 <div id="partnerModal" class="modal">
 
-    <div class="modal-box partner-modal">
 
-        <div class="modal-header">
+<div class="modal-box partner-crm">
 
-            <h2>
 
-                <i class="fa-solid fa-handshake"></i>
+<!-- HEADER -->
 
-                Partner Details
+<div class="modal-header">
 
-            </h2>
+<h2>
+<i class="fa-solid fa-handshake"></i>
+Partner CRM
+</h2>
 
-            <button id="closePartnerModal">
 
-                <i class="fa-solid fa-xmark"></i>
+<button 
+type="button"
+id="closePartnerModal">
 
-            </button>
+<i class="fa-solid fa-xmark"></i>
 
-        </div>
+</button>
 
-        <div id="partnerDetails">
 
-        </div>
+</div>
 
-    </div>
+
+
+<!-- COMPANY INFORMATION -->
+
+<div class="crm-section">
+
+
+<h3>
+Company Information
+</h3>
+
+
+<div 
+id="partnerCompanyInfo"
+class="crm-grid">
+
+
+</div>
+
+
+</div>
+
+
+
+
+<!-- SPONSORSHIP DETAILS -->
+
+<div class="crm-section">
+
+
+<h3>
+Sponsorship Details
+</h3>
+
+
+<div 
+id="partnerSponsorInfo"
+class="crm-grid">
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<!-- FOLLOW UP FORM -->
+
+<div class="crm-section">
+
+
+<h3>
+Add Follow-up
+</h3>
+
+
+
+<div class="crm-form">
+
+
+<div class="form-group">
+
+<label>Status</label>
+
+<select id="followupStatus">
+
+<option value="Pending">
+Pending
+</option>
+
+
+<option value="Completed">
+Completed
+</option>
+
+
+<option value="Rejected">
+Rejected
+</option>
+
+
+</select>
+
+</div>
+
+
+
+
+<div class="form-group">
+
+
+<label>
+Next Follow-up Date
+</label>
+
+
+<input 
+type="date"
+id="nextFollowup">
+
+
+</div>
+
+
+
+
+<div class="form-group full">
+
+
+<label>
+Discussion Notes
+</label>
+
+
+<textarea
+id="followupNotes"
+placeholder="Enter discussion details..."
+></textarea>
+
+
+</div>
+
+
+
+<button
+id="saveFollowup"
+class="primary-btn">
+
+
+<i class="fa-solid fa-save"></i>
+
+Save Follow-up
+
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- HISTORY -->
+
+<div class="crm-section">
+
+
+<h3>
+Follow-up History
+</h3>
+
+
+<div 
+id="followupTimeline"
+class="timeline">
+
+
+<div class="empty">
+
+No follow-up history yet
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+</div>
+
 
 </div>
