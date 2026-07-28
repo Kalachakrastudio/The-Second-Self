@@ -1,5 +1,5 @@
 let reportData=[];
-
+let currentReportType = "";
 
 const REPORT_SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbwognwSjNS52BkrhCAk3gyi2Z8nb-n2irDhXc_OuNdQMDDnmVuWi_sMQpHV3S8sOEKU/exec";
@@ -87,7 +87,7 @@ async function loadReport(type){
 if(!type)
 return;
 
-
+currentReportType = type;
 
 document.getElementById("reportHead").innerHTML="";
 
@@ -205,8 +205,13 @@ if(!data || data.length === 0){
     return;
 }
 
-let columns =
-Object.keys(data[0]);
+let columns = [...Object.keys(data[0])];
+
+if(currentReportType === "partners"){
+
+    columns.push("Actions");
+
+}
 
 
 
@@ -227,20 +232,51 @@ columns.map(c=>
 
 
 
-body.innerHTML=
+body.innerHTML =
 data.map(row=>{
 
+    return `
 
-return `
+    <tr>
 
-<tr>
+    ${
+    columns.map(column=>{
 
-${
-columns.map(c=>
-`
-<td>${row[c] || "-"}</td>
-`
-).join("")
+        if(
+            column === "Actions" &&
+            currentReportType === "partners"
+        ){
+
+            return `
+
+            <td class="action-cell">
+
+                <button
+                    class="action-btn"
+                    onclick="viewPartner('${row["Partner ID"]}')">
+
+                    <i class="fa-solid fa-eye"></i>
+
+                </button>
+
+            </td>
+
+            `;
+
+        }
+
+        return `
+            <td>${row[column] || "-"}</td>
+        `;
+
+    }).join("")
+    }
+
+    </tr>
+
+    `;
+
+}).join("");
 }
 
 
@@ -374,5 +410,27 @@ a.download=
 
 a.click();
 
+
+}
+
+window.viewPartner = function(partnerId){
+
+    const partner =
+    reportData.find(
+        p => String(p["Partner ID"]) === String(partnerId)
+    );
+
+    if(!partner){
+
+        alert("Partner not found");
+
+        return;
+
+    }
+
+    console.log(partner);
+
+    // Next step:
+    // Open Partner Details Modal here
 
 }
