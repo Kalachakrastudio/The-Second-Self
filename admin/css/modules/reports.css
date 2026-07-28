@@ -25,10 +25,6 @@ REPORT TOOLBAR
 
     width:220px;
 
-    position:relative;
-
-    z-index:1000;
-
 }
 
 
@@ -517,32 +513,7 @@ grid-column:auto;
 
 }
 
-.modal-box{
 
-    position:relative;
-
-    z-index:1000001;
-
-}
-
-/* REPORT DROPDOWN FIX */
-
-.report-select .custom-select{
-
-    position:relative;
-
-    z-index:10000;
-
-}
-
-
-.report-select .custom-options{
-
-    position:absolute;
-
-    z-index:10001;
-
-}
 /*==================================
 CRM MODAL CUSTOM SELECT FIX
 ==================================*/
@@ -555,19 +526,3 @@ CRM MODAL CUSTOM SELECT FIX
 }
 
 
-.partner-modal .custom-select{
-
-    position:relative;
-
-    z-index:10000;
-
-}
-
-
-.partner-modal .custom-options{
-
-    position:absolute;
-
-    z-index:10001;
-
-}
