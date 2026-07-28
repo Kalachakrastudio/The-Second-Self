@@ -243,11 +243,11 @@ PARTNER MODAL
 
 #partnerDetails{
 
-    display:flex;
+    max-height:75vh;
 
-    flex-direction:column;
+    overflow-y:auto;
 
-    gap:24px;
+    padding-right:10px;
 
 }
 
@@ -295,8 +295,6 @@ PARTNER MODAL
 
     max-height:90vh;
 
-    overflow-y:auto;
-
     background:#171717;
 
     border-radius:20px;
@@ -304,6 +302,8 @@ PARTNER MODAL
     padding:25px;
 
     position:relative;
+
+    overflow:visible;
 
 }
 
@@ -537,6 +537,34 @@ grid-column:auto;
 
 
 .report-select .custom-options{
+
+    position:absolute;
+
+    z-index:10001;
+
+}
+/*==================================
+CRM MODAL CUSTOM SELECT FIX
+==================================*/
+
+
+.partner-modal{
+
+    overflow:visible;
+
+}
+
+
+.partner-modal .custom-select{
+
+    position:relative;
+
+    z-index:10000;
+
+}
+
+
+.partner-modal .custom-options{
 
     position:absolute;
 
