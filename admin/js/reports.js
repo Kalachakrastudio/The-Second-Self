@@ -411,34 +411,153 @@ a.click();
 
 window.viewPartner = function(partnerId){
 
-    selectedPartner =
-    reportData.find(
-        p => String(p["Partner ID"]) === String(partnerId)
-    );
 
-    if(!selectedPartner){
+selectedPartner =
+reportData.find(
+p => String(p["Partner ID"]) === String(partnerId)
+);
 
-        alert("Partner not found");
 
-        return;
 
-    }
+if(!selectedPartner){
 
-    document.getElementById("partnerDetails").innerHTML = `
+alert("Partner not found");
 
-        <h3>${selectedPartner["Company Name"] || "-"}</h3>
+return;
 
-        <p>
+}
 
-            Partner details will be shown here.
 
-        </p>
 
-    `;
+document.getElementById("partnerCompanyInfo").innerHTML = `
 
-    document
-    .getElementById("partnerModal")
-    .classList.add("show");
 
-};
+<div class="crm-field">
 
+<label>
+Company Name
+</label>
+
+<span>
+${selectedPartner["Company Name"] || "-"}
+</span>
+
+</div>
+
+
+
+<div class="crm-field">
+
+<label>
+Industry
+</label>
+
+<span>
+${selectedPartner["Industry"] || "-"}
+</span>
+
+</div>
+
+
+
+<div class="crm-field">
+
+<label>
+Contact Person
+</label>
+
+<span>
+${selectedPartner["Name"] || "-"}
+</span>
+
+</div>
+
+
+
+<div class="crm-field">
+
+<label>
+Mobile
+</label>
+
+<span>
+${selectedPartner["Mobile"] || "-"}
+</span>
+
+</div>
+
+
+
+<div class="crm-field">
+
+<label>
+Email
+</label>
+
+<span>
+${selectedPartner["Email"] || "-"}
+</span>
+
+</div>
+
+
+
+<div class="crm-field">
+
+<label>
+Website
+</label>
+
+<span>
+${selectedPartner["Website"] || "-"}
+</span>
+
+</div>
+
+
+`;
+
+
+
+
+document.getElementById("partnerSponsorInfo").innerHTML = `
+
+
+
+<div class="crm-field">
+
+<label>
+Partnership Type
+</label>
+
+<span>
+${selectedPartner["Partnership Type"] || "-"}
+</span>
+
+</div>
+
+
+
+<div class="crm-field">
+
+<label>
+Support Type
+</label>
+
+<span>
+${selectedPartner["Support Type"] || "-"}
+</span>
+
+</div>
+
+
+`;
+
+
+
+document
+.getElementById("partnerModal")
+.classList.add("show");
+
+
+}
