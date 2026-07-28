@@ -643,7 +643,7 @@ async function savePartnerFollowup(){
 
     if(!selectedPartner){
 
-        alert("No Partner Selected");
+        showWarningPopup("No Partner Selected");
 
         return;
 
@@ -660,7 +660,7 @@ document.getElementById("followupNotes").value.trim();
 
     if(!status){
 
-        alert("Select Status");
+        showWarningPopup("Please select a status.");
 
         return;
 
@@ -668,7 +668,7 @@ document.getElementById("followupNotes").value.trim();
 
     if(!discussion){
 
-        alert("Enter Discussion");
+       showWarningPopup("Please enter discussion notes.");
 
         return;
 
@@ -704,7 +704,7 @@ document.getElementById("followupNotes").value.trim();
 
         if(result.success){
 
-            alert("Followup Saved Successfully");
+            showSuccessPopup("Follow-up saved successfully.");
 
             document.getElementById("followupNotes").value = "";
             document.getElementById("nextFollowup").value = "";
@@ -716,7 +716,7 @@ document.getElementById("followupNotes").value.trim();
 
         else{
 
-            alert(result.message);
+            showErrorPopup(result.message);
 
         }
 
@@ -726,7 +726,7 @@ document.getElementById("followupNotes").value.trim();
 
         console.log(err);
 
-        alert("Unable to save followup.");
+        showErrorPopup("Unable to save follow-up.");
 
     }
 
