@@ -232,69 +232,44 @@ columns.map(c=>
 
 
 
-body.innerHTML =
-data.map(row=>{
+body.innerHTML = data.map(row => {
 
     return `
+        <tr>
 
-    <tr>
+            ${columns.map(column => {
 
-    ${
-    columns.map(column=>{
+                if (
+                    column === "Actions" &&
+                    currentReportType === "partners"
+                ) {
 
-        if(
-            column === "Actions" &&
-            currentReportType === "partners"
-        ){
+                    return `
+                        <td class="action-cell">
 
-            return `
+                            <button
+                                class="action-btn"
+                                onclick="viewPartner('${row["Partner ID"]}')">
 
-            <td class="action-cell">
+                                <i class="fa-solid fa-eye"></i>
 
-                <button
-                    class="action-btn"
-                    onclick="viewPartner('${row["Partner ID"]}')">
+                            </button>
 
-                    <i class="fa-solid fa-eye"></i>
+                        </td>
+                    `;
 
-                </button>
+                }
 
-            </td>
+                return `
+                    <td>${row[column] || "-"}</td>
+                `;
 
-            `;
+            }).join("")}
 
-        }
-
-        return `
-            <td>${row[column] || "-"}</td>
-        `;
-
-    }).join("")
-    }
-
-    </tr>
-
+        </tr>
     `;
 
 }).join("");
-}
-
-
-</tr>
-
-
-`;
-
-
-}).join("");
-
-
-
-}
-
-
-
-
 
 
 function filterReport(value){
