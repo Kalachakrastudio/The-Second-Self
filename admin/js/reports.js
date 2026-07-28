@@ -82,27 +82,13 @@ exportReport;
 // CLOSE PARTNER MODAL
 // ==============================
 
-const closeModal =
-document.getElementById("closePartnerModal");
+document.getElementById("partnerDetails").innerHTML = html;
 
+rebuildCustomSelect("followupStatus");
 
-if(closeModal){
-
-closeModal.onclick=function(){
-
-    document
-    .getElementById("partnerModal")
-    .classList.remove("show");
-  
-    setTimeout(()=>{
-
-    rebuildCustomSelect("followupStatus");
-
-},500);
-
-};
-
-}
+document
+.getElementById("partnerModal")
+.classList.add("show");
 
 
 }
