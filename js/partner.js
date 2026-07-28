@@ -1,5 +1,5 @@
 const scriptURL =
-"https://script.google.com/macros/s/AKfycbxS4r7iNHtbIjfalJ7Iec8NyCQGmeuLmWrPzl6mP8b3ygWIJSBwCl6K13HkqjXEaxvn/exec";
+"https://script.google.com/macros/s/AKfycbwV9ryOl7i21U-LZqLXeOZzUP61S0R5prsE-uMZ4YcqbRJ7mDvrWyZZp3807pwRjCaf/exec";
 
 const form = document.getElementById("partnerForm");
 
