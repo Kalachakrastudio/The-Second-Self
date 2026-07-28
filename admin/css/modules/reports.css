@@ -526,3 +526,123 @@ CRM MODAL CUSTOM SELECT FIX
 }
 
 
+/*=====================================
+REPORT PAGE POPUP
+=====================================*/
+
+
+.report-popup{
+
+position:fixed;
+
+top:30px;
+
+right:30px;
+
+z-index:99999;
+
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+
+padding:16px 22px;
+
+
+background:#181818;
+
+
+border-radius:14px;
+
+
+border:1px solid rgba(255,255,255,.1);
+
+
+color:#fff;
+
+
+font-size:15px;
+
+font-weight:500;
+
+
+opacity:0;
+
+transform:translateY(-30px);
+
+
+pointer-events:none;
+
+
+transition:.3s ease;
+
+
+}
+
+
+.report-popup.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+
+
+.report-popup i{
+
+font-size:22px;
+
+}
+
+
+
+.report-popup.success{
+
+border-left:5px solid #29d85f;
+
+}
+
+
+
+.report-popup.success i{
+
+color:#29d85f;
+
+}
+
+
+
+.report-popup.warning{
+
+border-left:5px solid #ffc107;
+
+}
+
+
+
+.report-popup.warning i{
+
+color:#ffc107;
+
+}
+
+
+
+.report-popup.error{
+
+border-left:5px solid #D71F28;
+
+}
+
+
+
+.report-popup.error i{
+
+color:#D71F28;
+
+}
