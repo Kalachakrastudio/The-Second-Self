@@ -270,7 +270,7 @@ body.innerHTML = data.map(row => {
     `;
 
 }).join("");
-
+}
 
 function filterReport(value){
 
@@ -404,8 +404,4 @@ window.viewPartner = function(partnerId){
     }
 
     console.log(partner);
-
-    // Next step:
-    // Open Partner Details Modal here
-
-}
+};
