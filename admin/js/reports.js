@@ -1,5 +1,6 @@
 let reportData=[];
 let currentReportType = "";
+let currentReportType = "";
 
 const REPORT_SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbwognwSjNS52BkrhCAk3gyi2Z8nb-n2irDhXc_OuNdQMDDnmVuWi_sMQpHV3S8sOEKU/exec";
@@ -390,12 +391,12 @@ a.click();
 
 window.viewPartner = function(partnerId){
 
-    const partner =
+    selectedPartner =
     reportData.find(
         p => String(p["Partner ID"]) === String(partnerId)
     );
 
-    if(!partner){
+    if(!selectedPartner){
 
         alert("Partner not found");
 
@@ -403,5 +404,36 @@ window.viewPartner = function(partnerId){
 
     }
 
-    console.log(partner);
+    document.getElementById("partnerDetails").innerHTML = `
+
+        <h3>${selectedPartner["Company Name"] || "-"}</h3>
+
+        <p>
+
+            Partner details will be shown here.
+
+        </p>
+
+    `;
+
+    document
+    .getElementById("partnerModal")
+    .classList.add("show");
+
 };
+
+document.addEventListener("click",function(e){
+
+    if(
+
+        e.target.id==="closePartnerModal"
+
+    ){
+
+        document
+        .getElementById("partnerModal")
+        .classList.remove("show");
+
+    }
+
+});
