@@ -595,45 +595,36 @@ ${selectedPartner["Date"] || "-"}
 `;
 
 
-document
-.getElementById("partnerModal")
-.classList.add("show");
+const modal = document.getElementById("partnerModal");
 
-    requestAnimationFrame(() => {
-    rebuildCustomSelect("followupStatus");
-});
+modal.classList.add("show");
 
-}
-
-// ==============================
-// CLOSE PARTNER MODAL
-// ==============================
-
+// Close Button
 const closeBtn = document.getElementById("closePartnerModal");
 
 if(closeBtn){
 
     closeBtn.onclick = function(){
 
-        document
-            .getElementById("partnerModal")
-            .classList.remove("show");
+        modal.classList.remove("show");
 
     };
 
 }
-const modal = document.getElementById("partnerModal");
 
-if(modal){
+// Click Outside
+modal.onclick = function(e){
 
-    modal.onclick = function(e){
+    if(e.target === modal){
 
-        if(e.target === modal){
+        modal.classList.remove("show");
 
-            modal.classList.remove("show");
+    }
 
-        }
+};
 
-    };
+requestAnimationFrame(() => {
+    rebuildCustomSelect("followupStatus");
+});
 
 }
