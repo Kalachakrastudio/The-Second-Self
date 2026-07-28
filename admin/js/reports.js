@@ -3,7 +3,7 @@ let currentReportType = "";
 let selectedPartner = null;
 
 const REPORT_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbwognwSjNS52BkrhCAk3gyi2Z8nb-n2irDhXc_OuNdQMDDnmVuWi_sMQpHV3S8sOEKU/exec";
+"https://script.google.com/macros/s/AKfycbxZujwzWBqZ9UazdJUnBoizig9sLlEFDodoVVd5aPcTkZcku32UGUI4aByxvNtPC2U/exec";
 
 
 
@@ -80,6 +80,14 @@ exportReport;
 
 }
 
+const saveBtn =
+document.getElementById("saveFollowupBtn");
+
+if(saveBtn){
+
+    saveBtn.onclick = savePartnerFollowup;
+
+}
 
 async function loadReport(type){
 
@@ -626,5 +634,96 @@ modal.onclick = function(e){
 requestAnimationFrame(() => {
     rebuildCustomSelect("followupStatus");
 });
+
+}
+
+async function savePartnerFollowup(){
+
+    if(!selectedPartner){
+
+        alert("No Partner Selected");
+
+        return;
+
+    }
+
+    const status =
+    document.getElementById("followupStatus").value;
+
+    const discussion =
+    document.getElementById("discussion").value.trim();
+
+    const nextFollowup =
+    document.getElementById("nextFollowup").value;
+
+    if(!status){
+
+        alert("Select Status");
+
+        return;
+
+    }
+
+    if(!discussion){
+
+        alert("Enter Discussion");
+
+        return;
+
+    }
+
+    const payload = {
+
+        action:"savePartnerFollowup",
+
+        partnerId:selectedPartner["Partner ID"],
+
+        status:status,
+
+        discussion:discussion,
+
+        nextFollowup:nextFollowup,
+
+        updatedBy:"Admin"
+
+    };
+
+    try{
+
+        const response = await fetch(REPORT_SCRIPT_URL,{
+
+            method:"POST",
+
+            body:JSON.stringify(payload)
+
+        });
+
+        const result = await response.json();
+
+        if(result.success){
+
+            alert("Followup Saved Successfully");
+
+            document.getElementById("discussion").value="";
+
+            document.getElementById("nextFollowup").value="";
+
+        }
+
+        else{
+
+            alert(result.message);
+
+        }
+
+    }
+
+    catch(err){
+
+        console.log(err);
+
+        alert("Unable to save followup.");
+
+    }
 
 }
