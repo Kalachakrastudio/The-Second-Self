@@ -435,11 +435,11 @@ document.getElementById("partnerCompanyInfo").innerHTML = `
 <div class="crm-field">
 
 <label>
-Company Name
+Organization
 </label>
 
 <span>
-${selectedPartner["Company Name"] || "-"}
+${selectedPartner["Organization"] || "-"}
 </span>
 
 </div>
@@ -460,10 +460,26 @@ ${selectedPartner["Industry"] || "-"}
 
 
 
+
 <div class="crm-field">
 
 <label>
-Contact Person
+Website
+</label>
+
+<span>
+${selectedPartner["Website"] || "-"}
+</span>
+
+</div>
+
+
+
+
+<div class="crm-field">
+
+<label>
+Contact Name
 </label>
 
 <span>
@@ -471,6 +487,22 @@ ${selectedPartner["Name"] || "-"}
 </span>
 
 </div>
+
+
+
+
+<div class="crm-field">
+
+<label>
+Designation
+</label>
+
+<span>
+${selectedPartner["Designation"] || "-"}
+</span>
+
+</div>
+
 
 
 
@@ -488,6 +520,7 @@ ${selectedPartner["Mobile"] || "-"}
 
 
 
+
 <div class="crm-field">
 
 <label>
@@ -500,19 +533,6 @@ ${selectedPartner["Email"] || "-"}
 
 </div>
 
-
-
-<div class="crm-field">
-
-<label>
-Website
-</label>
-
-<span>
-${selectedPartner["Website"] || "-"}
-</span>
-
-</div>
 
 
 `;
@@ -551,8 +571,49 @@ ${selectedPartner["Support Type"] || "-"}
 </div>
 
 
-`;
 
+<div class="crm-field">
+
+<label>
+Budget
+</label>
+
+<span>
+${selectedPartner["Budget"] || "-"}
+</span>
+
+</div>
+
+
+
+<div class="crm-field">
+
+<label>
+Proposal
+</label>
+
+<span>
+${selectedPartner["Proposal"] || "-"}
+</span>
+
+</div>
+
+
+<div class="crm-field">
+
+<label>
+Date
+</label>
+
+<span>
+${selectedPartner["Date"] || "-"}
+</span>
+
+</div>
+
+
+
+`;
 
 
 document
