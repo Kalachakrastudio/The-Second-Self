@@ -89,18 +89,27 @@ return;
 
 
 
-document.getElementById("reportBody").innerHTML=
-`
+document.getElementById("reportHead").innerHTML="";
+
+document.getElementById("reportBody").innerHTML=`
+
 <tr>
-<td colspan="20" class="report-loading">
+
+<td colspan="100" class="empty-row report-empty-cell">
 
 <i class="fa-solid fa-spinner fa-spin"></i>
-<br>
-Loading data...
-</td>
-</tr>
-`;
 
+<p>Loading Report...</p>
+
+<small>
+Please wait while we fetch the records.
+</small>
+
+</td>
+
+</tr>
+
+`;
 
 
 try{
@@ -173,31 +182,27 @@ body.innerHTML="";
 
 
 
-if(!data || data.length === 0){
+if(!data || data.length===0){
 
     console.log("Empty report data");
 
-    body.innerHTML = `
+    head.innerHTML="";
+
+    body.innerHTML=`
 
     <tr>
 
-        <td colspan="20">
+        <td
+            colspan="100"
+            class="empty-row report-empty-cell">
 
-            <div class="report-empty">
+            <i class="fa-solid fa-table-list"></i>
 
-                <i class="fa-solid fa-file-circle-xmark"></i>
+            <p>No report data available.</p>
 
-                <h3>No Data Found</h3>
-
-                <p>
-                No records available for this report.
-                </p>
-
-                <small>
-                Select another report type or add data first.
-                </small>
-
-            </div>
+            <small>
+                Select a report from the dropdown to view records.
+            </small>
 
         </td>
 
@@ -205,11 +210,9 @@ if(!data || data.length === 0){
 
     `;
 
-
     return;
 
 }
-
 
 let columns =
 Object.keys(data[0]);
