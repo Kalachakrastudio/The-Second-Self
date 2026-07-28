@@ -93,6 +93,14 @@ closeModal.onclick=function(){
     document
     .getElementById("partnerModal")
     .classList.remove("show");
+  
+    setTimeout(()=>{
+
+    rebuildCustomSelect("followupStatus");
+
+    rebuildCustomSelect("reportType");
+
+},300);
 
 };
 
