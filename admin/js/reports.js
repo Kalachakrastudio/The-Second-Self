@@ -422,18 +422,12 @@ window.viewPartner = function(partnerId){
 
 };
 
-document.addEventListener("click",function(e){
+document
+.getElementById("closePartnerModal")
+.addEventListener("click",function(){
 
-    if(
-
-        e.target.id==="closePartnerModal"
-
-    ){
-
-        document
-        .getElementById("partnerModal")
-        .classList.remove("show");
-
-    }
+    document
+    .getElementById("partnerModal")
+    .classList.remove("show");
 
 });
