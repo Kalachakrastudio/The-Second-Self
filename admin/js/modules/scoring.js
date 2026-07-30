@@ -1,5 +1,5 @@
 const SCORING_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbwtYcEcdHq9j3SUqQG_U3vbZCV6ivf5KHsLvasCd8idr6HuxrnEnsYVJmNdipcormlA/exec";
+"https://script.google.com/macros/s/AKfycbysJxysyq4-bGu5kVsR4KI_7IMdkZ6Euu3yiF1XWKpGUSybbjnbwyaf1_0lrF7K7FY8/exec";
 
 let scoringEvents = [];
 let scoringPerformers = [];
@@ -175,43 +175,41 @@ function renderScoringTable(){
 
         body.innerHTML += `
 
-        <tr>
+      <tr>
 
-            <td>${p.name}</td>
+    <td>${p.name}</td>
 
-            <td>${p.category}</td>
+    <td>${p.category}</td>
 
-            <td>${p.judgeAverage}</td>
+    <td>${p.language}</td>
 
-            <td>${p.audienceAverage}</td>
+    <td>${p.duration}</td>
 
-            <td>${p.finalScore}</td>
+    <td>
 
-            <td>
+        <span class="status success">
 
-                <span class="status">
+            Selected
 
-                    ${p.status}
+        </span>
 
-                </span>
+    </td>
 
-            </td>
+    <td>
 
-            <td>
+        <button
 
-                <button
+            class="action-btn"
 
-                    class="action-btn"
+            onclick="openScoreDetails('${p.id}')">
 
-                    onclick="viewScore('${p.id}')">
+            <i class="fa-solid fa-eye"></i>
 
-                    <i class="fa-solid fa-eye"></i>
+        </button>
 
-                </button>
+    </td>
 
-            </td>
-
-        </tr>
+</tr>
 
         `;
 
@@ -219,5 +217,36 @@ function renderScoringTable(){
 
     document.getElementById("scorePerformerCount").innerText =
     scoringPerformers.length;
+
+}
+
+let selectedPerformer = null;
+
+function openScoreDetails(id){
+
+    selectedPerformer =
+
+    scoringPerformers.find(
+
+        p => p.id == id
+
+    );
+
+    if(!selectedPerformer){
+
+        return;
+
+    }
+
+    document.getElementById(
+        "scoreModal"
+    ).classList.add("show");
+
+}
+function closeScoreModal(){
+
+    document
+    .getElementById("scoreModal")
+    .classList.remove("show");
 
 }
