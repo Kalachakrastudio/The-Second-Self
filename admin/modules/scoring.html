@@ -1,1 +1,119 @@
+<div class="scoring-page">
 
+    <!-- TOOLBAR -->
+
+    <div class="page-toolbar">
+
+        <div class="toolbar-left">
+
+            <div class="score-select">
+
+                <select id="scoreEvent">
+
+                    <option value="">
+                        Select Event
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- TABS -->
+
+    <div class="score-tabs">
+
+        <button
+            class="score-tab active"
+            data-tab="judge">
+
+            <i class="fa-solid fa-gavel"></i>
+
+            Judge
+
+        </button>
+
+        <button
+            class="score-tab"
+            data-tab="audience">
+
+            <i class="fa-solid fa-users"></i>
+
+            Audience
+
+        </button>
+
+        <button
+            class="score-tab"
+            data-tab="results">
+
+            <i class="fa-solid fa-ranking-star"></i>
+
+            Results
+
+        </button>
+
+    </div>
+
+
+
+    <!-- JUDGE -->
+
+    <div id="judgeTab" class="score-content active">
+
+        <div id="judgePerformers" class="performer-grid">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- AUDIENCE -->
+
+    <div id="audienceTab" class="score-content">
+
+        <div class="ticket-validation">
+
+            <input
+                id="ticketId"
+                placeholder="Enter Ticket ID">
+
+            <button
+                id="validateTicket"
+                class="primary-btn">
+
+                Verify Ticket
+
+            </button>
+
+        </div>
+
+        <div
+            id="audiencePerformers"
+            class="performer-grid">
+
+        </div>
+
+    </div>
+
+
+
+    <!-- RESULTS -->
+
+    <div id="resultsTab" class="score-content">
+
+        <div
+            id="leaderboard"
+            class="leaderboard">
+
+        </div>
+
+    </div>
+
+</div>
