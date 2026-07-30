@@ -1,18 +1,18 @@
 <div class="scoring-page">
 
-    <!-- TOOLBAR -->
+    <!-- Toolbar -->
 
     <div class="page-toolbar">
 
         <div class="toolbar-left">
 
-            <div class="score-select">
+            <div class="form-group">
 
-                <select id="scoreEvent">
+                <label>Event</label>
 
-                    <option value="">
-                        Select Event
-                    </option>
+                <select id="scoringEvent">
+
+                    <option value="">Select Event</option>
 
                 </select>
 
@@ -23,97 +23,118 @@
     </div>
 
 
+    <!-- Stats -->
 
-    <!-- TABS -->
+    <div class="score-stats">
 
-    <div class="score-tabs">
+        <div class="score-card">
 
-        <button
-            class="score-tab active"
-            data-tab="judge">
+            <span>Total Performers</span>
 
-            <i class="fa-solid fa-gavel"></i>
+            <h2 id="scorePerformerCount">0</h2>
 
-            Judge
+        </div>
 
-        </button>
+        <div class="score-card">
 
-        <button
-            class="score-tab"
-            data-tab="audience">
+            <span>Judges</span>
 
-            <i class="fa-solid fa-users"></i>
+            <h2 id="scoreJudgeCount">0</h2>
 
-            Audience
+        </div>
 
-        </button>
+        <div class="score-card">
 
-        <button
-            class="score-tab"
-            data-tab="results">
+            <span>Audience Votes</span>
 
-            <i class="fa-solid fa-ranking-star"></i>
-
-            Results
-
-        </button>
-
-    </div>
-
-
-
-    <!-- JUDGE -->
-
-    <div id="judgeTab" class="score-content active">
-
-        <div id="judgePerformers" class="performer-grid">
+            <h2 id="scoreAudienceCount">0</h2>
 
         </div>
 
     </div>
 
 
+    <!-- Performer Table -->
 
-    <!-- AUDIENCE -->
+    <div class="table-card">
 
-    <div id="audienceTab" class="score-content">
+        <table>
 
-        <div class="ticket-validation">
+            <thead>
 
-            <input
-                id="ticketId"
-                placeholder="Enter Ticket ID">
+                <tr>
 
-            <button
-                id="validateTicket"
-                class="primary-btn">
+                    <th>Performer</th>
 
-                Verify Ticket
+                    <th>Category</th>
+
+                    <th>Judge Avg</th>
+
+                    <th>Audience Avg</th>
+
+                    <th>Final</th>
+
+                    <th>Status</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="scoringTable">
+
+                <tr>
+
+                    <td colspan="7" class="empty-row">
+
+                        <i class="fa-solid fa-trophy"></i>
+
+                        <p>Select an Event</p>
+
+                        <small>
+
+                            Choose an event to load scoring.
+
+                        </small>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+    <div id="performerScoreModal" class="modal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2>
+
+                <i class="fa-solid fa-chart-line"></i>
+
+                Performer Scores
+
+            </h2>
+
+            <button id="closeScoreModal">
+
+                <i class="fa-solid fa-xmark"></i>
 
             </button>
 
         </div>
 
-        <div
-            id="audiencePerformers"
-            class="performer-grid">
+        <div id="performerScoreContent">
 
         </div>
 
     </div>
 
-
-
-    <!-- RESULTS -->
-
-    <div id="resultsTab" class="score-content">
-
-        <div
-            id="leaderboard"
-            class="leaderboard">
-
-        </div>
-
-    </div>
+</div>
 
 </div>
