@@ -1,5 +1,5 @@
 const SCORING_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbysJxysyq4-bGu5kVsR4KI_7IMdkZ6Euu3yiF1XWKpGUSybbjnbwyaf1_0lrF7K7FY8/exec";
+"https://script.google.com/macros/s/AKfycbxx_860ReXY9gGe21ClRqPS9UDCpRtGrAK9SVYJJNY265ikbBMdxD0iC0SyyH8AaMZO/exec";
 
 let scoringEvents = [];
 let scoringPerformers = [];
@@ -43,7 +43,7 @@ async function loadScoringEvents(){
 
         if(result.success){
 
-            scoringEvents = result.data;
+            scoringEvents = result.events || [];
 
             renderScoringEvents();
 
@@ -127,7 +127,7 @@ async function loadScoringPerformers(){
 
         if(result.success){
 
-            scoringPerformers = result.data;
+            scoringPerformers = result.performers || [];
 
             renderScoringTable();
 
