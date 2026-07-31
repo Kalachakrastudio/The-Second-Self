@@ -9,6 +9,21 @@ function initScoring(){
 
     console.log("Scoring Loaded");
 
+    const select =
+    document.getElementById("scoringEvent");
+
+    if(select){
+
+        select.innerHTML=`
+            <option value="">
+                Loading Events...
+            </option>
+        `;
+
+        rebuildCustomSelect("scoringEvent");
+
+    }
+
     loadScoringEvents();
 
     const event =
@@ -64,7 +79,11 @@ function renderScoringEvents(){
     const select =
     document.getElementById("scoringEvent");
 
-    select.innerHTML = `
+    if(!select) return;
+
+    select.innerHTML = "";
+
+    select.innerHTML += `
         <option value="">
             Select Event
         </option>
