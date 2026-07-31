@@ -1,5 +1,5 @@
 const SCORING_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbxx_860ReXY9gGe21ClRqPS9UDCpRtGrAK9SVYJJNY265ikbBMdxD0iC0SyyH8AaMZO/exec";
+"https://script.google.com/macros/s/AKfycbyTOlWV-0vmAO3vfwR1IBKonAP3R6uxxd9mJFi9L6BXEBZ0g2oIYTRWimfzV789iMJE/exec";
 
 let scoringEvents = [];
 let scoringPerformers = [];
@@ -24,7 +24,7 @@ function initScoring(){
 
     }
 
-    loadScoringEvents();
+    loadTodayScoring();
 
     const event =
     document.getElementById("scoringEvent");
@@ -200,9 +200,11 @@ function renderScoringTable(){
 
     <td>${p.category}</td>
 
-    <td>${p.language}</td>
+    <td>-</td>
 
-    <td>${p.duration}</td>
+<td>-</td>
+
+<td>-</td>
 
     <td>
 
@@ -267,5 +269,87 @@ function closeScoreModal(){
     document
     .getElementById("scoreModal")
     .classList.remove("show");
+
+}
+
+async function loadTodayScoring(){
+
+    try{
+
+        const response = await fetch(
+
+            SCORING_SCRIPT_URL +
+            "?action=getTodayScoring"
+
+        );
+
+        const result = await response.json();
+
+        if(!result.success){
+
+            showEmptyScoring(
+                result.message || "No Event Today"
+            );
+
+            return;
+
+        }
+
+        selectedScoringEvent = result.event.id;
+
+        renderTodayEvent(result.event);
+
+        scoringPerformers = result.performers;
+
+        renderScoringTable();
+
+    }
+
+    catch(err){
+
+        console.log(err);
+
+    }
+
+}
+
+function renderTodayEvent(event){
+
+    const select =
+    document.getElementById("scoringEvent");
+
+    if(!select) return;
+
+    select.innerHTML =
+
+    `<option value="${event.id}">
+
+        ${event.name}
+
+    </option>`;
+
+    rebuildCustomSelect("scoringEvent");
+
+}
+function showEmptyScoring(message){
+
+    const body =
+    document.getElementById("scoringTable");
+
+    body.innerHTML = `
+
+    <tr>
+
+        <td colspan="7" class="empty-row">
+
+            <i class="fa-solid fa-calendar-xmark"></i>
+
+            <p>${message}</p>
+
+        </td>
+
+    </tr>
+
+    `;
 
 }
