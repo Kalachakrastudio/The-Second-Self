@@ -27,6 +27,11 @@ const pageInfo = {
         subtitle:"Judge performer scores."
     },
 
+    judge:{ 
+        title:"Judge Panel", 
+        subtitle:"Score performers for today's event." 
+    },
+    
     reports:{
         title:"Reports",
         subtitle:"View reports and export data."
@@ -90,6 +95,10 @@ function loadModule(page){
             if(typeof initScoring==="function") initScoring();
             break;
 
+        case "judge": 
+            if(typeof initJudge==="function") initJudge(); 
+            break;
+            
         case "reports":
             if(typeof initReports==="function") initReports();
             break;
