@@ -10,8 +10,9 @@ SCORING STATISTICS
 
     gap:20px;
 
-}
+    margin:24px 0 30px;
 
+}
 .score-card{
 
     background:#171717;
@@ -20,17 +21,17 @@ SCORING STATISTICS
 
     border-radius:18px;
 
-    padding:22px;
+    padding:26px;
 
     display:flex;
 
     align-items:center;
 
-    gap:18px;
+    gap:20px;
 
-    min-height:110px;
+    min-height:120px;
 
-    transition:.25s ease;
+    transition:.25s;
 
 }
 
@@ -48,11 +49,13 @@ SCORING STATISTICS
 
     height:60px;
 
+    flex-shrink:0;
+
+    border-radius:14px;
+
     background:rgba(215,31,40,.08);
 
     color:var(--primary);
-
-    border-radius:14px;
 
     display:flex;
 
@@ -60,10 +63,7 @@ SCORING STATISTICS
 
     align-items:center;
 
-    flex-shrink:0;
-
 }
-
 .score-icon i{
 
     font-size:24px;
@@ -73,6 +73,8 @@ SCORING STATISTICS
 .score-card h2{
 
     margin:0;
+
+    line-height:1;
 
     font-size:30px;
 
@@ -84,7 +86,7 @@ SCORING STATISTICS
 
 .score-card p{
 
-    margin-top:6px;
+    margin:4px 0 0;
 
     color:#888;
 
@@ -118,6 +120,7 @@ EVENT SELECTOR
 .event-selector{
 
     width:320px;
+    max-width:100%;
 
 }
 
@@ -127,4 +130,45 @@ EVENT SELECTOR
 
 }
 
+/* Mobile */
 
+@media(max-width:768px){
+
+    .page-toolbar{
+
+        flex-direction:column;
+        align-items:stretch;
+
+    }
+
+    .toolbar-left{
+
+        width:100%;
+
+    }
+
+    .event-selector{
+
+        width:100%;
+
+    }
+
+}
+
+/* Scoring page mobile dropdown */
+
+@media(max-width:768px){
+
+    .scoring-page .custom-select{
+
+        width:100% !important;
+
+    }
+
+    .scoring-page .select-selected{
+
+        width:100% !important;
+
+    }
+
+}
