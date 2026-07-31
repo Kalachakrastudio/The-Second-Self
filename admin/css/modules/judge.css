@@ -1,0 +1,102 @@
+.judge-page{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+}
+
+.judge-stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.judge-stat{
+    background:#171717;
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:22px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    min-height:110px;
+}
+
+.judge-stat i{
+    width:56px;
+    height:56px;
+    border-radius:14px;
+    background:rgba(215,31,40,.08);
+    color:var(--primary);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+}
+
+.judge-stat h2{
+    margin:0;
+    font-size:28px;
+}
+
+.judge-stat p{
+    margin-top:5px;
+    color:#888;
+}
+
+.judge-cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:22px;
+}
+
+.judge-card{
+    background:#171717;
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:22px;
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.judge-card .icon{
+    width:72px;
+    height:72px;
+    border-radius:18px;
+    background:rgba(215,31,40,.08);
+    color:var(--primary);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+}
+
+.judge-card h3{
+    margin:0;
+    font-size:20px;
+}
+
+.judge-card p{
+    margin:0;
+    color:#aaa;
+    font-size:14px;
+}
+
+.judge-card button{
+    width:100%;
+}
+
+@media(max-width:768px){
+
+    .judge-stats{
+        grid-template-columns:1fr;
+    }
+
+    .judge-cards{
+        grid-template-columns:1fr;
+    }
+
+    .event-selector{
+        width:100%;
+    }
+}
