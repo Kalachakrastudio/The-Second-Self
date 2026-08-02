@@ -73,7 +73,7 @@ async function loadJudgePerformers(){
 }
 
 ];
-
+let selectedJudgePerformer = null;
         renderJudgeCards();
 
     },500);
@@ -148,14 +148,11 @@ function renderJudgeCards(){
     </div>
 
     <button
-        class="primary-btn"
-        onclick="openJudgeScore('${p.id}')">
-
-        <i class="fa-solid fa-star"></i>
-
-        Score Performer
-
-    </button>
+    class="primary-btn"
+    onclick="openJudgeModal('${p.id}')"
+>
+    Score Now
+</button>
 
 </div>
 
@@ -168,5 +165,104 @@ function renderJudgeCards(){
 
     document.getElementById("judgePendingCount").innerText =
     judgePerformers.length;
+
+}
+function openJudgeModal(id){
+
+    selectedJudgePerformer =
+    judgePerformers.find(p=>p.id==id);
+
+    if(!selectedJudgePerformer)
+        return;
+
+    document.getElementById(
+        "judgePerformerName"
+    ).innerText =
+    selectedJudgePerformer.name;
+
+    document.getElementById(
+        "judgePerformerCategory"
+    ).innerText =
+    selectedJudgePerformer.category;
+
+    document.getElementById(
+        "storyScore"
+    ).value="";
+
+    document.getElementById(
+        "performanceScore"
+    ).value="";
+
+    document.getElementById(
+        "expressionScore"
+    ).value="";
+
+    document.getElementById(
+        "judgeComment"
+    ).value="";
+
+    document
+        .getElementById("judgeScoreModal")
+        .classList.add("show");
+
+}
+
+function closeJudgeModal(){
+
+    document
+        .getElementById("judgeScoreModal")
+        .classList.remove("show");
+
+}
+
+function submitJudgeScore(){
+
+    const story =
+    Number(
+        document.getElementById("storyScore").value
+    );
+
+    const performance =
+    Number(
+        document.getElementById("performanceScore").value
+    );
+
+    const expression =
+    Number(
+        document.getElementById("expressionScore").value
+    );
+
+    const comment =
+    document.getElementById("judgeComment").value;
+
+    if(
+
+        story<1 ||
+        performance<1 ||
+        expression<1
+
+    ){
+
+        alert("Please enter all scores.");
+
+        return;
+
+    }
+
+    console.log({
+
+        performer:selectedJudgePerformer,
+
+        story,
+
+        performance,
+
+        expression,
+
+        comment
+
+    });
+
+    closeJudgeModal();
 
 }
