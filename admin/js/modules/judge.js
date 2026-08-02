@@ -336,22 +336,6 @@ selectedJudgePerformer.name;
     ).innerText =
     selectedJudgePerformer.category;
 
-    document.getElementById(
-        "storyScore"
-    ).value="";
-
-    document.getElementById(
-        "performanceScore"
-    ).value="";
-
-    document.getElementById(
-        "expressionScore"
-    ).value="";
-
-    document.getElementById(
-        "judgeComment"
-    ).value="";
-
     document
         .getElementById("judgeScoreModal")
         .classList.add("show");
