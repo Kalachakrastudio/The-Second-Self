@@ -172,130 +172,85 @@
         width:100%;
     }
 }
+/* SCORE BUTTON AREA */
+
+.score-number-box{
+    width:100%;
+    margin-bottom:40px;
+}
+
+
+.score-number-box p{
+    margin-bottom:20px;
+}
+
+
 .score-buttons{
 
-display:grid;
-grid-template-columns:repeat(5,1fr);
-gap:12px;
-margin-top:20px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:12px;
 
 }
 
 
 .score-buttons button{
 
-height:45px;
-border-radius:12px;
-background:#222;
-border:1px solid #333;
-color:white;
-font-size:18px;
-cursor:pointer;
+    height:45px;
+    border-radius:12px;
+    background:#222;
+    border:1px solid #333;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
 
 }
-
 
 
 .score-buttons button.active{
 
-background:var(--primary);
-border-color:var(--primary);
+    background:var(--primary);
+    border-color:var(--primary);
 
 }
 
 
-
-.success-popup{
-
-position:fixed;
-top:30px;
-right:30px;
-
-transform:translateY(-100px);
-
-opacity:0;
-
-transition:.3s;
-
-z-index:9999;
-
-}
-
-
-
-.success-popup.show{
-
-transform:translateY(0);
-
-opacity:1;
-
-}
-
-
-
-.success-box{
-
-background:#171717;
-border:1px solid #333;
-padding:25px 40px;
-border-radius:18px;
-text-align:center;
-
-}
-
-
-
-.success-box i{
-
-font-size:40px;
-color:#22c55e;
-
-}
-
-
-.score-number-box{
-    padding:20px 0 30px;
-}
-
-
-.score-buttons{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:15px;
-}
-
+/* SUBMIT BUTTON */
 
 .score-modal .primary-btn{
-    margin-top:25px;
-    height:50px;
+
+    margin-top:40px;
+    height:52px;
+    width:100%;
+
 }
+
+
+
+/* MOBILE */
 
 @media(max-width:768px){
 
-    .score-modal .modal-body{
-        padding:20px;
-    }
-
 
     .score-number-box{
-        margin-bottom:35px;
-        width:100%;
+
+        margin-bottom:45px;
+
     }
 
 
     .score-buttons{
-        margin-top:20px;
-        margin-bottom:35px;
-        display:grid;
-        grid-template-columns:repeat(5,1fr);
+
         gap:10px;
+        margin-bottom:45px;
+
     }
 
 
     .score-buttons button{
 
-        height:42px;
-        width:42px;
+        height:40px;
+        width:40px;
         font-size:15px;
 
     }
@@ -303,9 +258,8 @@ color:#22c55e;
 
     .score-modal .primary-btn{
 
-        margin-top:25px;
-        height:52px;
-        width:100%;
+        margin-top:35px;
+        height:50px;
 
     }
 
