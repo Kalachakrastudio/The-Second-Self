@@ -292,11 +292,6 @@ function renderJudgeCards(){
     document.getElementById("judgePerformerCount").innerText =
     judgePerformers.length;
 
-    document.getElementById("judgeScoredCount").innerText = 0;
-
-    document.getElementById("judgePendingCount").innerText =
-    judgePerformers.length;
-
 }
 function openJudgeModal(id){
 selectedScore = 0;
@@ -443,7 +438,7 @@ console.log(error);
 
 
 }
-function selectScore(score){
+function selectScore(button,score){
 
 
 selectedScore = score;
@@ -453,14 +448,12 @@ document
 .querySelectorAll(".score-buttons button")
 .forEach(btn=>{
 
-
 btn.classList.remove("active");
-
 
 });
 
 
-event.target.classList.add("active");
+button.classList.add("active");
 
 
 }
