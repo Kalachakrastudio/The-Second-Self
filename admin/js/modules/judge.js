@@ -2,6 +2,7 @@ const JUDGE_SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbyTOlWV-0vmAO3vfwR1IBKonAP3R6uxxd9mJFi9L6BXEBZ0g2oIYTRWimfzV789iMJE/exec";
 
 let judgePerformers = [];
+let selectedJudgePerformer = null;
 
 function initJudge(){
 
@@ -73,7 +74,6 @@ async function loadJudgePerformers(){
 }
 
 ];
-let selectedJudgePerformer = null;
         renderJudgeCards();
 
     },500);
