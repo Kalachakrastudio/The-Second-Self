@@ -264,3 +264,169 @@
     }
 
 }
+
+/* =========================
+   JUDGE SCORE MODAL
+========================= */
+
+
+.score-modal{
+
+    max-width:420px;
+    width:90%;
+
+}
+
+
+.score-modal .modal-body{
+
+    padding:30px;
+
+}
+
+
+/* Performer Name */
+
+#judgePerformerName{
+
+    margin:0;
+    font-size:22px;
+    text-align:center;
+
+}
+
+
+#judgePerformerCategory{
+
+    text-align:center;
+    color:#999;
+    margin-top:8px;
+    margin-bottom:25px;
+
+}
+
+
+
+/* Score Section */
+
+.score-number-box{
+
+    text-align:center;
+}
+
+
+.score-number-box p{
+
+    color:#aaa;
+    font-size:15px;
+
+}
+
+
+
+/* Score Buttons */
+
+.score-buttons{
+
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:14px;
+    margin-top:20px;
+
+}
+
+
+.score-buttons button{
+
+    height:45px;
+    border-radius:12px;
+
+    background:#222;
+    border:1px solid #333;
+
+    color:white;
+    font-size:18px;
+
+    transition:.2s;
+
+}
+
+
+.score-buttons button:hover{
+
+    border-color:var(--primary);
+
+}
+
+
+.score-buttons button.active{
+
+    background:var(--primary);
+    border-color:var(--primary);
+
+}
+
+
+
+/* Submit */
+
+.score-modal .primary-btn{
+
+    margin-top:45px;
+
+    width:100%;
+    height:52px;
+
+}
+
+
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+
+.score-modal{
+
+    width:95%;
+    margin:auto;
+
+}
+
+
+.score-modal .modal-body{
+
+    padding:25px 18px;
+
+}
+
+
+
+.score-buttons{
+
+    gap:10px;
+    margin-top:25px;
+    margin-bottom:10px;
+
+}
+
+
+.score-buttons button{
+
+    height:42px;
+    width:100%;
+
+    font-size:16px;
+
+}
+
+
+.score-modal .primary-btn{
+
+    margin-top:45px;
+
+}
+
+
+
+}
