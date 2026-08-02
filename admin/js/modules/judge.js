@@ -1,8 +1,10 @@
 const JUDGE_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbzMqoXdA_bEoOwZxl5A498Nqy46x9-kBbrunUi7ezFQLgywui9GI4Wv_SDHsbB39NAg/exec";
+"https://script.google.com/macros/s/AKfycbzdF7PVM-L5uS5KkZwiXqBy5JkDC1MMwjuCvWBV8BgqSgJziR2gTMi2GXvMH9XS7Uow/exec";
 
 let judgePerformers = [];
 let selectedJudgePerformer = null;
+let selectedEventId = "";
+let currentJudgeId = "JUDGE001";
 
 function initJudge(){
 
@@ -298,7 +300,9 @@ function renderJudgeCards(){
 function openJudgeModal(id){
 
     selectedJudgePerformer =
-    judgePerformers.find(p=>p.id==id);
+judgePerformers.find(
+p=>p.performerId==id
+);
 
     if(!selectedJudgePerformer)
         return;
