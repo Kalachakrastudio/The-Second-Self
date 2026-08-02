@@ -1,5 +1,5 @@
 const JUDGE_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbyTOlWV-0vmAO3vfwR1IBKonAP3R6uxxd9mJFi9L6BXEBZ0g2oIYTRWimfzV789iMJE/exec";
+"https://script.google.com/macros/s/AKfycbwryhvXN8fOi1XD5G51JEYZ5Clytq2rTBiJo61GmpqHRtswTggh7x-7eqeArq6WTGru/exec";
 
 let judgePerformers = [];
 let selectedJudgePerformer = null;
@@ -14,69 +14,197 @@ function initJudge(){
 
 async function loadJudgeEvent(){
 
-    const select = document.getElementById("judgeEvent");
 
-    select.innerHTML = `
-        <option value="">Today's Event</option>
-    `;
+const select =
+document.getElementById("judgeEvent");
 
-    rebuildCustomSelect("judgeEvent");
 
-    loadJudgePerformers();
+select.innerHTML =
+`
+<option>
+Loading Event...
+</option>
+`;
+
+
+
+try{
+
+
+const response =
+await fetch(
+JUDGE_SCRIPT_URL+
+"?action=getScoringEvents"
+);
+
+
+
+const data =
+await response.json();
+
+
+
+if(
+data.success &&
+data.events.length
+){
+
+
+select.innerHTML="";
+
+
+
+data.events.forEach(event=>{
+
+
+select.innerHTML +=
+`
+
+<option value="${event.id}">
+${event.name}
+</option>
+
+`;
+
+
+
+});
+
+
+
+selectedEventId =
+data.events[0].id;
+
+
+
+select.value =
+selectedEventId;
+
+
+
+rebuildCustomSelect("judgeEvent");
+
+
+
+loadJudgePerformers();
+
+
+
+}
+else{
+
+
+select.innerHTML =
+`
+<option>
+No Event Today
+</option>
+`;
 
 }
 
+
+}
+catch(error){
+
+
+console.log(error);
+
+
+}
+
+
+
+}
 async function loadJudgePerformers(){
 
-    const container = document.getElementById("judgeCards");
 
-    container.innerHTML = `
-        <div class="empty-row">
-            <i class="fa-solid fa-spinner fa-spin"></i>
-            <p>Loading Performers...</p>
-        </div>
-    `;
+const container =
+document.getElementById("judgeCards");
 
-    setTimeout(()=>{
 
-       judgePerformers = [
 
-{
+container.innerHTML=
+`
+<div class="empty-row">
 
-    id:"PER0001",
+<i class="fa-solid fa-spinner fa-spin"></i>
 
-    name:"Amit Sharma",
+<p>
+Loading Performers...
+</p>
 
-    category:"Singer",
+</div>
+`;
 
-    title:"The Voice Within",
 
-    language:"Hindi",
 
-    duration:"5 Min"
+try{
 
-},
 
-{
+const response =
+await fetch(
 
-    id:"PER0002",
+JUDGE_SCRIPT_URL+
+"?action=getJudgeDashboard"+
+"&eventId="+selectedEventId+
+"&judgeId="+currentJudgeId
 
-    name:"Priya Patel",
+);
 
-    category:"Dancer",
 
-    title:"Beyond Fear",
 
-    language:"English",
+const data =
+await response.json();
 
-    duration:"4 Min"
+
+
+if(data.success){
+
+
+judgePerformers =
+data.performers;
+
+
+
+renderJudgeCards();
+
+
+
+document.getElementById(
+"judgePerformerCount"
+)
+.innerText=data.total;
+
+
+
+document.getElementById(
+"judgeScoredCount"
+)
+.innerText=data.scored;
+
+
+
+document.getElementById(
+"judgePendingCount"
+)
+.innerText=data.pending;
+
+
 
 }
 
-];
-        renderJudgeCards();
 
-    },500);
+
+}
+catch(error){
+
+
+console.log(error);
+
+
+}
+
 
 }
 
@@ -149,7 +277,7 @@ function renderJudgeCards(){
 
     <button
     class="primary-btn"
-    onclick="openJudgeModal('${p.id}')"
+    onclick="openJudgeModal('${p.performerId}')"
 >
     Score Now
 </button>
@@ -175,10 +303,18 @@ function openJudgeModal(id){
     if(!selectedJudgePerformer)
         return;
 
-    document.getElementById(
-        "judgePerformerName"
-    ).innerText =
-    selectedJudgePerformer.name;
+    const nameBox =
+document.getElementById(
+"judgePerformerName"
+);
+
+
+if(nameBox){
+
+nameBox.innerText =
+selectedJudgePerformer.name;
+
+}
 
     document.getElementById(
         "judgePerformerCategory"
@@ -215,54 +351,107 @@ function closeJudgeModal(){
 
 }
 
-function submitJudgeScore(){
+async function submitJudgeScore(){
 
-    const story =
-    Number(
-        document.getElementById("storyScore").value
-    );
 
-    const performance =
-    Number(
-        document.getElementById("performanceScore").value
-    );
+const score =
+Number(
+document.getElementById(
+"storyScore"
+).value
+);
 
-    const expression =
-    Number(
-        document.getElementById("expressionScore").value
-    );
 
-    const comment =
-    document.getElementById("judgeComment").value;
 
-    if(
+if(score<1 || score>10){
 
-        story<1 ||
-        performance<1 ||
-        expression<1
 
-    ){
+alert(
+"Enter score between 1-10"
+);
 
-        alert("Please enter all scores.");
+return;
 
-        return;
+}
 
-    }
 
-    console.log({
 
-        performer:selectedJudgePerformer,
+const payload={
 
-        story,
 
-        performance,
+action:"saveJudgeScore",
 
-        expression,
 
-        comment
+judgeId:
+currentJudgeId,
 
-    });
 
-    closeJudgeModal();
+performerId:
+selectedJudgePerformer.performerId,
+
+
+eventId:
+selectedEventId,
+
+
+score:score
+
+
+};
+
+
+
+try{
+
+
+const response =
+await fetch(
+
+JUDGE_SCRIPT_URL,
+
+{
+
+method:"POST",
+
+body:
+JSON.stringify(payload)
+
+}
+
+);
+
+
+
+const result =
+await response.json();
+
+
+
+alert(result.message);
+
+
+
+if(result.success){
+
+
+closeJudgeModal();
+
+
+loadJudgePerformers();
+
+
+}
+
+
+
+}
+catch(error){
+
+
+console.log(error);
+
+
+}
+
 
 }
