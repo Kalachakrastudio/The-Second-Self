@@ -519,15 +519,21 @@
 
     .success-popup{
 
+        position:fixed;
+
         top:20px;
 
         left:50%;
 
         right:auto;
 
-        transform:translate(-50%,-30px);
+        width:calc(100% - 40px);
 
-        width:90%;
+        max-width:350px;
+
+        transform:translate(-50%,-80px);
+
+        z-index:99999;
 
     }
 
@@ -545,7 +551,33 @@
 
         min-width:auto;
 
-        padding:20px;
+        padding:18px 20px;
+
+        border-radius:16px;
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:center;
+
+        gap:12px;
+
+    }
+
+
+    .success-box i{
+
+        font-size:28px;
+
+    }
+
+
+    .success-box h3{
+
+        font-size:15px;
+
+        margin:0;
 
     }
 
