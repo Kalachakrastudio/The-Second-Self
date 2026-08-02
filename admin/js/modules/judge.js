@@ -5,6 +5,7 @@ let judgePerformers = [];
 let selectedJudgePerformer = null;
 let selectedEventId = "";
 let currentJudgeId = "JUDGE001";
+let selectedScore = 0;
 
 function initJudge(){
 
@@ -298,7 +299,17 @@ function renderJudgeCards(){
 
 }
 function openJudgeModal(id){
+selectedScore = 0;
 
+
+document
+.querySelectorAll(".score-buttons button")
+.forEach(btn=>{
+
+btn.classList.remove("active");
+
+});
+    
     selectedJudgePerformer =
 judgePerformers.find(
 p=>p.performerId==id
@@ -358,21 +369,10 @@ function closeJudgeModal(){
 async function submitJudgeScore(){
 
 
-const score =
-Number(
-document.getElementById(
-"storyScore"
-).value
-);
+const score = selectedScore;
+if(score < 1 || score > 10){
 
-
-
-if(score<1 || score>10){
-
-
-alert(
-"Enter score between 1-10"
-);
+alert("Please select score");
 
 return;
 
@@ -431,7 +431,7 @@ await response.json();
 
 
 
-alert(result.message);
+showSuccess(result.message);
 
 
 
@@ -456,6 +456,53 @@ console.log(error);
 
 
 }
+
+
+}
+function selectScore(score){
+
+
+selectedScore = score;
+
+
+document
+.querySelectorAll(".score-buttons button")
+.forEach(btn=>{
+
+
+btn.classList.remove("active");
+
+
+});
+
+
+event.target.classList.add("active");
+
+
+}
+
+function showSuccess(message){
+
+
+const popup =
+document.getElementById("successPopup");
+
+
+document.getElementById(
+"successMessage"
+).innerText = message;
+
+
+popup.classList.add("show");
+
+
+setTimeout(()=>{
+
+
+popup.classList.remove("show");
+
+
+},2000);
 
 
 }
