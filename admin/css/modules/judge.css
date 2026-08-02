@@ -49,6 +49,78 @@
     gap:22px;
 }
 
+.judge-top{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+.judge-info{
+
+    flex:1;
+
+}
+.judge-category{
+
+    display:inline-block;
+
+    margin-top:6px;
+
+    padding:5px 12px;
+
+    border-radius:30px;
+
+    background:rgba(215,31,40,.12);
+
+    color:var(--primary);
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+.judge-body{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+.judge-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:10px 0;
+
+    border-bottom:1px solid rgba(255,255,255,.05);
+
+}
+.judge-row span{
+
+    color:#888;
+
+    font-size:13px;
+
+}
+.judge-row strong{
+
+    color:#fff;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
 .judge-card{
     background:#171717;
     border:1px solid var(--border);
