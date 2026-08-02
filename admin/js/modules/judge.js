@@ -38,20 +38,41 @@ async function loadJudgePerformers(){
 
     setTimeout(()=>{
 
-        judgePerformers = [
-            {
-                id:"PER0001",
-                name:"Amit Sharma",
-                category:"Singer",
-                duration:"5 min"
-            },
-            {
-                id:"PER0002",
-                name:"Priya Patel",
-                category:"Dancer",
-                duration:"4 min"
-            }
-        ];
+       judgePerformers = [
+
+{
+
+    id:"PER0001",
+
+    name:"Amit Sharma",
+
+    category:"Singer",
+
+    title:"The Voice Within",
+
+    language:"Hindi",
+
+    duration:"5 Min"
+
+},
+
+{
+
+    id:"PER0002",
+
+    name:"Priya Patel",
+
+    category:"Dancer",
+
+    title:"Beyond Fear",
+
+    language:"English",
+
+    duration:"4 Min"
+
+}
+
+];
 
         renderJudgeCards();
 
@@ -80,25 +101,63 @@ function renderJudgeCards(){
 
         <div class="judge-card">
 
-            <div class="icon">
-                <i class="fa-solid fa-microphone"></i>
-            </div>
+    <div class="judge-top">
 
-            <div>
+        <div class="icon">
+            <i class="fa-solid fa-microphone"></i>
+        </div>
 
-                <h3>${p.name}</h3>
+        <div class="judge-info">
 
-                <p>${p.category}</p>
+            <h3>${p.name}</h3>
 
-                <p>${p.duration}</p>
-
-            </div>
-
-            <button class="primary-btn">
-                Score Now
-            </button>
+            <span class="judge-category">
+                ${p.category}
+            </span>
 
         </div>
+
+    </div>
+
+    <div class="judge-body">
+
+        <div class="judge-row">
+
+            <span>Title</span>
+
+            <strong>${p.title}</strong>
+
+        </div>
+
+        <div class="judge-row">
+
+            <span>Language</span>
+
+            <strong>${p.language}</strong>
+
+        </div>
+
+        <div class="judge-row">
+
+            <span>Duration</span>
+
+            <strong>${p.duration}</strong>
+
+        </div>
+
+    </div>
+
+    <button
+        class="primary-btn"
+        onclick="openJudgeScore('${p.id}')">
+
+        <i class="fa-solid fa-star"></i>
+
+        Score Performer
+
+    </button>
+
+</div>
 
     `).join("");
 
