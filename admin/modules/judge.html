@@ -85,17 +85,16 @@
 
 <div id="judgeScoreModal" class="modal">
 
-    <div class="modal-box">
+    <div class="modal-box score-modal">
+
 
         <div class="modal-header">
 
             <h2>
-
                 <i class="fa-solid fa-star"></i>
-
-                Judge Scoring
-
+                Give Score
             </h2>
+
 
             <button onclick="closeJudgeModal()">
 
@@ -105,72 +104,58 @@
 
         </div>
 
+
+
         <div class="modal-body">
+
 
             <h3 id="judgePerformerName"></h3>
 
+
             <p id="judgePerformerCategory"></p>
 
-            <div class="score-group">
 
-                <label>Story</label>
 
-                <input
-                    type="number"
-                    id="storyScore"
-                    min="1"
-                    max="10"
-                >
+            <div class="score-number-box">
 
-            </div>
 
-            <div class="score-group">
+                <p>Select Score (1-10)</p>
 
-                <label>Performance</label>
 
-                <input
-                    type="number"
-                    id="performanceScore"
-                    min="1"
-                    max="10"
-                >
+                <div class="score-buttons">
 
-            </div>
 
-            <div class="score-group">
+                    <button onclick="selectScore(1)">1</button>
+                    <button onclick="selectScore(2)">2</button>
+                    <button onclick="selectScore(3)">3</button>
+                    <button onclick="selectScore(4)">4</button>
+                    <button onclick="selectScore(5)">5</button>
+                    <button onclick="selectScore(6)">6</button>
+                    <button onclick="selectScore(7)">7</button>
+                    <button onclick="selectScore(8)">8</button>
+                    <button onclick="selectScore(9)">9</button>
+                    <button onclick="selectScore(10)">10</button>
 
-                <label>Expression</label>
 
-                <input
-                    type="number"
-                    id="expressionScore"
-                    min="1"
-                    max="10"
-                >
+                </div>
+
 
             </div>
 
-            <div class="score-group">
 
-                <label>Comment</label>
-
-                <textarea
-                    id="judgeComment"
-                    rows="4"
-                ></textarea>
-
-            </div>
 
             <button
-                class="primary-btn"
-                onclick="submitJudgeScore()"
+            class="primary-btn"
+            onclick="submitJudgeScore()"
             >
 
-                Submit Score
+            Submit Score
 
             </button>
 
+
         </div>
+
 
     </div>
 
