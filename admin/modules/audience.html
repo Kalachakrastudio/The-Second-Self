@@ -1,0 +1,216 @@
+<div class="audience-page">
+
+    <!-- Ticket Verification -->
+
+    <div id="ticketVerification" class="ticket-verification">
+
+        <div class="ticket-box">
+
+            <div class="ticket-icon">
+                <i class="fa-solid fa-ticket"></i>
+            </div>
+
+            <h2>Audience Voting</h2>
+
+            <p>
+                Enter your Ticket ID to start voting.
+            </p>
+
+            <input
+                type="text"
+                id="audienceTicket"
+                placeholder="Enter Ticket ID"
+                autocomplete="off"
+            >
+
+            <button
+                class="primary-btn"
+                onclick="verifyAudienceTicket()"
+            >
+                Verify Ticket
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Voting Area -->
+
+    <div id="audienceContent" style="display:none;">
+
+        <!-- Toolbar -->
+
+        <div class="page-toolbar">
+
+            <div class="toolbar-left">
+
+                <div class="event-selector">
+
+                    <select id="audienceEvent">
+
+                        <option>
+                            Loading Event...
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Stats -->
+
+        <div class="judge-stats">
+
+            <div class="judge-stat">
+
+                <i class="fa-solid fa-microphone"></i>
+
+                <div>
+
+                    <h2 id="audiencePerformerCount">0</h2>
+
+                    <p>Performers</p>
+
+                </div>
+
+            </div>
+
+            <div class="judge-stat">
+
+                <i class="fa-solid fa-check"></i>
+
+                <div>
+
+                    <h2 id="audienceScoredCount">0</h2>
+
+                    <p>Voted</p>
+
+                </div>
+
+            </div>
+
+            <div class="judge-stat">
+
+                <i class="fa-solid fa-clock"></i>
+
+                <div>
+
+                    <h2 id="audiencePendingCount">0</h2>
+
+                    <p>Pending</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Performer Cards -->
+
+        <div
+            id="audienceCards"
+            class="judge-cards"
+        >
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- Score Modal -->
+
+<div id="audienceScoreModal" class="modal">
+
+    <div class="modal-box score-modal">
+
+        <div class="modal-header">
+
+            <h2>
+
+                <i class="fa-solid fa-star"></i>
+
+                Give Score
+
+            </h2>
+
+            <button onclick="closeAudienceModal()">
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <h3 id="audiencePerformerName"></h3>
+
+            <p id="audiencePerformerCategory"></p>
+
+            <div class="score-number-box">
+
+                <p>Select Score (1–10)</p>
+
+                <div class="score-buttons">
+
+                    <button onclick="selectAudienceScore(1)">1</button>
+                    <button onclick="selectAudienceScore(2)">2</button>
+                    <button onclick="selectAudienceScore(3)">3</button>
+                    <button onclick="selectAudienceScore(4)">4</button>
+                    <button onclick="selectAudienceScore(5)">5</button>
+                    <button onclick="selectAudienceScore(6)">6</button>
+                    <button onclick="selectAudienceScore(7)">7</button>
+                    <button onclick="selectAudienceScore(8)">8</button>
+                    <button onclick="selectAudienceScore(9)">9</button>
+                    <button onclick="selectAudienceScore(10)">10</button>
+
+                </div>
+
+            </div>
+
+            <button
+                class="primary-btn"
+                onclick="submitAudienceScore()"
+            >
+
+                Submit Score
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- Success Popup -->
+
+<div id="audienceSuccessPopup" class="success-popup">
+
+    <div class="success-box">
+
+        <i class="fa-solid fa-circle-check"></i>
+
+        <h3 id="audienceSuccessMessage">
+
+            Vote Saved
+
+        </h3>
+
+    </div>
+
+</div>
