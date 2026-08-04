@@ -1,10 +1,4 @@
 const AUDIENCE_SCRIPT_URL = JUDGE_SCRIPT_URL;
-const url =
-AUDIENCE_SCRIPT_URL +
-"?action=verifyAudienceTicket" +
-"&ticketId=" + encodeURIComponent(ticket);
-
-console.log(url);
 
 const response = await fetch(url);
 
@@ -26,10 +20,7 @@ function initAudience(){
 async function verifyAudienceTicket(){
 
     const ticket =
-    document
-    .getElementById("audienceTicket")
-    .value
-    .trim();
+    document.getElementById("audienceTicket").value.trim();
 
     if(ticket==""){
 
@@ -41,48 +32,25 @@ async function verifyAudienceTicket(){
 
     try{
 
-        const response =
-        await fetch(
+        const url =
+        AUDIENCE_SCRIPT_URL +
+        "?action=verifyAudienceTicket" +
+        "&ticketId=" + encodeURIComponent(ticket);
 
-            AUDIENCE_SCRIPT_URL+
+        console.log("Request URL:", url);
 
-            "?action=verifyAudienceTicket"+
+        const response = await fetch(url);
 
-            "&ticketId="+encodeURIComponent(ticket)
+        console.log("Status:", response.status);
 
-        );
-
-        const data =
-        await response.json();
-
-        if(!data.success){
-
-            alert(data.message);
-
-            return;
-
-        }
-
-        audienceTicket = ticket;
-
-        selectedAudienceEvent =
-        data.eventId;
-
-        document
-        .getElementById("ticketVerification")
-        .style.display="none";
-
-        document
-        .getElementById("audienceContent")
-        .style.display="block";
+        const data = await response.json();
 
         console.log(data);
 
     }
-
     catch(error){
 
-        console.log(error);
+        console.error(error);
 
     }
 
