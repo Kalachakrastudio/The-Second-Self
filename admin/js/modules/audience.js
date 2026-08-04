@@ -1,4 +1,12 @@
 const AUDIENCE_SCRIPT_URL = JUDGE_SCRIPT_URL;
+const url =
+AUDIENCE_SCRIPT_URL +
+"?action=verifyAudienceTicket" +
+"&ticketId=" + encodeURIComponent(ticket);
+
+console.log(url);
+
+const response = await fetch(url);
 
 let audienceTicket = "";
 
