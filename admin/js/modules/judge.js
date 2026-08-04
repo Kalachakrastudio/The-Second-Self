@@ -1,5 +1,5 @@
 const JUDGE_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbzdF7PVM-L5uS5KkZwiXqBy5JkDC1MMwjuCvWBV8BgqSgJziR2gTMi2GXvMH9XS7Uow/exec";
+"https://script.google.com/macros/s/AKfycbyZVUH5icXPQqULlCswOWd5XX1crYulh1yQQmP5forxsgjjIPQxv0Zmp6YdqM2x288k/exec";
 
 let judgePerformers = [];
 let selectedJudgePerformer = null;
