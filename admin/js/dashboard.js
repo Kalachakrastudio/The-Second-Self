@@ -31,6 +31,11 @@ const pageInfo = {
         title:"Judge Panel", 
         subtitle:"Score performers for today's event." 
     },
+
+    audience:{
+        title:"Audience Panel",
+        subtitle:"Audience voting for today's event."
+    },
     
     reports:{
         title:"Reports",
@@ -97,6 +102,10 @@ function loadModule(page){
 
         case "judge": 
             if(typeof initJudge==="function") initJudge(); 
+            break;
+
+        case "audience":
+            if(typeof initAudience==="function") initAudience();
             break;
             
         case "reports":
