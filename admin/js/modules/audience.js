@@ -25,30 +25,17 @@ async function verifyAudienceTicket(){
 
     }
 
-    try{
+  audienceTicket = ticket;
+selectedAudienceEvent = data.eventId;
 
-        const url =
-        AUDIENCE_SCRIPT_URL +
-        "?action=verifyAudienceTicket" +
-        "&ticketId=" + encodeURIComponent(ticket);
+console.log("Loading performers...");
 
-        console.log("Request URL:", url);
+await loadAudiencePerformers();
 
-        const response = await fetch(url);
+console.log("Performers loaded");
 
-        console.log("Status:", response.status);
-
-        const data = await response.json();
-
-        console.log(data);
-
-    }
-    catch(error){
-
-        console.error(error);
-
-    }
-
+document.getElementById("ticketVerification").style.display = "none";
+document.getElementById("audienceContent").style.display = "block";
 }
 
 async function loadAudiencePerformers(){
