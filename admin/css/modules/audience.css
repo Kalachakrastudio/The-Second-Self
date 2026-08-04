@@ -1,583 +1,240 @@
-.judge-page{
+/* ==========================
+   Audience Page
+========================== */
+
+.audience-page{
     display:flex;
     flex-direction:column;
     gap:24px;
 }
 
-.judge-stats{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
+/* ==========================
+   Ticket Verification
+========================== */
+
+.ticket-verification{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:70vh;
 }
 
-.judge-stat{
+.ticket-box{
+
+    width:100%;
+    max-width:500px;
+
     background:#171717;
     border:1px solid var(--border);
-    border-radius:18px;
-    padding:22px;
-    display:flex;
-    align-items:center;
-    gap:18px;
-    min-height:110px;
+
+    border-radius:22px;
+
+    padding:45px 35px;
+
+    text-align:center;
 }
 
-.judge-stat i{
+.ticket-icon{
+
+    width:90px;
+    height:90px;
+
+    margin:0 auto 25px;
+
+    border-radius:50%;
+
+    background:rgba(215,31,40,.08);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.ticket-icon i{
+
+    font-size:38px;
+    color:var(--primary);
+
+}
+
+.ticket-box h2{
+
+    margin:0;
+    font-size:28px;
+
+}
+
+.ticket-box p{
+
+    margin:15px 0 35px;
+
+    color:#888;
+
+}
+
+.ticket-box input{
+
+    width:100%;
+
+    height:52px;
+
+    padding:0 18px;
+
+    border-radius:14px;
+
+    border:1px solid var(--border);
+
+    background:#111;
+
+    color:white;
+
+    margin-bottom:22px;
+
+    font-size:16px;
+
+}
+
+.ticket-box input:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+}
+
+.ticket-box button{
+
+    width:100%;
+}
+
+/* ==========================
+   Stats
+========================== */
+
+.audience-stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:20px;
+
+}
+
+.audience-stat{
+
+    background:#171717;
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:22px;
+
+    display:flex;
+
+    gap:18px;
+
+    align-items:center;
+
+}
+
+.audience-stat i{
+
     width:56px;
     height:56px;
+
     border-radius:14px;
+
     background:rgba(215,31,40,.08);
+
     color:var(--primary);
+
     display:flex;
+
     align-items:center;
+
     justify-content:center;
+
     font-size:22px;
+
 }
 
-.judge-stat h2{
+.audience-stat h2{
+
     margin:0;
     font-size:28px;
+
 }
 
-.judge-stat p{
+.audience-stat p{
+
     margin-top:5px;
+
     color:#888;
+
 }
 
-.judge-cards{
+/* ==========================
+   Cards
+========================== */
+
+.audience-cards{
+
     display:grid;
+
     grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
     gap:22px;
-}
-
-.judge-top{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:18px;
-
-}
-.judge-info{
-
-    flex:1;
-
-}
-.judge-category{
-
-    display:inline-block;
-
-    margin-top:6px;
-
-    padding:5px 12px;
-
-    border-radius:30px;
-
-    background:rgba(215,31,40,.12);
-
-    color:var(--primary);
-
-    font-size:12px;
-
-    font-weight:600;
-
-}
-.judge-body{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:12px;
-
-}
-.judge-row{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    padding:10px 0;
-
-    border-bottom:1px solid rgba(255,255,255,.05);
-
-}
-.judge-row span{
-
-    color:#888;
-
-    font-size:13px;
-
-}
-.judge-row strong{
-
-    color:#fff;
-
-    font-size:14px;
-
-    font-weight:600;
 
 }
 
-.judge-card{
-    background:#171717;
-    border:1px solid var(--border);
-    border-radius:20px;
-    padding:22px;
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-}
-
-.judge-card .icon{
-    width:72px;
-    height:72px;
-    border-radius:18px;
-    background:rgba(215,31,40,.08);
-    color:var(--primary);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:28px;
-}
-
-.judge-card h3{
-    margin:0;
-    font-size:20px;
-}
-
-.judge-card p{
-    margin:0;
-    color:#aaa;
-    font-size:14px;
-}
-
-.judge-card button{
-    width:100%;
-}
+/* ==========================
+   Mobile
+========================== */
 
 @media(max-width:768px){
 
-    .judge-stats{
+    .ticket-box{
+
+        padding:35px 22px;
+
+    }
+
+    .ticket-icon{
+
+        width:75px;
+        height:75px;
+
+    }
+
+    .ticket-icon i{
+
+        font-size:30px;
+
+    }
+
+    .ticket-box h2{
+
+        font-size:24px;
+
+    }
+
+    .ticket-box p{
+
+        font-size:14px;
+
+    }
+
+    .audience-stats{
+
         grid-template-columns:1fr;
+
     }
 
-    .judge-cards{
+    .audience-cards{
+
         grid-template-columns:1fr;
-    }
-
-    .event-selector{
-        width:100%;
-    }
-}
-/* SCORE BUTTON AREA */
-
-.score-number-box{
-    width:100%;
-    margin-bottom:40px;
-}
-
-
-.score-number-box p{
-    margin-bottom:20px;
-}
-
-
-.score-buttons{
-
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:12px;
-
-}
-
-
-.score-buttons button{
-
-    height:45px;
-    border-radius:12px;
-    background:#222;
-    border:1px solid #333;
-    color:white;
-    font-size:18px;
-    cursor:pointer;
-
-}
-
-
-.score-buttons button.active{
-
-    background:var(--primary);
-    border-color:var(--primary);
-
-}
-
-
-/* SUBMIT BUTTON */
-
-.score-modal .primary-btn{
-
-    margin-top:40px;
-    height:52px;
-    width:100%;
-
-}
-
-
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-
-    .score-number-box{
-
-        margin-bottom:45px;
-
-    }
-
-
-    .score-buttons{
-
-        gap:10px;
-        margin-bottom:45px;
-
-    }
-
-
-    .score-buttons button{
-
-        height:40px;
-        width:40px;
-        font-size:15px;
-
-    }
-
-
-    .score-modal .primary-btn{
-
-        margin-top:35px;
-        height:50px;
-
-    }
-
-}
-
-/* =========================
-   JUDGE SCORE MODAL
-========================= */
-
-
-.score-modal{
-
-    max-width:420px;
-    width:90%;
-
-}
-
-
-.score-modal .modal-body{
-
-    padding:30px;
-
-}
-
-
-/* Performer Name */
-
-#judgePerformerName{
-
-    margin:0;
-    font-size:22px;
-    text-align:center;
-
-}
-
-
-#judgePerformerCategory{
-
-    text-align:center;
-    color:#999;
-    margin-top:8px;
-    margin-bottom:25px;
-
-}
-
-
-
-/* Score Section */
-
-.score-number-box{
-
-    text-align:center;
-}
-
-
-.score-number-box p{
-
-    color:#aaa;
-    font-size:15px;
-
-}
-
-
-
-/* Score Buttons */
-
-.score-buttons{
-
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:14px;
-    margin-top:20px;
-
-}
-
-
-.score-buttons button{
-
-    height:45px;
-    border-radius:12px;
-
-    background:#222;
-    border:1px solid #333;
-
-    color:white;
-    font-size:18px;
-
-    transition:.2s;
-
-}
-
-
-.score-buttons button:hover{
-
-    border-color:var(--primary);
-
-}
-
-
-.score-buttons button.active{
-
-    background:var(--primary);
-    border-color:var(--primary);
-
-}
-
-
-
-/* Submit */
-
-.score-modal .primary-btn{
-
-    margin-top:45px;
-
-    width:100%;
-    height:52px;
-
-}
-
-
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-
-.score-modal{
-
-    width:95%;
-    margin:auto;
-
-}
-
-
-.score-modal .modal-body{
-
-    padding:25px 18px;
-
-}
-
-
-
-.score-buttons{
-
-    gap:10px;
-    margin-top:25px;
-    margin-bottom:10px;
-
-}
-
-
-.score-buttons button{
-
-    height:42px;
-    width:100%;
-
-    font-size:16px;
-
-}
-
-
-.score-modal .primary-btn{
-
-    margin-top:45px;
-
-}
-
-
-
-}
-
-/* =========================
-   SUCCESS POPUP
-========================= */
-
-.success-popup{
-
-    position:fixed;
-
-    top:30px;
-    right:30px;
-
-    z-index:99999;
-
-    opacity:0;
-
-    visibility:hidden;
-
-    transform:translateY(-30px);
-
-    transition:all .3s ease;
-
-}
-
-
-.success-popup.show{
-
-    opacity:1;
-
-    visibility:visible;
-
-    transform:translateY(0);
-
-}
-
-
-.success-box{
-
-    min-width:280px;
-
-    background:#171717;
-
-    border:1px solid rgba(255,255,255,.1);
-
-    border-radius:18px;
-
-    padding:22px 30px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    gap:15px;
-
-    box-shadow:0 20px 50px rgba(0,0,0,.5);
-
-}
-
-
-
-.success-box i{
-
-    font-size:32px;
-
-    color:#22c55e;
-
-}
-
-
-.success-box h3{
-
-    margin:0;
-
-    color:white;
-
-    font-size:16px;
-
-}
-
-
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-    .success-popup{
-
-        position:fixed;
-
-        top:20px;
-
-        left:50%;
-
-        right:auto;
-
-        width:calc(100% - 40px);
-
-        max-width:350px;
-
-        transform:translate(-50%,-80px);
-
-        z-index:99999;
-
-    }
-
-
-    .success-popup.show{
-
-        transform:translate(-50%,0);
-
-    }
-
-
-    .success-box{
-
-        width:100%;
-
-        min-width:auto;
-
-        padding:18px 20px;
-
-        border-radius:16px;
-
-        display:flex;
-
-        align-items:center;
-
-        justify-content:center;
-
-        gap:12px;
-
-    }
-
-
-    .success-box i{
-
-        font-size:28px;
-
-    }
-
-
-    .success-box h3{
-
-        font-size:15px;
-
-        margin:0;
 
     }
 
